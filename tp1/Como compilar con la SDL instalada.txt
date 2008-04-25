@@ -1,0 +1,9 @@
+La Libreria SDL fue recientemente instalada en las maquinas del Laboratorio 5.
+
+Para compilar desde dichas maquinas deberan incluir a la forma usual de compilacion los siguientes parametros.
+
+
+Ejemplo de compilacion de un holamundo.c
+
+
+g++ holamundo.c -o holamundo `sdl-config --cflags --libs`
