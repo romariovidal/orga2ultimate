@@ -59,6 +59,8 @@ cicloChico:
 
 
 dibujarPiso:
+	push 0x3	;Cantidad de veces que debería dibujar
+
 	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
     mov edi, pPiso  ;edi tiene el puntero al comienzo del dibujo
 
@@ -68,11 +70,19 @@ dibujarPiso:
 cicloMasExterno:
 	mov esi, edx 	;en edx guardo el punto donde empecé a dibujar.
     mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
-	mov	edx, 0x3
-	mul edx
+	mov	ecx, 0x3
+	mul ecx
 	add esi, eax
 	mov edi, pPiso
-	xor edx, edx	
+	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
+	pop eax
+	dec eax
+	dec eax
+	push eax
+;	jnz cicloMasExterno
+;	pop eax
+;	inc eax
+;	push eax
 
 cicloExterno:
     mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
@@ -87,22 +97,35 @@ cicloInterno:
 	add edi, 0x3
 	add esi, 0x3
 	sub ecx, 0x3
+
+	;mov byte al, [edi]
+	;mov byte [esi], al
+	;inc edi
+	;inc esi
+	;dec ecx
+
 	jnz cicloInterno
 	;AVANZAR LO QUE FALTE HASTA EL PROXIMO MULTIPLO DE 4 (BASURA)
 
 	mov eax, anchoPantalla
 	mov ecx, anchoPiso
-	sub eax, ecx
-	mov ecx, 0x3
+	sub eax, ecx	; Busco donde tengo que empezar la próxima linea
+	mov ecx, 0x3	; Lo paso a bytes
 	mul ecx
-	add esi, eax 
+	add esi, eax
+	;parece que tengo que avanzar 2 el piso, porque mide menos..
+	inc edi 		; Esto no se porque pero hace cosas copadas.... Tipo, hace aparecer la mitad en colores
+	inc edi 		; Esto no se porque pero hace cosas copadas.... Tipo, hace aparecer la mitad en colores
 
 	dec ebx	;contador de cantidad de filas restantes a pintar
 	jnz cicloExterno
 
-	add edx, 0x0
+	pop eax
+	dec eax
+	push eax
 	jnz cicloMasExterno
 fin:
+	pop ebx 
     pop esi
     pop edi
     pop ebx
