@@ -76,7 +76,9 @@ cicloMasExterno:
 
 cicloExterno:
     mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
-	mov ecx, anchoPiso	;ecx contiene el ancho de la pantalla en pixeles	
+	mov	ecx, 0x3
+	mul ecx
+	mov ecx, eax	;ecx contiene el ancho de la pantalla en bytes	
 
 cicloInterno:
 	mov eax, [edi]  ;traigo el dibujo de memoria	
@@ -84,7 +86,7 @@ cicloInterno:
 
 	add edi, 0x3
 	add esi, 0x3
-	dec ecx; tiene la cantidad de pixeles que faltan pintar
+	sub ecx, 0x3
 	jnz cicloInterno
 	;AVANZAR LO QUE FALTE HASTA EL PROXIMO MULTIPLO DE 4 (BASURA)
 
