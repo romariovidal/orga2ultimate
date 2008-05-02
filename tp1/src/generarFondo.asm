@@ -57,8 +57,50 @@ cicloChico:
 	dec eax	;contador de cantidad de filas restantes a pintar
 	jnz cicloGrande
 
-dibujarPiso:
 
+dibujarPiso:
+	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
+    mov edi, pPiso  ;edi tiene el puntero al comienzo del dibujo
+
+	mov edx, esi 	;en edx guardo el punto donde empecé a dibujar.
+	;jmp cicloExterno
+
+cicloMasExterno:
+	mov esi, edx 	;en edx guardo el punto donde empecé a dibujar.
+    mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
+	mov	edx, 0x3
+	mul edx
+	add esi, eax
+	mov edi, pPiso
+	xor edx, edx	
+
+cicloExterno:
+    mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
+	mov ecx, anchoPiso	;ecx contiene el ancho de la pantalla en pixeles	
+
+cicloInterno:
+	mov eax, [edi]  ;traigo el dibujo de memoria	
+	mov [esi], eax
+
+	add edi, 0x3
+	add esi, 0x3
+	dec ecx; tiene la cantidad de pixeles que faltan pintar
+	jnz cicloInterno
+	;AVANZAR LO QUE FALTE HASTA EL PROXIMO MULTIPLO DE 4 (BASURA)
+
+	mov eax, anchoPantalla
+	mov ecx, anchoPiso
+	sub eax, ecx
+	mov ecx, 0x3
+	mul ecx
+	add esi, eax 
+
+	dec ebx	;contador de cantidad de filas restantes a pintar
+	jnz cicloExterno
+
+	add edx, 0x0
+	jnz cicloMasExterno
+fin:
     pop esi
     pop edi
     pop ebx
