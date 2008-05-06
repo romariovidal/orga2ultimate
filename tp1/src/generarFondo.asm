@@ -59,24 +59,26 @@ cicloChico:
 
 
 dibujarPiso:
-	push 0x3	;Cantidad de veces que debería dibujar
+	push 0x2	;Cantidad de veces que debería dibujar
 
 	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
     mov edi, pPiso  ;edi tiene el puntero al comienzo del dibujo
 
 	mov edx, esi 	;en edx guardo el punto donde empecé a dibujar.
-	;jmp cicloExterno
+	push esi
+	jmp cicloExterno
 
 cicloMasExterno:
-	mov esi, edx 	;en edx guardo el punto donde empecé a dibujar.
-    mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
+	pop esi
+	;mov esi, edx 	;en edx guardo el punto donde empecé a dibujar.
+    	mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
 	mov	ecx, 0x3
 	mul ecx
 	add esi, eax
+	inc esi
 	mov edi, pPiso
 	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
 	pop eax
-	dec eax
 	dec eax
 	push eax
 ;	jnz cicloMasExterno
