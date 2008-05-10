@@ -6,7 +6,7 @@
 
 %define fucsia 		0xFF00FF00
 %define hacerRGB 	0xFFFFFF00
-%define borrarFucsia	0x000000FF
+%define borrarFucsia	0x00000000
 %define azul		0x0096FF00
 
 global blit
@@ -22,6 +22,8 @@ blit:
     push esi
 
 	mov esi, imagen
+	inc esi		; Esta trampa todavía no la entendí
+	inc esi		; Esta trampa todavía no la entendí
 	
 	;calculo la basura del ancho
         mov eax, w
@@ -33,7 +35,7 @@ blit:
         mov ecx, 0x4
         div ecx
 
-        add edi, edx    ; le agrego los bytes basura ;en edx queda la basura
+        add edi, edx    ; le agrego los bytes basura ;en edx queda la basura ¡¡ESTO ESTÁ MAL HAY QUE PONER 4-edx!!
 
 
 	;Reemplazo
@@ -44,8 +46,10 @@ cicloExterno
 
 cicloInterno:
 		mov eax,[esi]
+;		mov ebx, azul
+;		mov [esi], ebx
 		and eax, hacerRGB
-		cmp eax, fucsia
+		sub eax, fucsia
 		jz reemplazar
 
 	regresar:
