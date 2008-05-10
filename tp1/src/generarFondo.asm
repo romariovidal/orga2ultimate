@@ -21,11 +21,14 @@ section .text
 %define colorCieloG	0x96
 %define colorCieloB	0x00			
 
-
+;var locales
+%define punteroAPiso	[ebp-4]
+%define cantPintadasSuelo [ebp-8]
 
 generarFondo:
     push ebp
     mov ebp, esp
+	sub esp, 8
     push ebx
     push edi
     push esi
@@ -59,32 +62,47 @@ cicloChico:
 
 
 dibujarPiso:
-	push 0x2	;Cantidad de veces que debería dibujar
+	;edx tendrá la cantidad de veces a copiar el dibujo
+	;esi tendrá el puntero a la pantalla
+	;edi tendrá el puntero a la imagen
+
+	;Inicio contador de veces que aparecerá
+	mov eax, anchoPantalla
+	mov ecx, 0x3
+	mul ecx
+	mov ebx, eax
+	
+	mov eax, anchoPiso
+	mul ecx
+	mov edi, eax
+	inc edi
+
+	mov eax, ebx
+	div edi
+	
+	mov edx, eax
+	inc eax ;Esto es porque decremento antes del salto
+	mov cantPintadasSuelo, eax
+	;Fin de contador de veces que aparecerá.
 
 	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
     mov edi, pPiso  ;edi tiene el puntero al comienzo del dibujo
 
-	mov edx, esi 	;en edx guardo el punto donde empecé a dibujar.
-	push esi
+	mov punteroAPiso, esi 	;guardo el punto donde empecé a dibujar.
 	jmp cicloExterno
 
 cicloMasExterno:
-	pop esi
-	;mov esi, edx 	;en edx guardo el punto donde empecé a dibujar.
-    	mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
+	mov esi, punteroAPiso
+	inc esi
+	inc esi
+	mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
 	mov	ecx, 0x3
 	mul ecx
 	add esi, eax
 	inc esi
+	mov punteroAPiso, esi
 	mov edi, pPiso
 	mov ebx, altoPiso 	; cantidad de iteraciones de un cacho
-	pop eax
-	dec eax
-	push eax
-;	jnz cicloMasExterno
-;	pop eax
-;	inc eax
-;	push eax
 
 cicloExterno:
     mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
@@ -100,12 +118,6 @@ cicloInterno:
 	add esi, 0x3
 	sub ecx, 0x3
 
-	;mov byte al, [edi]
-	;mov byte [esi], al
-	;inc edi
-	;inc esi
-	;dec ecx
-
 	jnz cicloInterno
 	;AVANZAR LO QUE FALTE HASTA EL PROXIMO MULTIPLO DE 4 (BASURA)
 
@@ -116,21 +128,23 @@ cicloInterno:
 	mul ecx
 	add esi, eax
 	;parece que tengo que avanzar 2 el piso, porque mide menos..
-	inc edi 		; Esto no se porque pero hace cosas copadas.... Tipo, hace aparecer la mitad en colores
-	inc edi 		; Esto no se porque pero hace cosas copadas.... Tipo, hace aparecer la mitad en colores
+	inc edi ; Avanzo lo que me falta hasta completar la palabra
+	inc edi ; Debería cambiar esto por el resto de la división
 
 	dec ebx	;contador de cantidad de filas restantes a pintar
 	jnz cicloExterno
 
-	pop eax
+	mov eax, cantPintadasSuelo
 	dec eax
-	push eax
+	mov cantPintadasSuelo, eax
+	cmp eax, 0
 	jnz cicloMasExterno
 fin:
-	pop ebx 
+	;pop ebx 
     pop esi
     pop edi
     pop ebx
+	add esp, 8
     pop ebp
 
     ret
