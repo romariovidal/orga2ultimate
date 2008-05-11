@@ -22,8 +22,9 @@ blit:
     push esi
 
 	mov esi, imagen
-	inc esi		; Esta trampa todavía no la entendí
-	inc esi		; Esta trampa todavía no la entendí
+	dec esi		; Esta trampa todavía no la entendí
+;	inc esi		; Esta trampa todavía no la entendí
+;	inc esi		; Esta trampa todavía no la entendí
 	
 	;calculo la basura del ancho
         mov eax, w

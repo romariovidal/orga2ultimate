@@ -39,9 +39,13 @@ recortar:
 		mov ecx, 0x4
 		div ecx
 
+		mov ecx, 0
+		cmp edx, 0
+		je sumarBasuraSprite	; si el resto es 0 no agrego basura
 		mov ecx, 0x4
 		sub ecx, edx	; calculo la basura, 4 - resto
 ;		add edi, ecx	; le agrego los bytes basura
+sumarBasuraSprite:
 		mov basuraAnchoSprite, ecx
 
 	;Ya obtuve el tamaño
@@ -56,10 +60,14 @@ recortar:
 		mov ecx, 0x4
 		div ecx
 
+		mov ecx, 0
+		cmp ecx, 0
+		je noHayBasura	; si el resto es 0 no agrego basura
 		mov ecx, 0x4
 		sub ecx, edx	; calculo la basura, 4 - resto
 		add ebx, ecx	; le agrego los bytes basura
 ;		mov ebx, eax
+noHayBasura:
 		mov anchoImgBytes, ebx
 	;Ya obtuve el tamaño
 
