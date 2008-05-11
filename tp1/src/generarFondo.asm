@@ -93,8 +93,9 @@ dibujarPiso:
 
 cicloMasExterno:
 	mov esi, punteroAPiso
-	inc esi
-	inc esi
+	dec esi	
+;	inc esi
+;	inc esi
 	mov eax, anchoPiso      ;eax contiene el ancho del piso en píxeles
 	mov	ecx, 0x3
 	mul ecx
