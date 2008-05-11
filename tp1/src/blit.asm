@@ -63,8 +63,8 @@ cicloInterno:
 		jmp fin
 
 reemplazar:
-		mov eax, [esi] ;Capaz podía hacer 2 copias a registro y no traer todo 2 veces.
-		and eax, borrarFucsia
+;		mov eax, [esi] ;Capaz podía hacer 2 copias a registro y no traer todo 2 veces.
+;		and eax, borrarFucsia
 		or eax, azul
 		mov [esi], eax
 	

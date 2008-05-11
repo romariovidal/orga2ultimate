@@ -20,7 +20,7 @@ section .text
 recortar:
     push ebp
     mov ebp, esp
-	sub esp, 12
+    sub esp, 12
     push ebx
     push edi
     push esi
@@ -39,12 +39,15 @@ recortar:
 		mov ecx, 0x4
 		div ecx
 
-		add edi, edx	; le agrego los bytes basura
+		mov ecx, 0x4
+		sub ecx, edx	; calculo la basura, 4 - resto
+;		add edi, ecx	; le agrego los bytes basura
 		mov basuraAnchoSprite, edx
+
 	;Ya obtuve el tamaño
 
 	;Idem pero para la imagen
-		mov eax, w	
+		mov eax, w
 		mov ecx, 0x3
 		mul ecx
 
@@ -53,7 +56,9 @@ recortar:
 		mov ecx, 0x4
 		div ecx
 
-		add ebx, edx	; le agrego los bytes basura
+		mov ecx, 0x4
+		sub ecx, edx	; calculo la basura, 4 - resto
+		add ebx, ecx	; le agrego los bytes basura
 ;		mov ebx, eax
 		mov anchoImgBytes, ebx
 	;Ya obtuve el tamaño
@@ -76,7 +81,7 @@ posicionado:
 	mov edi, h
 
 cicloExterno:
-    mov ecx, wP   ;ecx contiene el ancho de la imagen en pixeles
+    	mov ecx, wP   ;ecx contiene el ancho de la imagen en pixeles
 	mov comienzoFilaCopia, esi
 
 cicloInterno:
