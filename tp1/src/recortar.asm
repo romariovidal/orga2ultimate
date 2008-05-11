@@ -42,7 +42,7 @@ recortar:
 		mov ecx, 0x4
 		sub ecx, edx	; calculo la basura, 4 - resto
 ;		add edi, ecx	; le agrego los bytes basura
-		mov basuraAnchoSprite, edx
+		mov basuraAnchoSprite, ecx
 
 	;Ya obtuve el tamaño
 
