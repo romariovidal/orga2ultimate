@@ -24,7 +24,7 @@ apagar:
 	mov ecx, w	; contiene el ancho del sprite
 	mov ebx, h	; contiene el alto del sprite
 	mov eax, contador 
-	mov esi, [eax]
+	mov esi, [eax] ; esi contiene el valor del contador
 	
 	
 ciclo_fila:
@@ -55,10 +55,9 @@ pasarDeFila:
 	jmp ciclo_fila
 
 fin:
-	mov eax, [esi]
-	sub eax, 8
+	sub esi, 8
 	mov ebx, contador
-	mov [ebx], eax
+	mov [ebx], esi
 	; Fin Nucleo de la funcion
 	
 	pop esi
