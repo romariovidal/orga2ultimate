@@ -5,13 +5,14 @@
 %define h 		[ebp+16]
 %define pCont 		[ebp+20]
 
+%define fucsia 		0xFF00FF00
+
 extern printf
 
 global apagar
 
 section .data
 formato db "Llamado con (%d, %d, %d, %d)",10,0
-
 
 section .text
 
@@ -38,7 +39,7 @@ apagar:
 	call printf
 	add esp, 20
 	
-	jmp fin
+	;jmp fin
 	
 ciclo_fila:
 	xor eax, eax
@@ -48,6 +49,7 @@ ciclo_fila:
 	mov ax, [edi]
 	and eax, 0x00ffffff
 	cmp eax, 0x00ff00ff 
+	jmp fin
 	je  pasarDePixel
 	dec edi
 	mov byte [edi], 0
