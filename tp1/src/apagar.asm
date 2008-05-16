@@ -5,7 +5,13 @@
 %define h 		[ebp+16]
 %define pCont 		[ebp+20]
 
+extern printf
+
 global apagar
+
+section .data
+formato db "Llamado con (%f, %f, %f, %f)",10,0
+
 
 section .text
 
@@ -15,6 +21,7 @@ apagar:
 	push ebx
 	push edi
 	push esi
+	mov eax, 16
 	
 	; Principio Nucleo de la funcion
 	mov edi, sprite 	; puntero a char (apunta a la imagen)
@@ -22,11 +29,20 @@ apagar:
 	mov ebx, h		; contiene el alto del sprite
 	mov esi, pCont
 	mov esi, [esi] 		; esi contiene el valor del contador
+
+	push esi
+	push ebx
+	push ecx
+	push edi 
+	push formato
+	call printf
+	add esp, 20
 	
+	jmp final
 	
 ciclo_fila:
 	xor eax, eax
-	mov byte eax, [edi]
+	mov word eax, [edi]
 	shl eax, 16
 	inc edi
 	mov ax, [edi]
@@ -70,7 +86,8 @@ fin:
 	mov [esi], eax
 	
 	; Fin Nucleo de la funcion
-	
+
+final:	
 	pop esi
 	pop edi
 	pop ebx
