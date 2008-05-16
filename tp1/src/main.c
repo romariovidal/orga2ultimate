@@ -280,6 +280,8 @@ int main(int argc, char *argv[])
 		
 		recortar(coin->pixels, paso[0], 32, coin->w, coin->h, resCoin->pixels);
 		
+		if (bajaMoneda[0]==1) 
+			printf("Me llamo con los siguiente valores: %d, %d, %d, %d \n",resCoin->pixels, areaCoin.w, areaCoin.h, cont);
 		if (bajaMoneda[0]==1) apagar(resCoin->pixels, areaCoin.w, areaCoin.h, cont);
 		blit(resCoin->pixels, areaCoin.w, areaCoin.h);
 		SDL_BlitSurface(resCoin, NULL, screen, &areaCoin);

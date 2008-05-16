@@ -10,7 +10,7 @@ extern printf
 global apagar
 
 section .data
-formato db "Llamado con (%f, %f, %f, %f)",10,0
+formato db "Llamado con (%d, %d, %d, %d)",10,0
 
 
 section .text
@@ -42,7 +42,7 @@ apagar:
 	
 ciclo_fila:
 	xor eax, eax
-	mov word eax, [edi]
+	mov byte eax, [edi]
 	shl eax, 16
 	inc edi
 	mov ax, [edi]
