@@ -1,14 +1,11 @@
 ; int apagar(char *image, int w, int h, int *cont)
 
-global apagar
-
-extern malloc
-extern free
-
-%define image 		[ebp+8]
+%define sprite 		[ebp+8]
 %define w 		[ebp+12]
 %define h 		[ebp+16]
-%define contador 	[ebp+20]
+%define pCont 		[ebp+20]
+
+global apagar
 
 section .text
 
@@ -20,44 +17,58 @@ apagar:
 	push esi
 	
 	; Principio Nucleo de la funcion
-	mov edi, image 	; puntero a char (apunta a la imagen)
-	mov ecx, w	; contiene el ancho del sprite
-	mov ebx, h	; contiene el alto del sprite
-	mov eax, contador 
-	mov esi, [eax] ; esi contiene el valor del contador
+	mov edi, sprite 	; puntero a char (apunta a la imagen)
+	mov ecx, w		; contiene el ancho del sprite
+	mov ebx, h		; contiene el alto del sprite
+	mov esi, pCont
+	mov esi, [esi] 		; esi contiene el valor del contador
 	
 	
 ciclo_fila:
-	mov eax, [edi]
-	and eax, 0xfff0
-	cmp eax, 0xf0f0 
+	xor eax, eax
+	mov byte eax, [edi]
+	shl eax, 16
+	inc edi
+	mov ax, [edi]
+	and eax, 0x00ffffff
+	cmp eax, 0x00ff00ff 
 	je  pasarDePixel
+	dec edi
 	mov byte [edi], 0
 	inc edi
-	mov byte al, [esi]
+	mov eax, esi
 	mov byte [edi], al
 	inc edi
 	mov byte [edi], al
 	inc edi
 	loop ciclo_fila
-
 	jmp pasarDeFila
 
 pasarDePixel:
-	add edi, 3
+	add edi, 2
 	loop ciclo_fila
 
 pasarDeFila:
-	dec ebx
+	dec ebx ; ebx tiene la cantidad de filas que me faltan
 	cmp ebx, 0
 	je  fin
-	mov ecx, w
+	mov ecx, w 	; reseteo la cantidad de columnas
+
+	mov edx, ecx	; edx tiene la cantidad de columnas
+	shl edx, 1
+	add edx, ecx 	; edx tiene la cantidad de columnas por 3
+	and edx, 0x00ffffff
+	add edx, 4 	; edx tiene la cantidad de bytes de la fila, incluyendo la basura
+	mul edx		; ahora tengo en eax la cantidad de bytes procesados, incluyendo los bytes basura
+	and edx, 0x11000000 ; ahora en edx tengo la cantidad de bytes de la fila modulo 4
+	add edi, edx 	; ahora tengo a edi apuntando a la fila que tengo que procesar
 	jmp ciclo_fila
 
 fin:
-	sub esi, 8
-	mov ebx, contador
-	mov [ebx], esi
+	mov eax, [esi]
+	sub eax, 8
+	mov [esi], eax
+	
 	; Fin Nucleo de la funcion
 	
 	pop esi
