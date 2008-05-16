@@ -38,7 +38,7 @@ apagar:
 	call printf
 	add esp, 20
 	
-	jmp final
+	jmp fin
 	
 ciclo_fila:
 	xor eax, eax
@@ -81,6 +81,7 @@ pasarDeFila:
 	jmp ciclo_fila
 
 fin:
+	mov esi, pCont
 	mov eax, [esi]
 	sub eax, 8
 	mov [esi], eax
