@@ -89,19 +89,25 @@ reemplazar:
 		;PREPARANDO LA RESTA
 		mov eax, pCont
 		mov dword eax, [eax]
-		and eax, 0x000000FF
-		mov ebx, eax
-		shl eax,16
-		shl ebx, 8
-		or ebx, eax
+;		and eax, 0x000000FF
+;		mov ebx, eax
+;		shl eax,16
+;		shl ebx, 8
+;		or ebx, eax
 
-		mov eax, [esi] ;Capaz podía hacer 2 copias a registro y no traer todo 2 veces.
-		and eax, borrarRojo
+;		mov eax, [esi] ;Capaz podía hacer 2 copias a registro y no traer todo 2 veces.
+;		and eax, borrarRojo
 	
 		;RESTANDO EL GREEN Y EL BLUE
-		sub eax, ebx
+;		sub eax, ebx
 		
-		mov [esi], eax
+;		mov [esi], eax
+
+		mov [esi], ah
+		mov [esi+1], al
+		mov [esi+2], al
+
+
 	
 		jmp regresar
 
