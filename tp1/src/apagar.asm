@@ -29,16 +29,6 @@ apagar:
 	mov ebx, h		;contiene el alto del sprite
 	mov esi, pCont
 	mov esi, [esi] 		;esi contiene el valor del contador
-
-	push esi
-	push ebx
-	push ecx		
-	push edi 
-	push formato
-	call printf
-	add esp, 20
-	
-	jmp fin
 	
 ciclo_fila:
 	xor eax, eax		;inicializo eax en 0
@@ -46,7 +36,7 @@ ciclo_fila:
 	shl eax, 16		;shifteo a izquierda para tener espacio en eax para guardar 16 bits en ax
 	inc edi			;avanzo en puntero al sprite
 	mov ax, [edi]		;muevo 2 bytes a ax
-	and eax, 0x00ffffff	;le paso una mascara para que quede en cero la parte alta de eax (teoricamente ya esta en cero porque la inicilize en cero)
+	;and eax, 0x00ffffff	;le paso una mascara para que quede en cero la parte alta de eax (teoricamente ya esta en cero porque la inicilize en cero)
 	cmp eax, 0x00ff00ff 	;comparo eax con rosa
 	je  pasarDePixel	;si es rosa me paso de pixel (o sea, avanzo el puntero dos lugares)
 	dec edi			;si no es rosa entonces retrocedo el puntero al sprite para reescribir el valor del pixel
@@ -62,29 +52,34 @@ ciclo_fila:
 
 pasarDePixel:
 	add edi, 2		;avanzo el puntero 2 lugares para procesar el proximo pixel
-	loop ciclo_fila
+ 	loop ciclo_fila
 
 pasarDeFila:
+	;inc edi
 	dec ebx 		; ebx tiene la cantidad de filas que me faltan procesar
 	cmp ebx, 0		; comparo con cero
 	je  fin			;si es cero, entonces no me faltan procesar mas filas
 	mov ecx, w 		; reseteo la cantidad de columnas
 
-	mov edx, ecx		; edx tiene la cantidad de columnas
-	shl edx, 1
-	add edx, ecx 		; edx tiene la cantidad de columnas por 3
-	and edx, 0x00ffffff
-	add edx, 4 		; edx tiene la cantidad de bytes de la fila, incluyendo la basura
-	mul edx			; ahora tengo en eax la cantidad de bytes procesados, incluyendo los bytes basura
-	and edx, 0x11000000 	; ahora en edx tengo la cantidad de bytes de la fila modulo 4
-	add edi, edx 		; ahora tengo a edi apuntando a la fila que tengo que procesar
+	;mov edx, ecx		; edx tiene la cantidad de columnas
+	;shl edx, 1
+	;add edx, ecx 		; edx tiene la cantidad de columnas por 3
+	;and edx, 0xfffffff6
+	
+	;cmp edx, 0
+	;je esCero	
+	;add edx, 4 		; edx tiene la cantidad de bytes de la fila, incluyendo la basura
+esCero:
+	;mul edx			; ahora tengo en eax la cantidad de bytes procesados, incluyendo los bytes basura
+	;and edx, 0x11000000 	; ahora en edx tengo la cantidad de bytes de la fila modulo 4
+	;add edi, edx 		; ahora tengo a edi apuntando a la fila que tengo que procesar
 	jmp ciclo_fila
 
 fin:
-	mov esi, pCont
-	mov eax, [esi]
-	sub eax, 8
-	mov [esi], eax
+	;mov esi, pCont
+	;mov eax, [esi]
+	;sub eax, 8
+	;mov [esi], eax
 	
 	; Fin Nucleo de la funcion
 
