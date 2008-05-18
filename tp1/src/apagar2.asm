@@ -88,7 +88,7 @@ reemplazar:
 		;nd eax, borrarFucsia
 		;PREPARANDO LA RESTA
 		mov eax, pCont
-		mov dword eax, [eax]
+		mov eax, [eax]
 ;		and eax, 0x000000FF
 ;		mov ebx, eax
 ;		shl eax,16
@@ -102,11 +102,11 @@ reemplazar:
 ;		sub eax, ebx
 		
 ;		mov [esi], eax
-
-		mov [esi], ah
-		mov [esi+1], al
-		mov [esi+2], al
-
+		inc esi
+		mov byte [esi], 0
+		mov byte [esi+1], al
+		mov byte [esi+2], al
+		dec esi
 
 	
 		jmp regresar
