@@ -1,3 +1,41 @@
-\section{Introducci'on te'orica}
+\section{Introducci'on}
 
+	Para la realizaci'on de este trabajo pr'actico nos fue necesario, entre
+otras cosas de log'istica, aprender a lidiar con las instrucciones de assembler.
+Esta tarea nos nos result'o sencilla en un primer momento, pero gracias a que
+mientras haciamos tp, tambi'en estudiabamos para el parcial, fuimos aprendiendo
+rapidamente.
+
+	Dentro de los puntos m'as importantes que cabe destacar para la
+realizaci'on de este trabajo pr'actico son la gran comodidad que nos permiti'o
+para realizarlo la posibilidad de contar con un svn para no tener que perder
+tiempo intercambiandonos la 'ultima versi'on y buscando versiones viejas. Esto
+nos result'o muy com'un ni bien empezamos a programar, cuando de golpe tras
+cambiar 3 o 4 lineas el programa daba Segmentation Fault.
+
+	Como metodología de trabajo no utilizamos ninguna en particular, m'as que
+ir haciendo las funciones en el orden que figuraban en el enunciado. Esta
+``decisi'on'' se ve reflejada en la calidad del c'odigo. Las 'ultimas funciones
+aprovechan mucho m'as las operaciones del lenguaje. Desgraciadamente no
+contamos con tiempo como para reahacer el trabajo pr'actico, ya que sin duda si
+encararamos nuevamente las funciones nos saldr'ian distintas. Esto refleja
+nuestro aprendizaje a lo largo del desarrollo del tp.
+
+	Salvo las funciones \textbf{checkcolision} y \textbf{salta}, las dem'as
+(\textbf{apagar}, \textbf{generarFondo}, \textbf{blit}, \textbf{recortar}) son
+funciones que modifican directamente la estructura de un pixel. Las 2 primeras
+son puramente num'ericas que realizan algunos c'alculos y comparaciones.
+
+	Brevemente podemos describir el funcionamiento de estas 6 funciones as'i
+(en orden de realizaci'on):
+
+\begin{itemize}
+	\item generarFondo: Pintar el cielo y copiar el piso.
+	\item recortar: Recorta una parte de un sprite
+	\item blit: Saca el color de off para mimetizar la imagen con el fondo.
+	\item checkcolision: Comprueba si hay colisi'on entre 2 objetos, en este
+caso, Mario y el ca~no o la caja de las monedas.
+	\item salta: Maneja el comportamiento de Mario cuando salta.
+	\item apagar: Va cambiando el color de las monedas.
+\end{itemize}
 
