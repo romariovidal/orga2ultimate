@@ -1,3 +1,34 @@
 \section{Desarrollo}
+En esta seccion describiremos una por una las funciones implementadas a lo largo de todo el trabajo, explicaremos los \textit{trucos} usados para ciertos calculos, como por ejemplo el ancho de la imagen en bytes.
+
+\begin{enumerate}
+ \item Generar Fondo:
+Esta funcion esta dividida en dos etapas, una para pintar el cielo y otra para generar el piso.
+Para la primer etapa utilizamos dos ciclos para recorrer la imagen, uno para las columnas y otro para las filas en cada pixel grabamos con el color del cielo.
+en la segunda etapa de la funci'on nos ocupamos de generar el piso.  Para esto vamos pintando cuadradito por cuadradito hasta generar todo el ancho de la pantalla.  En esta funci'on no calculamos la basura sino que avanzamos los bytes que nos faltaban para completar la fila de la im'agen.
+\item Recortar:
+En esta funci'on nuestro c'odigo ya evolucion'o un poco y comenzamos a utilizar los registros con 4 bytes.  Para calcular la basura hacemos la cuenta por fila y ya dejamos el prueba error al que recurrimos en el piso.  La cuenta es 
+
+$$
+\frac{Tama\~noImagen \times 3}{4}
+$$
+
+donde $Tama\~noImagen$ est'a en p'ixels.  Si el resto es distinto de cero, entonces 
+
+$$
+Basura = 4 - Resto
+$$
+
+Luego lo que hacemos es recorrer en la im'agen original el sprite que me pide la funci'on y vamos escribiendo por fila en el destino y le sumamos la basura.
+\item Blit:
+Esta funci'on reemplaza el color fucsia (0xFF00FF) por el color de fondo.  Ac'a tambi'en trabajamos con registros de 4 bytes, calculamos la basura como en el caso anterior y vamos reemplazando cuando tenemos un p'ixel color fucsia por el color azul del fondo (0x0096FF).  Al trabajar con 4 bytes tenemos en cuenta que estamos agarrando uno que no nos corresponde y volvemos a escribir lo que estaba originalmente en esa posición.  Para el p'ixel inicial, tenemos que mover el puntero un byte hacia atr'as de modo de cargar en los bytes menos significativos el 1er p'ixel.  ¿Por qu'e hacemos esto?  Porque como el procesador trabaja en little-endian, necesitamos este truquito para alinear los primeros 3 bytes de la imagen (el 1er pixel) con los bytes m'as significativos del registro en el que lo vamos modificando.
+\item Check Colision:
+Esta es la funci'on que nos result'o m'as simple en todo el TP.  La resolvimos con cuatro comparaciones, dos juegos de comparaciones iguales para cada eje.  Si la coordenada m'as chica del 1er objeto a comparar es menor que la m'as grande del 2do, ya no hay colisión y viceversa.  Esto para cada eje.
+\item Salta:
+Esta funci'on implementa el algoritmo provisto por la c'atedra en el enunciado.  Como detalle, no fue necesario utilizar variables locales ya que todos los elementos entraron en los registros.
+\item Apagar:
+Esta funci'on tambi'en consiste en modificar una im'agen, usando la misma t'ecnica para calcular la basura que en las funciones anteriores.  Cuando encontramos un p'ixel que corresponde a la moneda, tenemos que reemplazarlo por datos que vienen como par'ametro.  Una de las cosas cuyo estado no nos enorgullece en este TP, es que en esta función traemos de la memoria el puntero al contador cada vez que reemplazamos un p'ixel.  Esto se podría mejorar reutilizando registros.
+\end{enumerate}
+
 
 

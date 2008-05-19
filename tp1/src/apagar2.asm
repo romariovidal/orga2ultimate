@@ -102,11 +102,9 @@ reemplazar:
 ;		sub eax, ebx
 		
 ;		mov [esi], eax
-		inc esi
-		mov byte [esi], 0
-		mov byte [esi+1], al
+		mov byte [esi+1], 0
 		mov byte [esi+2], al
-		dec esi
+		mov byte [esi+3], al
 
 	
 		jmp regresar
