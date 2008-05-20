@@ -2,12 +2,26 @@
 En esta secci'on describiremos una por una las funciones implementadas a lo largo de todo el trabajo, explicaremos los \textit{trucos} usados para ciertos c'alculos, como por ejemplo el ancho de la imagen en bytes.
 
 \begin{enumerate}
- \item Generar Fondo:
-Esta funci'on esta dividida en dos etapas, una para pintar el cielo y otra para generar el piso.
-Para la primer etapa utilizamos dos ciclos para recorrer la imagen, uno para las columnas y otro para las filas en cada p'ixel grabamos con el color del cielo.
-en la segunda etapa de la funci'on nos ocupamos de generar el piso.  Para esto vamos pintando cuadradito por cuadradito hasta generar todo el ancho de la pantalla.  En esta funci'on no calculamos la basura sino que avanzamos los p'ixels que nos faltaban para completar la fila de la im'agen.
-\item Recortar:
-En esta funci'on nuestro c'odigo ya evolucion'o un poco y comenzamos a utilizar los registros con 4 bytes.  Para calcular la basura hacemos la cuenta por fila y ya dejamos el prueba error al que recurrimos en el piso.  La cuenta es 
+ \item \textsc{generarFondo}:
+
+Esta funci'on est'a dividida en dos etapas, una para pintar el cielo y otra
+para generar el piso. Para la primer etapa utilizamos dos ciclos para recorrer
+la imagen, uno para las columnas y otro para las filas en cada p'ixel grabamos
+con el color del cielo.
+
+En la segunda etapa de la funci'on nos ocupamos de generar el piso.  Para esto
+vamos copiando p'ixel a p'ixel el sprite correspondiente al piso varias veces
+una al lado de la otra hasta completar todo el ancho de la pantalla. 
+
+En esta funci'on no calculamos la basura sino que avanzamos los p'ixels que nos
+faltaban para completar la fila de la imagen \textit{a mano}.
+
+\item \textsc{Recortar}:
+
+En esta funci'on nuestro c'odigo ya evolucion'o un poco y comenzamos a utilizar
+los registros con 4 bytes.  Para calcular la basura hacemos la cuenta por fila
+y ya dejamos de utilizar el famoso m'etodo de ``prueba y error'' al que
+recurrimos en la funci'on \textbf{generarFondo}.  La cuenta es 
 
 $$
 \frac{Tama\tilde{n}oImagen \times 3}{4}
@@ -19,15 +33,63 @@ $$
 Basura = 4 - Resto
 $$
 
-Luego lo que hacemos es recorrer en la im'agen original el sprite que me pide la funci'on y vamos escribiendo por fila en el destino y le sumamos la basura.
-\item Blit:
-Esta funci'on reemplaza el color fucsia (0xFF00FF) por el color de fondo.  Ac'a tambi'en trabajamos con registros de cuatro bytes, calculamos la basura como en el caso anterior y vamos reemplazando cuando tenemos un p'ixel color fucsia por el color azul del fondo (0x0096FF).  Al trabajar con cuatro bytes tenemos en cuenta que estamos agarrando uno que no nos corresponde y volvemos a escribir lo que estaba originalmente en esa posici'on.  Para el p'ixel inicial, tenemos que mover el puntero un byte hacia atr'as de modo de cargar en los bytes menos significativos el primer p'ixel.  >Por qu'e hacemos esto?  Porque como el procesador trabaja en little-endian, necesitamos este truquito para alinear los primeros tres bytes de la imagen (el 1er pixel) con los bytes m'as significativos del registro en el que lo vamos modificando.
-\item Check Colisi'on:
-Esta es la funci'on que nos result'o m'as simple en todo el TP.  La resolvimos con cuatro comparaciones, dos juegos de comparaciones iguales para cada eje.  Si la coordenada m'as chica del 1er objeto a comparar es menor que la m'as grande del 2do, ya no hay colisión y viceversa.  Esto para cada eje.
-\item Salta:
-Esta funci'on implementa el algoritmo provisto por la c'atedra en el enunciado.  Como detalle, no fue necesario utilizar variables locales ya que todos los elementos entraron en los registros.
-\item Apagar:
-Esta funci'on tambi'en consiste en modificar una im'agen, usando la misma t'ecnica para calcular la basura que en las funciones anteriores.  Cuando encontramos un p'ixel que corresponde a la moneda, tenemos que reemplazarlo por datos que vienen como par'ametro.  Una de las cosas cuyo estado no nos enorgullece en este TP, es que en esta funci'on traemos de la memoria el puntero al contador cada vez que reemplazamos un p'ixel.  Esto se podr'ia mejorar reutilizando registros.
+Si el resto es cero no hay basura. Luego lo que hacemos es recorrer en la
+im'agen original el sprite que me pide la funci'on y vamos escribiendo por fila
+en el destino y cuando completamos la fila le sumamos la $Basura$ necesaria
+para completar los 4 bytes.
+
+\item \textsc{Blit}:
+
+Esta funci'on reemplaza el color \textit{fucsia} (\textbf{0xFF00FF}) por el
+color de fondo.  Ac'a tambi'en trabajamos con registros de cuatro bytes,
+calculamos la basura como en el caso anterior y vamos reemplazando cuando
+tenemos un p'ixel color \textit{fucsia} por el color \textit{azul}
+(\textbf{0x0096FF}) del fondo.  
+
+Al trabajar con cuatro bytes tenemos en cuenta que estamos agarrando uno que no
+nos corresponde y volvemos a escribir lo que estaba originalmente en esa
+posici'on.  
+
+Para el p'ixel inicial, tenemos que mover el puntero un byte hacia atr'as de
+modo de cargar en los bytes menos significativos el primer p'ixel.  >Por qu'e
+hacemos esto?  Porque como el procesador trabaja en \textit{little-endian}, necesitamos
+este truquito para alinear los primeros tres bytes de la imagen (el 1er p'ixel)
+con los bytes m'as significativos del registro en el que lo vamos modificando.
+
+\item \textsc{checkColision}:
+
+Esta es la funci'on que nos result'o m'as simple en todo el TP.  La resolvimos
+con cuatro comparaciones, dos juegos de comparaciones iguales para cada eje.
+Si la coordenada m'as chica del 1er objeto a comparar es menor que la m'as
+grande del 2do, ya no hay colisi'on y viceversa.  Esto para cada eje.
+
+Es decir, si tenemos los objetos \textbf{A} y \textbf{B} con sus respectivos
+puntos $x$, $xw$, $y$ y $yh$, con $x < xw$ e $y < yh$. Hay colisi'on s'olo si
+todas las comparaciones siguientes dan falso:
+\begin{itemize}
+  \item $Ax > Bxw$
+  \item $Axw < Bx$
+  \item $Ay > Byh$
+  \item $Ayh < By$
+\end{itemize}
+
+\item \textsc{salta}:
+
+Esta funci'on implementa el algoritmo provisto por la c'atedra en el enunciado.
+Como detalle, no fue necesario utilizar variables locales ya que en los
+registros pudimos salvaguardar, para almacenar y utilizar todos los valores a
+tener en cuenta para realizar esta funci'on.
+
+\pagebreak
+\item \textsc{apagar}:
+
+Esta funci'on tambi'en consiste en modificar una im'agen, usando la misma
+t'ecnica para calcular la basura que en las funciones anteriores.  Cuando
+encontramos un p'ixel que corresponde a la moneda, tenemos que reemplazarlo por
+datos que vienen como par'ametro.  Una de las cosas cuyo estado no nos
+enorgullece en este TP, es que en esta funci'on traemos de la memoria el
+puntero al contador cada vez que reemplazamos un p'ixel.  Esto se podr'ia
+mejorar reutilizando registros.
 \end{enumerate}
 
 
