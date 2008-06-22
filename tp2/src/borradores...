@@ -1,0 +1,25 @@
+
+pintarByte:
+	mov ebx, edi	
+
+	jz pintarRojo
+
+	dec ebx
+	jz pintarVerde
+	
+	jmp pintarAzul
+	
+pintarRojo:
+ 	mov db [esi], colorCieloR
+	inc edi
+	jmp finPintar
+
+pintarVerde:
+	mov db [esi], colorCieloV
+	inc edi
+	jmp finPintar
+
+pintarAzul:
+	mov db [esi], colorCieloA
+	xor edi, edi
+	jmp finPintar
