@@ -17,11 +17,12 @@ section .text
 %define anchoPisoConBasura	[ebp-4]
 %define cantFilasAPintar [ebp-8]
 %define vecesACopiar [ebp-12]
+%define restoPiso [ebp-16]
 
 generarFondo:
 	push ebp
 	mov ebp, esp
-	sub esp, 8
+	sub esp, 16
 	push ebx
 	push edi
 	push esi
@@ -39,7 +40,7 @@ generarFondo:
 	div ecx	; calculo el total de veces que necesito iterar para pintar el cielo usando registros de mmx 
 	mov ecx, eax
 
-	pandn mm0, mm0
+	pxor mm0, mm0
 
 cicloCielo:
 	movq [edi], mm0
@@ -74,21 +75,20 @@ dibujarPiso:
 
 	mov ebx, eax ; en ebx tengo el tam de la imagen en bytes
 
-	mov ecx, 0x4
-	div ecx
+	and ecx, eax ; calculo el resto
 
-	xor ecx, ecx
-	cmp edx, 0
+	xor eax, eax ; inicializo en 0
+	cmp ecx, 0
 	je sumarBasuraSprite	; si el resto es 0 no agrego basura
-	mov ecx, 0x4
-	sub ecx, edx	; calculo la basura, 4 - resto
-	
-	mov edx, ebx	; en edx tengo el tam de la imagen en bytes
-	mov eax, ebx	; en eax tengo el tam de la imagen en bytes
+	mov eax, 0x4
+	sub eax, ecx	; calculo la basura, 4 - resto
 	
 sumarBasuraSprite:
-	add edx, ecx ; tengo el tam de la imagen con la basura
+	mov edx, ebx	; en edx tengo el tam de la imagen en bytes
+	add edx, eax ; tengo el tam de la imagen con la basura
 	mov anchoPisoConBasura, edx
+
+	mov eax, ebx	; en eax tengo el tam de la imagen en bytes
 
 	mov ecx, altoPiso
 	mov cantFilasAPintar, ecx
@@ -96,13 +96,28 @@ sumarBasuraSprite:
 	mov edx, esi
 	mov ebx, vecesACopiar
 
-	cld
-
+	mov ecx, 0x7
+	and ecx, eax ; calculo el resto
+	mov restoPiso, ecx
+	shr eax, 3
 	mov ecx, eax
+
 pintarPiso:
-	movsb
+	movq mm0, [esi]
+	movq [edi], mm0
+	add esi, 8
+	add edi, 8
 	loop pintarPiso
 
+	mov ecx, restoPiso
+
+	cmp ecx, 0x0
+	je noHayResto	
+
+	cld
+	rep movsb
+
+noHayResto:
 	dec ebx
 	cmp ebx, 0
 	je finFila
@@ -129,7 +144,7 @@ finPiso:
 	pop esi
 	pop edi
 	pop ebx
-	add esp, 8
+	add esp, 16
 	pop ebp
 
 	ret
