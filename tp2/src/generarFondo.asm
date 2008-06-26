@@ -13,27 +13,23 @@ section .text
 %define anchoPiso	[ebp+24]
 %define altoPiso	[ebp+28]
 
-;var locales
-%define anchoPisoConBasura	[ebp-4]
-%define cantFilasAPintar [ebp-8]
-%define vecesACopiar [ebp-12]
-%define restoPiso [ebp-16]
-
 generarFondo:
 	push ebp
 	mov ebp, esp
-	sub esp, 16
 	push ebx
 	push edi
 	push esi
 
 	mov eax, altoPantalla
 	mov edx, altoPiso
+	movd mm4, edx	; en mm4 tengo el alto del piso
 	mov edi, pScreen ; esi apunta al byte actual que vamos a pintar
 	sub eax, edx
 	;eax contiene el alto del cielo
 	
-	mul dword anchoPantalla
+	mov ecx, anchoPantalla
+	mov esi, ecx	; tengo en esi anchoPantalla
+	mul ecx
 	mov ecx, 0x3
 	mul ecx
 	mov ecx, 0x8
@@ -60,45 +56,49 @@ cicloResto:
 dibujarPiso:
 
 	;Inicio contador de veces que aparecerá
-	mov eax, anchoPantalla
+	mov eax, esi
 	xor edx, edx
-	div dword anchoPiso
-	mov ebx, eax
-	mov vecesACopiar, ebx
+	mov ecx, anchoPiso
+	div ecx
+	movd mm6, eax	; en mm6 tengo las veces A Copiar
 	
 	;si necesito pintasr medio piso tengo el resto en edx	
 
 	;calculo la basura del ancho
-	mov eax, anchoPiso
+	mov eax, ecx
 	mov ecx, 0x3
 	mul ecx
 
-	mov ebx, eax ; en ebx tengo el tam de la imagen en bytes
+	; en eax tengo el tam de la imagen en bytes
 
 	and ecx, eax ; calculo el resto
 
-	xor eax, eax ; inicializo en 0
+	xor ebx, ebx ; inicializo en 0
 	cmp ecx, 0
 	je sumarBasuraSprite	; si el resto es 0 no agrego basura
-	mov eax, 0x4
-	sub eax, ecx	; calculo la basura, 4 - resto
+	mov ebx, 0x4
+	sub ebx, ecx	; calculo la basura, 4 - resto
 	
 sumarBasuraSprite:
-	mov edx, ebx	; en edx tengo el tam de la imagen en bytes
-	add edx, eax ; tengo el tam de la imagen con la basura
-	mov anchoPisoConBasura, edx
+	mov edx, eax	; en edx tengo el tam de la imagen en bytes
+	add edx, ebx ; tengo el tam de la imagen con la basura
+	movd mm5, edx	; en mm5 tengo el ancho del piso con basura anchoPisoConBasura
 
-	mov eax, ebx	; en eax tengo el tam de la imagen en bytes
+;	movd ecx, mm4
+;	mov cantFilasAPintar, ecx
 
-	mov ecx, altoPiso
-	mov cantFilasAPintar, ecx
+	; en mm4 tengo la cantidad de filas a pintar
+
 	mov esi, pPiso
 	mov edx, esi
-	mov ebx, vecesACopiar
+	movd ebx, mm6	; traigo las veces a copiar
 
 	mov ecx, 0x7
 	and ecx, eax ; calculo el resto
-	mov restoPiso, ecx
+	movd mm3, ecx	; en mm3 tengo el resto del Piso
+
+	; en eax tengo el tam de la imagen en bytes
+
 	shr eax, 3
 	mov ecx, eax
 
@@ -109,9 +109,9 @@ pintarPiso:
 	add edi, 8
 	loop pintarPiso
 
-	mov ecx, restoPiso
+	movd ecx, mm3
 
-	cmp ecx, 0x0
+	cmp ecx, 0
 	je noHayResto	
 
 	cld
@@ -127,15 +127,16 @@ noHayResto:
 	jmp pintarPiso
 
 finFila:
-	mov ecx, cantFilasAPintar
+	movd ecx, mm4	; cantFilasAPintar
 	dec ecx
 	cmp ecx, 0
 	je finPiso
 	
-	mov cantFilasAPintar, ecx
-	add edx, anchoPisoConBasura
+	movd mm4, ecx	; cantFilasAPintar
+	movd ecx, mm5	; anchoPisoConBasura
+	add edx, ecx
 	mov esi, edx
-	mov ebx, vecesACopiar
+	movd ebx, mm6	; vecesACopiar
 	mov ecx, eax
 	jmp pintarPiso
 
@@ -144,7 +145,6 @@ finPiso:
 	pop esi
 	pop edi
 	pop ebx
-	add esp, 16
 	pop ebp
 
 	ret

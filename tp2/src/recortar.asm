@@ -7,12 +7,6 @@
 %define h	[ebp+24]
 %define res	[ebp+28]
 
-;Variables locales
-%define basuraAnchoSprite	[ebp-4]
-%define anchoImgBytes		[ebp-8]
-%define comienzoFilaCopia 	[ebp-12]
-%define restoSprite	 	[ebp-16]
-
 global recortar
 
 section .text
@@ -20,7 +14,6 @@ section .text
 recortar:
 	push ebp
 	mov ebp, esp
-	sub esp, 16
 	push ebx
 	push edi
 	push esi
@@ -43,7 +36,7 @@ recortar:
 	
 sumarBasuraSprite:
 	mov edi, eax	; en edi tengo el tam del sprite en bytes
-	mov basuraAnchoSprite, ebx ; guardo la basura del sprite
+	movd mm7, ebx ; guardo la basura del sprite en mm7
 
 	;Idem pero para la imagen
 	mov eax, w
@@ -61,7 +54,7 @@ sumarBasuraSprite:
 	add eax, ebx	; le agrego los bytes basura
 
 noHayBasura:
-	mov anchoImgBytes, eax
+	movd mm6, eax	; guardo en mm6 el ancho de la imagen en bytes anchoImgBytes
 	;Ya obtuve el tamaño
 
 	mov edx, edi	; en edx tengo el tam del sprite en bytes
@@ -82,12 +75,12 @@ posicionado:
 
 	mov ecx, 0x7
 	and ecx, edx
-	mov restoSprite, ecx
+	movd mm5, ecx	; tengo en mm5 el resto del sprite restoSprite
 
 cicloExterno:
     	mov ecx, edx
 	shr ecx, 3
-	mov comienzoFilaCopia, esi
+	movd mm4, esi ; guardo el comienzo del sprite comienzoFilaCopia
 
 cicloInterno:
 	movq mm0, [esi]
@@ -97,7 +90,7 @@ cicloInterno:
 	add edi, 8
 	loop cicloInterno
 	
-	mov ecx, restoSprite
+	movd ecx, mm5	; restoSprite
 	cmp ecx, 0
 	je noHayResto
 
@@ -105,16 +98,17 @@ cicloInterno:
 	rep movsb
 
 noHayResto:
-	add edi, basuraAnchoSprite
-	mov esi, comienzoFilaCopia
-	add esi, anchoImgBytes
+	movd ecx, mm7	; basuraAnchoSprite
+	add edi, ecx
+	movd esi, mm4	; comienzoFilaCopia
+	movd ecx, mm6	; anchoImgBytes
+	add esi, ecx
 	dec ebx
 	jnz cicloExterno
 
 	pop esi
 	pop edi
 	pop ebx
-	add esp, 16
 	pop ebp
 
 	ret
