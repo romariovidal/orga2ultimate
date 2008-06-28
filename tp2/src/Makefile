@@ -8,5 +8,5 @@ all:
 	gcc main.c -o runner apagar.o blit.o chequearColisiones.o generarFondo.o recortar.o generarRayo.o `sdl-config --cflags --libs`
 
 clean:
-	rm runner apagar2.o  blit.o  checkcolision.o  generarFondo.o  recortar.o  salta.o
+	rm runner apagar.o  blit.o  chequearColisiones.o  generarFondo.o  recortar.o  generarRayo.o
  
