@@ -81,15 +81,20 @@ ultimosPixel:
 	movd edx, mm5	; traigo la mascara
 	mov dl, al	; copio el byte que no me corresponde en la parte menos significativa
 	sub edx, eax
-	jnz finReemplazar
-
-	mov dl, al	; el byte que no me corresponde
-	mov [esi], edx
+	jz reemplazar
 
 finReemplazar:
 	add esi, 4
 	loop ultimosPixel
 	
+	jmp finFila
+
+reemplazar:
+	mov dl, al	; el byte que no me corresponde
+	mov [esi], edx
+	jmp finReemplazar	
+
+finFila:
 	movd eax, mm6	; traigo la basura	
 	add esi, eax
 	
