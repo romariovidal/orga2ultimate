@@ -32,10 +32,15 @@ generarRayo:
     push esi
 
 	mov edi, screen
-	mov ecx, anchoP
+	mov eax, anchoP
+	mov ecx, 0x3
+
+	mul ecx
+
+	mov ecx, eax ;cant de píxeles por fila
 
 	finit
-	;alpha= sen^-1(opuesto/tangente)
+	;alpha= arcsen(opuesto/tangente)
 	;opuesto= (xF,yF), (xF,yI)
 	;tangente= sqrt((xI-xF)²+(yI-yF)²)
 
@@ -45,29 +50,57 @@ generarRayo:
 	fild dword yF	;tam=4 elems
 
 	fld st0			; tam= 5 elems
+	; Pila:
+	; st0 = yF
+	; st1 = yF
+	; st2 = xF
+	; st3 = yI
+	; st4 = xI
 	fsub st0, st3 	; Tenemos el  opuesto
+	fabs
 
 	fxch st0, st4
 
+	; Pila:
+	; st0 = xI
+	; st1 = yF
+	; st2 = xF
+	; st3 = yI
+	; st4 = |yF-yI|
+
 	fsubp st2, st0 	; Resto las y y pop. tam=4
 	fsubp st2, st0 	; Resto las x y pop. tam=3
+	; Pila:
+	; st0 = xF -xI
+	; st1 = yI - yF
+	; st2 = |yF-yI|
 
 	fmul st0,st0	; Elevo al cuadrado los x
 	fxch
 	fmul st0,st0	; Elevo al cuadrado los y
+	; Pila:
+	; st0 = (yI - yF)^2
+	; st1 = (xF -xI)^2
+	; st2 = |yF-yI|
 
 	faddp st1, st0	; Sumo los cuadrados y pop. tam=2
 
 	fsqrt 	; Ya tenemos la tangente
+	; Pila:
+	; st0 = sqrt((yI - yF)^2+(xF -xI)^2) <-tangente
+	; st1 = |yF-yI|
 
 	fld	st0			; tam = 3
 	fxch st0, st2	; me guardo la tangente para más adelante
 
 	fdivrp st1, st0	; dividimos opuesto/tangente. tam=2
+	; Pila:
+	; st0 = |yF-yI|/sqrt((yI - yF)^2+(xF -xI)^2) <- op/hip
+	; st1 = sqrt((yI - yF)^2+(xF -xI)^2) <-tangente
 
 	;Me preparo para hacer arctan
 	fld st0			; tam=3
-	fmul st0, st0	
+	fmul st0, st0	; 
 
 	fld1			; tam=4
 	fxch st1, st0
@@ -115,16 +148,18 @@ elCiclonQueNoEsCuervo:
 
 	;CALCULANDO Y	
 		fld st0
+		fmul st0,st3
 		fsin 
 
 		fld st1
 		fadd st0, st0	
 		fadd st0, st0	
+		fmul st0, st4
 		fcos
 		
 		;ESTADO DE LA PILA
-		;	st0 = cos(4Pi/128 * 4)
-		;	st1 = sin(4PI/128)
+		;	st0 = cos(4Pi/128 * 4 * x)
+		;	st1 = sin(4PI/128 * x)
 		; 	De acá para abajo no se toca :-P
 		; 	st2 = 4*PI/128
 		;	st3 = 40.0/5.0 o largo/5
@@ -135,7 +170,7 @@ elCiclonQueNoEsCuervo:
 		fmulp st1, st0
 		fmul st0, st2
 		;ESTADO DE LA PILA
-		;	st0 = cos(4Pi/128 * 4) * sin(4PI/128) *40/5 <-- esto es y
+		;	st0 = cos(4Pi/128 * 4 * x) * sin(4PI/128) *40/5 <-- esto es y
 		; 	De acá para abajo no se toca :-P
 		; 	st1 = 4*PI/128
 		;	st2 = 40.0/5.0 o largo/5
@@ -182,8 +217,8 @@ elCiclonQueNoEsCuervo:
 		fsin
 		fmul st0, st5 	;sen * x
 		;ESTADO DE LA PILA
-		;	st0 = sin(angulo) *
-		;	st1	= cos(angulo)
+		;	st0 = sin(angulo) * x
+		;	st1	= cos(angulo) * y
 		;	st2 = y
 		; 	De acá para abajo no se toca :-P
 		; 	st3 = 4*PI/128
@@ -211,12 +246,13 @@ elCiclonQueNoEsCuervo:
 
 		mov eax, nuestroyF
 		mov esi, nuestroxF
-	
-		mul ecx		; ancho de pantalla
-		add eax, esi ; calulo la cantidad de píxeles
 
-		mov ebx, 3
-		mul ebx			; calculo la cantidad de bytes (queda en eax)
+		mul ecx		; ancho de pantalla
+
+		add eax, esi ; 
+		add eax, esi ; 
+		add eax, esi ; 
+
 		mov ebx, edi ; copio el puntero de la pantalla
 		
 		add ebx, eax ; en ebx debo pintarrajear un píxel
@@ -396,19 +432,20 @@ testPuto:
 	;VAMOS A PINTARRAJEAR UN PUNTITO EN LA PANTALLA
 		mov eax, nuestroyF
 		mov esi, nuestroxF
-	
-		mul ecx		; ancho de pantalla
-		add eax, esi ; calulo la cantidad de píxeles
 
-		mov ebx, 3
-		mul ebx			; calculo la cantidad de bytes (queda en eax)
+		mul ecx		; ancho de pantalla
+
+		add eax, esi ; 
+		add eax, esi ; 
+		add eax, esi ; 
+
 		mov ebx, edi ; copio el puntero de la pantalla
 		
 		add ebx, eax ; en ebx debo pintarrajear un píxel
 
-		;mov byte [ebx+0], 0x00
-		;mov byte [ebx+1], 0xff
-		;mov byte [ebx+2], 0xff
+		mov byte [ebx+0], 0x00
+		mov byte [ebx+1], 0xff
+		mov byte [ebx+2], 0xff
 	; TE PINTAMOS LA CARA
 	; VOLVEMOS A LA FPU	
 		;ESTADO DE LA PILA
