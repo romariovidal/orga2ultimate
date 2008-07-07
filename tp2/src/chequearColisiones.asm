@@ -62,10 +62,10 @@ ciclo:
 
 	pxor mm6, mm6
 	movq mm7, mm4
-	pcmpgtd mm6, mm7
-	pxor mm5, mm5
-	pcmpeqd mm7, mm5
-	por mm7, mm6	; completa con 1 donde es positiva o 0 el area, termine area 1 y 3
+	pcmpgtd mm7, mm6
+	pxor mm6, mm6
+	pcmpeqd mm6, mm6
+	pxor mm7, mm6	; completa con 1 donde es negativa o 0 el area, termine area 1 y 3
 
 	jmp adelante1
 ciclo1:
@@ -92,12 +92,11 @@ adelante1:
 ;	pxor mm4, mm4
 ;	pcmpgtd mm3, mm4	; completa con 1 donde es positiva el area, termine area 2 y 4
 
-
 	pxor mm6, mm6
-	pcmpgtd mm6, mm3
-	pxor mm5, mm5
-	pcmpeqd mm3, mm5
-	por mm3, mm6	; completa con 1 donde es positiva o 0 el area, termine area 1 y 3
+	pcmpgtd mm3, mm6
+	pxor mm6, mm6
+	pcmpeqd mm6, mm6
+	pxor mm3, mm6	; completa con 1 donde es negativa o 0 el area, termine area 1 y 3
 
 
 	jmp adelante2
@@ -106,10 +105,10 @@ ciclo2:
 
 adelante2:
 
-	pand mm7, mm3	; me quedo con 1 si tengo todas positivas 1 con 2 y 3 con 4
+	pand mm7, mm3	; me quedo con 1 si tengo todas negativas o 0 - 1 con 2 y 3 con 4
 	movq mm6, mm7
 	psrlq mm7, 32
-	pand mm7, mm6	; tengo en la parte alta 1 si todos son positivos o 0 si no
+	pand mm7, mm6	; tengo en la parte alta 1 si todos son negativas o 0 si no
 
 
 	movd ebx, mm7
@@ -120,16 +119,21 @@ adelante2:
 ;	call printf
 ;	add esp, 8
 
-	xor eax, eax
-	inc eax
 	cmp ebx, 0
 
-	cmovnz ebx, eax
-
-	mov [edi], bl
+	jne cambiar
+cambie:
 	add edi, 1
 	add esi, 16
-;	loop ciclo2
+	loop ciclo2
+
+	jmp fin
+
+cambiar:
+	mov al, 1
+	mov [edi], al
+	jmp cambie
+
 
 fin:
 	pop esi
