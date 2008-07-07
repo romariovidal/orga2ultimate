@@ -33,7 +33,7 @@ chequearColisiones:
 	mov edi, res
 	mov ecx, longPuntos
 
-	shl ecx, 3
+	shr ecx, 3
 	movq mm0, x1	; tengo en mm0 = 0, y1, 0, x1
 
 
