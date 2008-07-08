@@ -31,13 +31,46 @@ generarRayo:
     push edi
     push esi
 
+	; Rotación del ángulo
+		xor ecx, ecx
+		
+		mov eax, yI
+		mov esi, yF
+		cmp eax, esi ; yI > yF
+		jb debajoDelEjeX
+			mov eax, xI
+			mov esi, xF
+			cmp eax, esi ; xI <= xF
+			jle listoElAnguloDeRotacion ; 1er cuadrante
+			inc ecx 
+			jmp listoElAnguloDeRotacion ; 2do cuadrante
+debajoDelEjeX:
+			inc ecx
+			inc ecx	
+			mov eax, xI
+			mov esi, xF
+			cmp eax, esi ; xI > xF
+			ja listoElAnguloDeRotacion ;3er cudrante
+			inc ecx					;4to cuadrante
+listoElAnguloDeRotacion:	
+	
+	;para evitar que se rompa en xI = xF
+		mov eax, xI
+		mov esi, xF
+
+		cmp eax,esi
+		jnz sonDistintos
+		add esi, 10 ;FALTA
+		mov xF, esi
+
+sonDistintos:
 	mov edi, screen
 	mov eax, anchoP
-	mov ecx, 0x3
+	;mov ecx, 0x3
 
-	mul ecx
+	;mul ecx
 
-	mov ecx, eax ;cant de píxeles por fila
+	;mov ecx, eax ;cant de píxeles por fila
 
 	finit
 	;alpha= arcsen(opuesto/tangente)
@@ -115,7 +148,40 @@ generarRayo:
 	;	st0 = angulo
 	;	st1 =  tangente u opuesto u liñita que une los 2 puntos (su tamaño)
 
+	;INICIO cambio de cuadrante
+	;ESTADO DE LA PILA
+	;	st0 = angulo
+	;	st1 =  tangente u opuesto u liñita que une los 2 puntos (su tamaño)
+
+	;mov ecx, 0
+	cmp ecx, 0
+	je rotada ;ecx=0
+		fldpi		;st0 = PI
+	
+		dec ecx
+		cmp ecx, 0
+			je restarAUnPi ; ecx=1
+		dec ecx
+		cmp ecx, 0
+			jne restarA2Pi	; ecx=3
+		faddp st1, st0 	; ecx=2
+			jmp rotada
+
+restarA2Pi:
+	fadd st0, st0	; pi = 2pi
+restarAUnPi
+	fsubrp st1, st0 ; angulo = pi-angulo
+	
+rotada:
+
+	;FIN cambio de cuadrante
+	;ESTADO DE LA PILA
+	;	st0 = angulo rotado
+	;	st1 =  tangente u opuesto u liñita que une los 2 puntos (su tamaño)
+
+
 	fldz
+	fsub st0, st0
 
 	;ESTADO DE LA PILA
 	;	st0 = 0 <-- será x
