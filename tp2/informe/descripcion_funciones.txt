@@ -1,0 +1,59 @@
+GenerarFondo:
+
+Como primera función a reescribir en mmx nos demoro unas cuantas pasadas dejarla de cómo para estar conformes. Utilizar registros mmx como banco de memoria para no utilizar variables locales fue una de las habilidades adquiridas aquí.
+Otro de los temas fue dividir en el procesamiento en paralelo con mmx y el final donde utilizamos el mismo procesamiento que en el primer tp; dividir en casos.
+
+Para este tp logramos evolucionar nuestro calculo del resto, en lugar de dividir hacemos un and de 0x3 con el numero y eso nos da el resto de dividir por 4. Luego le restamos esto a 4 para obtener la basura a menos que el resto sea 0 donde no tenemos basura.
+
+El piso lo procesamos de forma lineal, en lugar de pintar cuadrado por cuadrado lo pintamos directo sobre el buffer de salida.
+
+Recortar:
+
+En esta función calculamos la basura de la imagen para saber cuanto teníamos que avanzar por fila y la basura que le correspondía al sprite para pasarla al resultado. Mucha mas ciencia no requirió que pasar de a 8 bytes usando mmx.
+
+Blit:
+
+Para esta función nos generamos 2 mascaras con el fucsia. Para procesar 2 pixeles con mmx utilizamos una mascara con los 3 bytes alineados al centro de la forma 0x00FF00FFFF00FF00. Y la mascara para procesar de a un píxel en los extremos es 0xFF00FF00, este píxel esta alineado sobre la parte alta del registro.
+La idea de alinear al centro los 2 pixeles al procesar en mmx es para poder realizar operaciones con 2 dword y que cada resultado corresponda a cada píxel por separado.
+Aquí también calculamos la basura de la imagen para sumarla cuando terminamos de procesar cada fila al puntero, así apuntamos al inicio de la siguiente fila.
+En el ciclo de mmx centramos los 2 pixeles y los comparamos con el fucsia. Usando un pandn con el resultado de la comparación y los pixeles centrados colocamos 0 donde había fucsia y el color que había antes en el otro caso.
+Acomodamos los pixeles y los volvemos a guardar, volviendo a colocar los valores que no nos correspondía procesar.
+
+ChequearColisiones:
+
+En esta función no utilizamos ninguna mascara pre definida. En cada iteración procesamos por sprite. Teniendo en cuenta que los rectángulos con los que íbamos a trabajar están alineados al eje de coordenada, pudimos simplificarnos un poco los cálculos, tomar los valores que son iguales como uno solo y dividirnos en calcular los rectángulos con base alineada al eje X y los de base alineada al eje Y.
+Para simplificarnos los calculos y realizar menos renombramos los parámetros del sprite:
+a = xSprite
+b = ySprite
+c = xSprite + wSprite
+d = ySprite + hSprite
+
+De acuerdo al orden de los parámetros nombramos los triángulos abc1, abc2, abc3, abc4 con el orden de llegada del punto a.
+Para saber el signo del area, el ½ no nos interesa, entonces lo ignoramos.
+
+Nuestras 4 formulas a calcular quedaron:
+abc1 = a(y1 - b) + x1(b - b) + c(b - y1) = a(y1 - b) + c(b - y1)
+abc2 = c(y1 - d) + x1(d - b) + c(b - y1)
+abc3 = c(y1 - d) + x1(d - d) + a(d - y1) = c(y1 - d) + a(d - y1)
+abc4 = a(y1 - b) + x1(b - d) + a(d - y1)
+
+Primero calculamos abc1 y abc3 y luego abc2 y abc4, ya que estos últimos necesitan de más términos.
+Utilizamos operaciones en words, el pmaddwd y operaciones en dwords.
+
+Una vez que terminamos con el algoritmo y lo quisimos probar tuvimos problemas que no chequeaba correctamente. Después de revisar bien el algoritmo varias veces decidimos verificar la formula del enunciado. Aquí nos encontramos que esta servia para el eje cartesiano común, y no para el de la pantalla, donde el 0 de las Y esta arriba. Probamos varias veces y llegamos a la conclusión que debíamos marcar como colisión cuando todas las áreas nos daban 0 o negativas.
+
+Un detalle de programación que tuvimos con este algoritmo, es que el ciclo resulto ser demasiado largo, y el jump para volver no se declaraba como jump corto, por lo que tuvimos que reemplazarlo por otros saltos intermedios, curioso.
+
+Apagar:
+
+Al igual que anteriormente dejamos los últimos 3 pixeles para que se procesen de a uno. En esta función utilizamos 2 mascaras, una para el fucsia de mmx y la otra para el procesado simple.
+Aquí también calculamos la basura de la imagen para sumarla cuando terminamos de procesar cada fila al puntero, así apuntamos al inicio de la siguiente fila.
+Luego, lo primero que generamos es una mascara con el valor del contador para completar 0 en R y con el contador en G y B. Como todas las otras mascaras que utilizamos para procesar en paralelo 2 pixeles ubicamos los 3 bytes en el centro.
+En el ciclo de mmx centramos los 2 pixeles y los comparamos con el fucsia. Usamos esta comparación para llenar con el valor anterior donde da igual (pand) y llenar con el valor de la mascara con el puntero donde no da igual (pandn).
+Acomodamos los pixeles y los volvemos a guardar, volviendo a colocar los valores que no nos correspondía procesar.
+Finalmente restamos al contador 8 y si nos da menor o igual a 0 guardamos 0.
+
+La forma de comparar y guardar los resultados fue evolucionando a medida que iterábamos en el proceso de esta función, ya que en un principio comparábamos 2 veces, luego hacíamos una comparación y la negábamos comparando con 0 y luego se nos encendió la lamparita y con una sola comparación, el pand y el pandn nos alcanzó.
+
+Lo que mas dificultades nos dio fue generar la mascara con el contador en forma correcta. No solo nos resulto complicado lograr distribuir el contador de la forma adecuada en la mascara, sino darnos cuenta del orden en que vienen los pixeles a causa del little endian y acomodarlos en el centro de la mascara. Sin contar con que el movd de un registro a mmx nos jugaba la mala pasada de pisarnos la parte alta.
+
