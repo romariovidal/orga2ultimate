@@ -37,7 +37,7 @@ le corresponda a un p'ixel distinto.
 Aqu'i tambi'en calculamos la basura de la imagen para sumarla cuando terminamos
 de procesar cada fila al puntero y as'i apuntar al inicio de la siguiente fila.
 En el ciclo de \textbf{MMX} centramos los 2 p'ixeles y los comparamos con el fucsia.
-Usando un \textsc{PANDN} con el resultado de la comparaci'on y los p'ixeles centrados
+Usando un \textbf{PANDN}\cite{INT97} con el resultado de la comparaci'on y los p'ixeles centrados
 colocamos 0 donde hab'ia fucsia y el color que hab'ia antes en el otro caso.
 Acomodamos los pixeles y los volvemos a guardar, volviendo a colocar los
 valores que no nos correspond'ia procesar.
@@ -56,24 +56,24 @@ $$b = ySprite$$
 $$c = xSprite + wSprite$$
 $$d = ySprite + hSprite$$
 
-De acuerdo al orden de los par'ametros nombramos a los tri'angulos como $abc_1$,
-$abc_2$, $abc_3$, $abc_4$ con el orden de llegada del punto $a$. Vamos a
-chequear si hay colisi'on calculando las 'areas como indica en el enunciado
-usando la siguiente f'ormula:
+De acuerdo al orden de los par'ametros nombramos a los tri'angulos como $Tab$ 
+al tri'angulo formado por la arista $(a,b)(c,b)$ del cuadrado. Analogamente, tenemos
+$Tbc$, $Tcd$, $Tda$. Vamos a chequear si hay colisi'on calculando las 'areas 
+como indica en el enunciado usando la siguiente f'ormula:
 $$Area= \frac{a_1(b_2-c_2) + b_1(c_2-a_2) + c_1(a_2-b_2)}{2}$$
 Como lo que nos interesa es saber el signo que nos da esta f'ormula, entonces,
 podemos dejar de lado la parte de $\frac{1}{2}$ ya que esto no influye en el
 signo de la expresi'on entera.
 
 Nuestras 4 f'ormulas a calcular quedaron:
-$$abc1 = a(y_1 - b) + x_1(b - b) + c(b - y_1) = a(y_1 - b) + c(b - y_1)$$
-$$abc2 = c(y_1 - d) + x_1(d - b) + c(b - y_1)$$
-$$abc3 = c(y_1 - d) + x_1(d - d) + a(d - y_1) = c(y_1 - d) + a(d - y_1)$$
-$$abc4 = a(y_1 - b) + x_1(b - d) + a(d - y_1)$$
+$$Tab = a(y_1 - b) + x_1(b - b) + c(b - y_1) = a(y_1 - b) + c(b - y_1)$$
+$$Tbc = c(y_1 - d) + x_1(d - b) + c(b - y_1)$$
+$$Tcd = c(y_1 - d) + x_1(d - d) + a(d - y_1) = c(y_1 - d) + a(d - y_1)$$
+$$Tad = a(y_1 - b) + x_1(b - d) + a(d - y_1)$$
 
-Primero calculamos $abc_1$ y $abc_3$ y luego $abc_2$ y $abc_4$, ya que estos
+Primero calculamos $Tab$ y $Tcd$ y luego $Tbc$ y $Tad$, ya que estos
 'ultimos necesitan de m'as t'erminos. Utilizamos operaciones en words, el
-\textbf{PMADDWD} y operaciones en dwords.
+\textbf{PMADDWD}\cite{INT97} y operaciones en dwords.
 
 Una vez que terminamos con el algoritmo y lo quisimos probar tuvimos problemas
 como que no chequeaba correctamente. Despu'es de revisar intensamente el
