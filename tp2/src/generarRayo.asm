@@ -314,7 +314,6 @@ elCiclonQueNoEsCuervo:
 		;	st4 = angulo
 	;FIN CALCULANDO YF
 
-	;jmp testPuto
 
 	;DEJAMOS LA FPU POR UN RATO
 	;VAMOS A PINTARRAJEAR UN PUNTITO EN LA PANTALLA
@@ -353,7 +352,6 @@ elCiclonQueNoEsCuervo:
 		;	st4 = angulo
 		;	st5 = tangente u opuesto u liñita que une los 2 puntos (su tamaño)
 
-testPuto:
 	;CALCULAR Y
 		fsub st0, st0
 		fadd st0, st3
@@ -441,16 +439,9 @@ testPuto:
 		fld st2
 		fadd st0, st0	
 		fadd st0, st0	
-		fadd st0, st3
+		fadd st0, st3 ; Esto es un 40
 		
 		fmulp st1, st0
-
-	;	fmul st0, st1  ; st0 * largo/5
-	;	fld st0			
-	;	fadd st0, st0  ; st0 * largo/5 *2
-	;	fadd st0, st0  ; st0 * largo/5 *4
-	;	jmp fin
-	;	faddp st1, st0 ; st0 * largo/5 *5
 
 
 		;ESTADO DE LA PILA
