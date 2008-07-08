@@ -2,38 +2,37 @@
 
 \begin{enumerate}
 \item \textsc{generarFondo}:
-Como primera funci'on a reescribir en \textbf{MMX} demor'o unas cuantas pasadas hasta
+Como primera funci'on a reescribir en \textbf{MMX}, demor'o unas cuantas pasadas hasta
 dejarnos conformes con el resultado, cumpliendo as'i con su rol de debut.
-Utilizar registros mmx como banco de memoria para no utilizar variables locales
+Utilizar registros \textbf{MMX} como banco de memoria para no utilizar variables locales
 fue una de las habilidades adquiridas aqu'i, adem'as de aprender a dividir el
 procesamiento paralelamente explotando las posiblidades que nos brinda
 \textbf{MMX}.
 
 Para este tp logramos una renovada y casi dir'ia revolucionaria forma de
-calcular el resto de dividir por $4$, cosa que necesitamos apra calccular la
-basura. En lugar de dividir hacemos un \textsc{and} de\textbf{0x3} con el
-n'umero y eso nos da el resto de dividir por $4$. Luego le restamos esto a 4
+calcular el resto de dividir por $4$, cosa que necesitamos para calcular la
+basura. En lugar de dividir hacemos un \textsc{and} de \textbf{0x3} con el
+n'umero y eso nos da el resto de dividir por $4$. Luego le restamos esto a $4$
 para obtener la basura a menos que el resto sea 0 donde no tenemos basura.
 
 El piso lo procesamos de forma lineal, en lugar de pintar cuadrado por cuadrado
 lo pintamos directo sobre el buffer de salida.
 
 \item \textsc{recortar}:
-En esta funci'on calculamos la basura de la imagen para saber cuanto tenemos
+En esta funci'on calculamos la basura de la imagen para saber cu'anto tenemos
 que avanzar por fila y la basura que le correspond�a al sprite para pasarla al
-resultado. Mucha mas ciencia no requiri'o que pasar de a 8 bytes usando mmx.
+resultado. No requiri'o mucha mas ciencia que pasar de a 8 bytes usando \textbf{MMX}.
 
 \item \textsc{blit}:
-
 Para esta funci'on nos generamos 2 m'ascaras con el fucsia. Para procesar 2
-pixeles con \textbf{MMX} utilizamos una m'ascara con los 3 bytes alineados al
+p'ixeles con \textbf{MMX} utilizamos una m'ascara con los 3 bytes alineados al
 centro de la forma \textbf{0x00FF00FFFF00FF00}. La m'ascara para procesar de a
-un p'ixel en los extremos es \textbf{0xFF00FF00}, este p'ixel esta alineado
+un p'ixel en los extremos es \textbf{0xFF00FF00}, este p'ixel est'a alineado
 sobre la parte alta del registro.
 
 La idea de alinear al centro los 2 p'ixeles al procesar en \textbf{MMX} surgi'o
 con la idea de poder realizar operaciones con 2 dword y que cada resultado 
-le corresponda a un p'ixel distintdo. 
+le corresponda a un p'ixel distinto. 
 
 Aqu'i tambi'en calculamos la basura de la imagen para sumarla cuando terminamos
 de procesar cada fila al puntero y as'i apuntar al inicio de la siguiente fila.
@@ -41,16 +40,16 @@ En el ciclo de \textbf{MMX} centramos los 2 p'ixeles y los comparamos con el fuc
 Usando un \textsc{PANDN} con el resultado de la comparaci'on y los p'ixeles centrados
 colocamos 0 donde hab'ia fucsia y el color que hab'ia antes en el otro caso.
 Acomodamos los pixeles y los volvemos a guardar, volviendo a colocar los
-valores que no nos correspond�a procesar.
+valores que no nos correspond'ia procesar.
 
 \item \textsc{chequearColisiones}:
-En esta funci'on no utilizamos ninguna mascara pre definida. En cada iteraci'on
+En esta funci'on no utilizamos ninguna m'ascara pre definida. En cada iteraci'on
 procesamos por sprite. Teniendo en cuenta que los rect'angulos con los que
 'ibamos a trabajar est'an alineados al eje de coordenada, pudimos simplificarnos
 un poco los c'alculos, tomar los valores que son iguales como uno solo y
 dividirnos al calcular los rect'angulos con base alineada al eje X y los de base
 alineada al eje Y.
-Para simplificarnos los calculos y realizar menos renombramos los par'ametros
+Para simplificarnos los c'alculos y realizar menos, renombramos los par'ametros
 del sprite:
 $$a = xSprite$$
 $$b = ySprite$$
@@ -58,11 +57,15 @@ $$c = xSprite + wSprite$$
 $$d = ySprite + hSprite$$
 
 De acuerdo al orden de los par'ametros nombramos a los tri'angulos como $abc_1$,
-$abc_2$, $abc_3$, $abc_4$ con el orden de llegada del punto a.
-Para saber el signo del area, el � no nos interesa, entonces lo
-ignoramos.<--QUE DICE AC'A????
+$abc_2$, $abc_3$, $abc_4$ con el orden de llegada del punto $a$. Vamos a
+chequear si hay colisi'on calculando las 'areas como indica en el enunciado
+usando la siguiente f'ormula:
+$$Area= \frac{a_1(b_2-c_2) + b_1(c_2-a_2) + c_1(a_2-b_2)}{2}$$
+Como lo que nos interesa es saber el signo que nos da esta f'ormula, entonces,
+podemos dejar de lado la parte de $\frac{1}{2}$ ya que esto no influye en el
+signo de la expresi'on entera.
 
-Nuestras 4 formulas a calcular quedaron:
+Nuestras 4 f'ormulas a calcular quedaron:
 $$abc1 = a(y_1 - b) + x_1(b - b) + c(b - y_1) = a(y_1 - b) + c(b - y_1)$$
 $$abc2 = c(y_1 - d) + x_1(d - b) + c(b - y_1)$$
 $$abc3 = c(y_1 - d) + x_1(d - d) + a(d - y_1) = c(y_1 - d) + a(d - y_1)$$
@@ -74,16 +77,16 @@ Primero calculamos $abc_1$ y $abc_3$ y luego $abc_2$ y $abc_4$, ya que estos
 
 Una vez que terminamos con el algoritmo y lo quisimos probar tuvimos problemas
 como que no chequeaba correctamente. Despu'es de revisar intensamente el
-algoritmo varias veces decidimos verificar la formula del enunciado. Aqu'i nos
-encontramos que esta serv'ia para el eje cartesiano com'un, y no para el de la
-pantalla, donde el 0 de las Y esta arriba. Probamos varias veces y llegamos a
-la conclusi'on que deb'iamos marcar como colisi'on cuando todas las 'areas nos
-daban 0 o negativass
+algoritmo varias veces decidimos verificar la f'ormula del enunciado. Aqu'i nos
+encontramos que 'esta serv'ia para el eje cartesiano com'un, y no para el de la
+pantalla, donde el 0 de las Y est'a arriba. Probamos varias veces y llegamos a
+la conclusi'on de que deb'iamos marcar como colisi'on cuando todas las 'areas nos
+daban 0 o negativas.
 
-Un detalle implementativo fue que nos surgi'o durante el desarrollo de este
-algoritmo, fue que el ciclo resulto ser demasiado largo, y el jump para volver
+Un detalle implementativo que nos surgi'o durante el desarrollo de este
+algoritmo, fue que el ciclo result'o ser demasiado largo, y el jump para volver
 no se declaraba como jump corto, por lo que tuvimos que reemplazarlo por otros
-saltos intermedios, curioso.
+saltos intermedios. Curioso.
 
 
 \item \textsc{generarRayo}:
@@ -92,13 +95,13 @@ FPU en un programa hecho por nosotros mismos por vez primera. Esto parec'ia
 prometedor aunque complicado. Tuvimos que ser muy prolijos al momento de
 usarla, cosa que nos cost'o m'as de un dolor de cabeza.
 
-	Para empezar tuvimos que calcular el 'angulo. En un apunte que hizo Emi
+	Para empezar, tuvimos que calcular el 'angulo. En un apunte que hizo Emi
 dec'ia que para calcularlo deb'iamos hacer
-$angulo=seno^{-1}(\frac{opuesto}{tangente})$. Para nosotros donde dice tangente
-deber'ia decir hipotenusa. Por otro lado, resulta que $seno^{-1}$ no es 
+$angulo=seno^{-1}(\frac{opuesto}{tangente})$. Para nosotros donde dice ``tangente''
+deber'ia decir ``hipotenusa''. Por otro lado, resulta que $seno^{-1}$ no es 
 $\frac{1}{sin}$ sino el $arcsin$.
 
-	Investigando como hacer esto nos encontramos con: ``As you can see, we are
+	Investigando c'omo hacer esto nos encontramos con: ``As you can see, we are
 forced to use the ArcSin and ArcCos functions. Unfortunately, the FPU doesn't
 have these functions. However, it has the FATAN function, which computes the
 ArcTangent. In order to obtain the arcsin and arccos we can use the following
@@ -117,18 +120,18 @@ conocida como \textbf{FPATAN}, decidimos usar esta cuenta, que adem'as verificam
 otras fuentes su correctitud.
 
 Hasta este punto ten'iamos un rayo de longitud \textbf{tangente}, pero que si
-pensabamos al punto $(x_i,y_i)$ como el origen de coordenadas, entonces s'olo
+pens'abamos al punto $(x_i,y_i)$ como el origen de coordenadas, entonces s'olo
 dibujaba en el $1^{er}$ cuadrante, sin importar d'onde estuviera apuntando.
 Para solucionar esto hicimos el siguiente razonamiento: supongamos que $\alpha$
 es el 'angulo en cuesti'on si est'a en el $1^{er}$ cuadrante, entonces
 deb'iamos usar directamente ese. Si est'a en el $2^{do}$ era $angulo = \pi -
-\alpha$. Que era el 'angulo llano menos el angulo que representa a la
+\alpha$, que era el 'angulo llano menos el 'angulo que representa a la
 trayectoria del rayo. Si est'a en el $3^{er}$ cuadrante $angulo = \pi + \alpha$
 y en el $4^{to}$ simplemente: $angulo = 2 \times \pi - \alpha$.
 
-Adem'as de esto, vimos que exist'ian muchas expresiones que ibamos a necesitar
+Adem'as de esto, vimos que exist'ian muchas expresiones que 'ibamos a necesitar
 calcular muchas veces como ser: $\frac{4\times\pi}{128}$, $40$, $8$. Entonces
-estos datos los calculamos inicialmente, o lo cargamos de memoria al comenzar,
+estos datos los calculamos inicialmente, o los cargamos de memoria al comenzar,
 y los guardamos en la FPU sin modificarlos para poder usarlos tantas veces como
 fuera necesario.
 
@@ -137,43 +140,43 @@ vez que calculamos $y$, que fue cambiar un $\times8$ por un $\times4$, para
 lograr la dispersi'on deseada del rayo.
 
 Intentamos arreglar tambi'en un problema que ten'ia la funci'on cuando entraba
-a la misma con $x_i = x_f$ pero desgraciadamente al cierre de esta edici'on no
+a la misma con $x_i = x_f$, pero desgraciadamente al cierre de esta edici'on no
 lo hab'iamos logrado.
 
 Lo dem'as no tiene mucho m'as para ser resaltado. Salvo que tuvimos algunos
-problemas al momento de pintar que se solucionaron haciendolos de otra forma y
-no sabemos porque no andaban con el c'odigo original.
+problemas al momento de pintar que se solucionaron haci'endolos de otra forma y
+no sabemos por qu'e no andaban con el c'odigo original.
 
 \item \textsc{apagar}:
 Al igual que anteriormente dejamos los 'ultimos 3 p'ixeles para que se procesen
-de a uno. En esta funci'on utilizamos 2 mascaras, una para el fucsia de
+de a uno. En esta funci'on utilizamos 2 m'ascaras, una para el fucsia de
 \textbf{MMX} y la otra para el procesado simple.
 
 Aqu'i tambi'en calculamos la basura de la imagen para sum'arsela, cuando terminamos
 de procesar cada fila, al puntero. As'i apuntamos al inicio de la siguiente fila.
 
-Lo primero que generamos es una mascara con el valor del contador para
-completar 0 en R y con el contador en G y B. Como todas las otras mascaras que
-utilizamos para procesar en paralelo 2 p'ixeles ubicamos los 3 bytes en el
+Lo primero que generamos es una m'ascara con el valor del contador para
+completar 0 en R y con el contador en G y B. Como todas las otras m'ascaras que
+utilizamos para procesar en paralelo 2 p'ixeles, ubicamos los 3 bytes en el
 centro.
 
 En el ciclo de \textbf{MMX} centramos los 2 p'ixeles y los comparamos con el fucsia.
 Usamos esta comparaci'on para llenar con el valor anterior donde da igual
-(\textbf{PAND}) y llenar con el valor de la mascara con el puntero donde no da
-igual (\textbf{PANDN}). Luego, acomodamos los pixeles y los volvemos a guardar
+(\textbf{PAND}) y llenar con el valor de la m'ascara con el puntero donde no da
+igual (\textbf{PANDN}). Luego, acomodamos los p'ixeles y los volvemos a guardar
 y volvemos a colocar los valores que no nos correspond'ia procesar.
 Finalmente restamos al contador 8 y si nos da menor o igual a 0 guardamos 0.
 
 La forma de comparar y guardar los resultados fue evolucionando a medida que
-iter'abamos en la confeccii'on de esta funci'on, ya que en un principio
+iter'abamos en la confecci'on de esta funci'on, ya que en un principio
 compar'abamos 2 veces, luego hac'iamos una comparaci'on y la neg'abamos
-comparandola con 0 y luego se nos encendi'o la lamparita y con una sola
-comparaci'on, el \textbf{PAND} y el \textbf{PANDN} nos alcanz'o.
+compar'andola con 0 y luego se nos encendi'o la lamparita y con una sola
+comparaci'on, el \textbf{PAND} y el \textbf{PANDN}, nos alcanz'o.
 
-Lo m's dificil fue generar la mascara con el contador de manera correcta.
-Adem'as  nos resulto complicado darnos cuenta del orden en que vienen los
-pixeles a causa del little endian para luego acomodarlos en el centro de la
-mascara. Sin contar con que el \textbf{MOVD} de un registro a \textbf{MMX} nos
+Lo m'as dif'icil fue generar la m'ascara con el contador de manera correcta.
+Adem'as  nos result'o complicado darnos cuenta del orden en que vienen los
+p'ixeles a causa del little endian para luego acomodarlos en el centro de la
+m'ascara. Sin contar con que el \textbf{MOVD} de un registro a \textbf{MMX} nos
 jug'o la mala pasada de pisarnos la parte alta.
 
 \end{enumerate}
