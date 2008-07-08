@@ -169,6 +169,7 @@ elCiclonQueNoEsCuervo:
 
 		fmulp st1, st0
 		fmul st0, st2
+		;fsub st0,st0
 		;ESTADO DE LA PILA
 		;	st0 = cos(4Pi/128 * 4 * x) * sin(4PI/128) *40/5 <-- esto es y
 		; 	De acá para abajo no se toca :-P
@@ -230,6 +231,12 @@ elCiclonQueNoEsCuervo:
 		fsubp st1, st0
 		fistp dword nuestroyF
 
+		; prueba
+		;fist dword nuestroyF
+		fxch st3,st0
+		;fist dword nuestroxF
+		fxch st3,st0
+
 		;ESTADO DE LA PILA
 		;	st0 = y
 		; 	De acá para abajo no se toca :-P
@@ -246,20 +253,27 @@ elCiclonQueNoEsCuervo:
 
 		mov eax, nuestroyF
 		mov esi, nuestroxF
-
+	
+		;add eax, 1000b	
+		add eax, yI
+		;mov ecx, anchoP
+		mov ecx, 3000
 		mul ecx		; ancho de pantalla
+		;add eax, yI
+
+		;mov eax, 1000000		
 
 		add eax, esi ; 
 		add eax, esi ; 
 		add eax, esi ; 
-
+		add eax, xI
 		mov ebx, edi ; copio el puntero de la pantalla
 		
 		add ebx, eax ; en ebx debo pintarrajear un píxel
-
-		mov byte [ebx+0], 0x00
-		mov byte [ebx+1], 0xff
-		mov byte [ebx+2], 0xff
+		
+		mov byte [ebx+0], 0xff ; azul
+		mov byte [ebx+1], 0x00 ; verde
+		mov byte [ebx+2], 0x00 ; rojo
 	; TE PINTAMOS LA CARA
 	; VOLVEMOS A LA FPU	
 		;ESTADO DE LA PILA
@@ -430,19 +444,27 @@ testPuto:
 	;FIN CALCULANDO YF
 	;DEJAMOS LA FPU POR UN RATO
 	;VAMOS A PINTARRAJEAR UN PUNTITO EN LA PANTALLA
+
 		mov eax, nuestroyF
 		mov esi, nuestroxF
-
+	
+		;add eax, 1000b	
+		add eax, yI
+		;mov ecx, anchoP
+		mov ecx, 3000
 		mul ecx		; ancho de pantalla
+		;add eax, yI
+
+		;mov eax, 1000000		
 
 		add eax, esi ; 
 		add eax, esi ; 
 		add eax, esi ; 
-
+		add eax, xI
 		mov ebx, edi ; copio el puntero de la pantalla
 		
 		add ebx, eax ; en ebx debo pintarrajear un píxel
-
+		
 		mov byte [ebx+0], 0x00
 		mov byte [ebx+1], 0xff
 		mov byte [ebx+2], 0xff
