@@ -18,6 +18,7 @@ section .data
 CUARENTASOBRECINCO DD 	8.0;
 CUATROSOBRECIENTOVEINTIOCHO DD 0.03125;
 DOSCINCUENTISEIS DD 256.0;
+PI	DD 3.14;
 
 ;formato db "Llamado con (%d, %d, %d, %d)",10,0
 
@@ -55,13 +56,13 @@ debajoDelEjeX:
 listoElAnguloDeRotacion:	
 	
 	;para evitar que se rompa en xI = xF
-		mov eax, xI
-		mov esi, xF
+		;mov eax, xI
+		;mov esi, xF
 
-		cmp eax,esi
-		jnz sonDistintos
-		add esi, 10 ;FALTA
-		mov xF, esi
+		;cmp eax,esi
+		;jnz sonDistintos
+		;add esi, 130 ;FALTA
+		;mov xF, esi
 
 sonDistintos:
 	mov edi, screen
@@ -199,7 +200,8 @@ rotada:
 	;	st3 = angulo
 	;	st4 = tangente u opuesto u liñita que une los 2 puntos (su tamaño)
 
-	fldpi
+	;fldpi
+	fld dword [PI]
 	fmulp st1, st0
 
 	;ESTADO DE LA PILA
@@ -360,8 +362,11 @@ testPuto:
 		fmul st0, st0 ; 64
 		fadd st0, st0 ;	128
 		fadd st0, st0 ;	256
-		
+	
 		fxch st0, st1		
+		;SACAR
+		;fadd st0, st3
+		;FINSACAR	
 		;ESTADO DE LA PILA
 		;	st0 = x
 		;	st1 = 256
@@ -409,7 +414,7 @@ testPuto:
 	
 		fsin
 		fxch st2, st0
-		fadd st0, st0
+		;fadd st0, st0 reemplazo el *8 por un *4 dijo Emi
 		fcos
 		;ESTADO DE LA PILA
 		;	st0 = cos(((x mod 256) 4PI/128 * 8 )*2 *2)
@@ -432,12 +437,22 @@ testPuto:
 		;	st3 = 0 <-- será x
 		;	st4 = angulo
 		;	st5 = tangente u opuesto u liñita que une los 2 puntos (su tamaño)
+		
+		fld st2
+		fadd st0, st0	
+		fadd st0, st0	
+		fadd st0, st3
+		
+		fmulp st1, st0
 
-		fmul st0, st1  ; st0 * largo/5
-		fld st0			
-		fadd st0, st0  ; st0 * largo/5 *2
-		fadd st0, st0  ; st0 * largo/5 *4
-		faddp st1, st0 ; st0 * largo/5 *5
+	;	fmul st0, st1  ; st0 * largo/5
+	;	fld st0			
+	;	fadd st0, st0  ; st0 * largo/5 *2
+	;	fadd st0, st0  ; st0 * largo/5 *4
+	;	jmp fin
+	;	faddp st1, st0 ; st0 * largo/5 *5
+
+
 		;ESTADO DE LA PILA
 		;	st0 = largo * cos(...) * sin (...) * sin (...) <--esto es y
 		; 	De acá para abajo no se toca :-P
