@@ -1,0 +1,92 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{graphicx}
+\usepackage[spanish, activeacute]{babel}
+%opening
+\title{Sintesis de Deadlock}
+%\subtitle{Capitulo 6 SilverChair}
+\author{El grupete}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Deadlock}
+
+\subsection{Introducci'on}
+En un entorno de multiprogramaci'on varios procesos pueden competir por un numero finito de recursos. Un procesos solicita recursos y si estos no estan disponibles, el proceso queda en estado de espera. Puede pasar que los procesos en espera nunca cambien de estado porque los recursos que necesitan los tienen otros procesos que tambien est'an en espera, a esta situaci'on se la llama Dreadlock.
+
+\subsection{Modelo del sistema}
+Los recursos se dividen en varios tipos, cada uno de los cuales consiste en ejemplares id'enticos. 
+En el modo de operacion normal, un proceso solo puede utilizar un recurso en la secuencia siguiente:
+\begin{itemize}
+ \item Solicitud: Si la solicitud no se puede atender de inmediato entonces el proceso solicitante debe esperar a que pueda adquirir el recurso.
+ \item Utilizacion
+ \item Liberacion
+\end{itemize}
+La solicitud y liberacion de recursos son llamadas a sistema, estas pueden lograrse a travez de las operacion wait y signal sobre semaforos.
+Una tabla del sistema registra si cada uno de los recursos esta libre o asignado, y si esta asignado a que proceso. Si un proceso solicita un recurso que ya esta asigando entoces lo puede encolar en la cola de espera de ese proceso.
+Un conjunto de procesos se encuentra en Deadlock si cada uno espera un suceso que solo puede originar otro proceso del mismo conjunto.
+
+\subsection{Caracterizaci'on de los bloqueos mutuos}
+\subsubsection{Condiciones necesarias}
+Una situacion de deadlock puede surgir si y solo si en un sistema se presentan las siguientes cuatro condiciones:
+\begin{itemize}
+ \item Exclusion mutua: Por lo menos un recurso debe reternerse en modo no compartido; es decir, solo un proceso puede usar el recurso a la vez. Si otro proceso solicita el recurso debera esperar a que sea liberado.
+ \item Retencion y espera: debe haber por lo menos un proceso que retenga un recurso y espere adquirir otros recursos retenidos por otros procesos.
+ \item No apropiacion: Los recursos no se pueden quitar. Es decir, un recurso solo puede ser liberado por el proceso que lo tiene despues de haber cumplido su tarea.
+ \item Espera circular: Debe haber un conjunto ${P0,...,Pn}$ de procesos en espera, tales que $P0$ espera un recurso retenido por $P1$, $P1$ espera un recurso retenido por $P2$,..., $Pn-1$ espera un recurso retenido por $Pn$ y $Pn$ espera un recurso retenido por $P0$.
+\end{itemize}
+La condicion de espera circular implica la de retenci'on y espera, sin embargo es util verlas por separado.
+
+\subsubsection{Grafo de asignaci'on de recursos}
+Es un grafo dirigido donde los nodos son procesos o recursos. Una arista de un recurso a un proceso indica que ese recurso esta siendo utilizado por ese proceso (arista de asignaci'on). Una arista de un proceso a un recurso indica que ese proceso solicito ese recurso (arista de solicitud).
+A los procesos los dibujamos con redondeles y a los recursos con cajitas. Como pueden haber muchas instancias de un mismo tipo de recurso en las cajitas dibujamos puntitos que representan cuantas instancias de ese recurso hay. Ejemplo: si tenemos dos impresoras dibujaremos una cajita con dos puntos dentro, en este caso podran salir dos flechas de este nodo (una por impresora). 
+IMPORTANTE: Si el grafo no contiene ciclos entonces ningun proceso esta en deadlock, por otra parte, si hay ciclo entonces PUEDE haber un deadlock.
+Si cada tipo de recurso tiene un solo ejemplar, entonces un ciclo representa que ha ocurrido un bloqueo mutuo y todos los procesos en el ciclo estan en deadlock.
+Si el ciclo comprende solo un conjunto de tipos de recursos, cada uno con un solo ejemplar, entonces ha ocurrido un bloqueo mutuo entre todos los procesos en el ciclo.
+
+\subsubsection{Metodos para manejar Deadlocks}
+Existen dos metodos principales para tratar el tema del deadlock. Podemos usar un protocolo para que el sistema nunca entre en deadlock o podemos permitir que entre y se recupere.
+Primero consideraremos metodos para que el sistema nunca entre en deadlock. Para ello contamos con dos metodos comunes: la prevencion y la evitacion.
+
+\subsection{Prevencion de bloqueos mutuos}
+Para que haya deadlock deben presentarse cada una de las cuatro condiciones necesarias. Veremos disctintas maneras de evitar cada una de estas condiciones, previniendo el deadlock.
+
+\subsubsection{Exclusion Mutua}
+Los recursos compartibles no pueden participar en un deadlock.
+Por lo general no es posible evitar el deadlock negando la condicion de exclusion mutua. Por su propia condicion algunos recursos no son compartibles.
+
+\subsubsection{Retencion y espera}
+Para asegurar que la condicion de retencion y espera nunca se de, debemos garantizar que cuando un proceso solicita un recurso, no retenga otros.
+\begin{itemize}
+ \item Un protocolo que puede usarse es que cada proceso solicite todos los recursos antes de empezar su ejecuci'on.
+ \item Otro similar es que un proceso solo pueda pedir recursos si no tiene ninguno asignado. Si necesita mas recursos que los que tiene en un momento dado, debe liberar todo para volver a pedir lo que necesita.
+\end{itemize} 
+La desventaja de estas politicas es que puede pasar que se pidan recursos que nunca seran usados por el proceso que los solicito.
+Ademas es posible un bloqueo indefinido, si un proceso pide varios recursos populares, es posible que nunca le sean adjudicados porque estan es uso por otros procesos (es una especie de inanicion, pero el libro no lo nombra asi).
+
+\subsubsection{No apropiacion}
+La tercer condicion es que no haya apropiaci'on de recursos: para evitar esto podemos permitir la apropiac'ion ;P
+\begin{itemize}
+ \item Si un proceso que tiene un recurso solicita otro que no se le puede dar de inmediato, entonces se le sacan todos los recursos que tiene y volvera a ejecutar cuando se le puedan asignar todos los recursos que pidio mas los que tenia.
+ \item Si un proceso solicita recursos que no estan disponibles comprobamos si estan asignados otro proceso que espera mas recursos, en cuyo caso expropiamos los recursos deseados del proceso en espera y los asignamos al proceso solicitante. Si los recursos no estan disponibles ni asignados a un proceso en espera, el proceso debera esperar.
+\end{itemize}
+Este protocolo se usa cuando se puede guardar con facilidad el estado de los recursos, como CPU y memoria principal. Es un garron para impresora o cintas.
+
+\subsubsection{Espera circular}
+Una forma de asegurar que no se presente la condicion de espera circular es imponer una ordenacion total de todos los tipos de recursos y requerir que cada proceso solicite los recursos en orden ascendente.
+
+\subsection{Evitaci'on de bloqueos mutuos}
+Otro metodo para evitar los bloqueos mutuos consiste en requerir informacion adicional sobre como se solicitaran los recursos. Cada solicitud requiere que el sistema considere los recursos disponibles en ese momento, los actualmente asignados a cada proceso, y las futuras solicitudes y liberaciones de cada proceso, para decidir si puede satisfacer la solicitud presente o debe esperar para evitar un posible deadlock futuro.
+Los diversos algoritmos difieren en la cantidad y tipo de informacion que requieren. El modelo mas sencillo y util requiere que el proceso declare la cantidad maxima de recursos que usar'a para cada tipo de recurso. Un algoritmo de evitacion de deadlock examina dinamicamente el estado de asignacion de recursos para asegurar que no pueda presentar una condicion de espera circular. El estado de asignacion de recursos viene definido por el numero de recursos disponibles y asignados, y por la demanda maxima de los procesos. Un estado es seguro si el sistema puede asignar recursos a cada proceso (hasta el maximo) siguiendo algun orden y aun asi avitar el deadlock. Mas formalmente un sistema se encuentra en estado seguro s'olo si existe una secuencia segura. Una secuencia segura de procesos $P_{1},..,P_{n}$ es segura para el estado actual de asignaciones si, para cada $P_{i}$, los recursos que aun puede solicitar $P_{i}$ pueden satisfacerse con los recursos actualmente disponibles mas los retenidos por todos los $P_{j}$, donde $j<i$. En esta situacion si los recursos que necesita $P_{i}$ no estan inmediatamente disponibles, entonces $P_{i}$ puede esperar a que terminen todos los procesos $P_{j}$. Una vez terminados, $P_{i}$ puede obtener todos los recursos necesarios, completar la tarea, devolver los recursos que se le han asignado y terminar. Cuando $P_{i}$ termina, $P_{i+1}$ puede obtener todos los recursos necesarios, etc. Si no existe esta secuencia, se dice que el estado es $inseguro$.
+Un estado no seguro NO ES un estado de bloqueo mutuo, y un estado de bloqueo mutuo ES un estado inseguro.
+
+
+
+%\begin{center}
+%\includegraphics[scale=0.1]{la.jpg}
+%\end{center} 
+
+\end{document}
