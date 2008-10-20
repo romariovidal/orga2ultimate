@@ -1,0 +1,200 @@
+\subsection{Introducci'on}
+
+El sistema de archivos pose'e 2 partes:
+\begin{itemize}
+	\item una colecci'on de \textbf{archivos}: cada uno con datos
+	\item una \textbf{estructura de directorios}: para organizarlos
+\end{itemize}
+algunos adem'as tienen particiones.
+
+\subsection{Archivo}
+Es una colecci'on de informaci'on relacionada. Es lo m'as pequeÑÑÑo que podemos
+escribir en memoria secundaria.
+
+Representan programas o datos, pero en realidad son tiras de biy, bytes o
+registros que son interpretados como una u otra cosa (estructura del archivo).
+
+\subsubsection{Atributos} 
+\begin{itemize}
+  \item \textbf{nombre}: 'unica informaci'on entendible por humanos as'i como
+est'a
+  \item \textbf{tipo}
+  \item \textbf{ubicaci'on}: puntero a dispositivo y a una posici'on en 'el
+  \item \textbf{tama\~no}
+  \item \textbf{protecci'on}
+  \item \textbf{hora, fecha e identificaci'on del usuario}: datos 'utiles para
+protecci'on, seguridad y control del uso.
+\end{itemize}
+
+La informaci'on de todos los archivos se guarda la info de todos los archivos.
+
+\subsubsection{Operaciones}
+Operaciones que realiza un sistema con archivos: 
+\newpage
+\begin{itemize}
+  \item \textbf{Crear un archivo} Se debe encontrar el lugar donde estar'a y
+luego agregarlo al directorio.
+  \item \textbf{Escribir un archivo} Se hace una llamada al sistema con el
+nombre del archivo y lo que hay que escribir. Este lo busca y lo escribe.
+Interviene un puntero a escritura, para saber por donde va escribiendo.
+  \item \textbf{Leer un archivo} Se hace una llamada con el nombre y el lugar
+donde debe colocarse el siguiente bloque del archivo. Tambi'en tiene un puntero
+a la pr'oxima secci'on a leer. Se suele usar un 'unico puntero para las 2 op
+(r/w).
+  \item \textbf{Reubicarse dentro de un archivo} No implica E/S. Es como una
+b'usqueda.
+  \item \textbf{Eliminar un archivo} se libera el espacio y se borra la entrada
+del directorio.
+  \item \textbf{Truncar un archivo} Se usa para borrar un archivo pero no los
+atributos (poner la long en 0)
+\end{itemize}
+
+Con este set de instrucciones se pueden hacer todas las operaciones.
+
+Para evitar tener que buscar varias veces un archivo abierto en el directorio,
+los SO tienen una \textbf{Tabla de Archivos Abiertos}.
+
+En sistemas complejos, ej multiusuario, hay adem'as una Tabla de Archivos
+Abiertos por cada proceso que figura en la Tabla de Procesos. En estos casos
+hay un contador de aperturas para cada archivo.
+
+Los archivos pueden tener extensiones para determinar de que tipo son, o tener
+atributos extras. 
+
+\subsubsection{M'etodos de acceso}
+Secuencial: lineal, en orden, con un puntero que va avanzando.
+
+Directo: Accede a bloques, ya que los discos permiten acceso aleatorio a
+cualquier bloque. Sin orden. Las bases de datos usan este tipo.
+
+Mediante 'indices: con una tabla, como si fuera \textbf{realmente un 'indice}.
+Puede haber 2 niveles de 'indices.
+
+\subsection{Estructura de directorios}
+Los discos se organizan en particiones, que forman estructuras l'ogicas (de
+mayor tama~no o menor que un disco) que el usuario trata como un dispositivo.
+Cada partici'on tiene un \textbf{directorio} en el que se registran los datos de
+todos los archivos de la misma. El directorio nos debe prestar las siguientes
+operaciones:
+\begin{itemize}
+  \item \textbf{Buscar un archivo} por nombre o por patr'on
+  \item \textbf{Crear un archivo}
+  \item \textbf{Eliminar un archivo}
+  \item \textbf{Listar un directorio}
+  \item \textbf{Cambiar el nombre de un archivo}
+  \item \textbf{Recorrer el sistema de archivos}
+\end{itemize}
+
+\subsubsection{Niveles de un directorio}
+\subsubsection*{Un nivel}
+La m'as sencillas. No es escalable. M'as de un usuario podr'ia querer crear un
+archivo llamado ``prueba'' o ``puto'' y se violar'ia la regla de nombres
+'unicos.
+
+\subsubsection*{Dos niveles}
+Aca se puede crear un directorio por usuario y listo. As'i, cada usuario tiene
+su directorio de archivos de usuario (UFD user file directory). Hay un
+directorio de archivos maestro (MFD master file...) que sabe donde est'an los
+UFD de cada usuario.
+
+Se debe agregar un directorio de usuario al cual se debe poder acceder desde el
+MFD.
+
+Para que un usuario pueda acceder a un archivo de otro usuario debe proveer el
+nombre del due~no del mismo y el nombre del archivo, formando un camino (path)
+entre la ra'iz (MFD) y la hoja (archivo) del 'arbol que es el sistema de
+archivos.
+
+Se agrega un ``usuario especial'' que tiene todos los programas, entonces
+cuando un usuario quiere correr uno, primero se busca en su directorio local y
+despu'es en el del usuario especial. De esta manera se evita tener que copiar
+todos los archivos del sistema a los directorios de cada usuario. (Camino de
+busqueda)
+
+\subsubsection*{'Arboles o m'as de dos niveles}
+Permite crear subdirectorios. Cada entrada del directorio se define con un bit
+que lo identifica como archivo (0) o como subdirectorio(1). Aparece el concepto
+de directorio actual para un usuario, antes era su 'unico directorio, ahora es
+alguno de sus subdirectorios. Se agrega la llamada al sistema de
+\textbf{cambiar directorio (cd)}. Hay path absolutos (desde la ra'iz) o
+relativos (desde el directorio actual)
+
+\subsubsection*{Grafo ac'iclico}
+Es para compartir archivos y/o directorios, no tiene estructuras c'iclicas. La
+forma m'as facil de implementar esto es poner un link (puntero) al mismo
+archivo. Tambi'en se puede duplicar todo para compartir, pero es un garr'on
+para mantener.
+
+Hay que tener cuidado de que si queremos contar los archivos que tenemos, no
+contar 2 veces el mismo por 2 ramas de nuestro directorio.
+
+Tambi'en hay que tener cuidado cuando se borra. Si se borra el archivo, quedan
+colgando los links (punteros), sería costoso buscarlos todos, a menos que
+guardemos una lista de links al archivo en nuestro archivo o un conteo de
+referencias que nos deje borrar s'olo cuando est'a en cero.
+
+DOS no permite grafos ac'iclicos porque es demasiado complicado.
+
+\subsubsection*{Grafo general - General Graph, companiero de General Electric}
+Nada, bardo, la busqueda mal dise~nada da facilmente un algoritmo infinito.
+
+Es dificil saber si al agregar un link no estamos cayendo en un grafo con
+ciclos.
+
+\subsection{Protecci'on}
+Contra da~nos f'isicos (confiabilidad) se logra con backups, contra acceso
+indebido (protecci'on) se logra en un sistema monousuario retirando
+f'isicamente los discos flexibles y guard'andolos bajo llave en un caj'on del
+escritorio o en un archivero (sic).
+
+\subsubsection{Tipos de acceso}
+En los que no se permite el acceso a los archivos de otros usuario no se
+necesita protecci'on. Los tipos de acceso se separan por la operaci'on que se
+quiere realizar en cada uno (de los accesos):
+\begin{itemize}
+  \item Leer
+  \item Escribir
+  \item Ejecutar
+  \item Anexar (append) agregar informaci'on al final del archivo.
+  \item Eliminar, borrar el archivo y liberar el espacio
+  \item Listar el nombre y los atributos de un archivo.
+\end{itemize}
+
+Las dem'as operaciones se pueden hacer con estas, ej copiar un archivo es leer
+muchas veces y escribir un archivo.
+
+\subsubsection{Listas y grupos de acceso}
+Lo mejor es que el accedo dependa de qui'en es el que quiera acceder. Para eso
+se tiene una lista de acceso que especifica el nombre de un usuario y sus
+permisos. Cuando un usuario solicita eacceso a un archivo, el sistema mira la
+lista de acceso asociada a ese archivo. Si el usuario est'a autorizado para el
+acceso que pidi'o, entonces se lo permite, sino... no, ovbio.
+
+El problema de estas tablas es el tama~no. Una tabla que permita el acceso a
+TODOS los usuario puede ser muy grande, antes la entrada de un directorio
+ten'ia tama~no fijo. Para solucionar esto hay 3 categorioas en relaci'on con
+cada archivo:
+\begin{itemize}
+  \item Propietario
+  \item Grupo (cjto de usuarios que comparten el archivo o que necesitan acceso
+similar)
+  \item Universo (los dem'as, el resto, la plebe, la gilada, etc)
+\end{itemize}
+Si usamos un bit para read R, uno para write W y otro para execute X, nos queda
+que con 3 campos de 3 bits tenemos todas las combinaciones de RWX con los
+grupos anteriores.
+La opci'on es tener una Lista de Control de Acceso por Archivo, con la anterior
+clasificaci'on es bastante f'acil y peque.
+
+Falta lo de LCU, que dice a que archivos puede acceder cada usuario. PODEMOS
+COMPLETAR ESTO CON EL APUNTE MAÑANA EN LA FACU.
+
+Otra opci'on es ponerle contrase~na a los archivos, pero es demasiado pesado
+para el usuario recordar muchas, con lo cual es una pass a ``todo o nada''.
+
+\subsection{Estructura}
+Las transferencias entre la memoria se realizan en bloques. Cada bloque ocupa
+uno o m'as sectores. Dependiendo el disco el sector var'ia de tama~no entre 32
+y 4096 bytes, en gral son de 512
+
+ME QUEDAN UNAS 6 HOJAS, PERO YA NO ENTIENDO NADA.
