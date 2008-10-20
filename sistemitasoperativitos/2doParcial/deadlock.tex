@@ -124,12 +124,13 @@ Como antes, hay un deadlock si y solo si, hay un ciclo. Para detectar deadlock e
 Tener en cuenta:
 Frecuencia de llamada al algoritmo de deteccion (Intevalo de tiempo): costo de overhead de este procesamiento.
 Si existe un deadlock, hasta que se solucione se puede "agrandar" el deadlock porque otros procesos pueden pedir recursos que estan trabados por estos giles.
-Los bloqueos mutuos solo pueden aparecer cuando una solicitud no se puede atender de inmediato, es posible que esta solicitud sea la que cierra un ciclo en el grafo de asignacion. Por un lado podemos invocar el algoritmo de deteccion de deadlock cada vez que no pueda atenderse inmediatamente un pedido de asignacion. En este caso podemos identificar los procesos que estan en el ciclo, pero mejor aun, podemos saber cual de ellos es el que cerro el ciclo.
+Los bloqueos mutuos solo pueden aparecer cuando una solicitud no se puede atender de inmediato, es posible que esta solicitud sea la que cierra un ciclo en el grafo de asignacion. Por un lado podemos invocar el algoritmo de deteccion de deadlock cada vez que no pueda atenderse inmediatamente un pedido de asignacion. En este caso podemos identificar los procesos que estan en el ciclo, pero mejor aun, podemos saber cual de ellos es el que cerro el ciclo. Si existen muchos tipos de recursos, una solicitud puede ocasionar varios ciclos en el grafo de recursos, cada uno de ellos completado por la solicitud mas reciente y "provocado" por un proceso identificable (si lo bleteamos nos sacamos flor de quilombo de encima).
+No podemos llamar al algoritmo de deteccion cada vez que se efectua una solicitud porque es demasiado costoso, en vez de esto lo que se puede hacer es llamarlo cada tanto (una hora por ejemplo), o cuando el uso de CPU es menor a algun porcentaje (\%40 ponele)
 
 
 
-\begin{center}
-\includegraphics[scale=0.1]{la.jpg}
-\end{center} 
+%\begin{center}
+%\includegraphics[scale=0.1]{la.jpg}
+%\end{center} 
 
 \end{document}
