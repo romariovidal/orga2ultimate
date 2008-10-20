@@ -81,12 +81,55 @@ Una forma de asegurar que no se presente la condicion de espera circular es impo
 \subsection{Evitaci'on de bloqueos mutuos}
 Otro metodo para evitar los bloqueos mutuos consiste en requerir informacion adicional sobre como se solicitaran los recursos. Cada solicitud requiere que el sistema considere los recursos disponibles en ese momento, los actualmente asignados a cada proceso, y las futuras solicitudes y liberaciones de cada proceso, para decidir si puede satisfacer la solicitud presente o debe esperar para evitar un posible deadlock futuro.
 Los diversos algoritmos difieren en la cantidad y tipo de informacion que requieren. El modelo mas sencillo y util requiere que el proceso declare la cantidad maxima de recursos que usar'a para cada tipo de recurso. Un algoritmo de evitacion de deadlock examina dinamicamente el estado de asignacion de recursos para asegurar que no pueda presentar una condicion de espera circular. El estado de asignacion de recursos viene definido por el numero de recursos disponibles y asignados, y por la demanda maxima de los procesos. Un estado es seguro si el sistema puede asignar recursos a cada proceso (hasta el maximo) siguiendo algun orden y aun asi avitar el deadlock. Mas formalmente un sistema se encuentra en estado seguro s'olo si existe una secuencia segura. Una secuencia segura de procesos $P_{1},..,P_{n}$ es segura para el estado actual de asignaciones si, para cada $P_{i}$, los recursos que aun puede solicitar $P_{i}$ pueden satisfacerse con los recursos actualmente disponibles mas los retenidos por todos los $P_{j}$, donde $j<i$. En esta situacion si los recursos que necesita $P_{i}$ no estan inmediatamente disponibles, entonces $P_{i}$ puede esperar a que terminen todos los procesos $P_{j}$. Una vez terminados, $P_{i}$ puede obtener todos los recursos necesarios, completar la tarea, devolver los recursos que se le han asignado y terminar. Cuando $P_{i}$ termina, $P_{i+1}$ puede obtener todos los recursos necesarios, etc. Si no existe esta secuencia, se dice que el estado es $inseguro$.
-Un estado no seguro NO ES un estado de bloqueo mutuo, y un estado de bloqueo mutuo ES un estado inseguro.
+Un estado seguro NO ES un estado de bloqueo mutuo, y un estado de bloqueo mutuo ES un estado inseguro, pero no todos los estados inseguros son de deadlock. Un estado inseguro puede llevar a un estado de deadlock.
+Ya establecido el concepto de estado seguro podemos ahora definir algoritmos de evitacion que aseguren que el sistema nunca caera en un estado de deadlock. La idea es asegurar que el sistema nunca caera en un estado inseguro. Al principio el sistema esta en un estado seguro, cuando un proceso solicita un recurso que en ese momento esta disponible, el sistema debe decidir si en ese momento le puede asignar ese recurso inmediatamente o si el proceso tiene que esperar. La solicitud se atiende solo si deja al sistema en un estado seguro.
+Observe que en este esquema si un proceso solicita un recurso que esta disponible puede llegar a tener que esperar, por esto la utilizacion de recursos puede ser menor que sin la utilizacion de este algoritmo.
+
+\subsubsection{Varios ejemplares de un mismo tipo de recurso}
+Describiremos el algoritmo del banquero.
+Cuando un proceso entra en el sistema debe declarar la cantidad maxima de recursos que puede llegar a necesitar, esta cantidad no puede exceder la cantidad que hay en el sistema. Cuando un proceso solicita un conjunto de recursos, el sistema debe determinar si esta asignacion deja al sistema en un estado seguro. Si es asi, los recursos se asignan, sino el proceso debe esperar hasta que otro libere los recursos que el necesita. Para mayor detalle mirar el libro, no se puede resumir y no tiene sentido que lo copie.
+
+\subsubsection{Un ejemplar unico de cada tipo de recurso}
+Este algoritmo utiliza una variante del grafo de asignacion de recursos, ademas de las aristas de solicitud y asignacion, añadimos un nuevo tipo de arista, llamada $arista\ de\ reserva$. Una arista de reserva $P_{i}$ $\rightarrow$ $R_{j}$ indica que en el futuro el proceso $P_{i}$ puede pedir el recurso $R_{j}$. Esta linea semaja a una linea de reserva en cuanto a direccion, pero la linea es punteada. Cuando el proceso $P_{i}$ solicita el recurso $R_{j}$, la arista de reserva $P_{i}\ \rightarrow\ R_{j}$ se convierte en una arista de solicitud. De manera parecida cuando $P_{i}$ libera un recurso $R_{j}$, la arista de asignacion $R_{j}\ \rightarrow\ P_{i}$ vuelve a ser una arista de reserva $P_{i}\ \rightarrow\ R_{j}$. Observemos que en el sistema todos los recursos deben reservarse a priori; es decir antes de que el proceso $P_{i}$ comienze su ejecuci'on, todas sus aristas de reserva ya deben aparecer en el grafo de asignacion de recursos. Podemos hacer mas flexible permitiendo que una arista de reserva $P_{i}\ \rightarrow\ R_{j}$ se agregue al grafo si todas las aristas relacionada con $P_{i}$ son de reserva.
+Suponga que el proceso $P_{i}$ solicita el recurso $R_{j}$. Esta solicitud puede atenderse solo si al convertir la arista de solicitud $P_{i}\ \rightarrow\ R_{j}$ en una de asignacion $R_{j}\ \rightarrow\ P_{i}$ no se forma un ciclo en el grafo de asignacion de recursos.
+Si no hay ningun ciclo, entonces la asignacion del recurso dejara al sistema en un estado seguro. Si se detecta un ciclo, entonces la asignacion colocara al sistema en un estado inseguro, por lo que el proceso $P_{i}$ tendra que esperar a que se satisfagan sus solicitudes.
+
+\subsection{Deteccion de Deadlocks}
+Si un sistema no emplea un algoritmo de prevencion o evitacion de deadlocks, entonces puede ocurrir una situacion de deadlock. En este entorno el sistema debe ofrecer:
+\begin{itemize}
+ \item Un algoritmo que examine el estado del sistema para determinar si ha ocurrido un deadlock.
+ \item Un algoritmo para recuperarse del deadlock.
+\end{itemize}
+
+\subsubsection{Varios ejemplares de un tipo de recurso}
+El algoritmo de detecci'on emplea estructuras de datos que varian en el tiempo, similares a las utilizadas en el banquero.
+
+\begin{itemize}
+ \item Disponible: Un vector de longitud $m$ que indica el numero de recursos disponibles de cada tipo.
+ \item Asignacion: Una matriz de $mxn$ que define el numero de recursos de cada tipo actualmente asignados a cada proceso.
+ \item Solicitud: Una matriz de $nxm$ que indica la solicitud actual de cada proceso.
+\end{itemize}
+El algoritmo de deteccion descrito aqui se limita a investigar cada una de las posibles secuencias de asignacion para los procesos que quedan por terminar. (ES PARECIDO AL DEL BANQUERO, OTRA VEZ MIREN ESTE ALGORITMO EN EL LIBRO PORQUE NO TIENE SENTIDO QUE LO COPIE Y ADEMAS LOS ALGORITMOS, SI SON BUENOS, SON NO COMPRESIBLES ;P).
+
+\subsubsection{Un unico ejemplar de cada tipo de recurso}
+Una vez mas usaremos una variante del grafo de asignacion, llamada $grafo\ de\ espera$. Podemos obtener este grafo sacando los nodos correspondientes a recursos del grafo de asignacion de recursos y uniendo las aristas respectivas.
+Como antes, hay un deadlock si y solo si, hay un ciclo. Para detectar deadlock el sistema tiene que mantener actualizado este grafo y cada una cierta cantidad de tiempo correr un algoritmo de deteccion de ciclos ($O(n^{2}), n procesos$).
+
+\subsubsection{Utilizacion de los algoritmos de deteccion}
+¿Cuando debemos invocar el algoritmo de deteccion? La respuesta depende de dos factores:
+\begin{itemize}
+ \item ¿Con que frecuencia es probable que ocurra un deadlock?
+ \item ¿Cuantos procesos se veran afectados al ocurrir el deadlock?
+\end{itemize}
+Tener en cuenta:
+Frecuencia de llamada al algoritmo de deteccion (Intevalo de tiempo): costo de overhead de este procesamiento.
+Si existe un deadlock, hasta que se solucione se puede "agrandar" el deadlock porque otros procesos pueden pedir recursos que estan trabados por estos giles.
+Los bloqueos mutuos solo pueden aparecer cuando una solicitud no se puede atender de inmediato, es posible que esta solicitud sea la que cierra un ciclo en el grafo de asignacion. Por un lado podemos invocar el algoritmo de deteccion de deadlock cada vez que no pueda atenderse inmediatamente un pedido de asignacion. En este caso podemos identificar los procesos que estan en el ciclo, pero mejor aun, podemos saber cual de ellos es el que cerro el ciclo.
 
 
 
-%\begin{center}
-%\includegraphics[scale=0.1]{la.jpg}
-%\end{center} 
+\begin{center}
+\includegraphics[scale=0.1]{la.jpg}
+\end{center} 
 
 \end{document}
