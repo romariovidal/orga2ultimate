@@ -1,23 +1,23 @@
-Los mecanismos de protección proveen el acceso controlado y restringido de los recursos a los procesos que obtienen la autorización adecuada.
-El sistema de seguridad previene el acceso sin autorización al sistema y sus recursos.
+Los mecanismos de protecci'on proveen el acceso controlado y restringido de los recursos a los procesos que obtienen la autorizaci'on adecuada.
+El sistema de seguridad previene el acceso sin autorizaci'on al sistema y sus recursos.
 
-\subsection{Protección}
+\subsection{Protecci'on}
 
-El rol de la protección en un sistema es proveer los ``mecanismos'' encargados de hacer cumplir las ``políticas'' de utilización de los recursos.
+El rol de la protecci'on en un sistema es proveer los ``mecanismos'' encargados de hacer cumplir las ``pol'iticas'' de utilizaci'on de los recursos.
 
-Las políticas de utilización de los recursos pueden cambiar, por esta razón el sistema operativo lo que tiene que proveer son los mecanismos de protección al diseñador de las aplicaciones para poder manipularlas de forma dinámica.
+Las pol'iticas de utilizaci'on de los recursos pueden cambiar, por esta raz'on el sistema operativo lo que tiene que proveer son los mecanismos de protecci'on al diseñador de las aplicaciones para poder manipularlas de forma din'amica.
 
-Es muy importante separar las políticas de los mecanismos, las políticas dicen que se tiene que hacer y los mecanismos como. Con robustos mecanismos uno puede llegar a tener que cambiar solo algunos parametros en caso de que cambien las políticas de uso.
+Es muy importante separar las pol'iticas de los mecanismos, las pol'iticas dicen que se tiene que hacer y los mecanismos como. Con robustos mecanismos uno puede llegar a tener que cambiar solo algunos parametros en caso de que cambien las pol'iticas de uso.
 
 \subsection{Dominio}
 
-Un sistema es una colección de objetos y procesos. Un objeto puede ser software o hardware y se identifica univocamente. Estos son esencialmente un tipo abstracto de dato. A estos objetos se le pueden asignar operaciones que dependen del objeto (leer, escribir, ejecutar, etc).
+Un sistema es una colecci'on de objetos y procesos. Un objeto puede ser software o hardware y se identifica univocamente. Estos son esencialmente un tipo abstracto de dato. A estos objetos se le pueden asignar operaciones que dependen del objeto (leer, escribir, ejecutar, etc).
 
-Entonces, los procesos pueden realizar estas operaciones sobre los objetos siempre y cuando tengan la autorización adecuada. Además, los procesos solo deberían tener autorización necesaria para realizar su tarea (objetos y operaciones).
+Entonces, los procesos pueden realizar estas operaciones sobre los objetos siempre y cuando tengan la autorizaci'on adecuada. Adem'as, los procesos solo deber'ian tener autorizaci'on necesaria para realizar su tarea (objetos y operaciones).
 
-Los procesos ejecutan sobre un dominio. Los dominios son los que tienen estos objetos con sus respectivas operaciones. Un dominio es una colección de permisos de acceso, un par objeto y conjunto de operaciones permitidas ($<$archivo 1,$[$leer, ejecutar$]>$). Estos dominios pueden compartir accesos, no necesariamente son disjuntos.
+Los procesos ejecutan sobre un dominio. Los dominios son los que tienen estos objetos con sus respectivas operaciones. Un dominio es una colecci'on de permisos de acceso, un par objeto y conjunto de operaciones permitidas ($<$archivo 1,$[$leer, ejecutar$]>$). Estos dominios pueden compartir accesos, no necesariamente son disjuntos.
 
-Esta asociación entre procesos y dominios no puede ser fija, ya que al cambiar alguna política un proceso podría necesitar mas autorización o perder algunos accesos. Por esto, se deben proveer mecanismos de modificación o resignación de dominios.
+Esta asociaci'on entre procesos y dominios no puede ser fija, ya que al cambiar alguna pol'itica un proceso podr'ia necesitar mas autorizaci'on o perder algunos accesos. Por esto, se deben proveer mecanismos de modificaci'on o resignaci'on de dominios.
 
 Formas de realizar los dominios:
 \begin{itemize}
@@ -28,20 +28,20 @@ Formas de realizar los dominios:
 
 \textbf{Ejemplos}
 
-El modelo dual estándar (monitor-usuario) cuando se ejecuta en modo monitor se pueden ejecutar las rutinas del sistema mientras que en modo usuario solo se tienen instrucciones no privilegiadas.
+El modelo dual est'andar (monitor-usuario) cuando se ejecuta en modo monitor se pueden ejecutar las rutinas del sistema mientras que en modo usuario solo se tienen instrucciones no privilegiadas.
 
 \textbf{Ejemplos - Unix}
 
-Unix utiliza la asociación de dominios a usuarios. El cambio de dominio se realiza con un cambio temporal de usuario. Unix utiliza el modelo de file system, a cada archivo se le asocia un dueño y un bit de dominio. Cuando se ejecuta un archivo cuyo dueño es otro usuario y tiene el bit de dominio apagado el proceso se inicia con el usuario que lo ejecuta y sus permisos, sin embargo, si el bit esta encendido se le asigna el usuario dueño al procesos y sus permisos correspondientes hasta la finalización del proceso.
+Unix utiliza la asociaci'on de dominios a usuarios. El cambio de dominio se realiza con un cambio temporal de usuario. Unix utiliza el modelo de file system, a cada archivo se le asocia un dueño y un bit de dominio. Cuando se ejecuta un archivo cuyo dueño es otro usuario y tiene el bit de dominio apagado el proceso se inicia con el usuario que lo ejecuta y sus permisos, sin embargo, si el bit esta encendido se le asigna el usuario dueño al procesos y sus permisos correspondientes hasta la finalizaci'on del proceso.
 El problema con este mecanismo es que si un usuario logra crear un archivo con dueño a "root" u el bit de dominio encendido puede tener acceso sin restricciones al sistema.
-Un método de mitigación de este problema es asignar los permisos por directorio y realizar el cambio de usuario solo al dueño del directorio. Esto seria menos flexible.
+Un m'etodo de mitigaci'on de este problema es asignar los permisos por directorio y realizar el cambio de usuario solo al dueño del directorio. Esto seria menos flexible.
 Algo incluso mas restrictivo es no permitir el cambio de usuario y realizar una estrategia de proceso "daemon" al cual invocar para acceder a instrucciones privilegiadas.
 
 \textbf{Multics}
 
-Multics organiza los dominios como anillos gerárquicos, 0 al 7 con sus dominios D0 a D7. si $i < j$ entonces Dj es un subconjunto de Di.
+Multics organiza los dominios como anillos ger'arquicos, 0 al 7 con sus dominios D0 a D7. si $i < j$ entonces Dj es un subconjunto de Di.
 
-Multics usa dirección de memoria segmentada, cada segmento es un archivo asociado a un anillo. El descriptor incluye el numero del dominio y 3 bits de control, escritura, lectura y ejecución. Cada proceso tiene asociado un numero de dominio y este puede acceder a los segmentos mayor o igual a este numero y respetando los bit de control.
+Multics usa direcci'on de memoria segmentada, cada segmento es un archivo asociado a un anillo. El descriptor incluye el numero del dominio y 3 bits de control, escritura, lectura y ejecuci'on. Cada proceso tiene asociado un numero de dominio y este puede acceder a los segmentos mayor o igual a este numero y respetando los bit de control.
 
 Para el intercambio de dominio se tienen en cuenta los siguientes cambios en los descriptores de segmento:
 \begin{itemize}
@@ -56,38 +56,38 @@ Si $i < b1$ el procedimiento se ejecuta, sin embargo, los datos deben ser copiad
 
 Si $b2 < i$ la llamada es permitida solo si $b3 <= i$ y se utiliza un gate.
 
-El principal defecto de esta técnica es que no se restringen los permisos solo a los necesarios.
+El principal defecto de esta t'ecnica es que no se restringen los permisos solo a los necesarios.
 
 \subsection{Matriz de accesos}
 
-Los permisos pueden verse como una matriz abstracta donde las filas son los dominios y las columnas son los objetos (ver figura 19.3). Los elementos de esta matriz son los conjuntos de operaciones permitidas. Un proceso que se ejecuta en el dominio i solo tiene los permisos que figuran en la fila i. De esta forma podemos implementar las políticas de acceso con esta matriz.
-Para realizar un cambio de dominio se utiliza una estrategia de colocar a los dominios como objetos también (como columnas) y utilizar una operación "switch". Si switch esta en (i,j) entonces el dominio de fila i puede cambiar al dominio de la columna j.
-Para permitir el cambio de esta matriz de forma dinámica tenemos que agregar los siguentes operaciones: copiar, dueño y control.
-La posibilidad de copiar se denota como un (*) al lado de la operación de acceso. hay 3 tipos de permisos de copia: copia idéntica (con el * también), copia limitada (solo la operación de acceso sin el *) o transferencia (mover el permiso). Estas operaciones son siempre en el mismo objeto, es decir, en la misma columna.
+Los permisos pueden verse como una matriz abstracta donde las filas son los dominios y las columnas son los objetos (ver figura 19.3). Los elementos de esta matriz son los conjuntos de operaciones permitidas. Un proceso que se ejecuta en el dominio i solo tiene los permisos que figuran en la fila i. De esta forma podemos implementar las pol'iticas de acceso con esta matriz.
+Para realizar un cambio de dominio se utiliza una estrategia de colocar a los dominios como objetos tambi'en (como columnas) y utilizar una operaci'on "switch". Si switch esta en (i,j) entonces el dominio de fila i puede cambiar al dominio de la columna j.
+Para permitir el cambio de esta matriz de forma din'amica tenemos que agregar los siguentes operaciones: copiar, dueño y control.
+La posibilidad de copiar se denota como un (*) al lado de la operaci'on de acceso. hay 3 tipos de permisos de copia: copia id'entica (con el * tambi'en), copia limitada (solo la operaci'on de acceso sin el *) o transferencia (mover el permiso). Estas operaciones son siempre en el mismo objeto, es decir, en la misma columna.
 Un proceso con el permiso de dueño (denotado owner) puede crear nuevas operaciones de acceso o eliminar en cualquier campo de la misma columna.
-Estos 2 permisos nos proveen mecanismos para limitar la propagación de accesos, sin embargo, no la propagación de la información de los objetos fuera del entorno de ejecución. Este problema se llama problema de confinamiento y en general no es resuelto.
-La operación de control es solo aplicable a objetos de tipo dominio (dominio como columna). Control en el elemento (i,j) nos dice que el dominio i puede modificar los accesos de la fila dominio j.
-Recordar que la importancia de estas 3 operaciones es permitir la modificación dinamica de la matriz de accesos.
+Estos 2 permisos nos proveen mecanismos para limitar la propagaci'on de accesos, sin embargo, no la propagaci'on de la informaci'on de los objetos fuera del entorno de ejecuci'on. Este problema se llama problema de confinamiento y en general no es resuelto.
+La operaci'on de control es solo aplicable a objetos de tipo dominio (dominio como columna). Control en el elemento (i,j) nos dice que el dominio i puede modificar los accesos de la fila dominio j.
+Recordar que la importancia de estas 3 operaciones es permitir la modificaci'on dinamica de la matriz de accesos.
 
 \subsection{Implementaciones de la matriz de accesos}
 
 \textbf{Tabla global}: \\Conjunto de tuplas $<$dominio, objeto, conjunto de permisos$>$.
 
-\textbf{Lista de accesos por Objeto}: Por objeto se tiene una lista de duplas <dominio, conjunto de permisos> (dominios con conjunto de permisos no vacíos).
+\textbf{Lista de accesos por Objeto}: Por objeto se tiene una lista de duplas <dominio, conjunto de permisos> (dominios con conjunto de permisos no vac'ios).
 
-\textbf{Lista de capacidad por dominios}: ídem anterior pero usando las filas en lugar de las columnas. La lista de capacidades es en si un objeto protegido y mantenido por el sistema operativo. Estos objetos se diferencian de los datos por tener un tag que los identifica o utilizando una división de la memoria entre datos y capacidades (memoria segmentada).
+\textbf{Lista de capacidad por dominios}: 'idem anterior pero usando las filas en lugar de las columnas. La lista de capacidades es en si un objeto protegido y mantenido por el sistema operativo. Estos objetos se diferencian de los datos por tener un tag que los identifica o utilizando una divisi'on de la memoria entre datos y capacidades (memoria segmentada).
 
 \textbf{Candado-llave}: Este utiliza lista de accesos (con candados) y lista de capacidades (con llaves). Un proceso en un determinado dominio debe tener la llave para abrir el candado si quiere acceder a un objeto.
 
-\subsection{Comparación entre implementaciones}
+\subsection{Comparaci'on entre implementaciones}
 
 Lista de accesos corresponde directamente a las necesidades del usuario asignando los permisos por objeto. Sin embargo, hay que checkear los accesos al procesar en todo momento. Una lista larga de accesos puede demorar esta tarea.
 
-Lista de capacidades se corresponde mas a los procesos, es mas fácil identificar a la hora de ejecución. Sin embargo, el quitar permisos es complicado a la hora de redefinir permisos.
+Lista de capacidades se corresponde mas a los procesos, es mas f'acil identificar a la hora de ejecuci'on. Sin embargo, el quitar permisos es complicado a la hora de redefinir permisos.
 
 Candado -llave, al ser un mix de las 2 puede ser efectiva y flexible dependiendo del largo de las llaves.
 
-Lo mas usado es un mix de los 2 primeros (ej. tener lista de accesos y en cada ejecución ir generando una lista de capacidades que se elimina al finalizar el proceso).
+Lo mas usado es un mix de los 2 primeros (ej. tener lista de accesos y en cada ejecuci'on ir generando una lista de capacidades que se elimina al finalizar el proceso).
 
 \subsection{Revocar permisos de acceso}
 
@@ -101,41 +101,41 @@ Lo mas usado es un mix de los 2 primeros (ej. tener lista de accesos y en cada e
 Si se utiliza lista de accesos es sencillo y se puede realizar de la forma que se desee.
 Con lista de capacidades se plantean varias estrategias:
 
-\textbf{Readquisición}: La lista se borra periódicamente de los dominios y hay que actualizarla.
+\textbf{Readquisici'on}: La lista se borra peri'odicamente de los dominios y hay que actualizarla.
 
 \textbf{Punteros}: Una lista de punteros se mantiene en el objeto a las capacidades y se revoca utilizando estos punteros (es costoso, se usa en multics).
 
-\textbf{Indirección}: Las capacidades apuntan a una entrada en una tabla global de puntero a los objetos, cuando se quita el objeto de la tabla se pierde el acceso por fallo en la indirección (puntero no valido). No permite método selectivo, se revoca a todos los dominios.
+\textbf{Indirecci'on}: Las capacidades apuntan a una entrada en una tabla global de puntero a los objetos, cuando se quita el objeto de la tabla se pierde el acceso por fallo en la indirecci'on (puntero no valido). No permite m'etodo selectivo, se revoca a todos los dominios.
 
-\textbf{Llaves}: Una llave maestra se le asigna a los accesos del objeto, cuando se crea una capacidad en un dominio se copia esta llave. El cambio de llave revoca de forma general el acceso a todos los dominios. Este método también puede implementarse con varias llaves para tener mas flexibilidad y proveer una revocación mas selectiva.
+\textbf{Llaves}: Una llave maestra se le asigna a los accesos del objeto, cuando se crea una capacidad en un dominio se copia esta llave. El cambio de llave revoca de forma general el acceso a todos los dominios. Este m'etodo tambi'en puede implementarse con varias llaves para tener mas flexibilidad y proveer una revocaci'on mas selectiva.
 
 \subsection{Sistemas basados en capacidades}
 
-Hydra (descripción no relevante, ir al libro)
+Hydra (descripci'on no relevante, ir al libro)
 
-Cambridge CAP (descripción no relevante, ir al libro)
+Cambridge CAP (descripci'on no relevante, ir al libro)
 
-\subsection{Protección basada en lenguaje}
+\subsection{Protecci'on basada en lenguaje}
 
-La protección de los recursos puede variar por aplicación o cambios de políticas, por lo que se comenzó a considerar un problema no solo de los diseñadores de sistemas operativos, sino también, de los diseñadores de aplicaciones. Por esto, los lenguages de programación se comenzaron a utilizar para brindar protección. Cuando la ``declaración'' de la protección se adjunta a la declaración de los tipos de datos se permite especificar los requerimientos de protección al diseñador del subsistema. Ventajas:
+La protecci'on de los recursos puede variar por aplicaci'on o cambios de pol'iticas, por lo que se comenz'o a considerar un problema no solo de los diseñadores de sistemas operativos, sino tambi'en, de los diseñadores de aplicaciones. Por esto, los lenguages de programaci'on se comenzaron a utilizar para brindar protecci'on. Cuando la ``declaraci'on'' de la protecci'on se adjunta a la declaraci'on de los tipos de datos se permite especificar los requerimientos de protecci'on al diseñador del subsistema. Ventajas:
 \begin{itemize}
 	\item Las protecciones son simplemente declaradas, en lugar de llamar a subrutinas del sistema operativo.
-	\item La protección se independiza de las facilidades provistas por el sistema operativo.
-	\item Los medios de ejecución no se proveen por parte del diseñador del subsistema.
-	\item Una notación declarativa es mas natural ya que los privilegios de acceso están relacionados a los conceptos lingüisticos de los tipos de dato.
+	\item La protecci'on se independiza de las facilidades provistas por el sistema operativo.
+	\item Los medios de ejecuci'on no se proveen por parte del diseñador del subsistema.
+	\item Una notaci'on declarativa es mas natural ya que los privilegios de acceso est'an relacionados a los conceptos lingüisticos de los tipos de dato.
 \end{itemize}
-(léase tipos de datos como los objetos a restringir, al menos es lo que yo entendí).
+(l'ease tipos de datos como los objetos a restringir, al menos es lo que yo entend'i).
 
-Todos los metodos de protección dependen en cierto grado de la implementación de la protección del sistema operativo. La principal distinción entre tener una buena implementación en el sistema operativo es la seguridad de la protección brindada por el kernel, ya que los mecanismos se basan en como opera el sistema (un compilador puede asegurar que no hay huecos en el soft pero no que el archivo en ejecución no mute estas protecciones).
+Todos los metodos de protecci'on dependen en cierto grado de la implementaci'on de la protecci'on del sistema operativo. La principal distinci'on entre tener una buena implementaci'on en el sistema operativo es la seguridad de la protecci'on brindada por el kernel, ya que los mecanismos se basan en como opera el sistema (un compilador puede asegurar que no hay huecos en el soft pero no que el archivo en ejecuci'on no mute estas protecciones).
 
-\textbf{Seguridad}: Mas relevante en el kernel, a nivel compilación se basa en la correcta traducción, mecanismos de protección de segmentos para el manejo del almacenamiento y la seguridad de los archivos de los que se carga el programa.
+\textbf{Seguridad}: Mas relevante en el kernel, a nivel compilaci'on se basa en la correcta traducci'on, mecanismos de protecci'on de segmentos para el manejo del almacenamiento y la seguridad de los archivos de los que se carga el programa.
 
-\textbf{Flexibilidad}: Hay muchos limites a nivel kernel para implementar políticas especificas de usuarios y es muy costoso la modificación del kernel. En cambio, a nivel lenguaje la modificación afecta menos al sistema general.
+\textbf{Flexibilidad}: Hay muchos limites a nivel kernel para implementar pol'iticas especificas de usuarios y es muy costoso la modificaci'on del kernel. En cambio, a nivel lenguaje la modificaci'on afecta menos al sistema general.
 
-\textbf{Eficiencia}: La ejecución de protección por hardware es la mas eficiente. Sin embargo, soporte del software en necesario y un compilador inteligente puede evitar sobreprocesamiento por parte del kernel.
+\textbf{Eficiencia}: La ejecuci'on de protecci'on por hardware es la mas eficiente. Sin embargo, soporte del software en necesario y un compilador inteligente puede evitar sobreprocesamiento por parte del kernel.
 
 \subsection{Resumen}
-La especificación de la protección en un lenguaje provee una descripción de las políticas en un alto nivel. la implementación provee protección no brindada por el hardware y se pueden interpretar llamadas a rutinas de protección en el kernel.
+La especificaci'on de la protecci'on en un lenguaje provee una descripci'on de las pol'iticas en un alto nivel. la implementaci'on provee protecci'on no brindada por el hardware y se pueden interpretar llamadas a rutinas de protecci'on en el kernel.
 
 %
 %
@@ -145,31 +145,31 @@ La especificación de la protección en un lenguaje provee una descripción de las 
 
 \subsection{Seguridad}
 
-Seguridad, a diferencia de protección, no solo requiere una protección adecuada del sistema, sino que también se deben considerar factores externos. Se debe protejer de uso sin autorización, destrucción o alteración intencional o inconsistencias accidentales.
+Seguridad, a diferencia de protecci'on, no solo requiere una protecci'on adecuada del sistema, sino que tambi'en se deben considerar factores externos. Se debe protejer de uso sin autorizaci'on, destrucci'on o alteraci'on intencional o inconsistencias accidentales.
 
 \subsection{El problema de la seguridad}
 
 Un sistema se dice seguro si sus recursos se acceden y utilizan como corresponde bajo cualquier circunstancia.
-Violaciones de seguridad pueden ser maliciosas o accidentales. las maliciosas se categorizan como lectura, modificación o destrucción de información (desautorizada).
+Violaciones de seguridad pueden ser maliciosas o accidentales. las maliciosas se categorizan como lectura, modificaci'on o destrucci'on de informaci'on (desautorizada).
 
-No es posible una protección absoluta, solo aumentar la dificultad de acceso lo mas posible.
-Para proteger el sistema se deben tomas 2 medidas de seguridad física (el lugar donde esta el hardware) y humana (que una persona de accesos a otro sin autorización). La seguridad que vamos a estudiar es a nivel operativo, la cual queda insignificante ante una falla de los dos aspectos mencionados.
+No es posible una protecci'on absoluta, solo aumentar la dificultad de acceso lo mas posible.
+Para proteger el sistema se deben tomas 2 medidas de seguridad f'isica (el lugar donde esta el hardware) y humana (que una persona de accesos a otro sin autorizaci'on). La seguridad que vamos a estudiar es a nivel operativo, la cual queda insignificante ante una falla de los dos aspectos mencionados.
 
-\subsection{Autentificación}
+\subsection{Autentificaci'on}
 
-La habilidad de identificar un usuario. Hay 3 aspectos: posesión (llave o tarjeta), conocimiento (identificador o contraseña) y atributos (huella digital, firma).
+La habilidad de identificar un usuario. Hay 3 aspectos: posesi'on (llave o tarjeta), conocimiento (identificador o contraseña) y atributos (huella digital, firma).
 Password (contraseña)
 
-Es muy flexible, se puede asignar a un usuario o a recursos específicos. Es muy común y de concepto sencillo.
-Las vulneravilidades pueden ser varias. Un password sencillo puede ser adivinado o encontrado por fuerza bruta. Un password complicado (mayúsculas, minúsculas, números y símbolos) y largo puede ser escrito por el usuario. Visualización del password, ya sea mirando el teclado o un método espía por medio de una red. Se pueden proponer cambios de password periódicos, incluso sin dejar repetir los N últimos como metodos de seguridad. Si los password se comparten puede ser complicado identificar el origen de la infracción. Los password pueden ser elegidos por los usuarios o generados automáticamente (mas difícil de recordar).
+Es muy flexible, se puede asignar a un usuario o a recursos espec'ificos. Es muy com'un y de concepto sencillo.
+Las vulneravilidades pueden ser varias. Un password sencillo puede ser adivinado o encontrado por fuerza bruta. Un password complicado (may'usculas, min'usculas, n'umeros y s'imbolos) y largo puede ser escrito por el usuario. Visualizaci'on del password, ya sea mirando el teclado o un m'etodo esp'ia por medio de una red. Se pueden proponer cambios de password peri'odicos, incluso sin dejar repetir los N 'ultimos como metodos de seguridad. Si los password se comparten puede ser complicado identificar el origen de la infracci'on. Los password pueden ser elegidos por los usuarios o generados autom'aticamente (mas dif'icil de recordar).
 
 \subsection{Password encriptados}
-Se utiliza una función fácil de ejecutar pero difícil de invertir. La tabla con los password no necesita ser protegida, sin embargo, teniendo la función se puede realizar fuerza bruta para comparar los resultados con la tabla.
+Se utiliza una funci'on f'acil de ejecutar pero dif'icil de invertir. La tabla con los password no necesita ser protegida, sin embargo, teniendo la funci'on se puede realizar fuerza bruta para comparar los resultados con la tabla.
 
 \textbf{Password de una vez}: 
-Este método utiliza un secreto y una semilla. El sistema realiza una pregunta al usuario utilizando la semilla y este contesta utilizando el secreto. El sistema conoce también el secreto y puede calcular el resultado para compararlo con el que dio el usuario. Este método es muy efectivo para evitar capturas de password, ya que todas las veces se genera un nuevo password al cambiar la semilla(ej: secreto: fn cuadrado, semilla: 2, respuesta: 4). Una variante puede ser una lista de password que se utilizan en orden.
+Este m'etodo utiliza un secreto y una semilla. El sistema realiza una pregunta al usuario utilizando la semilla y este contesta utilizando el secreto. El sistema conoce tambi'en el secreto y puede calcular el resultado para compararlo con el que dio el usuario. Este m'etodo es muy efectivo para evitar capturas de password, ya que todas las veces se genera un nuevo password al cambiar la semilla(ej: secreto: fn cuadrado, semilla: 2, respuesta: 4). Una variante puede ser una lista de password que se utilizan en orden.
 
-\textbf{Utilización de programas}: 
+\textbf{Utilizaci'on de programas}: 
 Un programa escrito por una persona puede ser utilizado por otra.
 
 \textbf{Caballo de Troya}:
@@ -178,25 +178,25 @@ Un programa que trata de ejecutarse en un dominio con mayor permiso causando qui
 \textbf{Puerta trampa (trap door)}:
  Huecos dejados de forma intencionada por el productor de un software ara utilizarlos mas tarde. Una puerta de entrada mus inteligente incluso puede estar en un compilador.
 
-\textbf{Utilización del sistema}:
-Los sistemas operativos proveen la posibilidad de que un proceso ejecute otro proceso, esto posibilita dos tipos de mala utilización.
+\textbf{Utilizaci'on del sistema}:
+Los sistemas operativos proveen la posibilidad de que un proceso ejecute otro proceso, esto posibilita dos tipos de mala utilizaci'on.
 
 \textbf{Gusanos}:
 Los gusanos utilizan estos metodos para reproducirse copiandose a si mismo tomando los recursos del sistema y no permitiendo el uso de ellos por el usuario. Estos son muy peligrosos ya que pueden reproducirse incluso a travez de la red.
 
 \textbf{Virus}:
-Un virus es un fragmento de codigo que se agrega a un programa con la finalidad de dañar o destruir información. La diferencia principal con el gusano es que el virus no es una entidad autosuficiente. Los principales afectados son los usuarios de microcomputadoras. Los antivirus son una forma efectiva para controlarlos, estos buscan patrones de ejecución utilizados por los virus en los programas y quitan esos fragmentos de codigo.
+Un virus es un fragmento de codigo que se agrega a un programa con la finalidad de dañar o destruir informaci'on. La diferencia principal con el gusano es que el virus no es una entidad autosuficiente. Los principales afectados son los usuarios de microcomputadoras. Los antivirus son una forma efectiva para controlarlos, estos buscan patrones de ejecuci'on utilizados por los virus en los programas y quitan esos fragmentos de codigo.
 
-Un metodo mas efectivo es la prevención o utilización de mecanismos para verificar la consistencia de los programas (ej. contrar el tamaño de los ejecutables y notificar los cambios)
+Un metodo mas efectivo es la prevenci'on o utilizaci'on de mecanismos para verificar la consistencia de los programas (ej. contrar el tamaño de los ejecutables y notificar los cambios)
 
-\subsubsection{Utilización de monitoreo}
+\subsubsection{Utilizaci'on de monitoreo}
 Pueden verse 2 aspectos, revisar patrones sospechosos (fallas repetidas de password) o llevar una bitacora (log) de los sucesos.
 
 Otro metodo es realizar revisiones frecuentes y reparar automaticamente o avisar sobre aspectos irregulares:
 \begin{enumerate}
 	\item Password cortos
-	\item Seteo de id sin autorización a un programa
-	\item Programas nuevos sin autorización
+	\item Seteo de id sin autorizaci'on a un programa
+	\item Programas nuevos sin autorizaci'on
 	\item Procesos largos que no se esperaban
 	\item Protecciones inadecuadas en directorios de usuario y sistema
 	\item Protecciones inadecuadas en archivos privilegiados (lista de password, kernel)
@@ -204,7 +204,7 @@ Otro metodo es realizar revisiones frecuentes y reparar automaticamente o avisar
 	\item Cambios en programas del sistema encontrados por checkeo de suma (checksum)
 \end{enumerate}
 
-Otro problema es la conexion remota a un sistema. Una protección de esto es la utilizacion de un firewall, es un interlocutor entre 2 sistemas filtrando la información que intercambian.
+Otro problema es la conexion remota a un sistema. Una protecci'on de esto es la utilizacion de un firewall, es un interlocutor entre 2 sistemas filtrando la informaci'on que intercambian.
 
-\subsection{Encriptación}
+\subsection{Encriptaci'on}
 TODO...
