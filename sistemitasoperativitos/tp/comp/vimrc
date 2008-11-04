@@ -1,0 +1,10 @@
+autocmd FileType php map <F2> :w<CR> :!php -l  %<CR>| map! <F2> <Esc> <F2>
+set bg=dark
+set ts=4
+set shiftwidth=4
+map <F3> :w<CR> :bN<CR>
+map <F4> :w<CR> :bn<CR>
+set syntax=on
+syntax on
+set foldmethod=syntax
+
