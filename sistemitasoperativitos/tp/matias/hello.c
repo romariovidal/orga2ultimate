@@ -33,9 +33,9 @@ module_init(hello_init);
 module_exit(hello_exit);
 
 int escribiendo(struct file *filp, const char __user *buff, unsigned long len, void *data){
-    printk(KERN_ALERT "Me escribieron \n");
+    printk(KERN_ALERT "Me escribieron %s\n", buff);
 
-	return 0;
+	return len;
 }
 
 /* Inicializacion */
