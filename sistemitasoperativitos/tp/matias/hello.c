@@ -11,8 +11,11 @@
 #include <linux/tty.h>
 #include <linux/kd.h>
 #include <linux/console_struct.h>
+#include <linux/ioctl.h>
+#include <linux/fcntl.h>
 
 #define MODULE_NAME "holahola"
+#define ERROR -1
 
 /* Prototipos de las funciones de inicializacion y destruccion */
 static int __init hello_init(void);
@@ -25,6 +28,7 @@ static struct proc_dir_entry *example_dir, *mi_archivo;
 
 struct datos;
 
+int fd; /* File descriptor for console (/dev/tty/) */
 struct tty_driver *mi_driver;
 #define TODOS_ON 0x07
 #define RESTORE_LEDS 0xFF
@@ -32,8 +36,69 @@ struct tty_driver *mi_driver;
 module_init(hello_init);
 module_exit(hello_exit);
 
+int usandoLaIOCTL(int valor){
+/* Definidas en linux/kd.h
+ * 0x1 LED_SCR el de Scroll Lock
+ * 0x2 LED_NUM el de Numeric lock
+ * 0x4 LED_CAP el de Caps Lock
+ */
+
+	if ((fd = open("/dev/console", O_NOCTTY)) == ERROR) {
+		printk(KERN_ALERT "Error al abrir la consola\n");
+	 	return -1;
+	}
+
+	if ((ioctl(fd, KDSETLED, valor)) == ERROR) {
+		printk(KERN_ALERT "Error al escribir las luces\n");
+		close(fd);
+	 	return -1;
+	}
+		
+	close(fd);
+	return 0;
+}
+
+
 int escribiendo(struct file *filp, const char __user *buff, unsigned long len, void *data){
-    printk(KERN_ALERT "Me escribieron %s\n", buff);
+    printk(KERN_ALERT "Me escribieron %s - y len es %lu\n", buff, len);
+    printk(KERN_ALERT "Len es %lu\n", len);
+    printk(KERN_ALERT "Pos 0 es %c\n", buff[0]);
+    printk(KERN_ALERT "Pos Pos 1s %c\n", buff[1]);
+    printk(KERN_ALERT "Y???\n");
+	//char c = buff[0];
+	if(len>2){
+		printk(KERN_ALERT "Escribi'o mal las opciones, debe poner un entero entre 0 y 7 - Sale por len\n");
+		return len;
+	}	
+	switch (buff[0]){
+		case '0':
+			printk(KERN_ALERT "Apagando todo\n");
+			break;
+		case '1':
+			printk(KERN_ALERT "LED_SCR on\n");
+			break;
+		case '2':
+			printk(KERN_ALERT "LED_NUM on\n");
+			break;
+		case '3':
+			printk(KERN_ALERT "LED_NUM + LED_SCR on\n");
+			break;
+		case '4':
+			printk(KERN_ALERT "LED_CAP on\n");
+			break;
+		case '5':
+			printk(KERN_ALERT "LED_CAP + LED_SCR on \n");
+			break;
+		case '6':
+			printk(KERN_ALERT "LED_CAP + LED_NUM on\n");
+			break;
+		case '7':
+			printk(KERN_ALERT "LED_CAP + LED_NUM + LED_SCR on\n");
+			break;
+		default:
+			printk(KERN_ALERT "Escribi'o mal las opciones, debe poner un entero entre 0 y 7\n");
+			break;
+	}
 
 	return len;
 }
@@ -64,7 +129,7 @@ static int __init hello_init() {
 		ret = -ENOMEM;
 		goto no_file;		
 	} else {
-		printk(KERN_ALERT "GOLAZO CHAB'ON!\n");
+		printk(KERN_ALERT "GOLAZO CHAB'ON! Que puto\n");
 	} 
 
 	mi_archivo->write_proc = escribiendo;
