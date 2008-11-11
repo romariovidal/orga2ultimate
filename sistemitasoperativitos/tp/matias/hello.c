@@ -8,11 +8,10 @@
 #include <linux/kernel.h>
 #include <linux/proc_fs.h>
 #include <linux/init.h>
-#include <linux/tty.h>
-#include <linux/kd.h>
-#include <linux/console_struct.h>
-#include <linux/ioctl.h>
-#include <linux/fcntl.h>
+#include <linux/tty.h>			/* fg_console, MAX_NR_CONSOLES*/
+#include <linux/vt_kern.h>		/* fg_console, MAX_NR_CONSOLES*/
+#include <linux/kd.h>			/* KDSETLED */
+#include <linux/console_struct.h>	/* vc_cons*/
 
 #define MODULE_NAME "holahola"
 #define ERROR -1
@@ -42,19 +41,8 @@ int usandoLaIOCTL(int valor){
  * 0x2 LED_NUM el de Numeric lock
  * 0x4 LED_CAP el de Caps Lock
  */
-
-	if ((fd = open("/dev/console", O_NOCTTY)) == ERROR) {
-		printk(KERN_ALERT "Error al abrir la consola\n");
-	 	return -1;
-	}
-
-	if ((ioctl(fd, KDSETLED, valor)) == ERROR) {
-		printk(KERN_ALERT "Error al escribir las luces\n");
-		close(fd);
-	 	return -1;
-	}
-		
-	close(fd);
+	(mi_driver->ioctl) (vc_cons[fg_console].d->vc_tty, 
+		NULL, KDSETLED,valor);
 	return 0;
 }
 
@@ -73,27 +61,35 @@ int escribiendo(struct file *filp, const char __user *buff, unsigned long len, v
 	switch (buff[0]){
 		case '0':
 			printk(KERN_ALERT "Apagando todo\n");
+			usandoLaIOCTL(0);
 			break;
 		case '1':
 			printk(KERN_ALERT "LED_SCR on\n");
+			usandoLaIOCTL(1);
 			break;
 		case '2':
 			printk(KERN_ALERT "LED_NUM on\n");
+			usandoLaIOCTL(2);
 			break;
 		case '3':
 			printk(KERN_ALERT "LED_NUM + LED_SCR on\n");
+			usandoLaIOCTL(3);
 			break;
 		case '4':
 			printk(KERN_ALERT "LED_CAP on\n");
+			usandoLaIOCTL(4);
 			break;
 		case '5':
 			printk(KERN_ALERT "LED_CAP + LED_SCR on \n");
+			usandoLaIOCTL(5);
 			break;
 		case '6':
 			printk(KERN_ALERT "LED_CAP + LED_NUM on\n");
+			usandoLaIOCTL(6);
 			break;
 		case '7':
 			printk(KERN_ALERT "LED_CAP + LED_NUM + LED_SCR on\n");
+			usandoLaIOCTL(7);
 			break;
 		default:
 			printk(KERN_ALERT "Escribi'o mal las opciones, debe poner un entero entre 0 y 7\n");
@@ -133,6 +129,8 @@ static int __init hello_init() {
 	} 
 
 	mi_archivo->write_proc = escribiendo;
+
+	mi_driver = vc_cons[fg_console].d->vc_tty->driver;
 
 	return 0;
 
