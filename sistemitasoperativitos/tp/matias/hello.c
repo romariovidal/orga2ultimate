@@ -41,18 +41,19 @@ int usandoLaIOCTL(int valor){
  * 0x2 LED_NUM el de Numeric lock
  * 0x4 LED_CAP el de Caps Lock
  */
+	/* Para los leds*/
 	(mi_driver->ioctl) (vc_cons[fg_console].d->vc_tty, 
 		NULL, KDSETLED,valor);
+
+	/* Para los flags, no la luz */
+//	(mi_driver->ioctl) (vc_cons[fg_console].d->vc_tty, 
+//		NULL, KDSKBLED,valor);
 	return 0;
 }
 
 
 int escribiendo(struct file *filp, const char __user *buff, unsigned long len, void *data){
     printk(KERN_ALERT "Me escribieron %s - y len es %lu\n", buff, len);
-    printk(KERN_ALERT "Len es %lu\n", len);
-    printk(KERN_ALERT "Pos 0 es %c\n", buff[0]);
-    printk(KERN_ALERT "Pos Pos 1s %c\n", buff[1]);
-    printk(KERN_ALERT "Y???\n");
 	//char c = buff[0];
 	if(len>2){
 		printk(KERN_ALERT "Escribi'o mal las opciones, debe poner un entero entre 0 y 7 - Sale por len\n");
