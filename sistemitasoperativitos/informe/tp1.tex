@@ -1,0 +1,49 @@
+\documentclass[a4paper,spanish]{article}
+\usepackage[activeacute]{babel}
+\usepackage{fancyhdr}
+\usepackage{ecarat}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[all]{xy}
+\usepackage{clrscode}
+
+\oddsidemargin 0in
+\textwidth 6.2in
+\topmargin 0in
+\addtolength{\topmargin}{-.5in}
+\textheight 10in
+\parskip=1ex
+\pagestyle{fancy}
+\newcommand{\real}{\hbox{\bf R}}
+
+\begin{document}
+
+\input{caratula.tex}
+
+\tableofcontents
+\newpage
+
+\input{intro.tex}
+\input{desarrollo.tex}
+\pagebreak
+\input{resultados.tex}
+\pagebreak
+\input{discusion.tex}
+\input{conclusiones.tex}
+\newpage
+\input{codigo.tex}
+\newpage
+\appendix
+\input{ejecucion.tex}
+
+%\newpage
+%\input{enunciado.tex}
+
+\begin{thebibliography}{9}
+\addcontentsline{toc}{section}{Referencias}
+\bibitem[BUR97]{BUR97}Richard L. Burden, J. Douglas Faires - Numerical Analysis 6th Edition
+\end{thebibliography}
+
+\label{fin}
+\end{document}
