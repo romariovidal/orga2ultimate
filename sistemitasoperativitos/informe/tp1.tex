@@ -1,12 +1,14 @@
 \documentclass[a4paper,spanish]{article}
-\usepackage[activeacute]{babel}
+\usepackage[spanish, activeacute]{babel}
 \usepackage{fancyhdr}
 \usepackage{ecarat}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{listings}
-\usepackage[all]{xy}
+\usepackage[all]{xy} 
 \usepackage{clrscode}
+\usepackage{moreverb}
+
 
 \oddsidemargin 0in
 \textwidth 6.2in
@@ -16,6 +18,12 @@
 \parskip=1ex
 \pagestyle{fancy}
 \newcommand{\real}{\hbox{\bf R}}
+
+% \CodigoF{<Titulo>}{<Archivo>}
+\newcommand{\CodigoF}[2]{
+  \subsubsection{#1}
+  \verbatimtabinput[4]{#2}
+}
 
 \begin{document}
 
@@ -34,9 +42,9 @@
 \newpage
 \input{codigo.tex}
 \newpage
-\appendix
-\input{ejecucion.tex}
+\input{consignas.tex}
 
+\appendix
 %\newpage
 %\input{enunciado.tex}
 
