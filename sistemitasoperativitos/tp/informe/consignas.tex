@@ -1,0 +1,306 @@
+\section{Consignas}
+
+Antes de empezar, ejecute:
+
+\texttt{sudo apt-get install man-db manpages manpages-dev}
+
+De esta manera tendr'a acceso a ayuda en l'inea ejecutando:
+
+\texttt{man <comando>}
+
+Por ejemplo:
+
+\texttt{man cp}
+
+Puede adem'as instalar la versi'on en castellano de la ayuda ejecutando:
+
+\texttt{sudo apt-get install manpages-es}
+
+Para acceder a la ayuda en castellano ejecute por ejemplo:
+
+\texttt{man -L es cp}
+
+Tenga presente que no todos los comandos poseen ayuda en castellano.
+
+\texttt{sudo} permite a usuarios normales ejecutar comandos que requieren permisos de administrador.
+Al ejecutar un comando con \texttt{sudo} el sistema le pedir'a su password, y no el password del administrador
+(llamado \texttt{root} en Linux, siguiendo la tradici'on de Unix). Esto sucede ya que el sistema permite que
+ciertos usuarios (que deber'ian corresponderse con usuarios ``privilegiados'' del sistema) puedan utilizar \texttt{sudo}
+ingresando solamente su propio password. El usuario por defecto creado en una instalaci'on de Ubuntu tiene este permiso
+y por lo tanto en Ubuntu no es necesario una cuenta de administrador o \texttt{root}.
+
+\texttt{apt-get} es el manejador de paquetes de la distribuci'on Ubuntu. Permite instalar, actualizar y desinstalar
+programas. M'as adelante lo utilizaremos para instalar las herramientas necesarias para compilar programas en
+Linux.
+
+Si se encontrara detr'as de un proxy, antes de utilizar \texttt{apt-get} debe configurar el proxy. Ejecute el siguiente
+comando:
+
+\small
+\texttt{sudo echo ''Acquire::http::Proxy $\backslash$''http://proxy.uba.ar:8080$\backslash$'';'' > /etc/apt/apt.conf}
+\normalsize
+
+\subsection{Comandos b\'asicos de Unix}
+
+\begin{enumerate}
+
+\item \texttt{pwd} Indique qu'e directorio pasa a ser su directorio actual si ejecuta:
+
+\begin{enumerate}
+\item \texttt{cd /usr/bin}
+\item \texttt{cd}
+\item ?`C'omo explica el punto anterior?
+\end{enumerate}
+
+\item \texttt{cat} ?`Cu'al es el contenido del archivo \texttt{/home/<usuario>/.profile}?
+
+\item \texttt{find} Liste \textbf{todos} los archivos que comienzan con \texttt{vmlinuz}.
+
+Estos archivos son im'agenes del kernel Linux.
+
+\item \texttt{mkdir} Genere un directorio \texttt{/home/<usuario>/tp}.
+
+\item \texttt{cp} Copie el archivo \texttt{/etc/passwd} al directorio \texttt{/home/<usuario>/tp}.
+
+\item \texttt{chgrp} Cambie el grupo del archivo \texttt{/home/<usuario>/tp/passwd} para que sea el suyo.
+
+\item \texttt{chown} Cambie el due'no del archivo \texttt{/home/<usuario>/tp/passwd} para que sea su usuario.
+
+\item \texttt{chmod} Cambie los permisos del archivo \texttt{/home/<usuario>/tp/passwd} para que:
+
+\begin{itemize}
+\item el propietario tenga permisos de lectura, escritura y ejecuci'on
+\item el grupo tenga s'olo permisos de lectura y ejecuci'on
+\item el resto tenga s'olo permisos de ejecuci'on
+\end{itemize}
+
+\item \texttt{grep}
+
+Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc/hosts}.
+
+Muestre todas las l'ineas que tengan el texto ``POSIX'' de todos los archivos (incluyendo subdirectorios) en \texttt{/etc}.
+Evite los archivos binarios y aquellos archivos y directorios que no tienen permiso de lectura para su usuario.
+
+\item \texttt{passwd} Cambie su password.
+
+\item \texttt{rm} Borre el archivo \texttt{/home/<usuario>/tp/passwd}
+
+\item \texttt{ln}
+
+Enlazar el archivo \texttt{/etc/passwd} a los archivos \texttt{/tmp/contra1} y \texttt{/tmp/contra2}.
+
+Hacer un \texttt{ls -l} para ver cuantos enlaces tiene \texttt{/etc/passwd}.
+
+Estos enlaces se llaman ``hardlinks''. Cada nuevo enlace referencia el mismo espacio ocupado del disco r'igido,
+y por lo tanto cada hardlink es igual de representativo de esos bytes ocupados del disco r'igido.
+El espacio ocupado solamente se liberar'a cuando todos los enlaces hayan sido borrados.
+
+Ahora enlace el archivo \texttt{/etc/passwd} de manera ``soft'' al archivo \texttt{contra3}.
+
+Verifique con \texttt{ls -l} que no aument'o la cantidad de enlaces de \texttt{/etc/passwd}.
+
+Estos enlaces se llaman ``softlinks'' y apuntan no a los bytes del disco r'igido sino a la ruta del archivo a ser enlazado.
+Operar sobre el softlink es igual que operar sobre el archivo, sin embargo los softlinks no cuentan en la cantidad de
+enlaces (ya que no apuntan a los bytes ocupados del disco r'igido) y pueden ser borrados sin afectar al archivo original,
+aunque si se borra el archivo original el softlink quedar'a hu'erfano y no apuntar'a a nada.
+
+\item \texttt{mount}
+
+Monte el CD-ROM de instalaci'on de Ubuntu JeOS y liste su contenido.
+
+Para hacer esto deber'a especificar la ISO de instalaci'on de Ubuntu JeOS como CD-ROM de la m'aquina virtual.
+Si bien puede hacer esto como lo hizo para instalar el sistema, si la m'aquina virtual est'a corriendo debe hacer click
+derecho en el 'icono con forma de CD-ROM en la esquina inferior derecha de la m'aquina virtual, y seleccionar
+\textbf{CD/DVD-ROM Image...} (ver figura \ref{isocdrom3}). En la ventana que aparece seleccione la ISO de instalaci'on
+(ver figura \ref{isocdrom4}).
+
+%\Imagen{vb_ubuntu/vb_isocdrom3.png}{7cm}{Usando una imagen ISO con la m'aquina virtual corriendo.}{isocdrom3}
+%\Imagen{vb_ubuntu/vb_isocdrom4.png}{7cm}{Seleccionando la ISO de instalaci'on.}{isocdrom4}
+
+Presente los filesystems que tiene montados.
+
+\item \texttt{df} ?`Qu'e espacio libre tiene cada uno de los filesystems montados?
+
+\item \texttt{ps} ?`Cu'antos procesos de usuario tiene ejecutando? Indique cu'antos son del sistema.
+
+\item \texttt{umount} Desmonte el CD-ROM de instalaci'on de Ubuntu JeOS.
+
+\item \texttt{uptime} ?`Cuanto tiempo lleva ejecutando su m'aquina virtual?
+
+\item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
+
+\end{enumerate}
+
+\subsection{Salida est\'andar y pipes}
+
+\begin{enumerate}
+
+\item STDOUT
+
+\begin{enumerate}
+
+\item Conserve en el archivo \texttt{/home/<usuario>/tp/config} la salida del comando \texttt{ls} que muestra todos los
+archivos del directorio \texttt{/etc} y de los subdirectorios bajo \texttt{/etc}.
+
+\item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
+
+\item Agregue el contenido, ordenado alfab'eticamente, del archivo \texttt{/etc/passwd} al final del
+archivo \texttt{/home/<usuario>/tp/config}.
+
+\item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
+
+\end{enumerate}
+
+\item Pipes
+
+\begin{enumerate}
+
+\item Liste en forma amplia los archivos del directorio \texttt{/usr/bin} que comiencen con la letra ``a''.
+Del resultado obtenido, seleccione las l'ineas que contienen el texto \texttt{apt} e informe la cantidad de caracteres,
+palabras y l'ineas.
+
+Est'a prohibido, en este 'item, usar archivos temporales de trabajo.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\subsection{Scripting}
+
+Escriba un script de shell que sincronice dos carpetas. El script debe recibir las dos carpetas (origen y destino, en ese
+orden) desde la l'inea de comando, o preguntarlas interactivamente al usuario en caso de no recibirlas. Adem'as, debe
+aceptar un modificador \texttt{-r} que indica modo de operaci'on recursivo.
+
+Una vez conocidas las dos carpetas con las que se operar'a, el script deber'a copiar todos los archivos de la carpeta origen
+que no est'en presentes en la carpeta destino, y adem'as tambi'en deber'a copiar todos los archivos presentes en ambas
+carpetas que tengan una fecha de modificaci'on posterior en la carpeta origen que en la carpeta destino. De esta manera, al
+ejecutar el script, estar'a seguro de que la carpeta destino contiene toda la informaci'on de la carpeta origen, excepto lo
+que fue modificado posteriormente en la carpeta destino.
+
+El modificador \texttt{-r} indica al script realizar la sincronizaci'on tambi'en con los archivos de todos los
+subdirectorios de la carpetas origen y destino.
+
+\paragraph{Sugerencia}
+
+Recuerde que generalmente el esp'iritu de los scripts es proveer la m'inima l'ogica necesaria alrededor de otros programas
+ya presentes en el sistema que puedan proveer parte de la funcionalidad requerida para resolver un determinado problema.
+
+\subsection{Ejecuci\'on de procesos en background}
+
+Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina virtual:
+
+\begin{itemize}
+\item \texttt{nano}: editor de texto.
+\item \texttt{mc}: manejador de archivos.
+\item \texttt{gcc}: compilador de C.
+\item \texttt{libc6-dev}: biblioteca est'andar de C.
+\end{itemize}
+
+Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}. El programa compilado debe llamarse
+\texttt{loop}.
+
+\CodigoF{../matias/loop.c}{loop.c}
+
+\begin{enumerate}
+\item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
+\item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
+\end{enumerate}
+
+\subsection{IPC y sincronizaci\'on}
+
+\subsubsection{Pipes}
+
+Muestre con un ejemplo en lenguaje C como realizar exclusi'on mutua entre dos procesos utilizando un s'olo pipe.
+
+\paragraph{Sugerencia}
+
+Revise la ayuda de la llamada al sistema \texttt{pipe} para construir el pipe y de \texttt{fork} para crear
+nuevos procesos.
+
+\subsubsection{Threads}
+
+Antes de resolver este ejercicio instale el paquete \texttt{glibc-doc}.
+
+Resuelva el problema de productor/consumidor utilizando threads.
+
+\paragraph{Sugerencia}
+
+Revise la ayuda de \texttt{pthreads}, la implementaci'on de threads en Linux, para conocer los mecanismos de creaci'on y
+destrucci'on de threads. Adem'as, \texttt{pthreads} provee mecanismos de sincronizaci'on que le ayudar'an a resolver este
+ejercicio.
+
+\subsection{El kernel Linux}
+
+Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina virtual:
+
+\begin{itemize}
+\item \texttt{make}: utilidad para mantener grupos de programas.
+\item \texttt{linux-headers-<version>}: headers del kernel de Linux.
+\end{itemize}
+
+Sustituya \texttt{<version>} por el resultado del comando \texttt{uname -r}.
+
+\subsubsection{Funcionamiento del kernel Linux}
+
+\begin{enumerate}
+
+\item Describa la administraci'on del procesador utilizada por defecto en el kernel Linux.
+
+\item Describa la administraci'on de memoria utilizada por defecto en el kernel Linux.
+
+\item Describa el sistema de archivos utilizado en la distribuci'on de Linux que instal'o en la m'aquina virtual.
+?`Qu'e capas existen en el kernel Linux para soportar sistemas de archivos sobre dispositivos de bloques?
+
+\end{enumerate}
+
+\subsubsection{M'odulos de kernel}
+
+El kernel de Linux permite ser ampliado en \textbf{runtime} con m'odulos. Los m'odulos son objetos de c'odigo compilado
+que pueden ser insertados en runtime al kernel, siendo linkeados contra el kernel al momento de ser insertados. De esta
+manera puede ampliarser la funcionalidad del kernel en runtime, sin tener que incluir todo el c'odigo en el binario
+original.
+
+\subsubsection{Compilando un m'odulo de kernel}
+
+A continuaci'on compilaremos y probaremos un m'odulo de kernel muy simple. Este m'odulo simplemente escribe en la consola
+``Hola kernel!'' al ser insertado y ``Chau, kernel.'' al ser removido. Cree el siguiente m'odulo en el archivo
+\texttt{/home/<usuario>/tp/hello.c}.
+
+\CodigoF{../matias/hello.c}{hello.c}
+
+Para compilar este c'odigo deber'a construir una \textbf{Makefile}. Este archivo Makefile es utilizado luego por el
+comando \texttt{make} para compilar el m'odulo con las opciones correctas. En el mismo directorio donde se encuentra
+\texttt{hello.c} cree un archivo \texttt{Makefile} conteniendo:
+
+\CodigoF{../matias/Makefile}{Makefile}
+
+Luego ejecute:
+
+\texttt{make}
+
+Para compilar el m'odulo. Finalmente, pruebe insertar el m'odulo usando:
+
+\texttt{insmod hello.ko}
+
+Deber'ia ver el mensaje ``Hola kernel!'' en la consola. Quite el m'odulo usando:
+
+\texttt{rmmod hello.ko}
+
+Deber'ia ver el mensaje ``Chau, kernel''.
+
+\subsubsection{Un m'odulo propio}
+
+Escriba un m'odulo de kernel que permita controlar los LEDs del teclado \textbf{sin necesidad de escribir un programa 
+en lenguaje C}. El m'odulo deber'a permitir prender o apagar cada LED usando simplemente comandos del shell.
+
+Dado que la m'aquina virtual provista por VirtualBox no muestra el estado de los LEDs, la c'atedra provee abajo
+un programa que lo hace. Compile utilizando:
+
+\texttt{gcc -o check\_kbleds check\_kbleds.c}
+
+\CodigoF{../matias/check\_kbleds.c}{check_kbleds.c}
+
+\paragraph{Sugerencia}
+
+Haga que su m'odulo cree un archivo en \texttt{/proc} y que las escrituras a ese archivo controlen los LEDs utilizando 
+la IOCTL \texttt{KDSETLED} de la consola de Linux.

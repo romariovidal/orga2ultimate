@@ -1,0 +1,28 @@
+\section{Algoritmos y c'odigo relevante}
+\label{codigo}
+Se presentan a continuaci'on las partes del c'odigo m'as importantes: 
+Generaci'on de un Trazador C'ubico a partir de una tabla de puntos y la 
+funci'on que dice si un auto derrapa en una trayectoria.
+
+\lstset{
+	basicstyle=\small,
+	showstringspaces=false,
+ 	language=c,
+	keywordstyle=\bfseries,
+	stringstyle=\ttfamily,
+	tabsize=4
+	}
+
+\subsection{Splines Param'etricos}
+\begin{lstlisting}
+ParOrdenado Param::evaluar(double t) const
+{
+	/* Buscar en los splines x e y la evaluacion en t */
+	return ParOrdenado(_x.evaluar(t),_y.evaluar(t));
+}
+
+\end{lstlisting}
+
+
+\newpage
+

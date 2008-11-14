@@ -1,0 +1,62 @@
+\documentclass[a4paper,spanish]{article}
+\usepackage[spanish, activeacute]{babel}
+\usepackage{fancyhdr}
+\usepackage{ecarat}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[all]{xy} 
+\usepackage{clrscode}
+\usepackage{moreverb}
+
+\oddsidemargin 0in
+\textwidth 6.2in
+\topmargin 0in
+\addtolength{\topmargin}{-.5in}
+\textheight 10in
+\parskip=1ex
+\pagestyle{fancy}
+\newcommand{\real}{\hbox{\bf R}}
+
+% \CodigoF{<Titulo>}{<Archivo>}
+\newcommand{\CodigoF}[2]{
+  \subsubsection{#1}
+  \verbatimtabinput[4]{#2}
+}
+
+\newcommand{\resultadoTP}[1]{
+	\fboxsep 8pt
+	\framebox[15cm][l]{\texttt{#1}}
+	\fboxsep 0pt
+}
+
+\begin{document}
+
+\input{caratula.tex}
+
+\tableofcontents
+\newpage
+
+\input{intro.tex}
+\input{desarrollo.tex}
+\pagebreak
+\input{resultados.tex}
+\pagebreak
+\input{discusion.tex}
+\input{conclusiones.tex}
+\newpage
+\input{codigo.tex}
+\newpage
+\input{consignas.tex}
+
+\appendix
+%\newpage
+%\input{enunciado.tex}
+
+\begin{thebibliography}{9}
+\addcontentsline{toc}{section}{Referencias}
+\bibitem[BUR97]{BUR97}Richard L. Burden, J. Douglas Faires - Numerical Analysis 6th Edition
+\end{thebibliography}
+
+\label{fin}
+\end{document}
