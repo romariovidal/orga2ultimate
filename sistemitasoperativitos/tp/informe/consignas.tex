@@ -106,12 +106,14 @@ Estos archivos son im'agenes del kernel Linux.
 
 \item \texttt{chmod} Cambie los permisos del archivo \texttt{/home/<usuario>/tp/passwd} para que:
 
+\resultadoTPtexto{Antes de empezar el pr'oximo paso: \texttt{chmod 000 passwd} para limpiar los permisos originales.}
 \begin{itemize}
-\resultadoTPtexto{Antes de empezar: \texttt{chmod 000 passwd} para limpiar los permisos originales.}
 \item el propietario tenga permisos de lectura, escritura y ejecuci'on
 \resultadoTP{chmod u+r+w+x passwd}
+
 \item el grupo tenga s'olo permisos de lectura y ejecuci'on
 \resultadoTP{chmod g+r+x passwd}
+
 \item el resto tenga s'olo permisos de ejecuci'on
 \resultadoTP{chmod o+x passwd}
 \end{itemize}
@@ -130,8 +132,8 @@ Evite los archivos binarios y aquellos archivos y directorios que no tienen perm
 \begin{boxedverbatim}
 grep -R -I -s POSIX /etc/
 /etc/init.d/glibc.sh:                echo WARNING: POSIX threads library NPTL requires kernel version
-/etc/alternatives/updatedb:# What shell shoud we use?  We should use a POSIX-ish sh.
-/etc/security/limits.conf:#        - msgqueue - max memory used by POSIX message queues (bytes)
+/etc/alternatives/updatedb:\# What shell shoud we use?  We should use a POSIX-ish sh.
+/etc/security/limits.conf:\#        - msgqueue - max memory used by POSIX message queues (bytes)
 \end{boxedverbatim}
 
 \item \texttt{passwd} Cambie su password.
@@ -281,7 +283,7 @@ mlopez    5803  0.0  0.7   2644  1004 tty1     R+   18:53   0:00 ps -aux
 \resultadoTP{18:48:33 up  6:45,  2 users,  load average: 0.00, 0.00, 0.00}
 
 \item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
-\resultadoTP{uname -a:  Linux esparrago 2.6.24-19-virtual #1 SMP Wed Jun 18 15:52:10 UTC 2008 i686 GNU/Linux}
+\resultadoTP{uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC 2008 i686 GNU/Linux}
 
 \end{enumerate}
 
@@ -374,7 +376,7 @@ que fue modificado posteriormente en la carpeta destino.
 El modificador \texttt{-r} indica al script realizar la sincronizaci'on tambi'en con los archivos de todos los
 subdirectorios de la carpetas origen y destino.
 
-\codigo{../matias/codigo.tex}
+\CodigoF{../matias/pipe.c}{pipe.c}
 
 \paragraph{Sugerencia}
 
