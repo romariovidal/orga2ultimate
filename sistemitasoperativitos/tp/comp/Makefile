@@ -1,5 +1,4 @@
-
-obj-m = hello.o
+obj-m = moduloFlash.o
 
 KVERSION    = $(shell uname -r)
 all:

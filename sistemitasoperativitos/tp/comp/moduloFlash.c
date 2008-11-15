@@ -3,7 +3,7 @@
  */
 
 #include <linux/module.h>
-#include <linux/config.h>
+//#include <linux/config.h>
 #include <linux/init.h>
 #include <linux/tty.h>		/* For fg_console, MAX_NR_CONSOLES */
 #include <linux/kd.h>		/* For KDSETLED */
