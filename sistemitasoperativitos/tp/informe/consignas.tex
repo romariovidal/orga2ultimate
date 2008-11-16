@@ -461,11 +461,37 @@ Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina v
 Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}. El programa compilado debe llamarse
 \texttt{loop}.
 
+\begin{lastTwo}
+gcc -o loop loop.c
+\end{lastTwo}
+
 \CodigoF{loop.c}{../matias/loop.c}
 
 \begin{enumerate}
 \item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
+
+\begin{lastTwo}
+Imprime consecutivamente los n'umeros del 48 al 55.
+\end{lastTwo}
+
 \item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
+
+\begin{lastTwo}
+mlopez@esparrago:~/tp$ /home/mlopez/tp/loop > /dev/null &
+[1] 3880
+mlopez@esparrago:~/tp$ ps
+  PID TTY          TIME CMD
+ 3848 tty2     00:00:00 bash
+ 3880 tty2     00:00:09 loop
+ 3881 tty2     00:00:00 ps
+mlopez@esparrago:~/tp$ kill -9 3880
+mlopez@esparrago:~/tp$ ps
+  PID TTY          TIME CMD
+ 3848 tty2     00:00:00 bash
+ 3882 tty2     00:00:00 ps
+[1]+  Killed                  /home/mlopez/tp/loop > /dev/null
+\end{lastTwo}
+
 \end{enumerate}
 
 \subsection{IPC y sincronizaci\'on}
@@ -479,6 +505,8 @@ Muestre con un ejemplo en lenguaje C como realizar exclusi'on mutua entre dos pr
 Revise la ayuda de la llamada al sistema \texttt{pipe} para construir el pipe y de \texttt{fork} para crear
 nuevos procesos.
 
+\CodigoF{pipe.c}{../matias/pipe.c}
+
 \subsubsection{Threads}
 
 Antes de resolver este ejercicio instale el paquete \texttt{glibc-doc}.
@@ -490,6 +518,9 @@ Resuelva el problema de productor/consumidor utilizando threads.
 Revise la ayuda de \texttt{pthreads}, la implementaci'on de threads en Linux, para conocer los mecanismos de creaci'on y
 destrucci'on de threads. Adem'as, \texttt{pthreads} provee mecanismos de sincronizaci'on que le ayudar'an a resolver este
 ejercicio.
+
+
+\CodigoF{productorConsumidor.c}{../matias/productorConsumidor.c}
 
 \subsection{El kernel Linux}
 
