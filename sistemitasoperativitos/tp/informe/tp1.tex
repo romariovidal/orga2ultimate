@@ -9,6 +9,8 @@
 \usepackage{clrscode}
 \usepackage{moreverb}
 
+\usepackage{verbatimbox}
+
 \oddsidemargin 0in
 \textwidth 6.2in
 \topmargin 0in
@@ -24,17 +26,31 @@
   \verbatimtabinput[4]{#2}
 }
 
-\newcommand{\resultadoTP}[1]{
-	\fboxsep 8pt
-	\framebox[15cm][l]{\texttt{#1}}
-	\fboxsep 0pt
-}
+%\newcommand{\resultadoTP}[1]{
+%	\fboxsep 8pt
+%	\framebox[15cm][l]{\texttt{#1}}
+%	\fboxsep 0pt
+%}
 
-\newcommand{\resultadoTPtexto}[1]{
-	\fboxsep 8pt
-	\framebox[15cm][l]{\texttt{#1}}
-	\fboxsep 0pt
-}
+%\newcommand{\resultadoTPtexto}[1]{
+%	\fboxsep 8pt
+%	\framebox[15cm][l]{\texttt{#1}}
+%	\fboxsep 0pt
+%}
+
+%\newenvironment{fred}
+%{\minipage{15cm}\verbatim}
+%{\endverbatim\endminipage}
+
+%\newenvironment{last}
+%{\verbbox}
+%{\endverbbox \fbox{\theverbbox[t]}}
+
+\newenvironment{lastTwo}
+{\verbbox}
+{\endverbbox \rule{\linewidth}{0.1mm}\vspace{6pt}\\\theverbbox\\\rule{\linewidth}{0.1mm}}
+
+\fboxsep 4pt
 
 \begin{document}
 
@@ -43,16 +59,16 @@
 \tableofcontents
 \newpage
 
-\input{intro.tex}
-\input{desarrollo.tex}
-\pagebreak
-\input{resultados.tex}
-\pagebreak
-\input{discusion.tex}
-\input{conclusiones.tex}
-\newpage
-\input{codigo.tex}
-\newpage
+%\input{intro.tex}
+%\input{desarrollo.tex}
+%\pagebreak
+%\input{resultados.tex}
+%\pagebreak
+%\input{discusion.tex}
+%\input{conclusiones.tex}
+%\newpage
+%\input{codigo.tex}
+%\newpage
 \input{consignas.tex}
 
 \appendix
