@@ -1,1 +1,1 @@
-sudo rmmod hello.ko
+sudo rmmod cambiarLuces.ko

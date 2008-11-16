@@ -1,1 +1,1 @@
-sudo insmod hello.ko
+sudo insmod cambiarLuces.ko

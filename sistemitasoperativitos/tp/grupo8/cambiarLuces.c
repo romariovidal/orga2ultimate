@@ -26,8 +26,8 @@ struct tty_driver *mi_driver;
 /* Informamos al kernel que inicialize el modulo usando luces_init
  * y que antes de sacarlo use luces_exit
  */
-module_init(hello_init);
-module_exit(hello_exit);
+module_init(luces_init);
+module_exit(luces_exit);
 
 int usandoLaIOCTL(int valor){
 /* Definidas en linux/kd.h
@@ -130,7 +130,7 @@ no_dir:
     return ret;
 }
 /* Destruccion */
-static void __exit hello_exit() {
+static void __exit luces_exit() {
     printk(KERN_ALERT "Desmontando el m'odulo.\n");
 
 	remove_proc_entry("escribaAqui", mi_directorio);
