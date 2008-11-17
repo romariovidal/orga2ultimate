@@ -46,6 +46,20 @@
 %{\verbbox}
 %{\endverbbox \fbox{\theverbbox[t]}}
 
+\newcount\entrada
+\newcount\base
+\newif\ifgarb
+\def\imagenHoja{\entrada=\thepage \base=-11
+\loop
+    \ifnum\entrada<-\base \garbfalse
+        \else\garbtrue
+        \advance\entrada by \base\fi
+    \ifgarb%\number\entrada\\
+\repeat
+\advance\entrada by 1
+    \includegraphics[scale=0.40]{marios/m\number\entrada.png} 
+}
+
 \newenvironment{lastTwo}
 {\verbbox}
 {\endverbbox \rule{\linewidth}{0.1mm}\vspace{6pt}\\\theverbbox\\\rule{\linewidth}{0.1mm}}

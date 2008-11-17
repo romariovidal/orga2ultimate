@@ -22,30 +22,30 @@ int main(void)
         if(pidDelHijo != 0)
         {
 				/* Este es el proceso hijo */
-				printf("1ero 1\n");
+				printf("Hijo en el paso  1\n");
                 /* El hijo cierra la entrada del pipe */
                 close(fd[0]);
-				printf("1ero 2\n");
+				printf("Hijo en el paso  2\n");
                 /* Manda el "mensaje" atreaces de la salida del pipe */
                 write(fd[1], mensaje, strlen(mensaje));
-				printf("1ero 3\n");
+				printf("Hijo en el paso  3\n");
 				close(fd[1]);
-				printf("1ero 4\n");
+				printf("Hijo en el paso  4\n");
                 exit(0);
         }
         else
         {
 				/* Este es el proceso padre */
-				printf("2do 1\n");
+				printf("Padre en el paso 1\n");
                 /* El padre cierra la salida del pipe */
                 close(fd[1]);
 
-				printf("2do 2\n");
+				printf("Padre en el paso 2\n");
                 /* Lee la entrada del pipe */
                 res = read(fd[0], loMensajeado, sizeof(loMensajeado));
-				printf("2do 3\n");
+				printf("Padre en el paso 3\n");
                 printf("Mensaje recibido: %s\n", loMensajeado);
-				printf("2do 4\n");
+				printf("Padre en el paso 4\n");
 	
 				exit(0)
         }
