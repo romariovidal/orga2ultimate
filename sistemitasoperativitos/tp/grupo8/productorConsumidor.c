@@ -43,9 +43,6 @@ main()
 	char * mensaje11 ="k";
 	char * mensaje12 ="l";
 
-//   pthread_create( &thread1, NULL, &almacenar, mensaje1);
-//   pthread_create( &thread2, NULL, &retirar, mensaje2);
-
 	char * mensajeS21 = (char *) malloc(sizeof(char));
 	char * mensajeS22 = (char *) malloc(sizeof(char));
 	char * mensajeS23 = (char *) malloc(sizeof(char));
