@@ -164,7 +164,7 @@ void *almacenar(void *val)
 	if(n == MAX)
 	{
 		pthread_cond_wait( &buff_vacio_cond, &buff_mutex );
-   }
+	   }
 	char *mensaje = (char *)val;	
 	buffer[in] = *mensaje;
 	in++;
