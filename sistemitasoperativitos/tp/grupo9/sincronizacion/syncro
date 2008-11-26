@@ -49,8 +49,6 @@ do
 		then
 			#echo "---- El origen es mas nuevo, actualizar: \"$file\""			
 			cp -r $ORIGEN/$file $DESTINO
-			#else
-			#echo "---- El destino es mas nuevo, ignorar"
 		fi
 	else
 		#echo "copio archivo que no esta en el destino: \"$file\""
