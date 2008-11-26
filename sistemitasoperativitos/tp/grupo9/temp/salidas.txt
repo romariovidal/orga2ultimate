@@ -1,0 +1,135 @@
+@galois:~$ cd /usr/bin/
+tomas@galois:/usr/bin$ pwd
+/usr/bin
+tomas@galois:/usr/bin$ cd
+tomas@galois:~$ pwd
+/home/tomas
+tomas@galois:~$ echo $HOME
+/home/tomas
+@galois:~$ cat .profile
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+tomas@galois:~$ sudo find / -name vmlinuz*
+/vmlinuz
+/boot/vmlinuz-2.6.24-19-virtual
+tomas@galois:~$ mkdir tp
+tomas@galois:~$ ls
+bla  comp  local  salidas.txt  test  tp
+tomas@galois:~$ cp /etc/passwd /home/tomas/tp/
+tomas@galois:~$ ls tp/
+passwd
+tomas@galois:~$ chgrp tomas tp/passwd
+tomas@galois:~$ chown tomas tp/passwd
+@galois:~/tp$ chmod 751 passwd
+tomas@galois:~/tp$ ls -la
+total 3
+drwxr-xr-x 2 tomas tomas 1024 2008-11-15 18:06 .
+drwxr-xr-x 6 tomas tomas 1024 2008-11-15 18:11 ..
+-rwxr-x--x 1 tomas tomas  972 2008-11-15 18:06 passwd
+@galois:/etc$ grep localhost hosts
+127.0.0.1       localhost
+::1     ip6-localhost ip6-loopback
+@galois:/etc$ grep -I -R -s POSIX /etc/
+/etc/init.d/glibc.sh:                echo WARNING: POSIX threads library NPTL requires kernel version
+/etc/security/limits.conf:#        - msgqueue - max memory used by POSIX message queues (bytes)
+/etc/alternatives/updatedb:# What shell shoud we use?  We should use a POSIX-ish sh.
+tomas@galois:/etc$ passwd
+Changing password for tomas.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+@galois:~/tp$ ls
+passwd
+tomas@galois:~/tp$ rm passwd
+tomas@galois:~/tp$ ls
+tomas@galois:~/tp$
+@galois:~$ ln /etc/passwd /tmp/contra1
+tomas@galois:~$ ls -la /tmp/
+total 3
+drwxrwxrwt  2 root root 1024 2008-11-15 18:36 .
+drwxr-xr-x 21 root root 1024 2008-10-26 17:39 ..
+-rw-r--r--  2 root root  972 2008-10-27 16:49 contra1
+@galois:~$ ln -s /etc/passwd /tmp/contra3
+tomas@galois:~$ ls -la /tmp/
+total 4
+drwxrwxrwt  2 root  root  1024 2008-11-15 18:38 .
+drwxr-xr-x 21 root  root  1024 2008-10-26 17:39 ..
+-rw-r--r--  3 root  root   972 2008-10-27 16:49 contra1
+-rw-r--r--  3 root  root   972 2008-10-27 16:49 contra2
+lrwxrwxrwx  1 tomas tomas   11 2008-11-15 18:38 contra3 -> /etc/passwd
+@galois:~$ sudo mount /dev/cdrom /media/cdrom
+mount: block device /dev/scd0 is write-protected, mounting read-only
+@galois:~$ mount
+/dev/sda1 on / type ext3 (rw,relatime,errors=remount-ro)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+/sys on /sys type sysfs (rw,noexec,nosuid,nodev)
+varrun on /var/run type tmpfs (rw,noexec,nosuid,nodev,mode=0755)
+varlock on /var/lock type tmpfs (rw,noexec,nosuid,nodev,mode=1777)
+udev on /dev type tmpfs (rw,mode=0755)
+devshm on /dev/shm type tmpfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+/dev/scd0 on /media/cdrom0 type iso9660 (ro)
+@galois:~$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda1             494M  416M   53M  89% /
+varrun                125M   32K  125M   1% /var/run
+varlock               125M     0  125M   0% /var/lock
+udev                  125M   40K  125M   1% /dev
+devshm                125M     0  125M   0% /dev/shm
+/dev/scd0             100M  100M     0 100% /media/cdrom0
+@galois:~$ ps
+  PID TTY          TIME CMD
+ 3750 tty1     00:00:03 bash
+ 3830 tty1     00:00:00 vi
+ 4076 tty1     00:00:00 ps
+@galois:~$ ps aux | grep -c tomas
+4
+tomas@galois:~$ ps aux | grep -vc tomas
+35
+@galois:~$ sudo umount /media/cdrom
+[sudo] password for tomas:
+@galois:~$ uptime
+ 19:07:58 up  1:43,  1 user,  load average: 0.00, 0.00, 0.00
+@galois:~$ uname -a
+Linux galois 2.6.24-19-virtual #1 SMP Wed Jun 18 15:52:10 UTC 2008 i686 GNU/Linux
+@galois:/etc$ ls > /home/tomas/tp/config
+@galois:~/tp$ wc -l config
+112 config
+tomas@galois:~/tp$ wc -w config
+112 config
+tomas@galois:~/tp$ wc -m config
+1040 config
+@galois:~/tp$ sort /etc/passwd >> config
+tomas@galois:~/tp$ wc -l config
+136 config
+tomas@galois:~/tp$ wc -w config
+141 config
+tomas@galois:~/tp$ wc -m config
+2012 config
+@galois:/usr/bin$ ls -la | grep -E " a" | grep -E "apt" | wc -m
+817
+tomas@galois:/usr/bin$ ls -la | grep -E " a" | grep -E "apt" | wc -w
+96
+tomas@galois:/usr/bin$ ls -la | grep -E " a" | grep -E "apt" | wc -l
+12
+
