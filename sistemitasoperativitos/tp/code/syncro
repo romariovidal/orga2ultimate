@@ -1,0 +1,61 @@
+#!/bin/bash
+
+IFS=$'\n' #esto es para los espacios del ls
+
+clear
+
+if [ "$1" = "" ]
+then 
+	echo "debe pasar parametros: origen destino -r (opcional si quiere recursividad)"
+	exit
+fi
+
+ORIGEN=$1
+DESTINO=$2
+
+
+for file in $(ls -1 $ORIGEN)
+do
+	#echo "Procesando archivo: \"$file\""
+	
+	FORIGEN=$(stat -c %Y $ORIGEN/$file)
+	ARCHIVODESTINO="$DESTINO/$file"
+	ARCHIVOORIGEN="$ORIGEN/$file"
+	#echo "Comparar contra $ARCHIVODESTINO"
+
+	if [ -d "$ARCHIVOORIGEN" ] 
+	#ARCHIVOORIGEN es un directorio
+	then
+	#echo "\"$file\" es un directorio"
+		if [ -d "$ARCHIVODESTINO" ] #chequeo si existe el directorio destino
+		then
+			if [ $3 == "-r" ]
+			then
+				#echo "caso recursivo: 
+				#Origen: \"$ARCHIVOORIGEN\" 
+				#Destino: \"$ARCHIVODESTINO\" 
+				#Parametro: \"$3\""
+				syncro $ARCHIVOORIGEN $ARCHIVODESTINO $3
+			fi
+		else
+			#echo "file \"$ARCHIVOORIGEN\" aqui se copia toda la carpeta porque no esta"
+			cp -r $ARCHIVOORIGEN $DESTINO
+		fi
+			
+	else
+	
+	if [ -f "$ARCHIVODESTINO" ]
+	then
+		#echo "-- Existe el archivo de destino: \"$ARCHIVODESTINO\", verificar"
+		FDESTIN=$(stat -c %Y $DESTINO/$file)
+		if [ "$FORIGEN" -gt "$FDESTIN" ]
+		then
+			#echo "---- El origen es mas nuevo, actualizar: \"$file\""			
+			cp -r $ORIGEN/$file $DESTINO
+		fi
+	else
+		#echo "copio archivo que no esta en el destino: \"$file\""
+		cp $ORIGEN/$file $DESTINO
+	fi
+	fi
+done 	
