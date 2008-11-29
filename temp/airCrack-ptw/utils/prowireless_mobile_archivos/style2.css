@@ -1,0 +1,817 @@
+/* Instructs browser to ignore several elements of the page when printing and adds print friendly copyright line */
+@media print {
+#nav {display:none; }
+#header {display:none;}
+#footer{display:none;}
+#btop{display:none;}
+#print_this_page{display:none;}
+#printcopy{display:none;}
+}
+/* Instructs browser to ignore print-friendly copyright line when viewing on screen */
+@media screen {
+#printcopy{display:none;}
+}
+.xs, .smlink, .spotlight, .subquote { font-family:verdana,sans-serif; font-size:11px;}
+.sm, .breadcrumb { font-family:verdana,sans-serif; font-size:10px; margin-left:1px; }
+.breadcrumb a, .breadcrumb a:hover, .breadcrumb a:visited { color:#7D7E80; }
+.med, .bodycopy, .pullquote { font-family:verdana,sans-serif; font-size:13px; margin-left:1px; }
+.reg { font-family:verdana,sans-serif; font-size:14px;}
+.sup { font-size:12px;}
+.blacklink, .relatedlink, .boxlink { color:black; margin-left:1px;  }
+.boxlink { font-family:verdana,sans-serif; font-size:11px; color:#0860A8; text-decoration:none; margin-left:1px; }
+.boxlink:hover { text-decoration:underline; color:#0860A8; margin-left:1px; }
+.spotlink { font-family:verdana,sans-serif; font-size:11px; color:#0860A8; margin-left:1px; }
+.jumplink { font-family:verdana,sans-serif; font-size:11px; color:#0860A8; text-decoration:none;}
+.jumplink:hover { text-decoration:underline;}
+.boxheader { font-family:verdana,sans-serif;  color:#000; font-size:12px; margin-left:1px; font-weight:bold; }
+.boxsubhead { font-family:verdana,sans-serif; color:#0860A8; font-size:11px;}
+.featureheader { font-family:verdana,sans-serif; color:#0860A8; font-size:12px; font-weight:bold;}
+.featuretext { font-family:verdana,sans-serif; color:#000; font-size:11px;}
+.spotheader { font-family:verdana,sans-serif; color:#000; font-size:12px; font-weight:bold; }
+.spottext { font-family:verdana,sans-serif; color:#000; font-size:11px; margin-left:1px; }
+.spotsubhd { font-family:verdana,sans-serif; color:#333; font-size:12px; font-weight:bold;}
+.sectionheader { font-family:verdana,sans-serif; color:#000; font-size:13px; text-decoration:none; margin-left:1px; font-weight:bold; }
+.sectionlink { font-family:verdana,sans-serif; font-size:11px; color:#0860A8; }
+.sectionlink2 { font-family:verdana,sans-serif; font-size:12px; color:#0860A8; }
+.sectiontext { font-family:verdana,sans-serif; color:#000; font-size:12px; margin-left:1px; }
+.legaltext { font-family:verdana,sans-serif; color:#000; font-size:10px; }
+.tableheader { font-family:verdana,sans-serif; color:#FFF; font-size:12px; font-weight:bold; }
+.jumplinkheader { font-family:verdana,sans-serif; color:#0860A8; font-size:12px; font-weight:bold;}
+.orange { color:#ff9900; font-weight:bold; }
+
+.wmargin    {margin-left:1px; color:#0860A8;}
+.wmargin a, .wmargin a:visited, .wmargin a:hover { color:#0860A8; }
+
+.filesize    {font-family:arial, verdana, sans-serif; color:#666666; font-size:10px;}
+
+
+
+
+
+/* ==== 2.5 TRANSITIONAL STYLES ========== */
+
+
+
+/* ==== GLOBAL styles ========== */
+
+.tableOne table {
+        font-family: verdana, sans-serif;
+        color: #666666;
+        font-size: 11px;
+        }
+ /* this is a hack to create a global default text style,
+    setting styles directly on body or td elements will
+    crash RGA's header & footers    */
+
+
+/* ==== feature specific styles ========== */
+
+/* these are styles are for specific features and are not
+   intended to be mixed or matched */
+
+.h1 {
+     color:#000000;
+     font-size: 18px;
+     font-family: verdana, sans-serif;
+     font-weight: normal;
+     line-height: 26px;
+     margin: 0px;
+     padding: 0px 0px 23px 0px;
+     font-weight: normal;
+     }
+
+/* headline variation for use with overview text */
+.h1nopad {color:#000000; font-size: 21px; line-height: 26px; margin: 0px; font-weight: normal;}
+
+/* headline superscript text */
+.regtitle {font-size: 16px; vertical-align: top; color: #000000; }
+
+/* overview text for product hub intro text,
+also used as secondary heading on content table pages */
+.overview {color: #666666; font-size: 12px; line-height: 17px;}
+
+/* breadcrumb */
+.crumb {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: #666666;
+        font-size: 9px;
+        }
+
+.crumb a         {color:#666666; text-decoration: underline;}
+.crumb a:visited {color:#666666; text-decoration: underline;}
+.crumb a:hover   {color:#666666; text-decoration: underline;}
+
+
+/* left hand nav */
+
+.leftNavBG {background-color: #E6E6E6; }
+
+.siteIdentifier           {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.siteIdentifier a         {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.siteIdentifier a:visited {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.siteIdentifier a:hover   {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: underline;}
+
+a.siteIdentifier          {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+a.siteIdentifier:visited  {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+a.siteIdentifier:hover    {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: underline;}
+
+.leftNavLink           {color: #0860A8; font-size: 11px; text-decoration: none;}
+.leftNavLink a         {color: #0860A8; font-size: 11px; text-decoration: none;}
+.leftNavLink a:visited {color: #0860A8; font-size: 11px; text-decoration: none;}
+.leftNavLink a:hover   {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+a.leftNavLink          {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.leftNavLink:visited  {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.leftNavLink:hover    {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+.leftNavSubtitle       {color: #000000; font-size: 10px; font-weight: bold; text-decoration: none;}
+
+
+/* ==== general styles ========== */
+
+/* these are styles that can be mixed or matched for general use */
+
+.title           {color: #000000; font-size: 12px; font-weight: bold; text-decoration: none;}
+.title a         {color: #000000; font-size: 12px; font-weight: bold; text-decoration: none;}
+.title a:visited {color: #000000; font-size: 12px; font-weight: bold; text-decoration: none;}
+.title a:hover   {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: underline;}
+
+a.title          {color: #000000; font-size: 12px; font-weight: bold; text-decoration: none;}
+a.title:visited  {color: #000000; font-size: 12px; font-weight: bold; text-decoration: none;}
+a.title:hover    {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: underline;}
+
+
+.subtitle {color: #000000; font-size: 11px; font-weight: bold;}
+.subTitle {color: #000000; font-size: 11px; font-weight: bold;}
+.subsectiontitle {color: #000000; font-size: 11px; font-weight:bold;}
+
+
+.content               {color: #666666; font-size: 11px; font-weight: normal;}
+.content a             {color: #0860A8; font-size: 11px; text-decoration: none;}
+.content a:visited     {color: #0860A8; font-size: 11px; text-decoration: none;}
+.content a:hover       {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+.contentLink           {color: #0860A8; font-size: 11px; text-decoration: none;}
+.contentLink a         {color: #0860A8; font-size: 11px; text-decoration: none;}
+.contentLink a:visited {color: #0860A8; font-size: 11px; text-decoration: none;}
+.contentLink a:hover   {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+a.contentLink          {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.contentLink:visited  {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.contentLink:hover    {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+
+.subLink           {color: #0860A8; font-size: 11px; text-decoration: none;}
+.sublink a         {color: #0860A8; font-size: 11px; text-decoration: none;}
+.sublink a:visited {color: #0860A8; font-size: 11px; text-decoration: none;}
+.subLink a:hover   {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+a.sublink          {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.sublink:visited  {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.subLink:hover    {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+.legal {color: #666666; font-size: 10px; font-weight: normal; text-decoration: none;}
+.caption {color: #666666; font-size: 10px; font-weight: normal; text-decoration: none; text-align: center;}
+li.nonlinkedbullet {color: #666666; font-size: 11px; font-weight:normal; list-style-image: url(http://www.intel.com/sites/nav/pix/bluebullet.gif);}
+
+.transcrumb {padding-top: 6px; padding-bottom: 6px; color: #666666; font-size: 11px; font-weight:normal;}
+
+.II {font-family: times new roman, serif;}
+
+/* ==== bold links ========== */
+
+.boldLink           {color: #0860A8; font-size: 11px; font-weight: bold;}
+.boldLink a         {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.boldLink a:visited {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.boldLink a:hover   {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: underline;}
+
+a.boldLink          {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+a.boldLink:visited  {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+a.boldLink:hover    {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: underline;}
+
+
+.boldLinkLarge           {color: #0860A8; font-size: 12px; font-weight: bold;}
+.boldLinkLarge a         {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: none;}
+.boldLinkLarge a:visited {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: none;}
+.boldLinkLarge a:hover   {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: underline;}
+
+a.boldLinkLarge          {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: none;}
+a.boldLinkLarge:visited  {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: none;}
+a.boldLinkLarge:hover    {color: #0860A8; font-size: 12px; font-weight: bold; text-decoration: underline;}
+
+
+/* ==== anchor links ========== */
+
+.anchorLinkSmall           {color: #0860A8; font-size: 10px; text-decoration: none;}
+.anchorLinkSmall a         {color: #0860A8; font-size: 10px; text-decoration: none;}
+.anchorLinkSmall a:visited {color: #0860A8; font-size: 10px; text-decoration: none;}
+.anchorLinkSmall a:hover   {color: #0860A8; font-size: 10px; text-decoration: underline;}
+
+a.anchorLinkSmall          {color: #0860A8; font-size: 10px; text-decoration: none;}
+a.anchorLinkSmall:visited  {color: #0860A8; font-size: 10px; text-decoration: none;}
+a.anchorLinkSmall:hover    {color: #0860A8; font-size: 10px; text-decoration: underline;}
+
+.anchorLinkMed             {color: #0860A8; font-size: 11px; text-decoration: none;}
+.anchorLinkMed a           {color: #0860A8; font-size: 11px; text-decoration: none;}
+.anchorLinkMed a:visited   {color: #0860A8; font-size: 11px; text-decoration: none;}
+.anchorLinkMed a:hover     {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+a.anchorLinkMed            {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.anchorLinkMed:visited    {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.anchorLinkMed:hover      {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+.anchorLinkLarge           {color: #0860A8; font-size: 12px; text-decoration: none;}
+.anchorLinkLarge a         {color: #0860A8; font-size: 12px; text-decoration: none;}
+.anchorLinkLarge a:visited {color: #0860A8; font-size: 12px; text-decoration: none;}
+.anchorLinkLarge a:hover   {color: #0860A8; font-size: 12px; text-decoration: underline;}
+
+a.anchorLinkLarge          {color: #0860A8; font-size: 12px; text-decoration: none;}
+a.anchorLinkLarge:visited  {color: #0860A8; font-size: 12px; text-decoration: none;}
+a.anchorLinkLarge:hover    {color: #0860A8; font-size: 12px; text-decoration: underline;}
+
+
+.anchorCaret {
+        display: inline;
+        width: 6px;
+        height: 11px;
+        vertical-align: top;
+        padding: 0px;
+        margin-right: 4px;
+        background-image: url(http://www.intel.com/sites/templates/pix/carrot_down.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+}
+
+.backToTopCaret {
+        display: inline;
+        width: 6px;
+        height: 11px;
+        vertical-align: top;
+        padding: 0px;
+        margin-right: 4px;
+        background-image: url(http://www.intel.com/sites/templates/pix/carrot_up.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+}
+
+
+/* ==== modules ========== */
+
+.module { width: 178px; }
+
+.moduleTop {
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleTop.gif);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        width: 178px;
+        height: 5px;
+        line-height:1px;
+}
+
+.moduleBottom {
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleBottom.gif);
+        background-repeat: no-repeat;
+        background-position: top;
+        width: 178px;
+        height: 5px;
+        line-height: 1px;
+}
+
+.moduleContentArea {
+        padding: 10px 10px 10px 10px;
+        color: #666666;
+        font-size: 11px;
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleContentArea.gif);
+        vertical-align: top;
+}
+
+.moduleTitle {
+        color: #000000;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px 10px 9px 10px;
+        vertical-align: top;
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleTitle.gif);
+}
+
+.moduleSubTitle {
+        color: #000000;
+        font-size: 11px;
+        font-weight: bold;
+        padding-bottom: 8px;
+}
+
+
+.moduleContentArea a         {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleContentArea a:visited {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleContentArea a:hover   {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+.moduleContent           {color: #666666; font-size: 11px; text-decoration: none;}
+.moduleContent a         {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleContent a:visited {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleContent a:hover   {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+a.moduleContent          {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.moduleContent:visited  {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.moduleContent:hover    {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+
+.moduleLink           {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleLink a         {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleLink a:visited {color: #0860A8; font-size: 11px; text-decoration: none;}
+.moduleLink a:hover   {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+a.moduleLink          {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.moduleLink:visited  {color: #0860A8; font-size: 11px; text-decoration: none;}
+a.moduleLink:hover    {color: #0860A8; font-size: 11px; text-decoration: underline;}
+
+.moduleBoldLink           {color: #0860A8; font-size: 11px; font-weight: bold;}
+.moduleBoldLink a         {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.moduleBoldLink a:visited {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+.moduleBoldLink a:hover   {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: underline;}
+
+a.moduleBoldLink          {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+a.moduleBoldLink:visited  {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: none;}
+a.moduleBoldLink:hover    {color: #0860A8; font-size: 11px; font-weight: bold; text-decoration: underline;}
+
+
+.moduleLine {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-color: #A6A6A6;
+	line-height: 1px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+
+/* ==== moduleWhite ========== */
+
+.moduleWhiteTop {
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteTop.gif);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        width: 372px;
+        height: 5px;
+        line-height: 1px;
+}
+
+.moduleWhiteBottom {
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteBottom.gif);
+        background-repeat: no-repeat;
+        background-position: top;
+        width: 372px;
+        height: 5px;
+        line-height: 1px;
+}
+
+.moduleWhiteContentArea {
+        padding: 10px 10px 10px 10px;
+        color: #666666;
+        font-size: 11px;
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteContentArea.gif);
+        vertical-align: top;
+}
+
+
+/* ==== moduleWhiteLarge ========== */
+
+.moduleWhiteLargeTop {
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteLargeTop.gif);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        width: 566px;
+        height: 5px;
+        line-height: 1px;
+}
+
+.moduleWhiteLargeBottom {
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteLargeBottom.gif);
+        background-repeat: no-repeat;
+        background-position: top;
+        width: 566px;
+        height: 5px;
+        line-height: 1px;
+}
+
+.moduleWhiteLargeContentArea {
+        padding: 10px 10px 10px 10px;
+        color: #666666;
+        font-size: 11px;
+        background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteLargeContentArea.gif);
+        vertical-align: top;
+}
+
+/* ==== moduleGradient ========== */
+
+.moduleGradientLargeContentArea {
+	padding: 10px 10px 10px 10px;
+	color: #666666;
+	font-size: 11px;
+	background-image: url(/sites/templates/pix/moduleGradientLargeContentA.gif);
+	vertical-align: top;
+}
+
+/* ==== moduleTitle ========== */
+
+.moduleTitleLarge {
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 4px 10px 9px 10px;
+	vertical-align: top;
+	background-image: url(http://www.intel.com/sites/templates/pix/moduleWhiteLargeContentArea.gif);
+}
+
+/* ==== Lines ========== */
+
+.solidLine {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: #A6A6A6;
+        line-height: 1px;
+}
+
+.dottedLine {
+        background-image: url(http://www.intel.com/sites/nav/pix/drop_linerule.gif);
+        background-repeat: repeat-x;
+        background-position: top;
+        padding: 0px;
+        line-height: 1px;
+}
+
+
+/* ==== padding / spacing ========== */
+
+.space1px         {line-height:    1px;}
+.pad1pxTop        {padding-top:    1px;}
+.pad1pxBottom     {padding-bottom: 1px;}
+.margin1pxTop     {margin-top:     1px;}
+.margin1pxBottom  {margin-bottom:  1px;}
+
+.space2px         {line-height:    2px;}
+.pad2pxTop        {padding-top:    2px;}
+.pad2pxBottom     {padding-bottom: 2px;}
+.margin2pxTop     {margin-top:     2px;}
+.margin2pxBottom  {margin-bottom:  2px;}
+
+.space3px         {line-height:    3px;}
+.pad3pxTop        {padding-top:    3px;}
+.pad3pxBottom     {padding-bottom: 3px;}
+.margin3pxTop     {margin-top:     3px;}
+.margin3pxBottom  {margin-bottom:  3px;}
+
+.space4px         {line-height:    4px;}
+.pad4pxTop        {padding-top:    4px;}
+.pad4pxBottom     {padding-bottom: 4px;}
+.margin4pxTop     {margin-top:     4px;}
+.margin4pxBottom  {margin-bottom:  4px;}
+
+.space5px         {line-height:    5px;}
+.pad5pxTop        {padding-top:    5px;}
+.pad5pxBottom     {padding-bottom: 5px;}
+.margin5pxTop     {margin-top:     5px;}
+.margin5pxBottom  {margin-bottom:  5px;}
+
+.space6px         {line-height:    6px;}
+.pad6pxTop        {padding-top:    6px;}
+.pad6pxBottom     {padding-bottom: 6px;}
+.margin6pxTop     {margin-top:     6px;}
+.margin6pxBottom  {margin-bottom:  6px;}
+
+.space8px         {line-height:    8px;}
+.pad8pxTop        {padding-top:    8px;}
+.pad8pxBottom     {padding-bottom: 8px;}
+.margin8pxTop     {margin-top:     8px;}
+.margin8pxBottom  {margin-bottom:  8px;}
+
+.space10px        {line-height:    10px;}
+.pad10pxTop       {padding-top:    10px;}
+.pad10pxBottom    {padding-bottom: 10px;}
+.margin10pxTop    {margin-top:     10px;}
+.margin10pxBottom {margin-bottom:  10px;}
+
+.space12px        {line-height:    12px;}
+.pad12pxTop       {padding-top:    12px;}
+.pad12pxBottom    {padding-bottom: 12px;}
+.margin12pxTop    {margin-top:     12px;}
+.margin12pxBottom {margin-bottom:  12px;}
+
+.space14px        {line-height:    14px;}
+.pad14pxTop       {padding-top:    14px;}
+.pad14pxBottom    {padding-bottom: 14px;}
+.margin14pxTop    {margin-top:     14px;}
+.margin14pxBottom {margin-bottom:  14px;}
+
+.space16px        {line-height:    16px;}
+.pad16pxTop       {padding-top:    16px;}
+.pad16pxBottom    {padding-bottom: 16px;}
+.margin16pxTop    {margin-top:     16px;}
+.margin16pxBottom {margin-bottom:  16px;}
+
+.space18px        {line-height:    18px;}
+.pad18pxTop       {padding-top:    18px;}
+.pad18pxBottom    {padding-bottom: 18px;}
+.margin18pxTop    {margin-top:     18px;}
+.margin18pxBottom {margin-bottom:  18px;}
+
+.space20px        {line-height:    20px;}
+.pad20pxTop      {padding-top:    20px;}
+.pad20pxBottom    {padding-bottom: 20px;}
+.margin20pxTop    {margin-top:     20px;}
+.margin20pxBottom {margin-bottom:  20px;}
+
+
+/* ==== Data Tables ========== */
+
+.dataTable {font-size: 11px;}
+.ARC       {font-size: 11px;} /* this is for use with the ARC javascript */
+
+
+
+td.dataHead {
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #555555;
+        border-bottom: 1px solid #A6A6A6;
+        }
+
+td.dataMain {
+        font-weight: bold;
+        border-bottom: 1px solid #A6A6A6;
+		background-image: none;
+        }
+
+td.dataLine {
+        border-bottom: 1px solid #A6A6A6;
+        background-image: url(http://www.intel.com/sites/templates/pix/table_linerule.gif);
+        background-repeat: repeat-y;
+        background-position: right;
+        }
+
+td.dataNoLine {
+	border-bottom: 1px solid #A6A6A6;
+	background-image: none;
+}
+
+
+
+/* ==== ...someone will do this... ========== */
+
+.bold     {font-weight: bold;}
+.b  	  {font-weight: bold;}
+.strong   {font-weight: bold;}
+.i        {font-style: italic;}
+.italic	  {font-style: italic;}
+.em       {font-style: italic;}
+.emphasis {font-style: italic;}
+.normal   {color: #666666; font-size: 10px; font-weight: normal; font-style: normal;}
+
+.blue     {color: #0860A8;}
+.grey     {color: #666666;}
+.black    {color: #000000;}
+.red      {color: #ff0000;}
+
+
+/* ==== Buttons ========== */
+
+/* Utility & Function Button Classes */
+.buttonPad {
+	border-left: 1px solid #A6A6A6;
+	border-right: 1px solid #A6A6A6;
+	padding: 0px 4px 0px 4px;
+	color: #0860A8;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+	}
+
+.buttonPad div { color: #0860A8; }
+
+.buttonBoldText { font-size: 12px; font-weight: bold; color: #0860A8; }
+
+
+
+	.buttonCore
+{
+	background-color: #F6F6F6;
+	font-weight: bold;
+	color: #0860A8;
+	display: block;
+	border: none;
+	cursor: pointer;
+	cursor: hand;
+}
+
+input.buttonCore
+{
+	font-size: 11px;
+}
+
+.buttonCore:hover
+{
+	background-color: #E6E6E6;
+	text-decoration: none;
+}
+
+input.buttonCore_hover
+{
+	background-color: #E6E6E6;
+	text-decoration: none;
+}
+
+.buttonSmallCore
+{
+	width: 70px;
+}
+
+input.buttonSmallCore
+{
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.buttonMediumCore
+{
+	width: 100px;
+}
+
+.buttonMiddle
+{
+	border-top: solid 1px #bababa;
+	border-bottom: solid 1px #bababa;
+}
+
+.buttonMiddleCore 
+{
+	background-color: #F6F6F6; 
+	padding: 2px 8px 3px 8px; 
+	font-weight: bold; 
+	color: #0860A8; 
+	display: block; 
+	border: none;
+	font-family: verdana, sans-serif;
+	font-weight: bold;
+	cursor: pointer;
+	cursor: hand;
+	margin: 4px 0px 4px 0px;
+	text-align: center;
+}
+
+.buttonMedCore
+{
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-left: 4px;
+	margin-right: 4px;
+	width: 100px;
+}
+
+input.buttonMedCore
+{
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.buttonMiddleCore:hover
+{
+	background-color: #E6E6E6;
+	text-decoration: none;
+}
+
+input.buttonMiddleCore
+{
+	padding: 2px 4px 1px 4px;
+	font-size: 11px;
+}
+
+input.buttonMiddleCore_hover
+{
+	background-color: #E6E6E6;
+}
+
+
+.buttonLargeCore 
+{
+	width: 168px;
+	padding: 6px 6px 6px 6px;
+}
+
+input.buttonLargeCore
+{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.buttonLargeTop {
+	width: 176px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonLarge_top.gif) no-repeat top left;
+	height: 5px;
+	line-height: 1px;
+	padding:0px;
+}
+
+.buttonLargeMiddle {
+	border-left: solid 1px #A6A6A6;
+	border-right: solid 1px #A6A6A6;
+	text-align: center;
+	width: 176px;
+}
+
+
+.buttonLargeBottom {
+	width: 176px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonLarge_bottom.gif) no-repeat top left;
+	height: 6px;
+	line-height: 1px;
+}
+
+.buttonLarge_off {background-color: #F6F6F6; padding: 6px 6px 6px 6px; color: #0860A8; }
+.buttonLarge_on  {background-color: #E6E6E6; padding: 6px 6px 6px 6px; color: #0860A8; }
+
+
+.buttonMedTop {
+	width: 108px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonMed_top.gif) no-repeat top left;
+	height: 5px;
+	line-height: 1px;
+	padding:0px;
+}
+
+.buttonMedMiddle {
+	border-left: solid 1px #A6A6A6;
+	border-right: solid 1px #A6A6A6;
+	text-align: center;
+	width: 108px;
+}
+
+.buttonMedBottom {
+	width: 108px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonMed_bottom.gif) no-repeat top left;
+	height: 6px;
+	line-height: 1px;
+}
+
+.buttonMed_off {background-color: #F6F6F6; padding: 2px 4px 2px 4px; color: #0860A8; }
+.buttonMed_on  {background-color: #E6E6E6; padding: 2px 4px 2px 4px; color: #0860A8; }
+
+
+.buttonSmallTop {
+	width: 78px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonSmall_top.gif) no-repeat top left;
+	height: 5px;
+	line-height: 1px;
+	padding:0px;
+}
+
+.buttonSmallMiddle {
+	width: 78px;
+	border-left: solid 1px #A6A6A6;
+	border-right: solid 1px #A6A6A6;
+	text-align: center;
+}
+
+.buttonSmallBottom {
+	width: 78px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonSmall_bottom.gif) no-repeat top left;
+	height: 6px;
+	line-height: 1px;
+}
+
+.buttonSmall_off {background-color: #F6F6F6; padding: 2px 4px 2px 4px; color: #0860A8; }
+.buttonSmall_on  {background-color: #E6E6E6; padding: 2px 4px 2px 4px; color: #0860A8; }
+
+.buttonRightSide
+{
+	width: 5px; 
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonupperright.gif) no-repeat top right;        
+	height: 5px; 
+	vertical-align: bottom;
+}
+.buttonRightSide * 
+{
+	display: block;
+	width: 5px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonlowerright.gif) no-repeat bottom right;
+}
+.buttonLeftSide
+{
+	width: 5px; 
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonupperleft.gif) no-repeat top left;        
+	height: 5px; 
+	vertical-align: bottom;
+}
+.buttonLeftSide *
+{
+	display: block;
+	width: 5px;
+	background: #ffffff url(http://www.intel.com/sites/templates/pix/buttonlowerleft.gif) no-repeat bottom left;
+}
+
+/* Code in Support of 30recode */
+#HAT-subheader {margin-bottom:0px !important}
+/* /Code in Support of 30recode */
