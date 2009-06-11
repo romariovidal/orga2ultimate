@@ -4,6 +4,7 @@ Antes de empezar, ejecute:
 
 \texttt{sudo apt-get install man-db manpages manpages-dev}
 
+
 De esta manera tendr'a acceso a ayuda en l'inea ejecutando:
 
 \texttt{man <comando>}
@@ -46,42 +47,142 @@ comando:
 
 \item \texttt{pwd} Indique qu'e directorio pasa a ser su directorio actual si ejecuta:
 
+\begin{envRespuesta}
+/home/mlopez
+\end{envRespuesta}
+
 \begin{enumerate}
 \item \texttt{cd /usr/bin}
+
+\begin{envRespuesta}
+/usr/bin
+\end{envRespuesta}
+
 \item \texttt{cd}
+
+\begin{envRespuesta}
+/home/mlopez
+\end{envRespuesta}
+
 \item ?`C'omo explica el punto anterior?
+
+\begin{envRespuesta}Al utilizar el comando cd sin par'ametros, si existe la variable 
+HOME entonces se hace un chdir a ese path.
+\end{envRespuesta}
+
 \end{enumerate}
 
 \item \texttt{cat} ?`Cu'al es el contenido del archivo \texttt{/home/<usuario>/.profile}?
 
+\begin{envCodigo}
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+\end{envCodigo}
+
 \item \texttt{find} Liste \textbf{todos} los archivos que comienzan con \texttt{vmlinuz}.
+
+\begin{envRespuesta}
+/boot/vmlinuz-2.6.24-19-virtual
+/vmlinuz
+\end{envRespuesta}
 
 Estos archivos son im'agenes del kernel Linux.
 
 \item \texttt{mkdir} Genere un directorio \texttt{/home/<usuario>/tp}.
 
+\begin{envRespuesta}
+mkdir tp
+\end{envRespuesta}
+
 \item \texttt{cp} Copie el archivo \texttt{/etc/passwd} al directorio \texttt{/home/<usuario>/tp}.
+
+\begin{envRespuesta}
+cp /etc/passwd tp/
+\end{envRespuesta}
 
 \item \texttt{chgrp} Cambie el grupo del archivo \texttt{/home/<usuario>/tp/passwd} para que sea el suyo.
 
+\begin{envRespuesta}
+El archivo ya es mio, pero en caso de tener que hacerlo: chgrp mlopez passwd.
+\end{envRespuesta}
+
 \item \texttt{chown} Cambie el due'no del archivo \texttt{/home/<usuario>/tp/passwd} para que sea su usuario.
+
+\begin{envRespuesta}
+El archivo ya es mio, pero en caso de tener que hacerlo: chown mlopez passwd.
+\end{envRespuesta}
 
 \item \texttt{chmod} Cambie los permisos del archivo \texttt{/home/<usuario>/tp/passwd} para que:
 
+\begin{envRespuesta}
+Antes de empezar el pr'oximo paso: chmod 000 passwd para limpiar los permisos originales.
+\end{envRespuesta}
 \begin{itemize}
 \item el propietario tenga permisos de lectura, escritura y ejecuci'on
+
+\begin{envRespuesta}
+chmod u+r+w+x passwd
+\end{envRespuesta}
+
 \item el grupo tenga s'olo permisos de lectura y ejecuci'on
+
+\begin{envRespuesta}
+chmod g+r+x passwd
+\end{envRespuesta}
+
 \item el resto tenga s'olo permisos de ejecuci'on
+
+\begin{envRespuesta}
+chmod o+x passwd
+\end{envRespuesta}
 \end{itemize}
 
 \item \texttt{grep}
 
 Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc/hosts}.
 
+\begin{envCodigo}
+127.0.0.1	localhost
+::1     ip6-localhost ip6-loopback
+\end{envCodigo}
+
 Muestre todas las l'ineas que tengan el texto ``POSIX'' de todos los archivos (incluyendo subdirectorios) en \texttt{/etc}.
 Evite los archivos binarios y aquellos archivos y directorios que no tienen permiso de lectura para su usuario.
 
+\begin{envCodigo}
+grep -R -I -s POSIX /etc/
+/etc/init.d/glibc.sh:     echo WARNING: POSIX threads library NPTL requires kernel version
+/etc/alternatives/updatedb:\# What shell shoud we use?  We should use a POSIX-ish sh.
+/etc/security/limits.conf:\# - msgqueue - max memory used by POSIX message queues (bytes)
+\end{envCodigo}
+
 \item \texttt{passwd} Cambie su password.
+
+\begin{envCodigo}
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+\end{envCodigo}
 
 \item \texttt{rm} Borre el archivo \texttt{/home/<usuario>/tp/passwd}
 
@@ -91,6 +192,10 @@ Enlazar el archivo \texttt{/etc/passwd} a los archivos \texttt{/tmp/contra1} y \
 
 Hacer un \texttt{ls -l} para ver cuantos enlaces tiene \texttt{/etc/passwd}.
 
+\begin{envCodigo}
+-rw-r--r-- 3 root root 981 2008-10-08 01:11 /etc/passwd
+\end{envCodigo}
+
 Estos enlaces se llaman ``hardlinks''. Cada nuevo enlace referencia el mismo espacio ocupado del disco r'igido,
 y por lo tanto cada hardlink es igual de representativo de esos bytes ocupados del disco r'igido.
 El espacio ocupado solamente se liberar'a cuando todos los enlaces hayan sido borrados.
@@ -98,6 +203,16 @@ El espacio ocupado solamente se liberar'a cuando todos los enlaces hayan sido bo
 Ahora enlace el archivo \texttt{/etc/passwd} de manera ``soft'' al archivo \texttt{contra3}.
 
 Verifique con \texttt{ls -l} que no aument'o la cantidad de enlaces de \texttt{/etc/passwd}.
+
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ ln -s /etc/passwd /tmp/contra3
+mlopez@esparrago:~/tp$ ls -l /etc/passwd
+-rw-r--r-- 3 root root 981 2008-10-08 01:11 /etc/passwd
+mlopez@esparrago:~/tp$ ls -l /tmp/c*
+-rw-r--r-- 3 root   root   981 2008-10-08 01:11 /tmp/contra1
+-rw-r--r-- 3 root   root   981 2008-10-08 01:11 /tmp/contra2
+lrwxrwxrwx 1 mlopez mlopez  11 2008-11-15 18:38 /tmp/contra3 -> /etc/passwd
+\end{envCodigo}
 
 Estos enlaces se llaman ``softlinks'' y apuntan no a los bytes del disco r'igido sino a la ruta del archivo a ser enlazado.
 Operar sobre el softlink es igual que operar sobre el archivo, sin embargo los softlinks no cuentan en la cantidad de
@@ -119,15 +234,111 @@ derecho en el 'icono con forma de CD-ROM en la esquina inferior derecha de la m'
 
 Presente los filesystems que tiene montados.
 
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ sudo mount /dev/cdrom /media/cdrom
+mount: block device /dev/scd0 is write-protected, mounting read-only
+mlopez@esparrago:~/tp$ mount
+/dev/sda1 on / type ext3 (rw,relatime,errors=remount-ro)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+/sys on /sys type sysfs (rw,noexec,nosuid,nodev)
+varrun on /var/run type tmpfs (rw,noexec,nosuid,nodev,mode=0755)
+varlock on /var/lock type tmpfs (rw,noexec,nosuid,nodev,mode=1777)
+udev on /dev type tmpfs (rw,mode=0755)
+devshm on /dev/shm type tmpfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+share on comp/ type vboxsf (uid=1000,gid=1000,rw)
+\end{envCodigo}
+
 \item \texttt{df} ?`Qu'e espacio libre tiene cada uno de los filesystems montados?
+
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda1             494M  427M   42M  92% /
+varrun                 62M   32K   62M   1% /var/run
+varlock                62M     0   62M   0% /var/lock
+udev                   62M   40K   62M   1% /dev
+devshm                 62M     0   62M   0% /dev/shm
+df: `comp/': No such file or directory
+/dev/scd0             100M  100M     0 100% /media/cdrom0
+
+comp es una carpeta compartidad con la otra m'aquina
+\end{envCodigo}
 
 \item \texttt{ps} ?`Cu'antos procesos de usuario tiene ejecutando? Indique cu'antos son del sistema.
 
+\begin{envCodigo}
+ps
+  PID TTY          TIME CMD
+ 3946 tty1     00:00:00 bash
+ 5528 tty1     00:00:07 vi
+ 5747 tty1     00:00:00 bash
+ 5748 tty1     00:00:00 ps
+\end{envCodigo}
+
+\begin{envCodigo}
+ps aux
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  1.3   2844  1692 ?        Ss   12:03   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S<   12:03   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S<   12:03   0:00 [migration/0]
+root         4  0.0  0.0      0     0 ?        S<   12:03   0:00 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S<   12:03   0:00 [watchdog/0]
+root         6  0.0  0.0      0     0 ?        S<   12:03   0:10 [events/0]
+root         7  0.0  0.0      0     0 ?        S<   12:03   0:00 [khelper]
+root        36  0.0  0.0      0     0 ?        S<   12:03   0:00 [kblockd/0]
+root        39  0.0  0.0      0     0 ?        S<   12:03   0:00 [kacpid]
+root        40  0.0  0.0      0     0 ?        S<   12:03   0:00 [kacpi_notify]
+root        80  0.0  0.0      0     0 ?        S<   12:03   0:00 [kseriod]
+root       115  0.0  0.0      0     0 ?        S    12:03   0:00 [pdflush]
+root       116  0.0  0.0      0     0 ?        S    12:03   0:00 [pdflush]
+root       117  0.0  0.0      0     0 ?        S<   12:03   0:00 [kswapd0]
+root       160  0.0  0.0      0     0 ?        S<   12:03   0:00 [aio/0]
+root      1216  0.0  0.0      0     0 ?        S<   12:03   0:00 [ata/0]
+root      1219  0.0  0.0      0     0 ?        S<   12:03   0:00 [ata_aux]
+root      1239  0.0  0.0      0     0 ?        S<   12:03   0:00 [scsi_eh_0]
+root      1241  0.0  0.0      0     0 ?        S<   12:03   0:00 [scsi_eh_1]
+root      2207  0.0  0.0      0     0 ?        S<   12:03   0:00 [kjournald]
+root      2346  0.0  0.5   2220   668 ?        S<s  12:03   0:03 /sbin/udevd --daemon
+root      2536  0.0  0.0      0     0 ?        S<   12:03   0:00 [kpsmoused]
+dhcp      3484  0.0  0.4   2436   548 ?        S<s  12:04   0:00 dhclient3 -e IF_METRIC=100 -pf /var/run/dhclient.eth0.pid -lf /var/lib/dhcp3/dhclient.eth0.leases eth0
+root      3813  0.0  0.4   1716   508 tty4     Ss+  12:04   0:00 /sbin/getty 38400 tty4
+root      3816  0.0  0.4   1716   508 tty5     Ss+  12:04   0:00 /sbin/getty 38400 tty5
+root      3820  0.0  0.9   2568  1208 tty2     Ss   12:04   0:00 /bin/login --       
+root      3824  0.0  0.4   1716   508 tty3     Ss+  12:04   0:00 /sbin/getty 38400 tty3
+root      3826  0.0  0.4   1716   504 tty6     Ss+  12:04   0:00 /sbin/getty 38400 tty6
+root      3847  0.0  0.1   1844   236 ?        Ss   12:04   0:00 /usr/sbin/vboxadd-timesync --daemonize
+syslog    3890  0.0  0.5   1936   648 ?        Ss   12:04   0:00 /sbin/syslogd -u syslog
+root      3909  0.0  0.4   1868   532 ?        S    12:04   0:00 /bin/dd bs 1 if /proc/kmsg of /var/run/klogd/kmsg
+klog      3911  0.0  1.4   2896  1784 ?        Ss   12:04   0:00 /sbin/klogd -P /var/run/klogd/kmsg
+root      3926  0.0  0.3   1764   396 ?        Ss   12:04   0:01 /usr/sbin/gpm -m /dev/input/mice -t exps2
+root      3945  0.0  0.9   2568  1204 tty1     Ss   12:04   0:00 /bin/login --       
+mlopez    3946  0.0  1.8   4804  2280 tty1     S    12:04   0:00 -bash
+mlopez    3958  0.0  1.7   4788  2228 tty2     S+   12:17   0:01 -bash
+mlopez    5528  0.2  2.6   7060  3304 tty1     S+   17:50   0:08 vi svn/informe/consignas.tex svn/informe/tp1.tex
+mlopez    5802  0.0  0.9   3756  1152 tty1     S+   18:53   0:00 /bin/bash -c (ps -aux) >/tmp/v784235/10 2>&1
+mlopez    5803  0.0  0.7   2644  1004 tty1     R+   18:53   0:00 ps -aux
+\end{envCodigo}
+
 \item \texttt{umount} Desmonte el CD-ROM de instalaci'on de Ubuntu JeOS.
+
+\begin{envRespuesta}
+sudo umount /media/cdrom
+\end{envRespuesta}
 
 \item \texttt{uptime} ?`Cuanto tiempo lleva ejecutando su m'aquina virtual?
 
+\begin{envCodigo}
+18:48:33 up  6:45,  2 users,  load average: 0.00, 0.00, 0.00
+\end{envCodigo}
+
 \item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
+
+\begin{envCodigo}
+uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC 
+2008 i686 GNU/Linux
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -142,12 +353,39 @@ Presente los filesystems que tiene montados.
 \item Conserve en el archivo \texttt{/home/<usuario>/tp/config} la salida del comando \texttt{ls} que muestra todos los
 archivos del directorio \texttt{/etc} y de los subdirectorios bajo \texttt{/etc}.
 
+\begin{envCodigo}
+ls -R /etc/ > /home/mlopez/tp/config
+\end{envCodigo}
+
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
+
+\fboxsep 0pt
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ wc -l config
+730 config
+mlopez@esparrago:~/tp$ wc -w config
+654 config
+mlopez@esparrago:~/tp$ wc -m config
+8422 config
+\end{envCodigo}
 
 \item Agregue el contenido, ordenado alfab'eticamente, del archivo \texttt{/etc/passwd} al final del
 archivo \texttt{/home/<usuario>/tp/config}.
 
+\begin{envCodigo}
+sort /etc/passwd >> /home/mlopez/tp/config
+\end{envCodigo}
+
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
+
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ wc -l config
+754 config
+mlopez@esparrago:~/tp$ wc -w config
+684 config
+mlopez@esparrago:~/tp$ wc -m config
+9403 config
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -160,6 +398,28 @@ Del resultado obtenido, seleccione las l'ineas que contienen el texto \texttt{ap
 palabras y l'ineas.
 
 Est'a prohibido, en este 'item, usar archivos temporales de trabajo.
+
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt
+-rwxr-xr-x 1 root root  63K 2008-04-22 12:21 /usr/bin/apt-cache
+-rwxr-xr-x 1 root root  18K 2008-04-22 12:21 /usr/bin/apt-cdrom
+-rwxr-xr-x 1 root root 9.9K 2008-04-22 12:21 /usr/bin/apt-config
+-rwxr-xr-x 1 root root  22K 2008-04-22 12:21 /usr/bin/apt-extracttemplates
+-rwxr-xr-x 1 root root 187K 2008-04-22 12:21 /usr/bin/apt-ftparchive
+-rwxr-xr-x 1 root root 139K 2008-04-22 12:21 /usr/bin/apt-get
+-rwxr-xr-x 1 root root 2.2M 2008-04-04 06:56 /usr/bin/aptitude
+-rwxr-xr-x 1 root root 1.9K 2008-04-04 06:56 /usr/bin/aptitude-create-state-bundle
+-rwxr-xr-x 1 root root 3.0K 2008-04-04 06:56 /usr/bin/aptitude-run-state-bundle
+-rwxr-xr-x 1 root root 5.0K 2008-04-22 12:20 /usr/bin/apt-key
+-rwxr-xr-x 1 root root 2.2K 2008-04-22 12:20 /usr/bin/apt-mark
+-rwxr-xr-x 1 root root  26K 2008-04-22 12:21 /usr/bin/apt-sortpkgs
+mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -l
+12
+mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -w
+96
+mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -m
+817
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -180,6 +440,8 @@ que fue modificado posteriormente en la carpeta destino.
 El modificador \texttt{-r} indica al script realizar la sincronizaci'on tambi'en con los archivos de todos los
 subdirectorios de la carpetas origen y destino.
 
+\CodigoF{Script de sincronizaci'on}{../grupo8/scriptSincro.sh}
+
 \paragraph{Sugerencia}
 
 Recuerde que generalmente el esp'iritu de los scripts es proveer la m'inima l'ogica necesaria alrededor de otros programas
@@ -199,11 +461,37 @@ Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina v
 Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}. El programa compilado debe llamarse
 \texttt{loop}.
 
-\CodigoF{loop.c}{loop.c}
+\begin{envRespuesta}
+gcc -o loop loop.c
+\end{envRespuesta}
+
+\CodigoF{loop.c}{../grupo8/loop.c}
 
 \begin{enumerate}
 \item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
+
+\begin{envRespuesta}
+Imprime consecutivamente los n'umeros del 48 al 55.
+\end{envRespuesta}
+
 \item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
+
+\begin{envCodigo}
+mlopez@esparrago:~/tp$ /home/mlopez/tp/loop > /dev/null &
+[1] 3880
+mlopez@esparrago:~/tp$ ps
+  PID TTY          TIME CMD
+ 3848 tty2     00:00:00 bash
+ 3880 tty2     00:00:09 loop
+ 3881 tty2     00:00:00 ps
+mlopez@esparrago:~/tp$ kill -9 3880
+mlopez@esparrago:~/tp$ ps
+  PID TTY          TIME CMD
+ 3848 tty2     00:00:00 bash
+ 3882 tty2     00:00:00 ps
+[1]+  Killed                  /home/mlopez/tp/loop > /dev/null
+\end{envCodigo}
+
 \end{enumerate}
 
 \subsection{IPC y sincronizaci\'on}
@@ -217,6 +505,8 @@ Muestre con un ejemplo en lenguaje C como realizar exclusi'on mutua entre dos pr
 Revise la ayuda de la llamada al sistema \texttt{pipe} para construir el pipe y de \texttt{fork} para crear
 nuevos procesos.
 
+\CodigoF{pipe.c}{../grupo8/pipe.c}
+
 \subsubsection{Threads}
 
 Antes de resolver este ejercicio instale el paquete \texttt{glibc-doc}.
@@ -228,6 +518,9 @@ Resuelva el problema de productor/consumidor utilizando threads.
 Revise la ayuda de \texttt{pthreads}, la implementaci'on de threads en Linux, para conocer los mecanismos de creaci'on y
 destrucci'on de threads. Adem'as, \texttt{pthreads} provee mecanismos de sincronizaci'on que le ayudar'an a resolver este
 ejercicio.
+
+
+\CodigoF{productorConsumidor.c}{../grupo8/productorConsumidor.c}
 
 \subsection{El kernel Linux}
 
@@ -246,10 +539,26 @@ Sustituya \texttt{<version>} por el resultado del comando \texttt{uname -r}.
 
 \item Describa la administraci'on del procesador utilizada por defecto en el kernel Linux.
 
+\subitem {\tt
+
+		
+		A COMPLETAR
+
+}
+
 \item Describa la administraci'on de memoria utilizada por defecto en el kernel Linux.
+
+\subitem {\tt 
+		A COMPLETAR
+}
 
 \item Describa el sistema de archivos utilizado en la distribuci'on de Linux que instal'o en la m'aquina virtual.
 ?`Qu'e capas existen en el kernel Linux para soportar sistemas de archivos sobre dispositivos de bloques?
+
+\subitem {\tt 
+
+		A COMPLETAR
+}
 
 \end{enumerate}
 
@@ -262,17 +571,15 @@ original.
 
 \subsubsection{Compilando un m'odulo de kernel}
 
-A continuaci'on compilaremos y probaremos un m'odulo de kernel muy simple. Este m'odulo simplemente escribe en la consola
-``Hola kernel!'' al ser insertado y ``Chau, kernel.'' al ser removido. Cree el siguiente m'odulo en el archivo
-\texttt{/home/<usuario>/tp/hello.c}.
+En esta secci'on omitimos el enunciado y vamos directo a lo que hicimos.
 
-\CodigoF{hello.c}{hello.c}
+\CodigoF{cambiarLuces.c}{../grupo8/cambiarLuces.c}
 
 Para compilar este c'odigo deber'a construir una \textbf{Makefile}. Este archivo Makefile es utilizado luego por el
 comando \texttt{make} para compilar el m'odulo con las opciones correctas. En el mismo directorio donde se encuentra
-\texttt{hello.c} cree un archivo \texttt{Makefile} conteniendo:
+\texttt{cambiarLuces.c} cree un archivo \texttt{Makefile} conteniendo:
 
-\CodigoF{Makefile}{Makefile}
+\CodigoF{Makefile}{../grupo8/Makefile.txt}
 
 Luego ejecute:
 
@@ -280,13 +587,22 @@ Luego ejecute:
 
 Para compilar el m'odulo. Finalmente, pruebe insertar el m'odulo usando:
 
-\texttt{insmod hello.ko}
+\texttt{insmod cambiarLuces.ko} esto tambi'en viene facilitado con el siguiente script
+\CodigoF{./cargarKernel.sh}{../grupo8/cargarKernel.sh}
 
-Deber'ia ver el mensaje ``Hola kernel!'' en la consola. Quite el m'odulo usando:
+Deber'ia ver un mensaje en la consola indicando que se cargo correctamente o que fall'o. 
 
-\texttt{rmmod hello.ko}
+Para hacer funcionar el m'odulo escribir como root en \texttt{/proc/lasluces/escribaAqui} o, nuevamente, con un script que toma un dato:
 
-Deber'ia ver el mensaje ``Chau, kernel''.
+\CodigoF{./escribir.sh dato}{../grupo8/escribir.sh}
+
+Para sacar el m'odulo:
+
+\texttt{rmmod cambiarLuces.ko} o su versi'on script.
+
+\CodigoF{./descargarKernel.sh }{../grupo8/descargarKernel.sh}
+
+Esto tambi'en deber'ia dar un mensaje indicando lo sucedido.
 
 \subsubsection{Un m'odulo propio}
 
@@ -298,7 +614,7 @@ un programa que lo hace. Compile utilizando:
 
 \texttt{gcc -o check\_kbleds check\_kbleds.c}
 
-\CodigoF{check\_kbleds.c}{check_kbleds.c}
+\CodigoF{check\_kbleds.c}{../grupo8/checkkbleds.c}
 
 \paragraph{Sugerencia}
 
