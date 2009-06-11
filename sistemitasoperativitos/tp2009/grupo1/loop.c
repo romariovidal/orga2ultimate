@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define IDGRUPO 8 /* Completar con su numero de grupo */
+#define IDGRUPO 1 /* Completar con su numero de grupo */
 int main() {
     int i, c;
     while(1) {

@@ -440,7 +440,7 @@ que fue modificado posteriormente en la carpeta destino.
 El modificador \texttt{-r} indica al script realizar la sincronizaci'on tambi'en con los archivos de todos los
 subdirectorios de la carpetas origen y destino.
 
-\CodigoF{Script de sincronizaci'on}{../grupo8/scriptSincro.sh}
+\CodigoF{Script de sincronizaci'on}{grupo1/scriptSincro.sh}
 
 \paragraph{Sugerencia}
 
@@ -465,7 +465,7 @@ Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}.
 gcc -o loop loop.c
 \end{envRespuesta}
 
-\CodigoF{loop.c}{../grupo8/loop.c}
+\CodigoF{loop.c}{grupo1/loop.c}
 
 \begin{enumerate}
 \item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
@@ -505,7 +505,7 @@ Muestre con un ejemplo en lenguaje C como realizar exclusi'on mutua entre dos pr
 Revise la ayuda de la llamada al sistema \texttt{pipe} para construir el pipe y de \texttt{fork} para crear
 nuevos procesos.
 
-\CodigoF{pipe.c}{../grupo8/pipe.c}
+\CodigoF{pipe.c}{grupo1/pipe.c}
 
 \subsubsection{Threads}
 
@@ -520,7 +520,7 @@ destrucci'on de threads. Adem'as, \texttt{pthreads} provee mecanismos de sincron
 ejercicio.
 
 
-\CodigoF{productorConsumidor.c}{../grupo8/productorConsumidor.c}
+\CodigoF{productorConsumidor.c}{grupo1/productorConsumidor.c}
 
 \subsection{El kernel Linux}
 
@@ -573,13 +573,13 @@ original.
 
 En esta secci'on omitimos el enunciado y vamos directo a lo que hicimos.
 
-\CodigoF{cambiarLuces.c}{../grupo8/cambiarLuces.c}
+\CodigoF{cambiarLuces.c}{grupo1/cambiarLuces.c}
 
 Para compilar este c'odigo deber'a construir una \textbf{Makefile}. Este archivo Makefile es utilizado luego por el
 comando \texttt{make} para compilar el m'odulo con las opciones correctas. En el mismo directorio donde se encuentra
 \texttt{cambiarLuces.c} cree un archivo \texttt{Makefile} conteniendo:
 
-\CodigoF{Makefile}{../grupo8/Makefile.txt}
+\CodigoF{Makefile}{grupo1/Makefile.txt}
 
 Luego ejecute:
 
@@ -588,19 +588,19 @@ Luego ejecute:
 Para compilar el m'odulo. Finalmente, pruebe insertar el m'odulo usando:
 
 \texttt{insmod cambiarLuces.ko} esto tambi'en viene facilitado con el siguiente script
-\CodigoF{./cargarKernel.sh}{../grupo8/cargarKernel.sh}
+\CodigoF{./cargarKernel.sh}{grupo1/cargarKernel.sh}
 
 Deber'ia ver un mensaje en la consola indicando que se cargo correctamente o que fall'o. 
 
 Para hacer funcionar el m'odulo escribir como root en \texttt{/proc/lasluces/escribaAqui} o, nuevamente, con un script que toma un dato:
 
-\CodigoF{./escribir.sh dato}{../grupo8/escribir.sh}
+\CodigoF{./escribir.sh dato}{grupo1/escribir.sh}
 
 Para sacar el m'odulo:
 
 \texttt{rmmod cambiarLuces.ko} o su versi'on script.
 
-\CodigoF{./descargarKernel.sh }{../grupo8/descargarKernel.sh}
+\CodigoF{./descargarKernel.sh }{grupo1/descargarKernel.sh}
 
 Esto tambi'en deber'ia dar un mensaje indicando lo sucedido.
 
@@ -614,7 +614,7 @@ un programa que lo hace. Compile utilizando:
 
 \texttt{gcc -o check\_kbleds check\_kbleds.c}
 
-\CodigoF{check\_kbleds.c}{../grupo8/checkkbleds.c}
+\CodigoF{check\_kbleds.c}{grupo1/checkkbleds.c}
 
 \paragraph{Sugerencia}
 
