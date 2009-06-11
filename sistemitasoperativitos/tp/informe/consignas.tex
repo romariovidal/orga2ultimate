@@ -47,34 +47,34 @@ comando:
 
 \item \texttt{pwd} Indique qu'e directorio pasa a ser su directorio actual si ejecuta:
 
-\begin{lastTwo}
+\begin{envRespuesta}
 /home/mlopez
-\end{lastTwo}
+\end{envRespuesta}
 
 \begin{enumerate}
 \item \texttt{cd /usr/bin}
 
-\begin{lastTwo}
+\begin{envRespuesta}
 /usr/bin
-\end{lastTwo}
+\end{envRespuesta}
 
 \item \texttt{cd}
 
-\begin{lastTwo}
+\begin{envRespuesta}
 /home/mlopez
-\end{lastTwo}
+\end{envRespuesta}
 
 \item ?`C'omo explica el punto anterior?
 
-\begin{lastTwo}Al utilizar el comando cd sin par'ametros, si existe la variable 
+\begin{envRespuesta}Al utilizar el comando cd sin par'ametros, si existe la variable 
 HOME entonces se hace un chdir a ese path.
-\end{lastTwo}
+\end{envRespuesta}
 
 \end{enumerate}
 
 \item \texttt{cat} ?`Cu'al es el contenido del archivo \texttt{/home/<usuario>/.profile}?
 
-\begin{lastTwo}
+\begin{envCodigo}
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -96,93 +96,93 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{find} Liste \textbf{todos} los archivos que comienzan con \texttt{vmlinuz}.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 /boot/vmlinuz-2.6.24-19-virtual
 /vmlinuz
-\end{lastTwo}
+\end{envRespuesta}
 
 Estos archivos son im'agenes del kernel Linux.
 
 \item \texttt{mkdir} Genere un directorio \texttt{/home/<usuario>/tp}.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 mkdir tp
-\end{lastTwo}
+\end{envRespuesta}
 
 \item \texttt{cp} Copie el archivo \texttt{/etc/passwd} al directorio \texttt{/home/<usuario>/tp}.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 cp /etc/passwd tp/
-\end{lastTwo}
+\end{envRespuesta}
 
 \item \texttt{chgrp} Cambie el grupo del archivo \texttt{/home/<usuario>/tp/passwd} para que sea el suyo.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 El archivo ya es mio, pero en caso de tener que hacerlo: chgrp mlopez passwd.
-\end{lastTwo}
+\end{envRespuesta}
 
 \item \texttt{chown} Cambie el due'no del archivo \texttt{/home/<usuario>/tp/passwd} para que sea su usuario.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 El archivo ya es mio, pero en caso de tener que hacerlo: chown mlopez passwd.
-\end{lastTwo}
+\end{envRespuesta}
 
 \item \texttt{chmod} Cambie los permisos del archivo \texttt{/home/<usuario>/tp/passwd} para que:
 
-\begin{lastTwo}
+\begin{envRespuesta}
 Antes de empezar el pr'oximo paso: chmod 000 passwd para limpiar los permisos originales.
-\end{lastTwo}
+\end{envRespuesta}
 \begin{itemize}
 \item el propietario tenga permisos de lectura, escritura y ejecuci'on
 
-\begin{lastTwo}
+\begin{envRespuesta}
 chmod u+r+w+x passwd
-\end{lastTwo}
+\end{envRespuesta}
 
 \item el grupo tenga s'olo permisos de lectura y ejecuci'on
 
-\begin{lastTwo}
+\begin{envRespuesta}
 chmod g+r+x passwd
-\end{lastTwo}
+\end{envRespuesta}
 
 \item el resto tenga s'olo permisos de ejecuci'on
 
-\begin{lastTwo}
+\begin{envRespuesta}
 chmod o+x passwd
-\end{lastTwo}
+\end{envRespuesta}
 \end{itemize}
 
 \item \texttt{grep}
 
 Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc/hosts}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 127.0.0.1	localhost
 ::1     ip6-localhost ip6-loopback
-\end{lastTwo}
+\end{envCodigo}
 
 Muestre todas las l'ineas que tengan el texto ``POSIX'' de todos los archivos (incluyendo subdirectorios) en \texttt{/etc}.
 Evite los archivos binarios y aquellos archivos y directorios que no tienen permiso de lectura para su usuario.
 
-\begin{lastTwo}
+\begin{envCodigo}
 grep -R -I -s POSIX /etc/
 /etc/init.d/glibc.sh:     echo WARNING: POSIX threads library NPTL requires kernel version
 /etc/alternatives/updatedb:\# What shell shoud we use?  We should use a POSIX-ish sh.
 /etc/security/limits.conf:\# - msgqueue - max memory used by POSIX message queues (bytes)
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{passwd} Cambie su password.
 
-\begin{lastTwo}
+\begin{envCodigo}
 (current) UNIX password:
 Enter new UNIX password:
 Retype new UNIX password:
 passwd: password updated successfully
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{rm} Borre el archivo \texttt{/home/<usuario>/tp/passwd}
 
@@ -192,9 +192,9 @@ Enlazar el archivo \texttt{/etc/passwd} a los archivos \texttt{/tmp/contra1} y \
 
 Hacer un \texttt{ls -l} para ver cuantos enlaces tiene \texttt{/etc/passwd}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 -rw-r--r-- 3 root root 981 2008-10-08 01:11 /etc/passwd
-\end{lastTwo}
+\end{envCodigo}
 
 Estos enlaces se llaman ``hardlinks''. Cada nuevo enlace referencia el mismo espacio ocupado del disco r'igido,
 y por lo tanto cada hardlink es igual de representativo de esos bytes ocupados del disco r'igido.
@@ -204,7 +204,7 @@ Ahora enlace el archivo \texttt{/etc/passwd} de manera ``soft'' al archivo \text
 
 Verifique con \texttt{ls -l} que no aument'o la cantidad de enlaces de \texttt{/etc/passwd}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ ln -s /etc/passwd /tmp/contra3
 mlopez@esparrago:~/tp$ ls -l /etc/passwd
 -rw-r--r-- 3 root root 981 2008-10-08 01:11 /etc/passwd
@@ -212,7 +212,7 @@ mlopez@esparrago:~/tp$ ls -l /tmp/c*
 -rw-r--r-- 3 root   root   981 2008-10-08 01:11 /tmp/contra1
 -rw-r--r-- 3 root   root   981 2008-10-08 01:11 /tmp/contra2
 lrwxrwxrwx 1 mlopez mlopez  11 2008-11-15 18:38 /tmp/contra3 -> /etc/passwd
-\end{lastTwo}
+\end{envCodigo}
 
 Estos enlaces se llaman ``softlinks'' y apuntan no a los bytes del disco r'igido sino a la ruta del archivo a ser enlazado.
 Operar sobre el softlink es igual que operar sobre el archivo, sin embargo los softlinks no cuentan en la cantidad de
@@ -234,7 +234,7 @@ derecho en el 'icono con forma de CD-ROM en la esquina inferior derecha de la m'
 
 Presente los filesystems que tiene montados.
 
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ sudo mount /dev/cdrom /media/cdrom
 mount: block device /dev/scd0 is write-protected, mounting read-only
 mlopez@esparrago:~/tp$ mount
@@ -247,11 +247,11 @@ udev on /dev type tmpfs (rw,mode=0755)
 devshm on /dev/shm type tmpfs (rw)
 devpts on /dev/pts type devpts (rw,gid=5,mode=620)
 share on comp/ type vboxsf (uid=1000,gid=1000,rw)
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{df} ?`Qu'e espacio libre tiene cada uno de los filesystems montados?
 
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ df -h
 Filesystem            Size  Used Avail Use% Mounted on
 /dev/sda1             494M  427M   42M  92% /
@@ -263,20 +263,20 @@ df: `comp/': No such file or directory
 /dev/scd0             100M  100M     0 100% /media/cdrom0
 
 comp es una carpeta compartidad con la otra m'aquina
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{ps} ?`Cu'antos procesos de usuario tiene ejecutando? Indique cu'antos son del sistema.
 
-\begin{lastTwo}
+\begin{envCodigo}
 ps
   PID TTY          TIME CMD
  3946 tty1     00:00:00 bash
  5528 tty1     00:00:07 vi
  5747 tty1     00:00:00 bash
  5748 tty1     00:00:00 ps
-\end{lastTwo}
+\end{envCodigo}
 
-\begin{lastTwo}
+\begin{envCodigo}
 ps aux
 
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -319,26 +319,26 @@ mlopez    3958  0.0  1.7   4788  2228 tty2     S+   12:17   0:01 -bash
 mlopez    5528  0.2  2.6   7060  3304 tty1     S+   17:50   0:08 vi svn/informe/consignas.tex svn/informe/tp1.tex
 mlopez    5802  0.0  0.9   3756  1152 tty1     S+   18:53   0:00 /bin/bash -c (ps -aux) >/tmp/v784235/10 2>&1
 mlopez    5803  0.0  0.7   2644  1004 tty1     R+   18:53   0:00 ps -aux
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{umount} Desmonte el CD-ROM de instalaci'on de Ubuntu JeOS.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 sudo umount /media/cdrom
-\end{lastTwo}
+\end{envRespuesta}
 
 \item \texttt{uptime} ?`Cuanto tiempo lleva ejecutando su m'aquina virtual?
 
-\begin{lastTwo}
+\begin{envCodigo}
 18:48:33 up  6:45,  2 users,  load average: 0.00, 0.00, 0.00
-\end{lastTwo}
+\end{envCodigo}
 
 \item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
 
-\begin{lastTwo}
+\begin{envCodigo}
 uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC 
 2008 i686 GNU/Linux
-\end{lastTwo}
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -353,39 +353,39 @@ uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC
 \item Conserve en el archivo \texttt{/home/<usuario>/tp/config} la salida del comando \texttt{ls} que muestra todos los
 archivos del directorio \texttt{/etc} y de los subdirectorios bajo \texttt{/etc}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 ls -R /etc/ > /home/mlopez/tp/config
-\end{lastTwo}
+\end{envCodigo}
 
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
 
 \fboxsep 0pt
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ wc -l config
 730 config
 mlopez@esparrago:~/tp$ wc -w config
 654 config
 mlopez@esparrago:~/tp$ wc -m config
 8422 config
-\end{lastTwo}
+\end{envCodigo}
 
 \item Agregue el contenido, ordenado alfab'eticamente, del archivo \texttt{/etc/passwd} al final del
 archivo \texttt{/home/<usuario>/tp/config}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 sort /etc/passwd >> /home/mlopez/tp/config
-\end{lastTwo}
+\end{envCodigo}
 
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ wc -l config
 754 config
 mlopez@esparrago:~/tp$ wc -w config
 684 config
 mlopez@esparrago:~/tp$ wc -m config
 9403 config
-\end{lastTwo}
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -399,7 +399,7 @@ palabras y l'ineas.
 
 Est'a prohibido, en este 'item, usar archivos temporales de trabajo.
 
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt
 -rwxr-xr-x 1 root root  63K 2008-04-22 12:21 /usr/bin/apt-cache
 -rwxr-xr-x 1 root root  18K 2008-04-22 12:21 /usr/bin/apt-cdrom
@@ -419,7 +419,7 @@ mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -w
 96
 mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -m
 817
-\end{lastTwo}
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -461,22 +461,22 @@ Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina v
 Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}. El programa compilado debe llamarse
 \texttt{loop}.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 gcc -o loop loop.c
-\end{lastTwo}
+\end{envRespuesta}
 
 \CodigoF{loop.c}{../grupo8/loop.c}
 
 \begin{enumerate}
 \item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
 
-\begin{lastTwo}
+\begin{envRespuesta}
 Imprime consecutivamente los n'umeros del 48 al 55.
-\end{lastTwo}
+\end{envRespuesta}
 
 \item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
 
-\begin{lastTwo}
+\begin{envCodigo}
 mlopez@esparrago:~/tp$ /home/mlopez/tp/loop > /dev/null &
 [1] 3880
 mlopez@esparrago:~/tp$ ps
@@ -490,7 +490,7 @@ mlopez@esparrago:~/tp$ ps
  3848 tty2     00:00:00 bash
  3882 tty2     00:00:00 ps
 [1]+  Killed                  /home/mlopez/tp/loop > /dev/null
-\end{lastTwo}
+\end{envCodigo}
 
 \end{enumerate}
 
@@ -540,28 +540,25 @@ Sustituya \texttt{<version>} por el resultado del comando \texttt{uname -r}.
 \item Describa la administraci'on del procesador utilizada por defecto en el kernel Linux.
 
 \subitem {\tt
-La administraci\'on del procesador de Linux utiliza el m\'etodo de round robin. Este sistema permite que varios procesos puedan estar ejecutandose al mismo tiempo (hablando en sentido de procesos concurrentes, a menos de que se cuente con 2 procesadores, nunca se va a poder tener 2 procesos ejecutandose a la vez), lo que quiere decir que la CPU esta dividida en ``partes'', cada uno para un proceso particular. Si uno de ellos no termina para cuando su porci\'on de tiempo (quantum) expira, un intercambio de procesos puede ocurrir (en caso de que haya alguno en cola de espera). Esta administraci\'on utiliza interrupciones por tiempo  que se generean cada vez que el quantum transcurri'o. Debido a todo esto, no es necesario c\'odigo adicional dentro de los procesos para que la CPU pueda mantenerlos corriendo concurrementemente.
 
-La pol\'itica de administraci\'on se basa en enumerar procesos de acuerdo a su prioridad dentro del sistema. Hay algor\'itmos complicados para definir el orden en el cual los procesos deben ser ejecutados para optimizar el rendimiento, pero siempre se mantiene el hecho de que a cada proceso se le asigna un n\'umero que corrresponde a que tan apropiado es de ser asignado a la CPU.
+		
+		A COMPLETAR
 
-La asignaci\'on de prioridades es din'amica dentro de Linux. Cuando a un proceso se le nego por mucho tiempo el uso de la CPU, se le incrementa su prioridad. Lo mismo pasa si un proceso se ejecuta por demasiado tiempo, como penalidad se le decrementa su prioridad. Gracias a esto se evita que un proceso se mantenga inactivo por mucho tiempo o que consuma demasiado los ciclos del procesador.
 }
 
 \item Describa la administraci'on de memoria utilizada por defecto en el kernel Linux.
 
-\subitem {\tt Cuando el procesador ejecuta un programa, esta leyendo una instrucci\'on desde la memoria y la decodifica. Por lo general, esa instrucci\'on necesita alguno datos, por lo que el procesador deber'a realizar un nuevo acceso a memoria para poder darselos al proceso mismo. De esta manera, el procesador esta siempre accediendo a memoria para traer datos o instrucciones. Utilizando memoria virtual, todas las direcciones a las cuales el procesador accede no son f\'isicas, las cuales permiten que, junto con un set de tablas dentro del sistema operativo, se pueda convertir estas direcciones virtuales en direcciones reales. 
-
-Como hay menos memoria f\'isica que la memoria virtual, el sistema debe  tener mucho cuidado en no usar la memoria f\'isica ineficientemente. Cuando un proceso intenta acceder a una direcci\'on virtual que no se encuentra dentro de las asignadas a \'el, el procesador no puede encontrar una tabla de pagina cuya entrada sea la direccion pedida. Esto quiere decir que el proceso esta pidiendo una direcci\'on que no le corresponde, por lo que el sistema lo terminar'a (al proceso). 
-
-Linux usa paginaci\'on por demanda como sistema de administraci\'on de memoria. Carga imagenes ejecutables a la memoria virtual de un proceso para su utilizaci'on. Cada vez que un comando se ejecuta, el archivo que lo contiene es abierto y sus contenidos son mapeados a la memoria virtual del proceso. Esto se conoce con el nombre de mapeo de memoria. Cuando el proceso se ejecuta, s'olo una parte de este esta en memoria f\'isica, el resto esta dentro del disco (el dispositivo que se utiliza como memoria virtual), por lo que el sistema usara el mapa de memoria para ir dandole al proceso toda la informaci\'on necesaria para su ejecuci\'on. Si un proceso necesita volcar una p\'agina virtual dentro de la memoria f\'isica, y no hay suficiente espacio en ella, el sistema debe conseguir lugar para esta p\'agina, descartando cualquier otra de la misma. A veces, la p\'agina que se va a descartar no sufri\'o cambio alguno, por lo que no debe ser guardada. Sin embargo, si la p\'agina fue modificada, el sistema debe preservar los contenidos de esa p\'agina para que pueda ser leida mas tarde. Este tipo de p\'agina que fue modificada se guarda dentro de un archivo conocido como "swap file". Linux utiliza LRU (Least Recently Used) para definir que p\'agina ser'a quitada para poner otra nueva. Mientras m'as sea utilizada una determinada p\'agina, tendr\'a menos posibilidades de ser swapeada que una p\'agina que se utiliza menos.
+\subitem {\tt 
+		A COMPLETAR
 }
 
 \item Describa el sistema de archivos utilizado en la distribuci'on de Linux que instal'o en la m'aquina virtual.
 ?`Qu'e capas existen en el kernel Linux para soportar sistemas de archivos sobre dispositivos de bloques?
 
-\subitem {\tt Dentro de los sistemas Linux, se cuenta con un sistema de archivos virtual, que es el encargado de manejar los filesystems dentro del sistema. \'Este se conoce mas por sus siglas en ingles: VFS (Virtual File System). El concepto es poder separar los filesystems de bajo nivel con el resto del Kernel, para as\'i no tener que repensar el Kernel para querer cambiar el sistema de archivos sobre el cual esta montado. De esta manera, ser\'a posible un manejo de los archivos eficaz sin importar el sistema que se utilize. Es decir, Linux puede utilizar cualquier filesystem (ext2, ext3, fat, vfat, ufs, etc) gracias a el uso del VFS. El VFS brinda el set de instrucciones necesario y generales para todos los filesystems para poder usarlos a gusto del sistema (o del programador). Las estructuras atrav\'ez de las cuales el VFS funciona son: los index-nodes, que son atravez de los cuales se mantiene un registro de los file; una cach\'e de directorios para acelerar la b\'usqueda y mapeado de nombres de ficheros con sus correspondientes inodos y el super bloque, que es donde se carga cada filesystem para poder ser usado.
+\subitem {\tt 
 
-La distribucion instalada dentro de este trabajo practico contiene a ext3 como su filesystem. Ext3 (third extended filesystem o "tercer sistema de archivos extendido") es un sistema de archivos con registro por diario (journaling). Este concepto se basa en llevar un journal o registro de diario en el que se almacena la informaci\'on necesaria para restablecer los datos afectados por la transacci\'on en caso de que \'esta falle.}
+		A COMPLETAR
+}
 
 \end{enumerate}
 

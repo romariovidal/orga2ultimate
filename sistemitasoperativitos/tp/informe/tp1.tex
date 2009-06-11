@@ -8,6 +8,8 @@
 \usepackage[all]{xy} 
 \usepackage{clrscode}
 \usepackage{moreverb}
+%\usepackage{multicol}
+\usepackage{boxedminipage}
 
 \usepackage{verbatimbox}
 
@@ -62,9 +64,14 @@
     \includegraphics[scale=0.40]{marios/m\number\entrada.png} 
 }
 
-\newenvironment{lastTwo}
+\newenvironment{envCodigo}
 {\verbbox}
 {\endverbbox \rule{\linewidth}{0.1mm}\vspace{6pt}\\\theverbbox\\\rule{\linewidth}{0.1mm}}
+
+
+\newenvironment{envRespuesta}
+{\begin{ttfamily}\begin{boxedminipage}{0.8\textwidth}}
+{\end{boxedminipage}\end{ttfamily}}
 
 \fboxsep 4pt
 
@@ -74,6 +81,11 @@
 
 \tableofcontents
 \newpage
+
+%\begin{envRespuesta}
+%Some sans-serif text.
+%\end{envRespuesta}
+
 
 %\input{intro.tex}
 %\input{desarrollo.tex}
