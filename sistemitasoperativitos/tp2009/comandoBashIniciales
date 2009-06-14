@@ -1,0 +1,51 @@
+gr01
+1234
+
+instalamos lo que ped'ia J
+sudo apt-get install man-db manpages manpages-dev
+
+sudo apt-get update
+sudo apt-get install vim ssh
+
+scp /etc/bash_completion
+scp .bashrc
+cambiar en el .bashrc
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+
+Para las guest additions
+Devices->Intall Guest Additions
+sudo mount /dev/cdrom /media/cdrom
+sudo apt-get install make
+sudo apt-cache search 2.6.24-19-virtual
+sudo apt-get install linux-headers-2.6.24-19-virtual
+sudo apt-get install gcc
+sudo /media/cdrom/VBoxLinuxAdditions-x86.run
+sudo umount /media/cdrom
+
+Devices->Shared Folder-> BLA BLA (nombre:share) -> Permanent
+mkdir comp
+id mlopez
+sudo mount.vboxsf -o uid=1000 -o gid=1000 -w share comp/
+
+Agregar al fstab:
+compartida	/home/gr01/compartida rw,uid=1000,gid=1000,auto
+
+
+sudo apt-get install alsa pulseaudio xubuntu-desktop
+
+
+Después instalar las guesta additions de nuevo para poder compartir el mouse
+
+
+
+------
+Chetadas: Mouse
+sudo apt-get install gpm
+
+Chetadas: vim con coloritos de mi profile
+cp comp/.vimrc .
+
+Chetadas: Un browser
+sudo apt-get install links
+links www.google.com
