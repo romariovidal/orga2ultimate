@@ -66,7 +66,7 @@ comando:
 
 \item ?`C'omo explica el punto anterior?
 
-\begin{envRespuesta}Al utilizar el comando cd sin par'ametros, si existe la variable 
+\begin{envRespuesta}Al utilizar el comando cd sin par'ametros, si existe la variable
 HOME entonces se hace un chdir a ese path.
 \end{envRespuesta}
 
@@ -88,7 +88,7 @@ HOME entonces se hace un chdir a ese path.
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+    . "$HOME/.bashrc"
     fi
 fi
 
@@ -161,7 +161,7 @@ chmod o+x passwd
 Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc/hosts}.
 
 \begin{envCodigo}
-127.0.0.1	localhost
+127.0.0.1   localhost
 ::1     ip6-localhost ip6-loopback
 \end{envCodigo}
 
@@ -305,7 +305,7 @@ root      2536  0.0  0.0      0     0 ?        S<   12:03   0:00 [kpsmoused]
 dhcp      3484  0.0  0.4   2436   548 ?        S<s  12:04   0:00 dhclient3 -e IF_METRIC=100 -pf /var/run/dhclient.eth0.pid -lf /var/lib/dhcp3/dhclient.eth0.leases eth0
 root      3813  0.0  0.4   1716   508 tty4     Ss+  12:04   0:00 /sbin/getty 38400 tty4
 root      3816  0.0  0.4   1716   508 tty5     Ss+  12:04   0:00 /sbin/getty 38400 tty5
-root      3820  0.0  0.9   2568  1208 tty2     Ss   12:04   0:00 /bin/login --       
+root      3820  0.0  0.9   2568  1208 tty2     Ss   12:04   0:00 /bin/login --
 root      3824  0.0  0.4   1716   508 tty3     Ss+  12:04   0:00 /sbin/getty 38400 tty3
 root      3826  0.0  0.4   1716   504 tty6     Ss+  12:04   0:00 /sbin/getty 38400 tty6
 root      3847  0.0  0.1   1844   236 ?        Ss   12:04   0:00 /usr/sbin/vboxadd-timesync --daemonize
@@ -313,7 +313,7 @@ syslog    3890  0.0  0.5   1936   648 ?        Ss   12:04   0:00 /sbin/syslogd -
 root      3909  0.0  0.4   1868   532 ?        S    12:04   0:00 /bin/dd bs 1 if /proc/kmsg of /var/run/klogd/kmsg
 klog      3911  0.0  1.4   2896  1784 ?        Ss   12:04   0:00 /sbin/klogd -P /var/run/klogd/kmsg
 root      3926  0.0  0.3   1764   396 ?        Ss   12:04   0:01 /usr/sbin/gpm -m /dev/input/mice -t exps2
-root      3945  0.0  0.9   2568  1204 tty1     Ss   12:04   0:00 /bin/login --       
+root      3945  0.0  0.9   2568  1204 tty1     Ss   12:04   0:00 /bin/login --
 mlopez    3946  0.0  1.8   4804  2280 tty1     S    12:04   0:00 -bash
 mlopez    3958  0.0  1.7   4788  2228 tty2     S+   12:17   0:01 -bash
 mlopez    5528  0.2  2.6   7060  3304 tty1     S+   17:50   0:08 vi svn/informe/consignas.tex svn/informe/tp1.tex
@@ -336,7 +336,7 @@ sudo umount /media/cdrom
 \item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
 
 \begin{envCodigo}
-uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC 
+uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC
 2008 i686 GNU/Linux
 \end{envCodigo}
 
@@ -538,27 +538,18 @@ Sustituya \texttt{<version>} por el resultado del comando \texttt{uname -r}.
 \begin{enumerate}
 
 \item Describa la administraci'on del procesador utilizada por defecto en el kernel Linux.
+\\
+\input{admproc.tex}
 
-\subitem {\tt
-
-		
-		A COMPLETAR
-
-}
 
 \item Describa la administraci'on de memoria utilizada por defecto en el kernel Linux.
-
-\subitem {\tt 
-		A COMPLETAR
-}
+\\
+\input{admmem.tex}
 
 \item Describa el sistema de archivos utilizado en la distribuci'on de Linux que instal'o en la m'aquina virtual.
 ?`Qu'e capas existen en el kernel Linux para soportar sistemas de archivos sobre dispositivos de bloques?
-
-\subitem {\tt 
-
-		A COMPLETAR
-}
+\\
+\input{fs.tex}
 
 \end{enumerate}
 
@@ -590,7 +581,7 @@ Para compilar el m'odulo. Finalmente, pruebe insertar el m'odulo usando:
 \texttt{insmod cambiarLuces.ko} esto tambi'en viene facilitado con el siguiente script
 \CodigoF{./cargarKernel.sh}{grupo1/cargarKernel.sh}
 
-Deber'ia ver un mensaje en la consola indicando que se cargo correctamente o que fall'o. 
+Deber'ia ver un mensaje en la consola indicando que se cargo correctamente o que fall'o.
 
 Para hacer funcionar el m'odulo escribir como root en \texttt{/proc/lasluces/escribaAqui} o, nuevamente, con un script que toma un dato:
 
@@ -606,7 +597,7 @@ Esto tambi'en deber'ia dar un mensaje indicando lo sucedido.
 
 \subsubsection{Un m'odulo propio}
 
-Escriba un m'odulo de kernel que permita controlar los LEDs del teclado \textbf{sin necesidad de escribir un programa 
+Escriba un m'odulo de kernel que permita controlar los LEDs del teclado \textbf{sin necesidad de escribir un programa
 en lenguaje C}. El m'odulo deber'a permitir prender o apagar cada LED usando simplemente comandos del shell.
 
 Dado que la m'aquina virtual provista por VirtualBox no muestra el estado de los LEDs, la c'atedra provee abajo
@@ -618,5 +609,5 @@ un programa que lo hace. Compile utilizando:
 
 \paragraph{Sugerencia}
 
-Haga que su m'odulo cree un archivo en \texttt{/proc} y que las escrituras a ese archivo controlen los LEDs utilizando 
+Haga que su m'odulo cree un archivo en \texttt{/proc} y que las escrituras a ese archivo controlen los LEDs utilizando
 la IOCTL \texttt{KDSETLED} de la consola de Linux.

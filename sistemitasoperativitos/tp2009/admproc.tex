@@ -1,0 +1,53 @@
+PC o Process Scheduler (Programador de Procesos) es en realidad el
+coraz'on del Sistema Operativo.
+
+Sus responsabilidades son:
+
+\begin{itemize}
+
+\item Permitirle a los procesos crear nuevas copias de s'i mismos (forking)
+
+\item Determinar qu'e proceso tendr'a acceso a la CPU
+
+\item Recibir interrupciones y desviarlas hacia el subsistema respectivo
+
+\item Enviar mensajes a los procesos de usuario
+
+\item Manejar el reloj de Hardware (Hardware Timer)
+
+\item Liberar recursos cuando un programa los haya desocupado
+
+\end{itemize}
+
+El Process Scheduler tambi'en soporta modulos cargados
+din'amicamente. Los m'as importantes son el ``Virtual File System''
+y ``Network Interface'' (explicados en puntos posteriores).
+
+Tambi'en provee dos interfaces. Una, provee una interface de llamada
+a sistema limitada que los procesos pueden llamar. Dos, provee una
+interface para el resto del espacio del Kernel.
+
+En tiempo de booteo, Linux posee s'olo un proceso, $init()$, que a
+su vez realiza copias de s'i mismo a trav'es de llamadas $fork()$.
+Cuando un proceso termina, ejecuta la llamada $a\_exit()$.
+
+PS ademas posee llamados a señales a trav'es de $signal()$. Esta
+llamada permite a un proceso asociar un manejador de funcion
+(function handler) con una señal en particular. Las señales pueden
+considerarse como una forma de IPC o intercomunicaci'on de procesos.
+
+Acerca del timer, Linux maneja un reloj interno que se inicia cada
+10 milisegundos. Esto permite que los procesos se reasignen
+(Scheduling) cada 10 ms. Esta unidad se llama ``clock tick'' y sirve
+para medir la cantidad de ticks que un proceso en particular puede
+continuar ejecutándose sin forzar su reasignaci'on.
+
+Cada proceso se asigna con un identificador 'unico, llamado Process
+ID o pid, que es asignado a la lista de procesos o tabla de
+procesos.
+
+Finalmente, una estructura modular es usada para representar los
+modulos cargados en tiempo de ejecuci'on. Esta estructura posee
+campos que son usados para implementar una lista de estructura de
+modulos. Es decir, un campo que apunta a la tabla de símbolos de los
+m'odulos y otro con su nombre.
