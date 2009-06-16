@@ -2,7 +2,7 @@ El Memory Manager o administrador de memoria permite lo siguiente:
 
 \begin{itemize}
 
-\item Gran espacio de direcciones : Los programas pueden requerir m'as
+\item Brindar gran espacio de direcciones : Los programas pueden requerir m'as
 memoria que la que f'isicamente existe
 
 \item Protecci'on : La memoria asignada a un proceso es privada para tal
@@ -20,45 +20,45 @@ trozos de la memoria asignada.
 
 \end{itemize}
 
-El Administrador de memoria posee dos interfaces : una interfaz con
-llamada a sistema que es usada por los procesos de usuario (User
-Space) y una interface que es usada por los otros subsistemas
-(Kernel Space).
+El Administrador de memoria posee dos interfaces : una, con llamada
+a sistema que es usada por los procesos de usuario (User Space) y la
+otra, es utilizada por los otros subsistemas (Kernel Space).
 
 Algunas de las llamadas de usuario incluyen $malloc()$ y $free()$.
-Las llamadas de kernel incluyen $kmalloc()$ y $kfree()$.
+Las llamadas de kernel comprenden $kmalloc()$ y $kfree()$.
 
-Ya que Linux soporta multiples arquitecturas, es necesario entonces
+Como Linux soporta multiples arquitecturas, es necesario entonces
 que existan rutinas espec'ificas para abstraer los detalles del uso
 del hardware en una sola interface.
 
-El Memory Manager usa el administrador de memoria de hardware para
+El Memory Manager usa al administrador de memoria de hardware para
 mapear direcciones virtuales a direcciones f'isicas. Gracias a esto,
 los procesos no est'an concientes de cuanta memoria f'isica est'a
 asociada a una direcci'on virtual. Esto permite al MM poder mover
 trozos de memoria virtual dentro de la memoria f'isica. Adem'as,
-permite que dos procesos puedan compartir dos trozos de memoria
-f'isica si las regiones de memoria virtual asignadas a ellas son
-mapeadas en la misma direcci'on f'isica.
+permite que dos procesos puedan compartir trozos de memoria f'isica
+si las regiones de memoria virtual asignadas son mapeadas en la
+misma direcci'on f'isica.
 
-Otro concepto importante es el Swapping o intercambio, que es
-intercambiar (swap) memoria ocupada por procesos en un archivo. Esto
-le permite al kernel poder ejecutar mayor cantidad de procesos que
-usen mayor cantidad de memoria f'isica existente. El MM posee un
-m'odulo, $kswapd$, para ejecutar la tarea de intercambiar zonas de
-memoria en archivos y viceversa. Este, chequea periodicamente si no
-existen direcciones f'isicas mapeadas recientemente. Estas
-direcciones son vaciadas de la memoria f'isica, y adem'as de 'esto,
-el MM minimiza la cantidad de actividad de disco necesaria para
-hacer este intercambio.
+Otro concepto importante es el Swapping o intercambio, que se
+describe como intercambiar (swap) memoria ocupada por procesos a un
+archivo. Esto le permite al kernel poder ejecutar mayor cantidad de
+procesos que usen mayor cantidad de memoria que la f'isica
+existente. El MM posee un m'odulo llamado $kswapd$, que sirve para
+ejecutar la tarea de intercambiar zonas de memoria en archivos y
+viceversa. Adem'as, chequea periodicamente si no existen direcciones
+f'isicas mapeadas recientemente. Estas direcciones son vaciadas de
+la memoria f'isica. Cabe destacar que el MM busca minimizar la
+cantidad de actividad de disco necesaria relacionada con este
+intercambio(minimizar el trashing).
 
-El administrador de memoria del hardware detecta cuando un proceso
+El hardware del administrador de memoria, detecta cuando un proceso
 de usuario tiene acceso a una porcion de memoria no mapeada en una
 dirección virtual y notifica al kernel de esta falla. Existen dos
 alternativas para solucionar esto: o la p'agina de memoria es
-volcada a un archivo y viceversa; o el proceso está haciendo
+volcada a un archivo o viceversa; o el proceso está haciendo
 referencia a una zona de memoria no permitida.
 
 Si el administrador de memoria detecta un acceso no permitido (a la
-memoria) notifica al proceso con una señal. Si el proceso no sabe
-como manejar esta señal, el proceso es finalizado.
+memoria), notifica al proceso con una señal. Si el proceso no sabe
+como manejar esta señal, entonces, es finalizado.

@@ -1,5 +1,5 @@
-PC o Process Scheduler (Programador de Procesos) es en realidad el
-coraz'on del Sistema Operativo.
+El PC o Process Scheduler (Programador de Procesos) es, en realidad,
+el coraz'on del Sistema Operativo.
 
 Sus responsabilidades son:
 
@@ -21,26 +21,28 @@ Sus responsabilidades son:
 
 El Process Scheduler tambi'en soporta modulos cargados
 din'amicamente. Los m'as importantes son el ``Virtual File System''
-y ``Network Interface'' (explicados en puntos posteriores).
+y ``Network Interface'' (el primero, lo explicaremos
+posteriormente).
 
-Tambi'en provee dos interfaces. Una, provee una interface de llamada
-a sistema limitada que los procesos pueden llamar. Dos, provee una
-interface para el resto del espacio del Kernel.
+Tambi'en provee dos interfaces: una provee una interface de llamada
+a sistema limitada que los procesos pueden llamar, la otra, provee
+una interface para el resto del espacio del Kernel.
 
-En tiempo de booteo, Linux posee s'olo un proceso, $init()$, que a
+En tiempo de booteo, Linux posee s'olo un proceso: $init()$, que a
 su vez realiza copias de s'i mismo a trav'es de llamadas $fork()$.
 Cuando un proceso termina, ejecuta la llamada $a\_exit()$.
 
-PS ademas posee llamados a señales a trav'es de $signal()$. Esta
+El PS, ademas posee llamados a señales a trav'es de $signal()$. Esta
 llamada permite a un proceso asociar un manejador de funcion
-(function handler) con una señal en particular. Las señales pueden
+(function handler) con una señal en particular, que pueden
 considerarse como una forma de IPC o intercomunicaci'on de procesos.
 
 Acerca del timer, Linux maneja un reloj interno que se inicia cada
 10 milisegundos. Esto permite que los procesos se reasignen
 (Scheduling) cada 10 ms. Esta unidad se llama ``clock tick'' y sirve
 para medir la cantidad de ticks que un proceso en particular puede
-continuar ejecutándose sin forzar su reasignaci'on.
+continuar ejecutándose sin forzar su reasignaci'on (Pol'itica Round
+Robin).
 
 Cada proceso se asigna con un identificador 'unico, llamado Process
 ID o pid, que es asignado a la lista de procesos o tabla de

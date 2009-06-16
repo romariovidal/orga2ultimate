@@ -1,9 +1,9 @@
 Linux est'a diseñado para soportar distintos t'ipos de dispositivos
-f'isicos. Incluso para un tipo espec'ifico, como un disco duro,
-existen diferentes interfaces de manejo entre un fabricante de
-hardware y otro. Adem'as de los dispositivos f'isicos, Linux posee
-soporte para sistemas de archivos l'ogicos que lo hace interoperante
-entre distintos sistemas operativos, con los siguientes prop'ositos:
+f'isicos, y para un tipo espec'ifico, como un disco duro, existen
+diferentes interfaces de manejo entre un fabricante de hardware y
+otro. Adem'as, Linux posee soporte para distintos sistemas de
+archivos l'ogicos que lo hace interoperante entre distintos sistemas
+operativos, con los siguientes prop'ositos:
 
 \begin{itemize}
 
@@ -25,16 +25,13 @@ permisos, etc.
 
 \end{itemize}
 
-Tambi'en se usan dos interfaces para el manejo de filesystems. Una
-interfaz para llamadas de usuarios y otra para los subsistemas del
-kernel. La interfaz para los usuarios maneja archivos y directorios.
-Las operaciones en archivos incluyen $open, read, close, write,
-seek$, que est'an definidas en el estandar $POSIX$ y en los
-directorios $readdir, creat, unlink, chmod, stat$ tambi'en definidas
-en $POSIX$.
-
-Pero la interface de los subsistemas del Kernel es bastante m'as
-interesante. Esta posee estructuras de datos y funciones para
+Tambi'en se usan dos interfaces para el manejo de filesystems. Una,
+para llamadas de usuarios y otra para los subsistemas del kernel. La
+primera maneja archivos y directorios. Las operaciones en archivos
+incluyen $open, read, close, write, seek$, que est'an definidas en
+el estandar $POSIX$ y en los directorios $readdir, creat, unlink,
+chmod, stat$ tambi'en definidas en $POSIX$. La otra es bastante m'as
+interesante: posee estructuras de datos y funciones para
 manipulaci'on directa para otros subsistemas. De hecho, existen dos
 interfaces para el resto del kernel: inodos y archivos.
 
@@ -45,13 +42,13 @@ La interfaz de archivos posee soporte para $open()/release()$,
 $read()/write()$, $select()$, $mmap()$, $fsync()$, etc.
 
 Volviendo con los controladores de dispositivos o drivers, Linux
-posee tres tipos de drivers: $char$, $block$ y $network$. Los dos
-m'as relevantes son $char$ y $block$. Los dispositivos $char$ son
-aquellos que su lectura es secuencial (de a un char a la vez), como
-un mouse. Los dispositivos $block$ pueden ser accedidos de cualquier
-manera, pero solo puede leerse o escribirse de a bloques.
+posee tres tipos de ellos: $char$, $block$ y $network$. Los dos m'as
+relevantes son $char$ y $block$. Los primeros son aquellos cuya
+lectura es secuencial (de a un char a la vez), como un mouse. Los
+segundos pueden ser accedidos de cualquier manera, pero solo puede
+leerse o escribirse de a bloques.
 
-Todos los drivers soportan las operaciones mencionadas reci'en.
+Todos los drivers soportan las operaciones reci'en mencionadas.
 Adem'as, cada dispositivo puede ser accesado como si fuera un
 archivo. Como el Kernel se entiende con los dispositivos de esa
 manera, no es complicado agregar un nuevo dispositivo, ya que solo
@@ -95,22 +92,22 @@ presionar el bot'on del mouse) o reporta el final de una operaci'on,
 env'ia una interrupci'on al procesador. Si las interrupciones estan
 habilitadas, el procesador detiene su ejecuci'on actual y comienza a
 ejecutar el c'odigo de manejo de interrupciones del kernel. El
-kernel encuentra el driver correcto para invocar. Cuando una
-interrupci'on es manejada, la CPU se ejecuta en un contexto
-especial, es decir, todas las interrupciones quedan pendientes hasta
-que la interrupci'on actual haya terminado. Debido a esto, los
-manejadores de interrupciones deben ser altamente eficientes. Si
-ocurre el caso que un manejador de interrupciones no puede terminar
-el trabajo, reasigna el trabajo pendiente en un manejador de tipo
-``bottom\-half'' , es decir, c'odigo que se ejecutar'a la pr'oxima
-vez que la llamada sea completada para evitar latencias y promover
-la concurrencia.
+kernel busca el driver correcto para invocar. Cuando una
+interrupci'on es tomada, la CPU se ejecuta en un contexto especial,
+es decir, todas las interrupciones quedan pendientes hasta que la
+interrupci'on actual haya terminado. Debido a esto, los manejadores
+de interrupciones deben ser altamente eficientes. Si ocurre el caso
+que un manejador de interrupciones no puede terminar el trabajo,
+reasigna el trabajo pendiente en un manejador de tipo
+``bottom\-half'' , osea, c'odigo que se ejecutar'a la pr'oxima vez
+que la llamada sea completada para evitar latencias y promover la
+concurrencia.
 
 Volviendo ahora a los sistemas de archivos l'ogicos, es m'as f'acil
 acceder a un dispositivo si es manejado como un archivo a que si
 fuera manejado directamente en el hardware. Un filesystem l'ogico
 puede ser montado en un punto de montaje dentro del filesystem
-virtual. Esto significa que un bloque asociado a un dispositivo
+virtual(VFS). Esto significa que un bloque asociado a un dispositivo
 contiene archivos y una informaci'on de estructura que permite al
 filesystem l'ogico accederlo. Un dispositivo s'olo puede tener un
 soporte l'ogico de archivo. Sin embargo, puede ser ``adiestrado''
@@ -122,22 +119,21 @@ dispositivos por lo general se encuentran en $/dev$ y cada uno se
 representa como un archivo. Es perfectamente posible reescribir su
 driver para que soporte otro tipo de filesystem l'ogico.
 
-Para el soporte de filesystems virtuales, Linux usa Inodos para
-representar un archivo en un dispositivo block. El inodo es virtual
-en el sentido que contiene operaciones que est'an implementadas de
-distintas maneras, dependiendo del sistema l'ogico y f'isico donde
-el archivo reside. El inodo es usado como un lugar de almacenamiento
-para toda la informaci'on relacionada con el manejo de, por ejemplo,
-abrir un archivo del disco. Guarda buffers, el largo del archivo ,
-etc.
+Para el soporte de filesystems virtuales, Linux usa \textbf{Inodos}
+para representar un archivo en un dispositivo $block$. El inodo es
+virtual en el sentido que contiene operaciones que est'an
+implementadas de distintas maneras, dependiendo del sistema l'ogico
+y f'isico donde el archivo reside. El inodo es usado como un lugar
+de almacenamiento para toda la informaci'on relacionada con el
+manejo de, por ejemplo, abrir un archivo del disco. Guarda buffers,
+el largo del archivo , etc.
 
 Mucha de la funcionabilidad de los filesystems virtuales radica en
 los m'odulos. Esta configuraci'on permite a los usuarios compilar un
 Kernel tan pequeño como sea posible, cargando solamente los modulos
 que sean necesarios.
 
-
-Ideal es el caso en el cual el dispositivo pudiera ocuparse y
+El caso ideal es en el que el dispositivo pudiera ocuparse y
 liberarse en tiempo de ejecuci'on. Si el m'odulo fuera agreagado
 activamente al kernel, se deben pasar sus par'ametros en momento de
 booteo, sin considerar tampoco el gasto de memoria en mantener el
