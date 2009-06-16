@@ -48,20 +48,25 @@ comando:
 \item \texttt{pwd} Indique qu'e directorio pasa a ser su directorio actual si ejecuta:
 
 \begin{envRespuesta}
-/home/mlopez
+gr01@mondiola:~\$ pwd\\
+/home/gr01
 \end{envRespuesta}
 
 \begin{enumerate}
 \item \texttt{cd /usr/bin}
 
 \begin{envRespuesta}
+gr01@mondiola:~\$ cd /usr/bin/\\
+gr01@mondiola:/usr/bin\$ pwd\\
 /usr/bin
 \end{envRespuesta}
 
 \item \texttt{cd}
 
 \begin{envRespuesta}
-/home/mlopez
+gr01@mondiola:/usr/bin\$ cd\\
+gr01@mondiola:~\$ pwd\\
+/home/gr01
 \end{envRespuesta}
 
 \item ?`C'omo explica el punto anterior?
@@ -75,6 +80,7 @@ HOME entonces se hace un chdir a ese path.
 \item \texttt{cat} ?`Cu'al es el contenido del archivo \texttt{/home/<usuario>/.profile}?
 
 \begin{envCodigo}
+gr01@mondiola:~$ cat .profile 
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -88,7 +94,7 @@ HOME entonces se hace un chdir a ese path.
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
@@ -101,8 +107,11 @@ fi
 \item \texttt{find} Liste \textbf{todos} los archivos que comienzan con \texttt{vmlinuz}.
 
 \begin{envRespuesta}
-/boot/vmlinuz-2.6.24-19-virtual
-/vmlinuz
+gr01@mondiola:~\$ sudo find / -name *vmlinuz* \\
+$[$sudo$]$ password for gr01: \\
+/boot/vmlinuz-2.6.24-23-virtual\\
+/boot/vmlinuz-2.6.24-24-virtual\\
+/vmlinuz.old
 \end{envRespuesta}
 
 Estos archivos son im'agenes del kernel Linux.
@@ -110,49 +119,53 @@ Estos archivos son im'agenes del kernel Linux.
 \item \texttt{mkdir} Genere un directorio \texttt{/home/<usuario>/tp}.
 
 \begin{envRespuesta}
-mkdir tp
+gr01@mondiola:~\$ mkdir tp
 \end{envRespuesta}
 
 \item \texttt{cp} Copie el archivo \texttt{/etc/passwd} al directorio \texttt{/home/<usuario>/tp}.
 
 \begin{envRespuesta}
-cp /etc/passwd tp/
+gr01@mondiola:~\$ cp /etc/passwd tp/
 \end{envRespuesta}
 
 \item \texttt{chgrp} Cambie el grupo del archivo \texttt{/home/<usuario>/tp/passwd} para que sea el suyo.
 
 \begin{envRespuesta}
-El archivo ya es mio, pero en caso de tener que hacerlo: chgrp mlopez passwd.
+El archivo ya pertenece a gr01, igualmente se puede hacer:\\
+gr01@mondiola:~\$ chgrp gr01 tp/passwd
 \end{envRespuesta}
 
 \item \texttt{chown} Cambie el due'no del archivo \texttt{/home/<usuario>/tp/passwd} para que sea su usuario.
 
 \begin{envRespuesta}
-El archivo ya es mio, pero en caso de tener que hacerlo: chown mlopez passwd.
+El archivo ya es de gr01, pero en caso de tener que hacerlo: 
+gr01@mondiola:~\$ chown gr01 tp/passwd
 \end{envRespuesta}
 
 \item \texttt{chmod} Cambie los permisos del archivo \texttt{/home/<usuario>/tp/passwd} para que:
 
 \begin{envRespuesta}
-Antes de empezar el pr'oximo paso: chmod 000 passwd para limpiar los permisos originales.
+Antes de empezar el pr'oximo paso: \\
+gr01@mondiola:~\$ chmod 000 tp/passwd \\
+para limpiar los permisos originales.
 \end{envRespuesta}
 \begin{itemize}
 \item el propietario tenga permisos de lectura, escritura y ejecuci'on
 
 \begin{envRespuesta}
-chmod u+r+w+x passwd
+gr01@mondiola:~\$ chmod u+r+w+x tp/passwd 
 \end{envRespuesta}
 
 \item el grupo tenga s'olo permisos de lectura y ejecuci'on
 
 \begin{envRespuesta}
-chmod g+r+x passwd
+gr01@mondiola:~\$ chmod g+r+x tp/passwd 
 \end{envRespuesta}
 
 \item el resto tenga s'olo permisos de ejecuci'on
 
 \begin{envRespuesta}
-chmod o+x passwd
+gr01@mondiola:~\$ chmod o+x tp/passwd 
 \end{envRespuesta}
 \end{itemize}
 
@@ -161,7 +174,8 @@ chmod o+x passwd
 Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc/hosts}.
 
 \begin{envCodigo}
-127.0.0.1   localhost
+gr01@mondiola:~\$ grep localhost /etc/hosts
+127.0.0.1	localhost
 ::1     ip6-localhost ip6-loopback
 \end{envCodigo}
 
@@ -169,15 +183,18 @@ Muestre todas las l'ineas que tengan el texto ``POSIX'' de todos los archivos (i
 Evite los archivos binarios y aquellos archivos y directorios que no tienen permiso de lectura para su usuario.
 
 \begin{envCodigo}
-grep -R -I -s POSIX /etc/
-/etc/init.d/glibc.sh:     echo WARNING: POSIX threads library NPTL requires kernel version
-/etc/alternatives/updatedb:\# What shell shoud we use?  We should use a POSIX-ish sh.
-/etc/security/limits.conf:\# - msgqueue - max memory used by POSIX message queues (bytes)
+gr01@mondiola:~\$ grep -R -I -s POSIX /etc/
+/etc/init.d/glibc.sh:                echo WARNING: POSIX threads library NPTL 
+                                     requires kernel version
+/etc/security/limits.conf:#        - msgqueue - max memory used by POSIX 
+                                     message queues (bytes)
 \end{envCodigo}
 
 \item \texttt{passwd} Cambie su password.
 
 \begin{envCodigo}
+gr01@mondiola:~$ passwd 
+Changing password for gr01.
 (current) UNIX password:
 Enter new UNIX password:
 Retype new UNIX password:
@@ -186,6 +203,9 @@ passwd: password updated successfully
 
 \item \texttt{rm} Borre el archivo \texttt{/home/<usuario>/tp/passwd}
 
+\begin{envRespuesta}
+gr01@mondiola:~\$ rm tp/passwd 
+\end{envRespuesta}
 \item \texttt{ln}
 
 Enlazar el archivo \texttt{/etc/passwd} a los archivos \texttt{/tmp/contra1} y \texttt{/tmp/contra2}.
@@ -193,7 +213,10 @@ Enlazar el archivo \texttt{/etc/passwd} a los archivos \texttt{/tmp/contra1} y \
 Hacer un \texttt{ls -l} para ver cuantos enlaces tiene \texttt{/etc/passwd}.
 
 \begin{envCodigo}
--rw-r--r-- 3 root root 981 2008-10-08 01:11 /etc/passwd
+gr01@mondiola:~$ ln /etc/passwd /tmp/contra1
+gr01@mondiola:~$ ln /etc/passwd /tmp/contra2
+gr01@mondiola:~$ ls -l /etc/passwd
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /etc/passwd
 \end{envCodigo}
 
 Estos enlaces se llaman ``hardlinks''. Cada nuevo enlace referencia el mismo espacio ocupado del disco r'igido,
@@ -205,13 +228,13 @@ Ahora enlace el archivo \texttt{/etc/passwd} de manera ``soft'' al archivo \text
 Verifique con \texttt{ls -l} que no aument'o la cantidad de enlaces de \texttt{/etc/passwd}.
 
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ ln -s /etc/passwd /tmp/contra3
-mlopez@esparrago:~/tp$ ls -l /etc/passwd
--rw-r--r-- 3 root root 981 2008-10-08 01:11 /etc/passwd
-mlopez@esparrago:~/tp$ ls -l /tmp/c*
--rw-r--r-- 3 root   root   981 2008-10-08 01:11 /tmp/contra1
--rw-r--r-- 3 root   root   981 2008-10-08 01:11 /tmp/contra2
-lrwxrwxrwx 1 mlopez mlopez  11 2008-11-15 18:38 /tmp/contra3 -> /etc/passwd
+gr01@mondiola:~$ ln -s /etc/passwd /tmp/contra3
+gr01@mondiola:~$ ls -l /etc/passwd
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /etc/passwd
+gr01@mondiola:~$ ls -l /tmp/contra*
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /tmp/contra1
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /tmp/contra2
+lrwxrwxrwx 1 gr01 gr01   11 2009-06-16 00:48 /tmp/contra3 -> /etc/passwd
 \end{envCodigo}
 
 Estos enlaces se llaman ``softlinks'' y apuntan no a los bytes del disco r'igido sino a la ruta del archivo a ser enlazado.
@@ -235,9 +258,7 @@ derecho en el 'icono con forma de CD-ROM en la esquina inferior derecha de la m'
 Presente los filesystems que tiene montados.
 
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ sudo mount /dev/cdrom /media/cdrom
-mount: block device /dev/scd0 is write-protected, mounting read-only
-mlopez@esparrago:~/tp$ mount
+gr01@mondiola:~$ mount
 /dev/sda1 on / type ext3 (rw,relatime,errors=remount-ro)
 proc on /proc type proc (rw,noexec,nosuid,nodev)
 /sys on /sys type sysfs (rw,noexec,nosuid,nodev)
@@ -246,98 +267,101 @@ varlock on /var/lock type tmpfs (rw,noexec,nosuid,nodev,mode=1777)
 udev on /dev type tmpfs (rw,mode=0755)
 devshm on /dev/shm type tmpfs (rw)
 devpts on /dev/pts type devpts (rw,gid=5,mode=620)
-share on comp/ type vboxsf (uid=1000,gid=1000,rw)
+compartida on /home/gr01/compartida type vboxsf (uid=1000,gid=1000,rw)
 \end{envCodigo}
 
 \item \texttt{df} ?`Qu'e espacio libre tiene cada uno de los filesystems montados?
 
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ df -h
+gr01@mondiola:~$ df -h
 Filesystem            Size  Used Avail Use% Mounted on
-/dev/sda1             494M  427M   42M  92% /
-varrun                 62M   32K   62M   1% /var/run
-varlock                62M     0   62M   0% /var/lock
-udev                   62M   40K   62M   1% /dev
-devshm                 62M     0   62M   0% /dev/shm
-df: `comp/': No such file or directory
-/dev/scd0             100M  100M     0 100% /media/cdrom0
-
-comp es una carpeta compartidad con la otra m'aquina
+/dev/sda1             3.0G  2.3G  471M  84% /
+varrun                251M  100K  251M   1% /var/run
+varlock               251M     0  251M   0% /var/lock
+udev                  251M   40K  251M   1% /dev
+devshm                251M     0  251M   0% /dev/shm
+compartida             33G   30G  3.2G  91% /home/gr01/compartida
 \end{envCodigo}
 
 \item \texttt{ps} ?`Cu'antos procesos de usuario tiene ejecutando? Indique cu'antos son del sistema.
 
 \begin{envCodigo}
-ps
+gr01@mondiola:~$ ps
   PID TTY          TIME CMD
- 3946 tty1     00:00:00 bash
- 5528 tty1     00:00:07 vi
- 5747 tty1     00:00:00 bash
- 5748 tty1     00:00:00 ps
+ 5068 pts/0    00:00:02 bash
+ 5458 pts/0    00:00:00 man
+ 5468 pts/0    00:00:00 pager
+26937 pts/0    00:00:00 ps
 \end{envCodigo}
 
 \begin{envCodigo}
-ps aux
-
+gr01@mondiola:~$ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  1.3   2844  1692 ?        Ss   12:03   0:02 /sbin/init
-root         2  0.0  0.0      0     0 ?        S<   12:03   0:00 [kthreadd]
-root         3  0.0  0.0      0     0 ?        S<   12:03   0:00 [migration/0]
-root         4  0.0  0.0      0     0 ?        S<   12:03   0:00 [ksoftirqd/0]
-root         5  0.0  0.0      0     0 ?        S<   12:03   0:00 [watchdog/0]
-root         6  0.0  0.0      0     0 ?        S<   12:03   0:10 [events/0]
-root         7  0.0  0.0      0     0 ?        S<   12:03   0:00 [khelper]
-root        36  0.0  0.0      0     0 ?        S<   12:03   0:00 [kblockd/0]
-root        39  0.0  0.0      0     0 ?        S<   12:03   0:00 [kacpid]
-root        40  0.0  0.0      0     0 ?        S<   12:03   0:00 [kacpi_notify]
-root        80  0.0  0.0      0     0 ?        S<   12:03   0:00 [kseriod]
-root       115  0.0  0.0      0     0 ?        S    12:03   0:00 [pdflush]
-root       116  0.0  0.0      0     0 ?        S    12:03   0:00 [pdflush]
-root       117  0.0  0.0      0     0 ?        S<   12:03   0:00 [kswapd0]
-root       160  0.0  0.0      0     0 ?        S<   12:03   0:00 [aio/0]
-root      1216  0.0  0.0      0     0 ?        S<   12:03   0:00 [ata/0]
-root      1219  0.0  0.0      0     0 ?        S<   12:03   0:00 [ata_aux]
-root      1239  0.0  0.0      0     0 ?        S<   12:03   0:00 [scsi_eh_0]
-root      1241  0.0  0.0      0     0 ?        S<   12:03   0:00 [scsi_eh_1]
-root      2207  0.0  0.0      0     0 ?        S<   12:03   0:00 [kjournald]
-root      2346  0.0  0.5   2220   668 ?        S<s  12:03   0:03 /sbin/udevd --daemon
-root      2536  0.0  0.0      0     0 ?        S<   12:03   0:00 [kpsmoused]
-dhcp      3484  0.0  0.4   2436   548 ?        S<s  12:04   0:00 dhclient3 -e IF_METRIC=100 -pf /var/run/dhclient.eth0.pid -lf /var/lib/dhcp3/dhclient.eth0.leases eth0
-root      3813  0.0  0.4   1716   508 tty4     Ss+  12:04   0:00 /sbin/getty 38400 tty4
-root      3816  0.0  0.4   1716   508 tty5     Ss+  12:04   0:00 /sbin/getty 38400 tty5
-root      3820  0.0  0.9   2568  1208 tty2     Ss   12:04   0:00 /bin/login --
-root      3824  0.0  0.4   1716   508 tty3     Ss+  12:04   0:00 /sbin/getty 38400 tty3
-root      3826  0.0  0.4   1716   504 tty6     Ss+  12:04   0:00 /sbin/getty 38400 tty6
-root      3847  0.0  0.1   1844   236 ?        Ss   12:04   0:00 /usr/sbin/vboxadd-timesync --daemonize
-syslog    3890  0.0  0.5   1936   648 ?        Ss   12:04   0:00 /sbin/syslogd -u syslog
-root      3909  0.0  0.4   1868   532 ?        S    12:04   0:00 /bin/dd bs 1 if /proc/kmsg of /var/run/klogd/kmsg
-klog      3911  0.0  1.4   2896  1784 ?        Ss   12:04   0:00 /sbin/klogd -P /var/run/klogd/kmsg
-root      3926  0.0  0.3   1764   396 ?        Ss   12:04   0:01 /usr/sbin/gpm -m /dev/input/mice -t exps2
-root      3945  0.0  0.9   2568  1204 tty1     Ss   12:04   0:00 /bin/login --
-mlopez    3946  0.0  1.8   4804  2280 tty1     S    12:04   0:00 -bash
-mlopez    3958  0.0  1.7   4788  2228 tty2     S+   12:17   0:01 -bash
-mlopez    5528  0.2  2.6   7060  3304 tty1     S+   17:50   0:08 vi svn/informe/consignas.tex svn/informe/tp1.tex
-mlopez    5802  0.0  0.9   3756  1152 tty1     S+   18:53   0:00 /bin/bash -c (ps -aux) >/tmp/v784235/10 2>&1
-mlopez    5803  0.0  0.7   2644  1004 tty1     R+   18:53   0:00 ps -aux
+root         1  0.0  0.3   2844  1688 ?        Ss   Jun15   0:01 /sbin/init
+root         2  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S<   Jun15   0:00 [migration/]
+root         4  0.0  0.0      0     0 ?        S<   Jun15   0:01 [ksoftirqd/]
+root         5  0.0  0.0      0     0 ?        S<   Jun15   0:00 [watchdog/0]
+root         6  0.0  0.0      0     0 ?        S<   Jun15   0:01 [events/0]
+root         7  0.0  0.0      0     0 ?        S<   Jun15   0:00 [khelper]
+root        36  0.0  0.0      0     0 ?        S<   Jun15   0:02 [kblockd/0]
+root        39  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kacpid]
+root        40  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kacpi_noti]
+root        82  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kseriod]
+root       117  0.0  0.0      0     0 ?        S    Jun15   0:00 [pdflush]
+root       118  0.0  0.0      0     0 ?        S    Jun15   0:02 [pdflush]
+root       119  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kswapd0]
+root       162  0.0  0.0      0     0 ?        S<   Jun15   0:00 [aio/0]
+root      1312  0.1  0.0      0     0 ?        S<   Jun15   0:04 [ata/0]
+root      1315  0.0  0.0      0     0 ?        S<   Jun15   0:00 [ata_aux]
+root      1320  0.0  0.0      0     0 ?        S<   Jun15   0:00 [ksuspend_u]
+root      1327  0.0  0.0      0     0 ?        S<   Jun15   0:00 [khubd]
+root      2452  0.0  0.1   2260   752 ?        S<s  Jun15   0:01 /sbin/udevd
+root      2665  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kpsmoused]
+dhcp      3709  0.0  0.1   2436   552 ?        S<s  Jun15   0:00 dhclient3 -e
+root      4094  0.0  0.0   1844   232 ?        Ss   Jun15   0:00 /usr/sbin/vb
+root      4173  0.0  0.2   2456  1356 ?        Ss   Jun15   0:00 /usr/sbin/ac
+root      4212  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kondemand/]
+syslog    4276  0.0  0.1   1936   684 ?        Ss   Jun15   0:00 /sbin/syslog
+root      4414  0.0  0.1   5316   992 ?        Ss   Jun15   0:00 /usr/sbin/ss
+avahi     4435  0.0  0.2   2756  1380 ?        Ss   Jun15   0:00 avahi-daemon
+avahi     4436  0.0  0.0   2756   460 ?        Ss   Jun15   0:00 avahi-daemon
+root      4743  4.8  3.3  24764 16972 tty7     Rs+  Jun15   3:13 /usr/bin/X :
+root      4853  0.0  0.0   1716   508 tty1     Ss+  Jun15   0:00 /sbin/getty
+gr01      4865  0.0  0.0   1772   504 ?        Ss   Jun15   0:00 /bin/sh /etc
+gr01      4965  0.6  0.3   5256  1652 ?        Sl   Jun15   0:24 /usr/bin/VBo
+gr01      4969  0.2  0.2   5256  1060 ?        Sl   Jun15   0:08 /usr/bin/VBo
+gr01      4984  0.0  0.1   4480   536 ?        Ss   Jun15   0:00 /usr/bin/ssh
+gr01      5023  0.0  0.9  15168  4968 ?        S    Jun15   0:00 Thunar --sm-
+gr01      5026  0.0  2.6  34416 13820 ?        S    Jun15   0:03 xfdesktop --
+gr01      5028  0.2  2.5  24340 13024 ?        S    Jun15   0:09 xfce4-panel
+gr01      5068  0.0  0.8   6812  4276 pts/0    Ss   Jun15   0:02 bash
+gr01      5338  0.0  0.8   7100  4536 pts/1    Ss+  Jun15   0:00 bash
+gr01      5438  2.1  2.8  32220 14548 ?        Ss   Jun15   1:17 gvim tp1.tex
+gr01      5458  0.0  0.2   3236  1104 pts/0    T    00:05   0:00 man find
+gr01      5468  0.0  0.1   3236   932 pts/0    T    00:05   0:00 pager -s
+gr01     26746  0.8  7.4  59924 38096 ?        Sl   00:27   0:16 evince tp1.p
+gr01     26938  0.0  0.1   2644  1008 pts/0    R+   00:58   0:00 ps aux
 \end{envCodigo}
 
 \item \texttt{umount} Desmonte el CD-ROM de instalaci'on de Ubuntu JeOS.
 
 \begin{envRespuesta}
-sudo umount /media/cdrom
+gr01@mondiola:~\$ sudo umount /media/cdrom
 \end{envRespuesta}
 
 \item \texttt{uptime} ?`Cuanto tiempo lleva ejecutando su m'aquina virtual?
 
 \begin{envCodigo}
-18:48:33 up  6:45,  2 users,  load average: 0.00, 0.00, 0.00
+gr01@mondiola:~$ uptime 
+ 01:05:38 up  1:14,  3 users,  load average: 0.21, 0.33, 0.35
 \end{envCodigo}
 
 \item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
 
 \begin{envCodigo}
-uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC
-2008 i686 GNU/Linux
+gr01@mondiola:~$ uname -a
+Linux mondiola 2.6.24-24-virtual #1 SMP Wed Apr 15 17:16:48 UTC 2009 i686 GNU/Linux
 \end{envCodigo}
 
 \end{enumerate}
@@ -354,42 +378,44 @@ uname -a:  Linux esparrago 2.6.24-19-virtual \#1 SMP Wed Jun 18 15:52:10 UTC
 archivos del directorio \texttt{/etc} y de los subdirectorios bajo \texttt{/etc}.
 
 \begin{envCodigo}
-ls -R /etc/ > /home/mlopez/tp/config
+gr01@mondiola:~$ ls -R /etc/ > ~/tp/config
+ls: cannot open directory /etc/cups/ssl: Permission denied
+ls: cannot open directory /etc/ssl/private: Permission denied
 \end{envCodigo}
 
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
 
 \fboxsep 0pt
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ wc -l config
-730 config
-mlopez@esparrago:~/tp$ wc -w config
-654 config
-mlopez@esparrago:~/tp$ wc -m config
-8422 config
+gr01@mondiola:~$ wc -l tp/config 
+2553 tp/config
+gr01@mondiola:~$ wc -w tp/config 
+2295 tp/config
+gr01@mondiola:~$ wc -m tp/config 
+34633 tp/config
 \end{envCodigo}
 
 \item Agregue el contenido, ordenado alfab'eticamente, del archivo \texttt{/etc/passwd} al final del
 archivo \texttt{/home/<usuario>/tp/config}.
 
 \begin{envCodigo}
-sort /etc/passwd >> /home/mlopez/tp/config
+gr01@mondiola:~$ sort /etc/passwd >> ~/tp/config
 \end{envCodigo}
 
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
 
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ wc -l config
-754 config
-mlopez@esparrago:~/tp$ wc -w config
-684 config
-mlopez@esparrago:~/tp$ wc -m config
-9403 config
+gr01@mondiola:~$ wc -l tp/config 
+2586 tp/config
+gr01@mondiola:~$ wc -w tp/config 
+2345 tp/config
+gr01@mondiola:~$ wc -m tp/config 
+36177 tp/config
 \end{envCodigo}
 
 \end{enumerate}
 
-\item Pipes
+\item Pipes   LLLEGUEEEEEE HASTA ACAAAAAAAA
 
 \begin{enumerate}
 
