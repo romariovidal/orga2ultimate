@@ -492,8 +492,14 @@ gr01@mondiola:~/tp\$ gcc -o loop loop.c
 \item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
 
 \begin{envRespuesta}
-gr01@mondiola:~/tp\$ ./loop
--120820995248484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484
+gr01@mondiola:~/tp\$ ./loop\\
+-120820995248484848484848484848484848484848484848484848484848\\
+4848484848484848484848484848484848484848484848484848484848484\\
+8484848484848484848484848484848484848484848484848484848484848\\
+4848484848484848484848484848484848484848484848484848484848484\\
+8484848484848484848484848484848484848484848484848484848484848\\
+4848484848484848484848484848484848484848484848484848484848484\\
+8484848484848484848484848484848484848484848484848484848484
 \end{envRespuesta}
 
 \item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
@@ -555,7 +561,7 @@ gr01@mondiola:~/tp\$ ./productorConsumidor
 \subsection{El kernel Linux}
 
 Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina
-virtual: HASTA ACAAAAAAAAA
+virtual:
 
 \begin{itemize}
 \item \texttt{make}: utilidad para mantener grupos de programas.
@@ -563,6 +569,10 @@ virtual: HASTA ACAAAAAAAAA
 \end{itemize}
 
 Sustituya \texttt{<version>} por el resultado del comando \texttt{uname -r}.
+
+\begin{envRespuesta}
+gr01@mondiola:~/tp\$ sudo apt-get install linux-headers-`uname -r`
+\end{envRespuesta}
 
 \subsubsection{Funcionamiento del kernel Linux}
 
@@ -596,7 +606,10 @@ original.
 
 \subsubsection{Compilando un m'odulo de kernel}
 
-En esta secci'on omitimos el enunciado y vamos directo a lo que hicimos.
+\begin{envRespuesta}
+En esta secci'on omitimos el enunciado y vamos directo a lo que hicimos. \\
+\textbf{Nota:} Para ejecutar la siguiente parte debe pasar a modo consola (Host+F1).
+\end{envRespuesta}
 
 \CodigoF{cambiarLuces.c}{grupo1/cambiarLuces.c}
 
@@ -645,3 +658,39 @@ un programa que lo hace. Compile utilizando:
 
 Haga que su m'odulo cree un archivo en \texttt{/proc} y que las escrituras a ese archivo controlen los LEDs utilizando
 la IOCTL \texttt{KDSETLED} de la consola de Linux.
+
+\subsection{Temas del sistema operativo}
+
+\subsubsection{File system}
+En el ejercicio 3.1.12 se hace menci'on a los hardlinks como apuntadores a un
+mismo espacio de disco. C'omo se llama ese espacio de disco, que estructura
+tiene y por qu'e se pueden borrar los hardlinks sin borrar al archivo.
+
+\subsubsection{Prioridades}
+Genere tres versiones del programa loop (3.4.1) (loop1, loop2 y loop3) y
+ejec'utelos en background. Logre que loop3 ejecute más r'apido que los otros
+dos (prioridad). Obtenga los tiempos de ejecuci'on de cada uno de ellos (uso de
+procesador) y sus estados. Explique detalladamente como logra obtener esta
+información.
+
+\subsubsection{Par'ametros del Kernel}
+Determine la cantidad de memoria RAM que usa su sistema, ahora encuentre una
+manera para que use menor cantidad de memoria RAM. Explique detalladamente como
+logra obtener este cambio y como obtiene la información.
+
+\subsubsection{Administraci'on de Memoria}
+Determine el tamaño de la partición swap que est'a utilizando. Ampl'ie el
+tama~no del swap por medio de un archivo en un FS. H'agalo persistente.
+Explique detalladamente como logra obtener este cambio.
+
+\subsubsection*{(The End...)}
+
+\begin{envRespuesta}
+This is the end, beautiful friend\\
+This is the end, my only friend\\
+The end of our elaborate plans\\
+The end of everything that stands\\
+The end\\
+\end{envRespuesta}
+
+
