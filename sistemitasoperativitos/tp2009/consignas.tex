@@ -415,7 +415,7 @@ gr01@mondiola:~$ wc -m tp/config
 
 \end{enumerate}
 
-\item Pipes   LLLEGUEEEEEE HASTA ACAAAAAAAA
+\item Pipes
 
 \begin{enumerate}
 
@@ -426,25 +426,20 @@ palabras y l'ineas.
 Est'a prohibido, en este 'item, usar archivos temporales de trabajo.
 
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt
--rwxr-xr-x 1 root root  63K 2008-04-22 12:21 /usr/bin/apt-cache
--rwxr-xr-x 1 root root  18K 2008-04-22 12:21 /usr/bin/apt-cdrom
--rwxr-xr-x 1 root root 9.9K 2008-04-22 12:21 /usr/bin/apt-config
--rwxr-xr-x 1 root root  22K 2008-04-22 12:21 /usr/bin/apt-extracttemplates
--rwxr-xr-x 1 root root 187K 2008-04-22 12:21 /usr/bin/apt-ftparchive
--rwxr-xr-x 1 root root 139K 2008-04-22 12:21 /usr/bin/apt-get
+gr01@mondiola:~/informeTP$ ls -lh /usr/bin/a* | grep apt
+-rwxr-xr-x 1 root root  63K 2009-04-17 13:30 /usr/bin/apt-cache
+-rwxr-xr-x 1 root root  18K 2009-04-17 13:30 /usr/bin/apt-cdrom
+-rwxr-xr-x 1 root root 9.9K 2009-04-17 13:30 /usr/bin/apt-config
+-rwxr-xr-x 1 root root  22K 2009-04-17 13:30 /usr/bin/apt-extracttemplates
+-rwxr-xr-x 1 root root 187K 2009-04-17 13:30 /usr/bin/apt-ftparchive
+-rwxr-xr-x 1 root root 139K 2009-04-17 13:30 /usr/bin/apt-get
 -rwxr-xr-x 1 root root 2.2M 2008-04-04 06:56 /usr/bin/aptitude
 -rwxr-xr-x 1 root root 1.9K 2008-04-04 06:56 /usr/bin/aptitude-create-state-bundle
 -rwxr-xr-x 1 root root 3.0K 2008-04-04 06:56 /usr/bin/aptitude-run-state-bundle
--rwxr-xr-x 1 root root 5.0K 2008-04-22 12:20 /usr/bin/apt-key
--rwxr-xr-x 1 root root 2.2K 2008-04-22 12:20 /usr/bin/apt-mark
--rwxr-xr-x 1 root root  26K 2008-04-22 12:21 /usr/bin/apt-sortpkgs
-mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -l
-12
-mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -w
-96
-mlopez@esparrago:~/tp$ ls -lh /usr/bin/a* | grep apt | wc -m
-817
+-rwxr-xr-x 1 root root 5.0K 2009-04-17 13:30 /usr/bin/apt-key
+-rwxr-xr-x 1 root root 2.2K 2009-04-17 13:30 /usr/bin/apt-mark
+-rwxr-xr-x 1 root root  26K 2009-04-17 13:30 /usr/bin/apt-sortpkgs
+-rwxr-xr-x 1 root root  12K 2008-04-15 18:40 /usr/bin/apturl
 \end{envCodigo}
 
 \end{enumerate}
@@ -488,7 +483,7 @@ Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}.
 \texttt{loop}.
 
 \begin{envRespuesta}
-gcc -o loop loop.c
+gr01@mondiola:~/tp\$ gcc -o loop loop.c
 \end{envRespuesta}
 
 \CodigoF{loop.c}{grupo1/loop.c}
@@ -497,25 +492,27 @@ gcc -o loop loop.c
 \item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
 
 \begin{envRespuesta}
-Imprime consecutivamente los n'umeros del 48 al 55.
+gr01@mondiola:~/tp\$ ./loop
+-120820995248484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484
 \end{envRespuesta}
 
 \item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
 
 \begin{envCodigo}
-mlopez@esparrago:~/tp$ /home/mlopez/tp/loop > /dev/null &
-[1] 3880
-mlopez@esparrago:~/tp$ ps
+gr01@mondiola:~/tp$ ./loop > /dev/null &
+[1] 5467
+gr01@mondiola:~/tp$ ps
   PID TTY          TIME CMD
- 3848 tty2     00:00:00 bash
- 3880 tty2     00:00:09 loop
- 3881 tty2     00:00:00 ps
-mlopez@esparrago:~/tp$ kill -9 3880
-mlopez@esparrago:~/tp$ ps
+ 5084 pts/0    00:00:01 bash
+ 5467 pts/0    00:00:07 loop
+ 5510 pts/0    00:00:00 ps
+gr01@mondiola:~/tp$ kill -9 5467 
+gr01@mondiola:~/tp$ 
+[1]+  Killed                  ./loop > /dev/null
+gr01@mondiola:~/tp$ ps
   PID TTY          TIME CMD
- 3848 tty2     00:00:00 bash
- 3882 tty2     00:00:00 ps
-[1]+  Killed                  /home/mlopez/tp/loop > /dev/null
+ 5084 pts/0    00:00:01 bash
+ 5961 pts/0    00:00:00 ps
 \end{envCodigo}
 
 \end{enumerate}
@@ -548,9 +545,17 @@ ejercicio.
 
 \CodigoF{productorConsumidor.c}{grupo1/productorConsumidor.c}
 
+\begin{envRespuesta}
+Para compilar: \\
+gr01@mondiola:~/tp\$ gcc productorConsumidor.c -o productorConsumidor -lpthread
+\\
+gr01@mondiola:~/tp\$ ./productorConsumidor
+\end{envRespuesta}
+
 \subsection{El kernel Linux}
 
-Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina virtual:
+Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina
+virtual: HASTA ACAAAAAAAAA
 
 \begin{itemize}
 \item \texttt{make}: utilidad para mantener grupos de programas.

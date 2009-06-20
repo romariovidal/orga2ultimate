@@ -132,7 +132,7 @@ main()
 
 
 void verBuffer(){
-	printf("| ");
+	printf("\t\t\t\tBuffer: | ");
 	int i;
 	for(i=0; i<MAX; i++)
 		printf("%c | ", buffer[i]);

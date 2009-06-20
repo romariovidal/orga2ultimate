@@ -3,24 +3,29 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
+//#include <cstdlib.h>
 
-int main(void)
-{
+int randomNumber() {
+	int value=(rand()%3+1);
+	
+	return value;
+}
+
+int main(void){
         int     fd[2], res;
         pid_t   pidDelHijo;
         char    mensaje[] = "Tom'a este mensaje, o mejor tom'a mate!\n";
         char    loMensajeado[80];
 
         pipe(fd);
-        
-        if((pidDelHijo = fork()) == -1)
-        {
+       
+		srand( time(NULL)); 
+        if((pidDelHijo = fork()) == -1)        {
                 perror("fork");
                 exit(1);
         }
 
-        if(pidDelHijo != 0)
-        {
+        if(pidDelHijo != 0)        {
 				/* Este es el proceso hijo */
 				printf("Hijo en el paso  1\n");
                 /* El hijo cierra la entrada del pipe */
@@ -29,12 +34,11 @@ int main(void)
                 /* Manda el "mensaje" atreaces de la salida del pipe */
                 write(fd[1], mensaje, strlen(mensaje));
 				printf("Hijo en el paso  3\n");
+				sleep(randomNumber());
 				close(fd[1]);
 				printf("Hijo en el paso  4\n");
                 exit(0);
-        }
-        else
-        {
+        }else{
 				/* Este es el proceso padre */
 				printf("Padre en el paso 1\n");
                 /* El padre cierra la salida del pipe */
@@ -47,7 +51,7 @@ int main(void)
                 printf("Mensaje recibido: %s\n", loMensajeado);
 				printf("Padre en el paso 4\n");
 	
-				exit(0)
+				exit(0);
         }
         
         return(0);
