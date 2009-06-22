@@ -1,0 +1,48 @@
+
+\begin{envCodigo}
+gr01@mondiola:~/tp$ gcc -o loop1 loop.c 
+gr01@mondiola:~/tp$ gcc -o loop2 loop.c 
+gr01@mondiola:~/tp$ gcc -o loop3 loop.c 
+gr01@mondiola:~/tp$ ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 R  1000  5143  5141  0  80   0 -  1764 -      pts/0    00:00:01 bash
+0 R  1000  5208  5143  0  80   0 -   607 -      pts/0    00:00:00 ps
+gr01@mondiola:~/tp$ ./loop1 > /dev/null &
+[1] 5209
+gr01@mondiola:~/tp$ ./loop2 > /dev/null &
+[2] 5210
+gr01@mondiola:~/tp$ ./loop3 > /dev/null &
+[3] 5211
+gr01@mondiola:~/tp$ ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 R  1000  5143  5141  0  80   0 -  1764 -      pts/0    00:00:01 bash
+0 R  1000  5209  5143 49  80   0 -   391 -      pts/0    00:00:08 loop1
+0 R  1000  5210  5143 33  80   0 -   391 -      pts/0    00:00:04 loop2
+0 R  1000  5211  5143 31  80   0 -   391 -      pts/0    00:00:02 loop3
+0 R  1000  5212  5143  0  80   0 -   607 -      pts/0    00:00:00 ps
+gr01@mondiola:~/tp$ sudo renice -15 5211
+[sudo] password for gr01: 
+5211: old priority 0, new priority -15
+gr01@mondiola:~/tp$ ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 R  1000  5143  5141  0  80   0 -  1766 -      pts/0    00:00:01 bash
+0 R  1000  5209  5143 22  80   0 -   391 -      pts/0    00:00:54 loop1
+0 R  1000  5210  5143 21  80   0 -   391 -      pts/0    00:00:49 loop2
+0 R  1000  5211  5143 51  65 -15 -   391 -      pts/0    00:02:00 loop3
+0 R  1000  5243  5143  0  80   0 -   607 -      pts/0    00:00:00 ps
+gr01@mondiola:~/tp$ ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000  5143  5141  0  80   0 -  1766 -      pts/0    00:00:01 bash
+0 R  1000  5209  5143 13  80   0 -   391 -      pts/0    00:01:01 loop1
+0 R  1000  5210  5143 12  80   0 -   391 -      pts/0    00:00:56 loop2
+0 R  1000  5211  5143 70  65 -15 -   391 -      pts/0    00:05:08 loop3
+0 R  1000  5244  5143  0  80   0 -   607 -      pts/0    00:00:00 ps
+
+gr01@mondiola:~/tp$ killall loop*
+loop: no process killed
+loop.c: no process killed
+[1]   Terminated              ./loop1 > /dev/null
+[2]-  Terminated              ./loop2 > /dev/null
+[3]+  Terminated              ./loop3 > /dev/null
+\end{envCodigo}
+
