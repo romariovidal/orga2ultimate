@@ -1,3 +1,13 @@
+Para conseguir una mayor cantidad de memoria a partir de par'ametros
+pasados al Kernel, consultamos a la documentaci'on del
+mismo(kernel$-$parameters.txt). En ella, nos explicaba que deb'iamos
+usar la sentencia $mem=nn[K,M,G]$.
+
+A partir de algunas pruebas, conseguimos el objetivo a partir de una
+sentencia similar $mem=nn[K,M,G]@ss[K,M,G]$, que act'ua de la misma
+manera que la anterior, pero $ss$ es el desplazamiento a partir del
+cu'al se cargar'a el kernel.
+
 \begin{envCodigo}
 Carga normal del S.O.
 gr01@mondiola:~$ free

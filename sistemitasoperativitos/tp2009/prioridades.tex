@@ -1,8 +1,28 @@
+Aqu'i haremos uso del comando \textit{renice}, que sirve para
+cambiar la prioridad de un proceso que est'e en ejecuci'on. Sus
+par'ametros son:
+
+\begin{itemize}
+
+\item el valor ``nice'', que representa la prioridad que queremos
+asignar, y es un valor entero entre -20 y 19 (-20 es la mayor
+prioridad y 19, la menor)
+
+\item el PID del proceso al que le queremos modificar la prioridad
+
+\end{itemize}
+
+En la siguiente captura, mostramos como ejecutamos tres procesos
+iguales, y hacemos que uno tome mayor prioridad con el comando que
+nombramos en este apartado. Esto lo notamos a partir del comando
+$ps$ $-l$, que nos muestra como el proceso ``loop3'', a los 6
+minutos de ejecucí'on, tom'o 5 minutos del procesador (columna TIME)
+y est'a ocupando un 70\% del procesador (columna C).
 
 \begin{envCodigo}
-gr01@mondiola:~/tp$ gcc -o loop1 loop.c 
-gr01@mondiola:~/tp$ gcc -o loop2 loop.c 
-gr01@mondiola:~/tp$ gcc -o loop3 loop.c 
+gr01@mondiola:~/tp$ gcc -o loop1 loop.c
+gr01@mondiola:~/tp$ gcc -o loop2 loop.c
+gr01@mondiola:~/tp$ gcc -o loop3 loop.c
 gr01@mondiola:~/tp$ ps -l
 F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 R  1000  5143  5141  0  80   0 -  1764 -      pts/0    00:00:01 bash
@@ -21,7 +41,7 @@ F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 R  1000  5211  5143 31  80   0 -   391 -      pts/0    00:00:02 loop3
 0 R  1000  5212  5143  0  80   0 -   607 -      pts/0    00:00:00 ps
 gr01@mondiola:~/tp$ sudo renice -15 5211
-[sudo] password for gr01: 
+[sudo] password for gr01:
 5211: old priority 0, new priority -15
 gr01@mondiola:~/tp$ ps -l
 F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
@@ -45,4 +65,3 @@ loop.c: no process killed
 [2]-  Terminated              ./loop2 > /dev/null
 [3]+  Terminated              ./loop3 > /dev/null
 \end{envCodigo}
-
