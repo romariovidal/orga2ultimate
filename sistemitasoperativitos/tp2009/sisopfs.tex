@@ -1,0 +1,32 @@
+Los \textit{hardlinks} crean enlaces al \textit{inodo} del archivo
+al que queremos apuntar, y estos 'ultimos apuntan al espacio de
+datos donde reside el archivo.
+
+Seg'un el est'andar POSIX\footnote{Portable Operating System
+Interface. La X viene de UNIX como seña de identidad de la API.}, se
+establece un modelo de sistema de archivos que se ajusta al empleado
+en los UNIX tradicionales. La estructura contiene los siguientes
+datos:
+\begin{itemize}
+
+\item La longitud del archivo en bytes
+
+\item El identificador de usuario, del creador o un propietario del archivo con derechos diferenciados
+
+\item El identificador de grupo de un grupo de usuarios con derechos diferenciados
+
+\item El modo de acceso: capacidad de leer, escribir, y ejecutar el archivo por parte del propietario, del grupo y de otros usuarios
+
+\item Las marcas de tiempo con las fechas de 'ultima modificaci'on (mtime), acceso (atime) y de alteraci'on del propio inodo (ctime).
+
+\item El n'umero de enlaces, esto es, la cantidad de nombres (entradas de directorio) asociados con este inodo.
+
+\end{itemize}
+
+
+Con respecto a porqu'e se pueden borrar los \textit{hardlinks} sin
+borrar el archivo, podemos aducir que es porque el proceso de
+eliminaci'on de este tipo de enlaces, solo desvincula un nombre de
+los datos reales. Los datos todav'i estar'an accesibles mientras
+quede alg'un enlace y reci'en cuando se eliminase el 'ultimo enlace
+duro, el espacio que ocupaban los datos se considerar'a disponible.

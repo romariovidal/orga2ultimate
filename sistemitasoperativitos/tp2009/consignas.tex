@@ -80,7 +80,7 @@ HOME entonces se hace un chdir a ese path.
 \item \texttt{cat} ?`Cu'al es el contenido del archivo \texttt{/home/<usuario>/.profile}?
 
 \begin{envCodigo}
-gr01@mondiola:~$ cat .profile 
+gr01@mondiola:~$ cat .profile
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -138,7 +138,7 @@ gr01@mondiola:~\$ chgrp gr01 tp/passwd
 \item \texttt{chown} Cambie el due'no del archivo \texttt{/home/<usuario>/tp/passwd} para que sea su usuario.
 
 \begin{envRespuesta}
-El archivo ya es de gr01, pero en caso de tener que hacerlo: 
+El archivo ya es de gr01, pero en caso de tener que hacerlo:
 gr01@mondiola:~\$ chown gr01 tp/passwd
 \end{envRespuesta}
 
@@ -153,19 +153,19 @@ para limpiar los permisos originales.
 \item el propietario tenga permisos de lectura, escritura y ejecuci'on
 
 \begin{envRespuesta}
-gr01@mondiola:~\$ chmod u+r+w+x tp/passwd 
+gr01@mondiola:~\$ chmod u+r+w+x tp/passwd
 \end{envRespuesta}
 
 \item el grupo tenga s'olo permisos de lectura y ejecuci'on
 
 \begin{envRespuesta}
-gr01@mondiola:~\$ chmod g+r+x tp/passwd 
+gr01@mondiola:~\$ chmod g+r+x tp/passwd
 \end{envRespuesta}
 
 \item el resto tenga s'olo permisos de ejecuci'on
 
 \begin{envRespuesta}
-gr01@mondiola:~\$ chmod o+x tp/passwd 
+gr01@mondiola:~\$ chmod o+x tp/passwd
 \end{envRespuesta}
 \end{itemize}
 
@@ -175,7 +175,7 @@ Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc
 
 \begin{envCodigo}
 gr01@mondiola:~\$ grep localhost /etc/hosts
-127.0.0.1	localhost
+127.0.0.1   localhost
 ::1     ip6-localhost ip6-loopback
 \end{envCodigo}
 
@@ -184,16 +184,16 @@ Evite los archivos binarios y aquellos archivos y directorios que no tienen perm
 
 \begin{envCodigo}
 gr01@mondiola:~\$ grep -R -I -s POSIX /etc/
-/etc/init.d/glibc.sh:                echo WARNING: POSIX threads library NPTL 
+/etc/init.d/glibc.sh:                echo WARNING: POSIX threads library NPTL
                                      requires kernel version
-/etc/security/limits.conf:#        - msgqueue - max memory used by POSIX 
+/etc/security/limits.conf:#        - msgqueue - max memory used by POSIX
                                      message queues (bytes)
 \end{envCodigo}
 
 \item \texttt{passwd} Cambie su password.
 
 \begin{envCodigo}
-gr01@mondiola:~$ passwd 
+gr01@mondiola:~$ passwd
 Changing password for gr01.
 (current) UNIX password:
 Enter new UNIX password:
@@ -204,7 +204,7 @@ passwd: password updated successfully
 \item \texttt{rm} Borre el archivo \texttt{/home/<usuario>/tp/passwd}
 
 \begin{envRespuesta}
-gr01@mondiola:~\$ rm tp/passwd 
+gr01@mondiola:~\$ rm tp/passwd
 \end{envRespuesta}
 \item \texttt{ln}
 
@@ -353,7 +353,7 @@ gr01@mondiola:~\$ sudo umount /media/cdrom
 \item \texttt{uptime} ?`Cuanto tiempo lleva ejecutando su m'aquina virtual?
 
 \begin{envCodigo}
-gr01@mondiola:~$ uptime 
+gr01@mondiola:~$ uptime
  01:05:38 up  1:14,  3 users,  load average: 0.21, 0.33, 0.35
 \end{envCodigo}
 
@@ -387,11 +387,11 @@ ls: cannot open directory /etc/ssl/private: Permission denied
 
 \fboxsep 0pt
 \begin{envCodigo}
-gr01@mondiola:~$ wc -l tp/config 
+gr01@mondiola:~$ wc -l tp/config
 2553 tp/config
-gr01@mondiola:~$ wc -w tp/config 
+gr01@mondiola:~$ wc -w tp/config
 2295 tp/config
-gr01@mondiola:~$ wc -m tp/config 
+gr01@mondiola:~$ wc -m tp/config
 34633 tp/config
 \end{envCodigo}
 
@@ -405,11 +405,11 @@ gr01@mondiola:~$ sort /etc/passwd >> ~/tp/config
 \item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
 
 \begin{envCodigo}
-gr01@mondiola:~$ wc -l tp/config 
+gr01@mondiola:~$ wc -l tp/config
 2586 tp/config
-gr01@mondiola:~$ wc -w tp/config 
+gr01@mondiola:~$ wc -w tp/config
 2345 tp/config
-gr01@mondiola:~$ wc -m tp/config 
+gr01@mondiola:~$ wc -m tp/config
 36177 tp/config
 \end{envCodigo}
 
@@ -512,8 +512,8 @@ gr01@mondiola:~/tp$ ps
  5084 pts/0    00:00:01 bash
  5467 pts/0    00:00:07 loop
  5510 pts/0    00:00:00 ps
-gr01@mondiola:~/tp$ kill -9 5467 
-gr01@mondiola:~/tp$ 
+gr01@mondiola:~/tp$ kill -9 5467
+gr01@mondiola:~/tp$
 [1]+  Killed                  ./loop > /dev/null
 gr01@mondiola:~/tp$ ps
   PID TTY          TIME CMD
@@ -662,26 +662,31 @@ la IOCTL \texttt{KDSETLED} de la consola de Linux.
 \subsection{Temas del sistema operativo}
 
 \subsubsection{File system}
-En el ejercicio 3.1.12 se hace menci'on a los hardlinks como apuntadores a un
-mismo espacio de disco. C'omo se llama ese espacio de disco, que estructura
-tiene y por qu'e se pueden borrar los hardlinks sin borrar al archivo.
+En el ejercicio 3.1.12 se hace menci'on a los hardlinks como
+apuntadores a un mismo espacio de disco. C'omo se llama ese espacio
+de disco, que estructura tiene y por qu'e se pueden borrar los
+hardlinks sin borrar al archivo.\\
+
+\input{sisopfs.tex}
 
 \subsubsection{Prioridades}
-Genere tres versiones del programa loop (3.4.1) (loop1, loop2 y loop3) y
-ejec'utelos en background. Logre que loop3 ejecute más r'apido que los otros
-dos (prioridad). Obtenga los tiempos de ejecuci'on de cada uno de ellos (uso de
-procesador) y sus estados. Explique detalladamente como logra obtener esta
-información.
+Genere tres versiones del programa loop (3.4.1) (loop1, loop2 y
+loop3) y ejec'utelos en background. Logre que loop3 ejecute m'as
+r'apido que los otros dos (prioridad). Obtenga los tiempos de
+ejecuci'on de cada uno de ellos (uso de procesador) y sus estados.
+Explique detalladamente como logra obtener esta informaci'on.\\
 
 \subsubsection{Par'ametros del Kernel}
-Determine la cantidad de memoria RAM que usa su sistema, ahora encuentre una
-manera para que use menor cantidad de memoria RAM. Explique detalladamente como
-logra obtener este cambio y como obtiene la información.
+Determine la cantidad de memoria RAM que usa su sistema, ahora
+encuentre una manera para que use menor cantidad de memoria RAM.
+Explique detalladamente como logra obtener este cambio y como
+obtiene la informaci'on.
 
 \subsubsection{Administraci'on de Memoria}
-Determine el tamaño de la partición swap que est'a utilizando. Ampl'ie el
-tama~no del swap por medio de un archivo en un FS. H'agalo persistente.
-Explique detalladamente como logra obtener este cambio.
+Determine el tama~no de la partici'on swap que est'a utilizando.
+Ampl'ie el tama~no del swap por medio de un archivo en un FS.
+H'agalo persistente. Explique detalladamente como logra obtener este
+cambio.
 
 \subsubsection*{(The End...)}
 
@@ -692,5 +697,3 @@ The end of our elaborate plans\\
 The end of everything that stands\\
 The end\\
 \end{envRespuesta}
-
-
