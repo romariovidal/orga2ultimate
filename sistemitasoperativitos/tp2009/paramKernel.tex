@@ -1,0 +1,16 @@
+\begin{envCodigo}
+Carga normal del S.O.
+gr01@mondiola:~$ free
+             total       used       free     shared    buffers     cached
+Mem:        513624     246860     266764          0       8892     105228
+-/+ buffers/cache:     132740     380884
+Swap:       201788          0     201788
+
+
+Agregando a la linea del kernel en el grub mem=510M@64M
+gr01@mondiola:~$ free
+             total       used       free     shared    buffers     cached
+Mem:        513624     246740     266884          0       8860     105104
+-/+ buffers/cache:     132776     380848
+Swap:       201788          0     201788
+\end{envCodigo}
