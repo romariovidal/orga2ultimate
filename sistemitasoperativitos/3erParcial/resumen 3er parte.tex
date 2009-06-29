@@ -1,0 +1,461 @@
+\documentclass[a4paper,spanish]{article}
+\usepackage[spanish, activeacute]{babel}
+\usepackage{fancyhdr}
+
+\oddsidemargin 0in
+\textwidth 6.2in
+\topmargin 0in
+\textheight 18cm
+\addtolength{\topmargin}{-.5in}
+%textheight 10in
+\textheight 24cm
+\parskip=1ex
+\pagestyle{fancy}
+\newcommand{\real}{\hbox{\bf R}}
+
+\title{Resumen pa\'{}l tercer parcial}
+\date{SiSop}
+\author{Alfalfa producciones}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Comunicaci'on entre procesos}
+La comunicaci'on entre procesos cuenta con 2 primitivas: SEND y RECIVE.
+Estos pueden ser bloqueantes (sincr'onicos) o no bloqueantes (asincr'onicos).
+Caracter'isticas a tener en cuentas son: la conexi'on y la confiabilidad. El
+SEND puede tener un buffer.
+
+Para ubicar un procedimiento remoto se puede tener un \emph{binding} din'amico
+o uno est'atico.
+
+\section{Procedimientos remotos}
+\begin{itemize}
+	\item asincr'onica: Cliente-Servidor
+	\item sincr'onica: RPC
+\end{itemize}
+
+\subsection{RPC - Remote Procedure Call} 
+\begin{enumerate}
+	\item El procedimiento cliente le env'ia (v'ia \emph{stack}) en
+pedido a su \emph{stub}
+	\item el \emph{stub} cliente arma el mensaje y se lo env'ia al
+\emph{kernel}
+	\item \emph{kernel} cliente le env'ia el pedido al \emph{kernel} del
+servidor
+	\item el \emph{kernel} del servidor, se lo pasa a su \emph{stub}
+	\item el \emph{stub} del servidor, se lo pasa al procedimiento del
+servidor
+	\item el procedimiento del servidor ejecuta y despu'es devuelve el
+resultado por el camino inverso
+\end{enumerate}
+
+Las valores se pasan por \emph{copy/restore}. Cualquier otra forma tiene
+problemas.
+
+\subsubsection{Fallas en RPC}
+\begin{itemize}
+	\item No se encuentran (servidor y cliente) $\Rightarrow$
+Excepci'on.
+	\item Se pierde el requerimiento $\Rightarrow$ Retransmici'on
+	\item Se pierde el mensaje de vuelta $\Rightarrow$ Retransmici'on
+	\item Se cae el servidor antes de devolver la respuesta
+$\Rightarrow$ Lo resuelve la pol'itica del servidor
+	\item Se cae el servidor antes de procesar el pedido. Distintas
+pol'iticas:
+		\begin{itemize}
+			\item \emph{at least once} operaciones idempotentes
+			\item \emph{at most once} 
+			\item \emph{exactly once} muy dificil de lograr
+		\end{itemize}
+	\item Se cae el cliente produciendo huerfanos $\Rightarrow$
+		\begin{description}
+			\item[Reencarnaci'on] Al levantarse hace
+\emph{broadcast} avisando que volvi'o y quien era y cada servidor mata los
+procesos huerfanos
+			\item[Reencarnaci'on suave] Cuando llega un
+\emph{broadcast} avisando que volvi'o una m'aquina, cada servidor verifica si
+sus computos remotos siguen teniendo due'no. ACA HAY ENIE.
+			\item[Expiraci'on Exterminaci'on] el \emph{stub}
+cliente lleva un \emph{log} de los pedidos que se hicieron. Al levantarse mata
+explicitamente dichos procesos.
+		\end{description}
+\end{itemize}
+
+\subsection{Sockets}
+Hay un \emph{socket} con nombre en el servidor y uno sin nombre en el cliente.
+
+El servidor crea un \emph{socket} con nombre y espera una conexi'on.
+
+``Un \emph{socket} es un descriptor con varias cositas adentro''
+
+Hay con conexi'on y sin conexi'on.
+\subsubsection{Socket con conexi'on}
+\begin{itemize}
+	\item El servidor abre el canal, publica su direcci'on y se pone a
+esuchar en busca de nuevas conexiones
+	\item El cliente crea un socket y pide conectarse con el servidor
+	\item El servidor acepta la conexi'on, entonces se lleva a cabo
+	\item El cliente escribe el pedido
+	\item El servidor lee el pedido, lo resuelve y escribe los dato al
+cliente
+	\item El cliente lee los datos y cierra el canal
+\end{itemize}
+La comunicaci'on ser realiza con WRITE y READ
+
+\subsubsection{Socket sin conexi'on}
+\begin{itemize}
+	\item El servidor abre el canal, publica su direcci'on y se bloquea
+esperando que llegue informaci'on
+	\item El cliente crea un socket y pide conexi'on (ubicar su direcci'on
+en el \emph{binding})  con el servidor y env'ia el pedido
+	\item El servidor resuelve y env'ia los dato al cliente
+	\item El cliente recibe los datos y cierra el canal
+\end{itemize}
+La comunicaci'on ser realiza con SEND y RECEIVE
+
+
+\section{Dise'no de un sistema operativo}
+\subsection{Transaparencia}
+\begin{description}
+	\item[Locaci'on] los usuarios no deben saber donde est'an los recursos
+	\item[Migraci'on] los recursos pueden cambiar de migraci'on sin cambiar su nombre
+	\item[Replica] los usuarios no pueden decir la cantidad de copias existentes. i.e. varias copias de un archivo
+	\item[Concurrencia] varios usuarion pueden compartir recursos de manera autom'atica. El SO asegura acceso secuencial no concurrente
+	\item[Paralelismo] Las actividades pueden ocurrir paralelamente sin que los usuarios lo sepan.
+\end{description}
+
+\subsection{Flexibilidad}
+\subsubsection{Kernel monol'itico}
+Tiene la mayor'ia de los servicio. Centralizado, con capacidades red e integraci'on de servicios remotos. Las llamadas al sistema se realizan mediante interrupciones
+\subsubsection{Microkernel}
+Provee lo m'inimo indispensable, el grueso de los servicios los carga el sistema operativo. Proporciona 4 servicios:
+\begin{itemize}
+	\item Un mecanismo de comunicaci'on entre procesos
+	\item Cierta administraci'on de memoria
+	\item Una cantidad limitada de planificaci'on y administraci'on de procesos de bajo nivel
+	\item Entrada/Salidad de bajo nivel
+\end{itemize}
+
+\subsection{Confiabilidad}
+Debe ser altamaente disponible, y debe cuidar bien los datos que se le dan.
+Adem'as de ser seguro y tolerante a fallas.
+
+\subsection{Performance}
+\begin{itemize}
+	\item Tiempo de respuesta
+	\item Rendimiento (medido en cantidad de trabajos por hora)
+	\item Uso del sistema
+	\item Cantidad consumida de la capacidad de red
+\end{itemize}
+
+\subsection{Escalabilidad}
+NFS no es escalable.
+
+\section{TCP/IP - OSI/ISO}
+\begin{tabular}{|c|c|c|c|}
+\hline
+&TCP/IP & & OSI/ISO\\ \hline
+ & 		& 7 & Aplicaci'on\\
+5& Aplicaci'on 	& 6 & Presentaci'on\\
+ & 	 	& 5 & Sesi'on\\
+4& Transporte 	& 4 & Transporte\\
+3& Internet	& 3 & Red\\
+2& Interfaz de red &2& Enlace de datos\\
+1& Hardware	& 1 & F'isica\\ \hline
+\end{tabular}
+
+Capas:
+\begin{description}
+	\item[F'isica] maneja bits
+	\item[Enlace] maneja paquetes, detecta errores de transmici'on por checksum.
+	\item[Red] se encarga del \emph{ruteo}  y asegura la trayectoria. La anterior s'olo dirige a LAN, esta sirve para direcciones ```m'as grandes''.
+	\item[Transporte] mantiene el orden de los paquetes para que tenga sentido el mensaje
+	\item[Sesi'on] es un refinado de la de transporte, sabe con qui'en es la comunicaci'ony ayuda a la sincronizaci'on
+	\item[Presentaci'on] se encarga de homogeneizar los datos, facilitando la comunicaci'on entre m'aquinas con representaciones distintas.
+	\item[Aplicaci'on] interact'ua con los usuario
+\end{description}
+
+\section{Rendez-Vous}
+Asim'etrica-Semi sincr'onica
+
+Semisincr'onica: send no bloqueantes y receive bloqueante
+
+\section{Mailbox}
+Desacopla el emisor y receptor
+
+Mayor flexibilidad en mensajes.
+
+Desventaja: centraliza.
+
+Modalidades:
+\begin{itemize}
+	\item uno a uno
+	\item muchos a uno (cliente servidor)
+	\item uno a muchos (broadcast)
+	\item muchos a muchos (comunicaci'on entre servers)
+\end{itemize}
+Colas con prioridad.
+
+
+
+\section{Sincronizaci'on}
+
+\subsection{Relojes}
+Se usan para la entrega de mensajes ``a lo sumo una vez'' y para mantener
+consistencia en las caches de los clientes.
+
+L'ogicos, cada proceso tiene uno propio. Lamport, los tiempos concuerdan con el
+orden de los procesos.
+
+F'isicos, hay varias versiones para sincronizar relojes de un sistema
+distribuido:
+\begin{description}
+	\item[Cristian] tiene un reloj universal en un servidor de tiempo
+(WWV), cada m'aquina se acomoda a ese tiempo
+	\item[Berkeley] cada m'aquina env'ia su tiempo a un servidor y este
+responde con la correcci'on que hay que realizar
+	\item[Promedios] todos hacen \emph{broadcast} de su hora y a su vez,
+todos leen las horas de los dem'as, las promedian y se quedan con ese dato
+	\item[Multiples fuentes externas] parecido al anterior, salvo que se
+queda con la intersecci'on entre todas las se'nales de los tiempos recibidos
+\end{description}
+
+\subsection{Exclusi'on mutua}
+Hay varias versiones:
+\begin{description}
+	\item[centralizado] Existe un coordinador, su caida implica que nadie
+m'as entre a zonas de uso exlusivo. Se requieren 3 mensajes para el uso de una
+zona dedicada (pedido, ack, liberado).
+	\item[distribuido] (Ricart-Agrawala) requiere sincronizaci'on de los
+relojes l'ogicos. Un nodo pregunta a todos, y hasta que no obtiene todos los OK
+no entra en la zona cr'itica, si un nodo est'a usando no responde. Al liberar
+se avisa a todos. Empates se definen por menor marca temporal. Hay problema si
+se cae un nodo porque no responde. Se puede mejorar haciendo que todos
+contesten o que se acceda por mayor'ia simple. Tiene $n$ puntos de falla. Todos
+los nodos tienen que tener una lista de procesos activos. Se requieren
+$2(n-1)$ mensajes para acceder en la primer versi'on.
+	\item[token-ring] red en forma de anillo, se pasa un token, el que
+tiene el token tiene permiso. Un problema es la perdida del token, porque se
+cae el que lo ten'ia o porque es lento. Requiere entre 1 y n mensajes
+\end{description}
+
+\subsection{Recuperaci'on de caidas del coordinador}
+\begin{description}
+	\item[Bully] El que detecta que se cay'o el coordinador manda un
+mensaje a cada nodo con n'umero mayor a 'el. Si alguno responde, entonces, ese
+repite la operatoria hasta que alguno no reciba ninguna respuesta, se considera
+que ese es el de mayor n'umero y asume como nuevo coordinador avisando a todos.
+Cuando se restaura el coordinador caido reasume su puesto.
+	\item[Anillo] Parecido al anterior, s'olo que se pasa una lista por un
+anillo y se van agregando los nodos vivos. Al dar toda la vuelta el que inici'o
+este mecanismo, decide cu'al es el mayor y ese es el que asume como nuevo
+coordinador.
+\end{description}
+
+\section{Transacciones}
+Todo o nada. 
+
+Primitivas: at'omicas (indivisible), consistente, serializable (las concurrentes no
+interfieren), permanentes (una vez realizado el commit los cambios son
+permanentes).
+
+\subsection{Implementaci'on de las transacciones}
+\begin{itemize}
+	\item En espacio privado de trabajo, se copia todo, en caso de rollback
+se borra el espacio de trabajo, en caso de commit se reapuntan los punteros de
+los datos.
+	\item Log de grabaci'on adelantada. Graba el valor viejo y el nuevo. En
+el commit el log es el cuello de botella. Es m'as tolerante a caidas.
+\end{itemize}
+
+\subsubsection{Subtransacciones}
+La transacci'on madre dispara transacciones hijas. El commit de las
+subtransacciones s'olo es permanente en el universo de la transacci'on madre.
+En caso de que la transacci'on madre aborte o haga rollback los datos afectados
+por las subtransacciones no se ven fuera.
+
+\subsubsection{Two-phase commit}
+Cuando una transacci'on involucra varios procesos nodos, se tienen que poner
+todos ``de acuerdo'' para realizar el commit. Hay un coordinador, que en
+general suele ser el que inicia la transacci'on.
+
+Todo se escribe en el log y se env'ian como \emph{mensaje}
+\begin{enumerate}
+	\item (INICIO FASE 1) El coordinador escribe ``preparado'' a todos los
+subordinados
+	\item Todos los subordinados, cuando lo est'an, env'ian ``listo''
+	\item El coordinador revisa que todas las respuestas sean ``listo''
+(FIN FASE 1)
+	\item (INICIO FASE 2) El coordinador escribe ``commit''
+	\item Los subordinados escriben ``commit'' y lo realizan
+	\item Los subordinados env'ian ``terminado'' (FIN FASE 2)
+\end{enumerate}
+
+Posibles problemas:
+\begin{itemize}
+	\item Si se cae el coordinador luego de enviar ``commit'', el volver
+ve las respuestas en el log.
+	\item Si se cae el subordinado ve la decisi'on en el log
+	\item Si un subordinado no responde, se produce un \emph{timeout} y se
+decide si cancela o no.
+	\item si se cae el coordinador luego de escribir el log, al volver
+puede seguir.
+\end{itemize}
+
+\subsection{Control de concurrencia}
+\subsubsection{Bloqueo}
+Depende de la granularidad. Lectura (varios concurrentes). Escritura (s'olo
+uno). Es costoso pero no est'a libre de deadlock.
+
+\subsubsection*{Bloqueo de dos etapas}
+Reduce la posibilidad de deadlock. Hay una etapa de pedir recursos hasta que
+llega al punto de bloqueo (tiene todos los recursos). Puede usarse
+\emph{hold\&wait}, timeout y otros para resolver posibles bloqueos.
+
+Si las transacciones usan esto son serializables.
+
+\subsubsection{Control optimista}
+Otorga todos los permisos, al momento de hacer el commit verifica si todo est'a
+como al iniciar la transacci'on, si algo cambi'o no se hace commit. Est'a libre
+de \emph{deathlock}. Permite gran paralelismo. Anda muy bien con espacio
+privado de trabajo.
+
+\subsubsection{Sellos temporales}
+Cada transacci'on tiene un sello temporal para lectura y escritura. Cuando una
+transacci'on encuentra un sello mayor qe el suyo, aborta. Est'a libre de
+\emph{deathlock} pero es dificil de implementar.
+
+\subsection{Deathlock}
+La detecci'on en un sistema distribuido puede dar falsos anuncios por la demora
+de los mensajes.
+
+Se puede hacer detecci'on enviando un mensaje que si llega a volver al que lo
+envi'o este se suicida. El mensaje tiene un id de proceso original y los
+recursos que est'an involucrados.
+
+\subsubsection{Formas de prevenci'on}
+\begin{description}
+	\item[1 recurso por vez]
+	\item[Asignaci'on total]
+	\item[Pedido ordenado de recursos]
+	\item[Wound-Wait (espera y golpea)] El viejo desaloja al nuevo. El
+joven espera al joven. Permite inanici'on.
+	\item[Wait-Die (espera y golpea)] El viejo espera un recurso que tiene
+un joven. El joven que quiere un recurso que tiene un viejo muere y debe
+empezar de nuevo (sin cambiar su sello temporal). Permite inanici'on.
+\end{description}
+
+\section{Caches en los clientes}
+\subsection{Sin reloj}
+Decide invalidar algo ??? Revisar
+
+\subsection{Con reloj}
+Al acceder se le da fecha de expiraci'on. Si otro lo pide espera expiraci'on o
+cancela permiso.
+	
+\section{Filesystem}
+Modelos:
+\begin{itemize}
+	\item Upload/Download
+	\item Remote Access
+	\item Transparencia de nombres
+\end{itemize}
+
+\subsection{Sem'antica de archivos compartidos}
+\begin{description}
+	\item[Unix] cambios instantaneos (cada 3 segundos se refresca)
+	\item[Sesi'on] se guardan los cambios al finalizar
+	\item[Archivos inmutables] s'olo se permite crea y leer (tipo cintas)
+	\item[Transacciones] son de tipo sesi'on.
+\end{description}
+
+\subsection{Tipos de servidor}
+\begin{tabular}{|c|c|}
+\hline
+Servidor con estado		& Servidor sin estado \\ \hline
+Permite lectura adelantada	& No necesita open/close \\ \hline
+Hay lock de archivos		& Sin limite de cantidad de archivos abiertos
+\\ \hline
+Mejor desempe'no		& M'as tolerante a fallas \\ \hline
+F'acil idempotencia		& No desperdicia espacio en tablas \\ \hline
+Solicitudes m'as cortas		& Solicitudes m'as largas \\ \hline
+Cuando se cae se pierde todo. & Si falla el cliente no se pierde nada. \\
+La recuperaci'on queda a cargo de los clientes & No importa \\ \hline
+Si el cliente se cae el servidor no & Si se cae
+el cliente todo ok. \\
+sabe como eliminar las entradas & \\
+\hline
+\end{tabular}
+
+\subsection{Caching}
+Distintos niveles. Problemas de consistencia.
+
+Metodos:
+\begin{description}
+	\item[Escritura a traves de cache] funciona. No afecta el tr'afico de
+escritura
+	\item[Escritura demorada] Mejor desempe'no. Posible sem'antica ambigua.
+	\item[Escritura al cierre] Sem'antica de sesi'on.
+	\item[Control centralizado] Sem'antica Unix. No robusto. Poco
+escalable.
+\end{description}
+
+\subsection{Implementaciones}
+\begin{itemize}
+	\item RFS - Remote File System
+	\item NFS - Network File System
+	\item AFS - Andrew File System
+\end{itemize}
+
+\subsubsection{RFS}
+\begin{itemize}
+	\item Estado en el cliente y en el servidor
+	\item Todo RPC
+	\item Caida del servidor afecta al cliente
+	\item Permite lecturas adelantadas
+	\item Control de acceso adelantado
+	\item Existe una cantidad m'axima de archivos en operaci'on (abiertos
+al mismo tiempo)
+\end{itemize}
+
+\subsubsection{NFS (mount protocol)}
+\begin{itemize}
+	\item El servidor, si tiene el acceso permitido, devuelve un file handle.
+	\item El file handle identifica el archivo que guarda. En Unix es un id
+y un nro. de i-nodo para identificar el directorio montaod dentro del FS
+exportado
+	\item El servidor tiene una lista de los cliente y las cosas que
+montaron
+\end{itemize}
+
+\begin{tabular}{|c|c|}
+\hline
+Servido			& Cliente \\ \hline
+Exporta FS		& Monta archivos y directorios \\
+R/W seg'un diga el cliente	& R/W que pide al NFS que realice \\
+Sin estado			& Con estado \\
+Comunicaci'on por RPC		& Comunicaci'on por RPC \\
+Sin Cach'e			& Con Cache \\
+Exporta FS y registra lo exportado y da un puntero al cliente & Con el handler
+tiene un inodo-v\\
+\hline
+\end{tabular}
+
+\subsubsection{AFS}
+\begin{itemize}
+	\item Ocultamiento (sesi'on)
+	\item Espacio 'unico de nombres
+	\item El cliente se conecta por red Venus al servidor (red de
+servidores llamada Vice) pidiendo un archivo
+	\item Cada cliente tiene un servidor, pero este 'ultimo est'a conectado a
+otros servidores
+	\item Entre Venus y Vice hay un identificador llamado fid que tiene el
+n'umero de volumen, el n'umero de vnodo y un c'odigo 'unico
+\end{itemize}
+
+\end{document}
