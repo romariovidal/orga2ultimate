@@ -352,7 +352,7 @@ empezar de nuevo (sin cambiar su sello temporal). Permite inanici'on.
 
 \section{Caches en los clientes}
 \subsection{Sin reloj}
-Se negocian todos los permisos. Si se decide invalidar algo se avisa.
+Se negocian todos los permisos. Si se decide invalidar algo se avisa. Bloquea.
 
 \subsection{Con reloj}
 Al acceder se le da fecha de expiraci'on. Si otro lo pide espera expiraci'on o
@@ -418,7 +418,7 @@ escalable.
 	\item Todo RPC
 	\item Caida del servidor afecta al cliente
 	\item Permite lecturas adelantadas
-	\item Control de acceso adelantado
+	\item Control de acceso centralizado
 	\item Existe una cantidad m'axima de archivos en operaci'on (abiertos
 al mismo tiempo)
 \end{itemize}
