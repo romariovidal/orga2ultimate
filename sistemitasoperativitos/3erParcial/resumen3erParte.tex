@@ -216,9 +216,10 @@ F'isicos, hay varias versiones para sincronizar relojes de un sistema
 distribuido:
 \begin{description}
 	\item[Cristian] tiene un reloj universal en un servidor de tiempo
-(WWV), cada m'aquina se acomoda a ese tiempo
+(WWV), cada m'aquina se encarga de preguntar y se acomoda a ese tiempo
 	\item[Berkeley] cada m'aquina env'ia su tiempo a un servidor y este
-responde con la correcci'on que hay que realizar
+responde con la correcci'on que hay que realizar promediando todas las horas
+recibidas no tiene ning'un WWV
 	\item[Promedios] todos hacen \emph{broadcast} de su hora y a su vez,
 todos leen las horas de los dem'as, las promedian y se quedan con ese dato
 	\item[Multiples fuentes externas] parecido al anterior, salvo que se
@@ -269,8 +270,10 @@ permanentes).
 	\item En espacio privado de trabajo, se copia todo, en caso de rollback
 se borra el espacio de trabajo, en caso de commit se reapuntan los punteros de
 los datos.
-	\item Log de grabaci'on adelantada. Graba el valor viejo y el nuevo. En
-el commit el log es el cuello de botella. Es m'as tolerante a caidas.
+	\item Log de grabaci'on adelantada. Graba el valor viejo y el nuevo en el
+log y luego graba el dato en memoria. El commit s'olo escribe ``commit'' en el
+log. En el rollback deshace los cambios (es el cuello de botella). Es m'as
+tolerante a caidas.
 \end{itemize}
 
 \subsubsection{Subtransacciones}
