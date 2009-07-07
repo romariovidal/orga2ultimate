@@ -62,7 +62,8 @@ case $# in
 			else
 				echo "Son parámetros válidos (2)."
 				ingresarDir
-				cp -u -r -i $ORIGEN/* $DESTINO #capaz hay que agregar un *			fi
+				cp -u -r -i $ORIGEN/* $DESTINO #capaz hay que agregar un *		
+			fi
 		else 
 			echo "Son parámetros válidos (2)."
 			cp -u $1/* $2 #capaz hay que agregar un *
@@ -73,7 +74,7 @@ case $# in
 			echo "Las opciones para un parámetro son '-r' y '-s'"
 			exit -1
 		fi
-		echo "Son parámetros válidos (3)."
+		echo "Es un parámetro válido (1)."
 		ingresarDir
 		if( [$1 != '-r'] ); then 
 			cp -u -i $ORIGEN/* $DESTINO  #capaz hay que agregar un *
@@ -82,6 +83,7 @@ case $# in
 		fi
 		;;
 	0 )
+		echo "Ejecutado sin parámetros (0)."
 		ingresarDir
 		cp -u $ORIGEN/* $DESTINO  #capaz hay que agregar un *		
 esac
