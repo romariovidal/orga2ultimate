@@ -24,7 +24,7 @@ function ingresarDir {
 }
 
 
-if ([ $# -ne 3 ] && [ $# -ne 2 ] && [ $# -ne 4 ] ); then
+if ([ $# -ne 3 ] && [ $# -ne 2 ] && [ $# -ne 4 ] && [ $# -ne 1 ] && [ $# -ne 0 ] ); then
 	echo "Es necesario introducir 2, 3 'o 4 parámetros: $0 parametro1 directorioOrigen directorioDestino"
 	exit -1
 fi
