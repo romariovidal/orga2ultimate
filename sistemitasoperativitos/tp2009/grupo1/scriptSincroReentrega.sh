@@ -38,7 +38,7 @@ case $# in
 			echo "Las opciones para los parámetros 1 y 2 son '-r' y '-s'"
 			exit -1
 		fi
-		echo "Son parámetros válidos (3)."
+		echo "Son parámetros válidos (4)."
 		cp -u -i -r $2/* $3  #capaz hay que agregar un *
 		;;
 	3 )
@@ -48,7 +48,10 @@ case $# in
 			exit -1
 		fi
 		echo "Son parámetros válidos (3)."
-		cp -u $1 $2/* $3  #capaz hay que agregar un *
+		if( [$1 != '-r'] ); then 
+			cp -u -i $2/* $3  #capaz hay que agregar un *
+		else
+			cp -u -r $2/* $3  #capaz hay que agregar un *
 		;;
  	2 )
 		if ([ ! -d $1 ] || [ ! -d $2 ] ); then
@@ -59,7 +62,7 @@ case $# in
 			else
 				echo "Son parámetros válidos (2)."
 				ingresarDir
-				cp $1 $2 $ORIGEN/* $DESTINO #capaz hay que agregar un *			fi
+				cp -u -r -i $ORIGEN/* $DESTINO #capaz hay que agregar un *			fi
 		else 
 			echo "Son parámetros válidos (2)."
 			cp -u $1/* $2 #capaz hay que agregar un *
@@ -72,7 +75,11 @@ case $# in
 		fi
 		echo "Son parámetros válidos (3)."
 		ingresarDir
-		cp -u $1 $ORIGEN/* $DESTINO  #capaz hay que agregar un *
+		if( [$1 != '-r'] ); then 
+			cp -u -i $ORIGEN/* $DESTINO  #capaz hay que agregar un *
+		else
+			cp -u -r $ORIGEN/* $DESTINO  #capaz hay que agregar un *
+		fi
 		;;
 	0 )
 		ingresarDir
