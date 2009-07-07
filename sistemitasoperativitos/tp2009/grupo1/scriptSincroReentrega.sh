@@ -52,6 +52,7 @@ case $# in
 			cp -u -i $2/* $3  #capaz hay que agregar un *
 		else
 			cp -u -r $2/* $3  #capaz hay que agregar un *
+		fi
 		;;
  	2 )
 		if ([ ! -d $1 ] || [ ! -d $2 ] ); then
