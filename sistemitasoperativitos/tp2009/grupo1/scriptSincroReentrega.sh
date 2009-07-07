@@ -5,8 +5,8 @@
 
 #echo "Su nombre es $NOMBRE"
 
-function ingresarDir{
-	echo "Por favor ingrese el directorio Origen"
+function ingresarDir {
+	echo "Por favor ingrese el directorio Origen "
 	read -s ORIGEN
 
 	if ([ ! -d $ORIGEN ]);then
