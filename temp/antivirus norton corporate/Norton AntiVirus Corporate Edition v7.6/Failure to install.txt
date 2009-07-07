@@ -1,8 +1,0 @@
-Problem
---------
-Windows 98 will fail in mid install if the newest installer is not present.
-
-
-Solution
----------
-Install all avalible service-packs from windows update center.

@@ -1,5 +1,0 @@
-1. Unpack and install the software
-
-2. Copy the ideit-util.jar to &INSTALL DIR&\lib\ideit-util.jar
-
-3. Run Program, Help > License Key to register.

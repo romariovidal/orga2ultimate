@@ -1,2 +1,0 @@
-str_contatore="Hits =53910#Hits hoy=102#Visitantes=37843#Online=2#";
-chfh(str_contatore);
