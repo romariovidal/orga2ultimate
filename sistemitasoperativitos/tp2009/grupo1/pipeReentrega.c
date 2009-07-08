@@ -37,22 +37,24 @@ int main(void){
 		//fork();
 		
 		while(1){			
-	        if(pidDelHijo != 0) 
-				printf("Soy el proceso A a punto de entrar al WAIT\n");
-			else
-				printf("Soy el proceso B a punto de entrar al WAIT\n");
 
 			while (res = read(fd[0], loMensajeado, 1) != 1)
 				if (res == -1) perror("wait");
 
+	        if(pidDelHijo != 0) 
+				printf("Soy el proceso A");
+			else
+				printf("\t\t\t\tSoy el proceso B");
+			printf(" entrando en la zona de exclusión, por vez %d\n", i);
 			// adentro de la exclusión mutua
 			sleep(1);
 			i++;
 
 	        if(pidDelHijo != 0) 
-				printf("Soy el proceso A a punto de hacer SIGNAL\n");
+				printf("Soy el proceso A");
 			else
-				printf("Soy el proceso B a punto de hacer SIGNAL\n");
+				printf("\t\t\t\tSoy el proceso B");
+			printf(" liberando en la zona de exclusión\n");
 
 			while(res=write(fd[1], mensaje, 1) != 1)
 				if (res == -1) perror("signal");
