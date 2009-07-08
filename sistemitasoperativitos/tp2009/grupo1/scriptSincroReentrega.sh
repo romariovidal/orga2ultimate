@@ -31,15 +31,15 @@ fi
 
 case $# in
 	4 ) 
-		if ( ([ $1 != "-r" ] && [ $2 != "-s" ] ) ||
-			( ([ $2 != "-r" ] && [ $1 != "-s" ] ) ) || 
+		if ( !(([ $1 == "-r" ] && [ $2 == "-s" ] ) ||
+			( ([ $2 == "-r" ] && [ $1 == "-s" ] ) )) || 
 			[ ! -d $3 ] || [ ! -d $4 ] ); then
 			echo "Si introduce 4 parámetros deben ser: $0 parametro1 parametro2 directorioOrigen directorioDestino"
 			echo "Las opciones para los parámetros 1 y 2 son '-r' y '-s'"
 			exit -1
 		fi
 		echo "Son parámetros válidos (4)."
-		cp -u -i -r $2/* $3  #capaz hay que agregar un *
+		cp -v -u -i -r $3/* $4  #capaz hay que agregar un *
 		;;
 	3 )
 		if ( ( [ $1 != "-r" ] && [ $1 != '-s' ] ) || [ ! -d $2 ] || [ ! -d $3 ] ); then
@@ -48,26 +48,27 @@ case $# in
 			exit -1
 		fi
 		echo "Son parámetros válidos (3)."
-		if( [$1 != '-r'] ); then 
-			cp -u -i $2/* $3  #capaz hay que agregar un *
+		if( [ $1 != '-r' ] ); then 
+			cp -v -u -i $2/* $3  #capaz hay que agregar un *
 		else
-			cp -u -r $2/* $3  #capaz hay que agregar un *
+			cp -v -u -r $2/* $3  #capaz hay que agregar un *
 		fi
 		;;
  	2 )
 		if ([ ! -d $1 ] || [ ! -d $2 ] ); then
-			if ( ( [ $1 != "-r" ] && [ $2 != '-s' ] ) ) ||
-				( ( [ $2 != "-r" ] && [ $1 != '-s' ] ) ); then
+			if ( !( ( [ $1 == "-r" ] && [ $2 == "-s" ] ) ) ||
+				( ( [ $2 == "-r" ] && [ $1 == "-s" ] ) )); then
 				echo "Si introduce 2 parámetros deben ser: $0 directorioOrigen directorioDestino, $0 -r -s, o $0 -s -r"
+				echo "Usted ingresó $1 y $2"
 				exit -1
 			else
 				echo "Son parámetros válidos (2)."
 				ingresarDir
-				cp -u -r -i $ORIGEN/* $DESTINO #capaz hay que agregar un *		
+				cp -v -u -r -i $ORIGEN/* $DESTINO #capaz hay que agregar un *		
 			fi
 		else 
 			echo "Son parámetros válidos (2)."
-			cp -u $1/* $2 #capaz hay que agregar un *
+			cp -v -u $1/* $2 #capaz hay que agregar un *
 		fi
 		;;
 	1 ) 
@@ -77,16 +78,16 @@ case $# in
 		fi
 		echo "Es un parámetro válido (1)."
 		ingresarDir
-		if( [$1 != '-r'] ); then 
-			cp -u -i $ORIGEN/* $DESTINO  #capaz hay que agregar un *
+		if( [ $1 != '-r' ] ); then 
+			cp -v -u -i $ORIGEN/* $DESTINO  #capaz hay que agregar un *
 		else
-			cp -u -r $ORIGEN/* $DESTINO  #capaz hay que agregar un *
+			cp -v -u -r $ORIGEN/* $DESTINO  #capaz hay que agregar un *
 		fi
 		;;
 	0 )
 		echo "Ejecutado sin parámetros (0)."
 		ingresarDir
-		cp -u $ORIGEN/* $DESTINO  #capaz hay que agregar un *		
+		cp -v -u $ORIGEN/* $DESTINO  #capaz hay que agregar un *		
 esac
 
 exit 0
