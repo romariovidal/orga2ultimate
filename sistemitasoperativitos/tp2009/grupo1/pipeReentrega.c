@@ -16,7 +16,7 @@ int main(void){
         pid_t   pidDelHijo;
         char    mensaje[] = "TomA mate";
 		int 	longMsg = 9;
-		int 	i = 0;
+		int 	i = 1;
         char    loMensajeado[80];
 
         pipe(fd);
