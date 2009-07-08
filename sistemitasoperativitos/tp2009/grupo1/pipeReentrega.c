@@ -6,7 +6,7 @@
 //#include <cstdlib.h>
 
 int randomNumber() {
-	int value=(rand()%3+1);
+	int value=(rand()%2);
 	
 	return value;
 }
@@ -21,20 +21,23 @@ int main(void){
 
         pipe(fd);
       
-		printf("Bla\n"); 
-
-		perror("BLA");
 		while(res = write(fd[1],mensaje, 1) != 1)
 			if (res == -1) perror("primer signal");
 				else printf("ok\n");
 
-		printf("BLA2");
 	   	if((pidDelHijo = fork()) == -1)        {
                 perror("fork");
                 exit(1);
         }
-		printf("Este es %d\n", pidDelHijo);
-		//fork();
+
+	    if(pidDelHijo != 0){ 
+			printf("Este es mi pid %d\n", pidDelHijo);
+			srand(time(NULL));
+		} else {
+			printf("\t\t\t\tEste es mi pid %d\n", pidDelHijo);
+			sleep(2);
+			srand(time(NULL));
+		}
 		
 		while(1){			
 
@@ -59,7 +62,8 @@ int main(void){
 			while(res=write(fd[1], mensaje, 1) != 1)
 				if (res == -1) perror("signal");
 
-			sleep(1);
+			if(randomNumber())
+				sleep(1);
 
 		}
 
