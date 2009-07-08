@@ -24,7 +24,7 @@ int main(void){
 		printf("Bla\n"); 
 
 		perror("BLA");
-		while(res = write(fd[1],mensaje, 1) != 1);
+		while(res = write(fd[1],mensaje, 1) != 1)
 			if (res == -1) perror("primer signal");
 				else printf("ok\n");
 
@@ -56,6 +56,8 @@ int main(void){
 
 			while(res=write(fd[1], mensaje, 1) != 1)
 				if (res == -1) perror("signal");
+
+			sleep(1);
 
 		}
 
