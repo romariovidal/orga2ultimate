@@ -40,4 +40,6 @@ all:
 clean:
 	rm -rf dest
 	rm -rf orig
+
+reload: clean all 
 	
