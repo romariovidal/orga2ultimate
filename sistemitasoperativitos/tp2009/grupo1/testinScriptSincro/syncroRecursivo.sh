@@ -99,6 +99,8 @@ function leerParametros {
 			fi
 			;;
 		0 )
+			PARAMRRR="no"
+			PARAMSSS="no"
 			echo "Ejecutado sin parámetros (0)."
 			ingresarDir
 	esac
