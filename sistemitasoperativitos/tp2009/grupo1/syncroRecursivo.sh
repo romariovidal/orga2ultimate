@@ -133,23 +133,29 @@ do
 
 	if ([ -d "$ARCHIVOORIGEN" ]); then 
 		#ARCHIVOORIGEN es un directorio
-		echo -n "Desea sincronizar este directorio << $ARCHIVOORIGEN >>" 
-		echo "(presione 's' si sí, cualquier otra cosa si no)"
-		read RESPUESTA
-		
-		if ([ "$RESPUESTA" = "s" ]); then 
-			if ([ -d "$ARCHIVODESTINO" ]); then #chequeo si existe el directorio destino
-				if ([ $3 = "-r" ]); then
-					./syncroRecursivo.sh $ARCHIVOORIGEN $ARCHIVODESTINO $3
-					echo "gol"
-				fi
+		if ([ $PARAMRRR ]); then
+			if ([ $PARAMSSS ]); then 
+				echo -n "Desea sincronizar este directorio << $ARCHIVOORIGEN >>" 
+				echo "(presione 's' si sí, cualquier otra cosa si no)"
+				read RESPUESTA
 			else
-				echo -e "\t\t\t\tfile \"$ARCHIVOORIGEN\" aqui se copia toda la carpeta porque no esta"
-				cp -r $ARCHIVOORIGEN $DESTINO
+				RESPUESTA="s"
 			fi
-		fi					
+		
+			if ([ "$RESPUESTA" = "s" ]); then 
+				if ([ -d "$ARCHIVODESTINO" ]); then #chequeo si existe el directorio destino
+					if ([ $PARAMSSS ]); then
+						./syncroRecursivo.sh -r -s $ARCHIVOORIGEN $ARCHIVODESTINO
+					else 
+						./syncroRecursivo.sh -r $ARCHIVOORIGEN $ARCHIVODESTINO
+					fi	
+				else
+					echo -e "\t\t\t\tfile \"$ARCHIVOORIGEN\" aqui se copia toda la carpeta porque no esta"
+					cp -r $ARCHIVOORIGEN $DESTINO
+				fi
+			fi					
+		fi
 	else
-
 		if ([ -f "$ARCHIVODESTINO" ]); then
 			echo -e "\t\t\t\t-- Existe el archivo de destino: \"$ARCHIVODESTINO\", verificar"
 			FDESTIN=$(stat -c %Y $DESTINO/$file)
