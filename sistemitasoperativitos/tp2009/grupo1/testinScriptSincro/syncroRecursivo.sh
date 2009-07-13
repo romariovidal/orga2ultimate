@@ -113,9 +113,9 @@ echo "Directorio Destino: $DESTINO"
 echo "Modificador -r presente: $PARAMRRR";
 echo "Modificador -s presente: $PARAMSSS";
 
-echo "Ingrese su nombre"
-read NOMBRE
-echo "HOLA $NOMBRE"
+#echo "Ingrese su nombre"
+#read NOMBRE
+#echo "HOLA $NOMBRE"
 
 #ORIGEN=$1
 #DESTINO=$2
@@ -133,8 +133,8 @@ do
 
 	if ([ -d "$ARCHIVOORIGEN" ]); then 
 		#ARCHIVOORIGEN es un directorio
-		if ([ $PARAMRRR ]); then
-			if ([ $PARAMSSS ]); then 
+		if ([ $PARAMRRR = "si" ]); then
+			if ([ $PARAMSSS = "si" ]); then 
 				echo -n "Desea sincronizar este directorio << $ARCHIVOORIGEN >>" 
 				echo "(presione 's' si sí, cualquier otra cosa si no)"
 				read RESPUESTA
@@ -144,7 +144,7 @@ do
 		
 			if ([ "$RESPUESTA" = "s" ]); then 
 				if ([ -d "$ARCHIVODESTINO" ]); then #chequeo si existe el directorio destino
-					if ([ $PARAMSSS ]); then
+					if ([ $PARAMSSS = "si" ]); then
 						./syncroRecursivo.sh -r -s $ARCHIVOORIGEN $ARCHIVODESTINO
 					else 
 						./syncroRecursivo.sh -r $ARCHIVOORIGEN $ARCHIVODESTINO
