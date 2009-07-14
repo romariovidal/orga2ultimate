@@ -2,7 +2,7 @@
 
 IFS=$'\n' #esto es para los espacios del ls
 
-#clear
+
 
 function ingresarDir {
 	echo "Por favor ingrese el directorio Origen "
@@ -24,7 +24,7 @@ function ingresarDir {
 
 
 function leerParametros {
-	#echo -e " 1: $1 \n 2: $2 \n 3: $3 \n 4: $4 \n 5: $5"
+	
 	if ([ $# -ne 3 ] && [ $# -ne 2 ] && [ $# -ne 4 ] && [ $# -ne 1 ] && [ $# -ne 0 ] ); then
 		echo "Es necesario introducir 0, 1, 2, 3 'o 4 parámetros: $0 [parametro1] [parametro2] directorioOrigen directorioDestino"
 		exit -1
@@ -108,19 +108,14 @@ function leerParametros {
 
 leerParametros $1 $2 $3 $4 $5
 
-#echo -e " 1: $1 \n 2: $2 \n 3: $3 \n 4: $4 \n 5: $5"
+
 
 echo "Directorio Origen: $ORIGEN"
 echo "Directorio Destino: $DESTINO"
 echo "Modificador -r presente: $PARAMRRR";
 echo "Modificador -s presente: $PARAMSSS";
 
-#echo "Ingrese su nombre"
-#read NOMBRE
-#echo "HOLA $NOMBRE"
 
-#ORIGEN=$1
-#DESTINO=$2
 
 
 for file in $(ls -1 $ORIGEN)
