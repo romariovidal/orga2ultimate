@@ -9,7 +9,7 @@ all:
 	mkdir orig/dir3
 	mkdir orig/dir3/subdir3-1
 
-	echo "original aa" > orig/arch0-1
+	echo "original aaaa" > orig/arch0-1
 	echo "original aa" > orig/dir1/arch1-1
 	echo "original aa" > orig/dir2/arch2-1
 	echo "original aa" > orig/dir2/subdir2-1/arch2-1-1
