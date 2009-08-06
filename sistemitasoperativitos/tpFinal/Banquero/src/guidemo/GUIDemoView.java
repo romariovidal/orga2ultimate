@@ -104,70 +104,70 @@ public class GUIDemoView extends FrameView {
 
         mainPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
-        jTextField30 = new javax.swing.JTextField();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jTextField43 = new javax.swing.JTextField();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
-        jTextField47 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
-        jTextField49 = new javax.swing.JTextField();
-        jTextField50 = new javax.swing.JTextField();
-        jTextField51 = new javax.swing.JTextField();
-        jTextField52 = new javax.swing.JTextField();
-        jTextField53 = new javax.swing.JTextField();
-        jTextField54 = new javax.swing.JTextField();
-        jTextField55 = new javax.swing.JTextField();
-        jTextField56 = new javax.swing.JTextField();
-        jTextField57 = new javax.swing.JTextField();
-        jTextField58 = new javax.swing.JTextField();
-        jTextField59 = new javax.swing.JTextField();
-        jTextField60 = new javax.swing.JTextField();
-        jTextField61 = new javax.swing.JTextField();
-        jTextField62 = new javax.swing.JTextField();
-        jTextField63 = new javax.swing.JTextField();
-        jTextField64 = new javax.swing.JTextField();
+        text_tiene11 = new javax.swing.JTextField();
+        text_tiene21 = new javax.swing.JTextField();
+        text_tiene31 = new javax.swing.JTextField();
+        text_tiene41 = new javax.swing.JTextField();
+        text_tiene51 = new javax.swing.JTextField();
+        text_tiene61 = new javax.swing.JTextField();
+        text_tiene71 = new javax.swing.JTextField();
+        text_tiene81 = new javax.swing.JTextField();
+        text_tiene12 = new javax.swing.JTextField();
+        text_tiene22 = new javax.swing.JTextField();
+        text_tiene32 = new javax.swing.JTextField();
+        text_tiene42 = new javax.swing.JTextField();
+        text_tiene52 = new javax.swing.JTextField();
+        text_tiene62 = new javax.swing.JTextField();
+        text_tiene72 = new javax.swing.JTextField();
+        text_tiene82 = new javax.swing.JTextField();
+        text_tiene13 = new javax.swing.JTextField();
+        text_tiene23 = new javax.swing.JTextField();
+        text_tiene33 = new javax.swing.JTextField();
+        text_tiene43 = new javax.swing.JTextField();
+        text_tiene53 = new javax.swing.JTextField();
+        text_tiene63 = new javax.swing.JTextField();
+        text_tiene73 = new javax.swing.JTextField();
+        text_tiene83 = new javax.swing.JTextField();
+        text_tiene14 = new javax.swing.JTextField();
+        text_tiene24 = new javax.swing.JTextField();
+        text_tiene34 = new javax.swing.JTextField();
+        text_tiene44 = new javax.swing.JTextField();
+        text_tiene54 = new javax.swing.JTextField();
+        text_tiene64 = new javax.swing.JTextField();
+        text_tiene74 = new javax.swing.JTextField();
+        text_tiene84 = new javax.swing.JTextField();
+        text_tiene15 = new javax.swing.JTextField();
+        text_tiene25 = new javax.swing.JTextField();
+        text_tiene35 = new javax.swing.JTextField();
+        text_tiene45 = new javax.swing.JTextField();
+        text_tiene55 = new javax.swing.JTextField();
+        text_tiene65 = new javax.swing.JTextField();
+        text_tiene75 = new javax.swing.JTextField();
+        text_tiene85 = new javax.swing.JTextField();
+        text_tiene16 = new javax.swing.JTextField();
+        text_tiene26 = new javax.swing.JTextField();
+        text_tiene36 = new javax.swing.JTextField();
+        text_tiene46 = new javax.swing.JTextField();
+        text_tiene56 = new javax.swing.JTextField();
+        text_tiene66 = new javax.swing.JTextField();
+        text_tiene76 = new javax.swing.JTextField();
+        text_tiene86 = new javax.swing.JTextField();
+        text_tiene17 = new javax.swing.JTextField();
+        text_tiene27 = new javax.swing.JTextField();
+        text_tiene37 = new javax.swing.JTextField();
+        text_tiene47 = new javax.swing.JTextField();
+        text_tiene57 = new javax.swing.JTextField();
+        text_tiene67 = new javax.swing.JTextField();
+        text_tiene77 = new javax.swing.JTextField();
+        text_tiene87 = new javax.swing.JTextField();
+        text_tiene18 = new javax.swing.JTextField();
+        text_tiene28 = new javax.swing.JTextField();
+        text_tiene38 = new javax.swing.JTextField();
+        text_tiene48 = new javax.swing.JTextField();
+        text_tiene58 = new javax.swing.JTextField();
+        text_tiene68 = new javax.swing.JTextField();
+        text_tiene78 = new javax.swing.JTextField();
+        text_tiene88 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -386,261 +386,261 @@ public class GUIDemoView extends FrameView {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel1.border.title"))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText(resourceMap.getString("tiene11.text")); // NOI18N
-        jTextField1.setName("tiene11"); // NOI18N
+        text_tiene11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene11.setText(resourceMap.getString("text_tiene11.text")); // NOI18N
+        text_tiene11.setName("text_tiene11"); // NOI18N
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText(resourceMap.getString("tiene12.text")); // NOI18N
-        jTextField2.setName("tiene12"); // NOI18N
+        text_tiene21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene21.setText(resourceMap.getString("tiene12.text")); // NOI18N
+        text_tiene21.setName("tiene12"); // NOI18N
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText(resourceMap.getString("tiene13.text")); // NOI18N
-        jTextField3.setName("tiene13"); // NOI18N
+        text_tiene31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene31.setText(resourceMap.getString("tiene13.text")); // NOI18N
+        text_tiene31.setName("tiene13"); // NOI18N
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText(resourceMap.getString("tiene14.text")); // NOI18N
-        jTextField4.setName("tiene14"); // NOI18N
+        text_tiene41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene41.setText(resourceMap.getString("tiene14.text")); // NOI18N
+        text_tiene41.setName("tiene14"); // NOI18N
 
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setText(resourceMap.getString("tiene15.text")); // NOI18N
-        jTextField5.setName("tiene15"); // NOI18N
+        text_tiene51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene51.setText(resourceMap.getString("tiene15.text")); // NOI18N
+        text_tiene51.setName("tiene15"); // NOI18N
 
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText(resourceMap.getString("tiene16.text")); // NOI18N
-        jTextField6.setName("tiene16"); // NOI18N
+        text_tiene61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene61.setText(resourceMap.getString("tiene16.text")); // NOI18N
+        text_tiene61.setName("tiene16"); // NOI18N
 
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setText(resourceMap.getString("tiene17.text")); // NOI18N
-        jTextField7.setName("tiene17"); // NOI18N
+        text_tiene71.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene71.setText(resourceMap.getString("tiene17.text")); // NOI18N
+        text_tiene71.setName("tiene17"); // NOI18N
 
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setText(resourceMap.getString("tiene18.text")); // NOI18N
-        jTextField8.setName("tiene18"); // NOI18N
+        text_tiene81.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene81.setText(resourceMap.getString("tiene18.text")); // NOI18N
+        text_tiene81.setName("tiene18"); // NOI18N
 
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setText(resourceMap.getString("tiene12.text")); // NOI18N
-        jTextField9.setName("tiene12"); // NOI18N
+        text_tiene12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene12.setText(resourceMap.getString("tiene12.text")); // NOI18N
+        text_tiene12.setName("tiene12"); // NOI18N
 
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setText(resourceMap.getString("tiene22.text")); // NOI18N
-        jTextField10.setName("tiene22"); // NOI18N
+        text_tiene22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene22.setText(resourceMap.getString("tiene22.text")); // NOI18N
+        text_tiene22.setName("tiene22"); // NOI18N
 
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.setText(resourceMap.getString("tiene32.text")); // NOI18N
-        jTextField11.setName("tiene32"); // NOI18N
+        text_tiene32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene32.setText(resourceMap.getString("tiene32.text")); // NOI18N
+        text_tiene32.setName("tiene32"); // NOI18N
 
-        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField12.setText(resourceMap.getString("tiene42.text")); // NOI18N
-        jTextField12.setName("tiene42"); // NOI18N
+        text_tiene42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene42.setText(resourceMap.getString("tiene42.text")); // NOI18N
+        text_tiene42.setName("tiene42"); // NOI18N
 
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField13.setText(resourceMap.getString("tiene52.text")); // NOI18N
-        jTextField13.setName("tiene52"); // NOI18N
+        text_tiene52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene52.setText(resourceMap.getString("tiene52.text")); // NOI18N
+        text_tiene52.setName("tiene52"); // NOI18N
 
-        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField14.setText(resourceMap.getString("tiene62.text")); // NOI18N
-        jTextField14.setName("tiene62"); // NOI18N
+        text_tiene62.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene62.setText(resourceMap.getString("tiene62.text")); // NOI18N
+        text_tiene62.setName("tiene62"); // NOI18N
 
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setText(resourceMap.getString("tiene72.text")); // NOI18N
-        jTextField15.setName("tiene72"); // NOI18N
+        text_tiene72.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene72.setText(resourceMap.getString("tiene72.text")); // NOI18N
+        text_tiene72.setName("tiene72"); // NOI18N
 
-        jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField16.setText(resourceMap.getString("tiene82.text")); // NOI18N
-        jTextField16.setName("tiene82"); // NOI18N
+        text_tiene82.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene82.setText(resourceMap.getString("tiene82.text")); // NOI18N
+        text_tiene82.setName("tiene82"); // NOI18N
 
-        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField17.setText(resourceMap.getString("tiene13.text")); // NOI18N
-        jTextField17.setName("tiene13"); // NOI18N
+        text_tiene13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene13.setText(resourceMap.getString("tiene13.text")); // NOI18N
+        text_tiene13.setName("tiene13"); // NOI18N
 
-        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField18.setText(resourceMap.getString("tiene23.text")); // NOI18N
-        jTextField18.setName("tiene23"); // NOI18N
+        text_tiene23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene23.setText(resourceMap.getString("tiene23.text")); // NOI18N
+        text_tiene23.setName("tiene23"); // NOI18N
 
-        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField19.setText(resourceMap.getString("tiene33.text")); // NOI18N
-        jTextField19.setName("tiene33"); // NOI18N
+        text_tiene33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene33.setText(resourceMap.getString("tiene33.text")); // NOI18N
+        text_tiene33.setName("tiene33"); // NOI18N
 
-        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField20.setText(resourceMap.getString("tiene43.text")); // NOI18N
-        jTextField20.setName("tiene43"); // NOI18N
+        text_tiene43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene43.setText(resourceMap.getString("tiene43.text")); // NOI18N
+        text_tiene43.setName("tiene43"); // NOI18N
 
-        jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField21.setText(resourceMap.getString("tiene53.text")); // NOI18N
-        jTextField21.setName("tiene53"); // NOI18N
+        text_tiene53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene53.setText(resourceMap.getString("tiene53.text")); // NOI18N
+        text_tiene53.setName("tiene53"); // NOI18N
 
-        jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField22.setText(resourceMap.getString("tiene63.text")); // NOI18N
-        jTextField22.setName("tiene63"); // NOI18N
+        text_tiene63.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene63.setText(resourceMap.getString("tiene63.text")); // NOI18N
+        text_tiene63.setName("tiene63"); // NOI18N
 
-        jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField23.setText(resourceMap.getString("tiene73.text")); // NOI18N
-        jTextField23.setName("tiene73"); // NOI18N
+        text_tiene73.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene73.setText(resourceMap.getString("tiene73.text")); // NOI18N
+        text_tiene73.setName("tiene73"); // NOI18N
 
-        jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField24.setText(resourceMap.getString("tiene83.text")); // NOI18N
-        jTextField24.setName("tiene83"); // NOI18N
+        text_tiene83.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene83.setText(resourceMap.getString("tiene83.text")); // NOI18N
+        text_tiene83.setName("tiene83"); // NOI18N
 
-        jTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField25.setText(resourceMap.getString("tiene14.text")); // NOI18N
-        jTextField25.setName("tiene14"); // NOI18N
+        text_tiene14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene14.setText(resourceMap.getString("tiene14.text")); // NOI18N
+        text_tiene14.setName("tiene14"); // NOI18N
 
-        jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField26.setText(resourceMap.getString("tiene24.text")); // NOI18N
-        jTextField26.setName("tiene24"); // NOI18N
+        text_tiene24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene24.setText(resourceMap.getString("tiene24.text")); // NOI18N
+        text_tiene24.setName("tiene24"); // NOI18N
 
-        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField27.setText(resourceMap.getString("tiene34.text")); // NOI18N
-        jTextField27.setName("tiene34"); // NOI18N
+        text_tiene34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene34.setText(resourceMap.getString("tiene34.text")); // NOI18N
+        text_tiene34.setName("tiene34"); // NOI18N
 
-        jTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField28.setText(resourceMap.getString("tiene44.text")); // NOI18N
-        jTextField28.setName("tiene44"); // NOI18N
+        text_tiene44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene44.setText(resourceMap.getString("tiene44.text")); // NOI18N
+        text_tiene44.setName("tiene44"); // NOI18N
 
-        jTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField29.setText(resourceMap.getString("tiene54.text")); // NOI18N
-        jTextField29.setName("tiene54"); // NOI18N
+        text_tiene54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene54.setText(resourceMap.getString("tiene54.text")); // NOI18N
+        text_tiene54.setName("tiene54"); // NOI18N
 
-        jTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField30.setText(resourceMap.getString("tiene64.text")); // NOI18N
-        jTextField30.setName("tiene64"); // NOI18N
+        text_tiene64.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene64.setText(resourceMap.getString("tiene64.text")); // NOI18N
+        text_tiene64.setName("tiene64"); // NOI18N
 
-        jTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField31.setText(resourceMap.getString("tiene74.text")); // NOI18N
-        jTextField31.setName("tiene74"); // NOI18N
+        text_tiene74.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene74.setText(resourceMap.getString("tiene74.text")); // NOI18N
+        text_tiene74.setName("tiene74"); // NOI18N
 
-        jTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField32.setText(resourceMap.getString("tiene84.text")); // NOI18N
-        jTextField32.setName("tiene84"); // NOI18N
+        text_tiene84.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene84.setText(resourceMap.getString("tiene84.text")); // NOI18N
+        text_tiene84.setName("tiene84"); // NOI18N
 
-        jTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField33.setText(resourceMap.getString("tiene15.text")); // NOI18N
-        jTextField33.setName("tiene15"); // NOI18N
+        text_tiene15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene15.setText(resourceMap.getString("tiene15.text")); // NOI18N
+        text_tiene15.setName("tiene15"); // NOI18N
 
-        jTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField34.setText(resourceMap.getString("tiene25.text")); // NOI18N
-        jTextField34.setName("tiene25"); // NOI18N
+        text_tiene25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene25.setText(resourceMap.getString("tiene25.text")); // NOI18N
+        text_tiene25.setName("tiene25"); // NOI18N
 
-        jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField35.setText(resourceMap.getString("tiene35.text")); // NOI18N
-        jTextField35.setName("tiene35"); // NOI18N
+        text_tiene35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene35.setText(resourceMap.getString("tiene35.text")); // NOI18N
+        text_tiene35.setName("tiene35"); // NOI18N
 
-        jTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField36.setText(resourceMap.getString("tiene45.text")); // NOI18N
-        jTextField36.setName("tiene45"); // NOI18N
+        text_tiene45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene45.setText(resourceMap.getString("tiene45.text")); // NOI18N
+        text_tiene45.setName("tiene45"); // NOI18N
 
-        jTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField37.setText(resourceMap.getString("tiene55.text")); // NOI18N
-        jTextField37.setName("tiene55"); // NOI18N
+        text_tiene55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene55.setText(resourceMap.getString("tiene55.text")); // NOI18N
+        text_tiene55.setName("tiene55"); // NOI18N
 
-        jTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField38.setText(resourceMap.getString("tiene65.text")); // NOI18N
-        jTextField38.setName("tiene65"); // NOI18N
+        text_tiene65.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene65.setText(resourceMap.getString("tiene65.text")); // NOI18N
+        text_tiene65.setName("tiene65"); // NOI18N
 
-        jTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField39.setText(resourceMap.getString("tiene75.text")); // NOI18N
-        jTextField39.setName("tiene75"); // NOI18N
+        text_tiene75.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene75.setText(resourceMap.getString("tiene75.text")); // NOI18N
+        text_tiene75.setName("tiene75"); // NOI18N
 
-        jTextField40.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField40.setText(resourceMap.getString("tiene85.text")); // NOI18N
-        jTextField40.setName("tiene85"); // NOI18N
+        text_tiene85.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene85.setText(resourceMap.getString("tiene85.text")); // NOI18N
+        text_tiene85.setName("tiene85"); // NOI18N
 
-        jTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField41.setText(resourceMap.getString("tiene16.text")); // NOI18N
-        jTextField41.setName("tiene16"); // NOI18N
+        text_tiene16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene16.setText(resourceMap.getString("tiene16.text")); // NOI18N
+        text_tiene16.setName("tiene16"); // NOI18N
 
-        jTextField42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField42.setText(resourceMap.getString("tiene26.text")); // NOI18N
-        jTextField42.setName("tiene26"); // NOI18N
+        text_tiene26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene26.setText(resourceMap.getString("tiene26.text")); // NOI18N
+        text_tiene26.setName("tiene26"); // NOI18N
 
-        jTextField43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField43.setText(resourceMap.getString("tiene36.text")); // NOI18N
-        jTextField43.setName("tiene36"); // NOI18N
+        text_tiene36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene36.setText(resourceMap.getString("tiene36.text")); // NOI18N
+        text_tiene36.setName("tiene36"); // NOI18N
 
-        jTextField44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField44.setText(resourceMap.getString("tiene46.text")); // NOI18N
-        jTextField44.setName("tiene46"); // NOI18N
+        text_tiene46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene46.setText(resourceMap.getString("tiene46.text")); // NOI18N
+        text_tiene46.setName("tiene46"); // NOI18N
 
-        jTextField45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField45.setText(resourceMap.getString("tiene56.text")); // NOI18N
-        jTextField45.setName("tiene56"); // NOI18N
+        text_tiene56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene56.setText(resourceMap.getString("tiene56.text")); // NOI18N
+        text_tiene56.setName("tiene56"); // NOI18N
 
-        jTextField46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField46.setText(resourceMap.getString("tiene66.text")); // NOI18N
-        jTextField46.setName("tiene66"); // NOI18N
+        text_tiene66.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene66.setText(resourceMap.getString("tiene66.text")); // NOI18N
+        text_tiene66.setName("tiene66"); // NOI18N
 
-        jTextField47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField47.setText(resourceMap.getString("tiene76.text")); // NOI18N
-        jTextField47.setName("tiene76"); // NOI18N
+        text_tiene76.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene76.setText(resourceMap.getString("tiene76.text")); // NOI18N
+        text_tiene76.setName("tiene76"); // NOI18N
 
-        jTextField48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField48.setText(resourceMap.getString("tiene86.text")); // NOI18N
-        jTextField48.setName("tiene86"); // NOI18N
+        text_tiene86.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene86.setText(resourceMap.getString("tiene86.text")); // NOI18N
+        text_tiene86.setName("tiene86"); // NOI18N
 
-        jTextField49.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField49.setText(resourceMap.getString("tiene17.text")); // NOI18N
-        jTextField49.setName("tiene17"); // NOI18N
+        text_tiene17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene17.setText(resourceMap.getString("tiene17.text")); // NOI18N
+        text_tiene17.setName("tiene17"); // NOI18N
 
-        jTextField50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField50.setText(resourceMap.getString("tiene27.text")); // NOI18N
-        jTextField50.setName("tiene27"); // NOI18N
+        text_tiene27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene27.setText(resourceMap.getString("tiene27.text")); // NOI18N
+        text_tiene27.setName("tiene27"); // NOI18N
 
-        jTextField51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField51.setText(resourceMap.getString("tiene37.text")); // NOI18N
-        jTextField51.setName("tiene37"); // NOI18N
+        text_tiene37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene37.setText(resourceMap.getString("tiene37.text")); // NOI18N
+        text_tiene37.setName("tiene37"); // NOI18N
 
-        jTextField52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField52.setText(resourceMap.getString("tiene47.text")); // NOI18N
-        jTextField52.setName("tiene47"); // NOI18N
+        text_tiene47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene47.setText(resourceMap.getString("tiene47.text")); // NOI18N
+        text_tiene47.setName("tiene47"); // NOI18N
 
-        jTextField53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField53.setText(resourceMap.getString("tiene57.text")); // NOI18N
-        jTextField53.setName("tiene57"); // NOI18N
+        text_tiene57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene57.setText(resourceMap.getString("tiene57.text")); // NOI18N
+        text_tiene57.setName("tiene57"); // NOI18N
 
-        jTextField54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField54.setText(resourceMap.getString("tiene67.text")); // NOI18N
-        jTextField54.setName("tiene67"); // NOI18N
+        text_tiene67.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene67.setText(resourceMap.getString("tiene67.text")); // NOI18N
+        text_tiene67.setName("tiene67"); // NOI18N
 
-        jTextField55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField55.setText(resourceMap.getString("tiene77.text")); // NOI18N
-        jTextField55.setName("tiene77"); // NOI18N
+        text_tiene77.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene77.setText(resourceMap.getString("tiene77.text")); // NOI18N
+        text_tiene77.setName("tiene77"); // NOI18N
 
-        jTextField56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField56.setText(resourceMap.getString("tiene87.text")); // NOI18N
-        jTextField56.setName("tiene87"); // NOI18N
+        text_tiene87.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene87.setText(resourceMap.getString("tiene87.text")); // NOI18N
+        text_tiene87.setName("tiene87"); // NOI18N
 
-        jTextField57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField57.setText(resourceMap.getString("tiene18.text")); // NOI18N
-        jTextField57.setName("tiene18"); // NOI18N
+        text_tiene18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene18.setText(resourceMap.getString("tiene18.text")); // NOI18N
+        text_tiene18.setName("tiene18"); // NOI18N
 
-        jTextField58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField58.setText(resourceMap.getString("tiene28.text")); // NOI18N
-        jTextField58.setName("tiene28"); // NOI18N
+        text_tiene28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene28.setText(resourceMap.getString("tiene28.text")); // NOI18N
+        text_tiene28.setName("tiene28"); // NOI18N
 
-        jTextField59.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField59.setText(resourceMap.getString("tiene38.text")); // NOI18N
-        jTextField59.setName("tiene38"); // NOI18N
+        text_tiene38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene38.setText(resourceMap.getString("tiene38.text")); // NOI18N
+        text_tiene38.setName("tiene38"); // NOI18N
 
-        jTextField60.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField60.setText(resourceMap.getString("tiene48.text")); // NOI18N
-        jTextField60.setName("tiene48"); // NOI18N
+        text_tiene48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene48.setText(resourceMap.getString("tiene48.text")); // NOI18N
+        text_tiene48.setName("tiene48"); // NOI18N
 
-        jTextField61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField61.setText(resourceMap.getString("tiene58.text")); // NOI18N
-        jTextField61.setName("tiene58"); // NOI18N
+        text_tiene58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene58.setText(resourceMap.getString("tiene58.text")); // NOI18N
+        text_tiene58.setName("tiene58"); // NOI18N
 
-        jTextField62.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField62.setText(resourceMap.getString("tiene68.text")); // NOI18N
-        jTextField62.setName("tiene68"); // NOI18N
+        text_tiene68.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene68.setText(resourceMap.getString("tiene68.text")); // NOI18N
+        text_tiene68.setName("tiene68"); // NOI18N
 
-        jTextField63.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField63.setText(resourceMap.getString("tiene78.text")); // NOI18N
-        jTextField63.setName("tiene78"); // NOI18N
+        text_tiene78.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene78.setText(resourceMap.getString("tiene78.text")); // NOI18N
+        text_tiene78.setName("tiene78"); // NOI18N
 
-        jTextField64.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField64.setText(resourceMap.getString("tiene88.text")); // NOI18N
-        jTextField64.setName("tiene88"); // NOI18N
+        text_tiene88.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        text_tiene88.setText(resourceMap.getString("tiene88.text")); // NOI18N
+        text_tiene88.setName("tiene88"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
@@ -709,91 +709,91 @@ public class GUIDemoView extends FrameView {
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene21, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene31, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene41, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene51, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene61, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene71, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene81, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene22, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene32, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene42, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene52, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene62, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene72, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene82, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene23, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene33, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene43, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene53, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene63, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene73, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene83, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene24, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene34, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene44, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene54, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene64, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene74, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene84, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene25, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene35, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene45, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene55, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene65, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene75, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene85, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene16, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene26, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene36, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene46, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene56, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene66, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene76, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene86, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField52, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField55, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene17, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene27, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene37, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene47, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene57, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene67, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene77, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene87, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField62, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField63, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene28, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene38, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene48, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene58, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene68, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene78, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_tiene88, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -805,39 +805,39 @@ public class GUIDemoView extends FrameView {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(text_tiene88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_tiene77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(text_tiene87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel1)
@@ -850,119 +850,119 @@ public class GUIDemoView extends FrameView {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(text_tiene86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(text_tiene85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(text_tiene84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(text_tiene73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(text_tiene83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(text_tiene72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(text_tiene82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel16))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel17))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel18))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel19))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel20))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel21))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel22))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(text_tiene81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel23))))))))
                 .addContainerGap())
         );
@@ -1581,18 +1581,18 @@ public class GUIDemoView extends FrameView {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 61, Short.MAX_VALUE)
+            .addGap(0, 63, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(1, 1, 1)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel29)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                             .addComponent(jTextField268, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel28)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                             .addComponent(jTextField267, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -1602,7 +1602,7 @@ public class GUIDemoView extends FrameView {
                                 .addComponent(jLabel25)
                                 .addComponent(jLabel26)
                                 .addComponent(jLabel27))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField265, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2312,6 +2312,78 @@ public class GUIDemoView extends FrameView {
             nuevaVentana.setVisible(true);
     }//GEN-LAST:event_botonSimulacionMouseClicked
 
+    private Integer[][] matrizDeTiene (){/* TODO esto debería devolver algo de tipo matriz*/
+        Integer[][] laMatriz = new Integer[9][9];
+        
+        laMatriz[1][1] = new Integer(text_tiene11.getText());
+		laMatriz[1][2] = new Integer(text_tiene12.getText());
+		laMatriz[1][3] = new Integer(text_tiene13.getText());
+		laMatriz[1][4] = new Integer(text_tiene14.getText());
+		laMatriz[1][5] = new Integer(text_tiene15.getText());
+		laMatriz[1][6] = new Integer(text_tiene16.getText());
+		laMatriz[1][7] = new Integer(text_tiene17.getText());
+		laMatriz[1][8] = new Integer(text_tiene18.getText());
+		laMatriz[2][1] = new Integer(text_tiene21.getText());
+		laMatriz[2][2] = new Integer(text_tiene22.getText());
+		laMatriz[2][3] = new Integer(text_tiene23.getText());
+		laMatriz[2][4] = new Integer(text_tiene24.getText());
+		laMatriz[2][5] = new Integer(text_tiene25.getText());
+		laMatriz[2][6] = new Integer(text_tiene26.getText());
+		laMatriz[2][7] = new Integer(text_tiene27.getText());
+		laMatriz[2][8] = new Integer(text_tiene28.getText());
+		laMatriz[3][1] = new Integer(text_tiene31.getText());
+		laMatriz[3][2] = new Integer(text_tiene32.getText());
+		laMatriz[3][3] = new Integer(text_tiene33.getText());
+		laMatriz[3][4] = new Integer(text_tiene34.getText());
+		laMatriz[3][5] = new Integer(text_tiene35.getText());
+		laMatriz[3][6] = new Integer(text_tiene36.getText());
+		laMatriz[3][7] = new Integer(text_tiene37.getText());
+		laMatriz[3][8] = new Integer(text_tiene38.getText());
+		laMatriz[4][1] = new Integer(text_tiene41.getText());
+		laMatriz[4][2] = new Integer(text_tiene42.getText());
+		laMatriz[4][3] = new Integer(text_tiene43.getText());
+		laMatriz[4][4] = new Integer(text_tiene44.getText());
+		laMatriz[4][5] = new Integer(text_tiene45.getText());
+		laMatriz[4][6] = new Integer(text_tiene46.getText());
+		laMatriz[4][7] = new Integer(text_tiene47.getText());
+		laMatriz[4][8] = new Integer(text_tiene48.getText());
+		laMatriz[5][1] = new Integer(text_tiene51.getText());
+		laMatriz[5][2] = new Integer(text_tiene52.getText());
+		laMatriz[5][3] = new Integer(text_tiene53.getText());
+		laMatriz[5][4] = new Integer(text_tiene54.getText());
+		laMatriz[5][5] = new Integer(text_tiene55.getText());
+		laMatriz[5][6] = new Integer(text_tiene56.getText());
+		laMatriz[5][7] = new Integer(text_tiene57.getText());
+		laMatriz[5][8] = new Integer(text_tiene58.getText());
+		laMatriz[6][1] = new Integer(text_tiene61.getText());
+		laMatriz[6][2] = new Integer(text_tiene62.getText());
+		laMatriz[6][3] = new Integer(text_tiene63.getText());
+		laMatriz[6][4] = new Integer(text_tiene64.getText());
+		laMatriz[6][5] = new Integer(text_tiene65.getText());
+		laMatriz[6][6] = new Integer(text_tiene66.getText());
+		laMatriz[6][7] = new Integer(text_tiene67.getText());
+		laMatriz[6][8] = new Integer(text_tiene68.getText());
+		laMatriz[7][1] = new Integer(text_tiene71.getText());
+		laMatriz[7][2] = new Integer(text_tiene72.getText());
+		laMatriz[7][3] = new Integer(text_tiene73.getText());
+		laMatriz[7][4] = new Integer(text_tiene74.getText());
+		laMatriz[7][5] = new Integer(text_tiene75.getText());
+		laMatriz[7][6] = new Integer(text_tiene76.getText());
+		laMatriz[7][7] = new Integer(text_tiene77.getText());
+		laMatriz[7][8] = new Integer(text_tiene78.getText());
+		laMatriz[8][1] = new Integer(text_tiene81.getText());
+		laMatriz[8][2] = new Integer(text_tiene82.getText());
+		laMatriz[8][3] = new Integer(text_tiene83.getText());
+		laMatriz[8][4] = new Integer(text_tiene84.getText());
+		laMatriz[8][5] = new Integer(text_tiene85.getText());
+		laMatriz[8][6] = new Integer(text_tiene86.getText());
+		laMatriz[8][7] = new Integer(text_tiene87.getText());
+		laMatriz[8][8] = new Integer(text_tiene88.getText());
+        
+        return laMatriz;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCargar;
     private javax.swing.JButton botonGuardar;
@@ -2370,8 +2442,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField100;
     private javax.swing.JTextField jTextField101;
     private javax.swing.JTextField jTextField102;
@@ -2382,7 +2452,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField107;
     private javax.swing.JTextField jTextField108;
     private javax.swing.JTextField jTextField109;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField110;
     private javax.swing.JTextField jTextField111;
     private javax.swing.JTextField jTextField112;
@@ -2393,7 +2462,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField117;
     private javax.swing.JTextField jTextField118;
     private javax.swing.JTextField jTextField119;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField120;
     private javax.swing.JTextField jTextField121;
     private javax.swing.JTextField jTextField122;
@@ -2404,7 +2472,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField127;
     private javax.swing.JTextField jTextField128;
     private javax.swing.JTextField jTextField129;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField130;
     private javax.swing.JTextField jTextField131;
     private javax.swing.JTextField jTextField132;
@@ -2415,7 +2482,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField137;
     private javax.swing.JTextField jTextField138;
     private javax.swing.JTextField jTextField139;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField140;
     private javax.swing.JTextField jTextField141;
     private javax.swing.JTextField jTextField142;
@@ -2426,7 +2492,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField147;
     private javax.swing.JTextField jTextField148;
     private javax.swing.JTextField jTextField149;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField150;
     private javax.swing.JTextField jTextField151;
     private javax.swing.JTextField jTextField152;
@@ -2437,7 +2502,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField157;
     private javax.swing.JTextField jTextField158;
     private javax.swing.JTextField jTextField159;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField160;
     private javax.swing.JTextField jTextField161;
     private javax.swing.JTextField jTextField162;
@@ -2448,7 +2512,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField167;
     private javax.swing.JTextField jTextField168;
     private javax.swing.JTextField jTextField169;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField170;
     private javax.swing.JTextField jTextField171;
     private javax.swing.JTextField jTextField172;
@@ -2459,7 +2522,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField177;
     private javax.swing.JTextField jTextField178;
     private javax.swing.JTextField jTextField179;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField180;
     private javax.swing.JTextField jTextField181;
     private javax.swing.JTextField jTextField182;
@@ -2470,20 +2532,11 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField187;
     private javax.swing.JTextField jTextField188;
     private javax.swing.JTextField jTextField189;
-    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField190;
     private javax.swing.JTextField jTextField191;
     private javax.swing.JTextField jTextField192;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField257;
     private javax.swing.JTextField jTextField258;
-    private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField260;
     private javax.swing.JTextField jTextField261;
     private javax.swing.JTextField jTextField262;
@@ -2494,59 +2547,16 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField267;
     private javax.swing.JTextField jTextField268;
     private javax.swing.JTextField jTextField269;
-    private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField270;
     private javax.swing.JTextField jTextField271;
     private javax.swing.JTextField jTextField272;
     private javax.swing.JTextField jTextField273;
     private javax.swing.JTextField jTextField274;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField52;
-    private javax.swing.JTextField jTextField53;
-    private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
-    private javax.swing.JTextField jTextField62;
-    private javax.swing.JTextField jTextField63;
-    private javax.swing.JTextField jTextField64;
     private javax.swing.JTextField jTextField65;
     private javax.swing.JTextField jTextField66;
     private javax.swing.JTextField jTextField67;
     private javax.swing.JTextField jTextField68;
     private javax.swing.JTextField jTextField69;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField70;
     private javax.swing.JTextField jTextField71;
     private javax.swing.JTextField jTextField72;
@@ -2557,7 +2567,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField77;
     private javax.swing.JTextField jTextField78;
     private javax.swing.JTextField jTextField79;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField80;
     private javax.swing.JTextField jTextField81;
     private javax.swing.JTextField jTextField82;
@@ -2568,7 +2577,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField87;
     private javax.swing.JTextField jTextField88;
     private javax.swing.JTextField jTextField89;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTextField90;
     private javax.swing.JTextField jTextField91;
     private javax.swing.JTextField jTextField92;
@@ -2585,6 +2593,70 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JTextField text_tiene11;
+    private javax.swing.JTextField text_tiene12;
+    private javax.swing.JTextField text_tiene13;
+    private javax.swing.JTextField text_tiene14;
+    private javax.swing.JTextField text_tiene15;
+    private javax.swing.JTextField text_tiene16;
+    private javax.swing.JTextField text_tiene17;
+    private javax.swing.JTextField text_tiene18;
+    private javax.swing.JTextField text_tiene21;
+    private javax.swing.JTextField text_tiene22;
+    private javax.swing.JTextField text_tiene23;
+    private javax.swing.JTextField text_tiene24;
+    private javax.swing.JTextField text_tiene25;
+    private javax.swing.JTextField text_tiene26;
+    private javax.swing.JTextField text_tiene27;
+    private javax.swing.JTextField text_tiene28;
+    private javax.swing.JTextField text_tiene31;
+    private javax.swing.JTextField text_tiene32;
+    private javax.swing.JTextField text_tiene33;
+    private javax.swing.JTextField text_tiene34;
+    private javax.swing.JTextField text_tiene35;
+    private javax.swing.JTextField text_tiene36;
+    private javax.swing.JTextField text_tiene37;
+    private javax.swing.JTextField text_tiene38;
+    private javax.swing.JTextField text_tiene41;
+    private javax.swing.JTextField text_tiene42;
+    private javax.swing.JTextField text_tiene43;
+    private javax.swing.JTextField text_tiene44;
+    private javax.swing.JTextField text_tiene45;
+    private javax.swing.JTextField text_tiene46;
+    private javax.swing.JTextField text_tiene47;
+    private javax.swing.JTextField text_tiene48;
+    private javax.swing.JTextField text_tiene51;
+    private javax.swing.JTextField text_tiene52;
+    private javax.swing.JTextField text_tiene53;
+    private javax.swing.JTextField text_tiene54;
+    private javax.swing.JTextField text_tiene55;
+    private javax.swing.JTextField text_tiene56;
+    private javax.swing.JTextField text_tiene57;
+    private javax.swing.JTextField text_tiene58;
+    private javax.swing.JTextField text_tiene61;
+    private javax.swing.JTextField text_tiene62;
+    private javax.swing.JTextField text_tiene63;
+    private javax.swing.JTextField text_tiene64;
+    private javax.swing.JTextField text_tiene65;
+    private javax.swing.JTextField text_tiene66;
+    private javax.swing.JTextField text_tiene67;
+    private javax.swing.JTextField text_tiene68;
+    private javax.swing.JTextField text_tiene71;
+    private javax.swing.JTextField text_tiene72;
+    private javax.swing.JTextField text_tiene73;
+    private javax.swing.JTextField text_tiene74;
+    private javax.swing.JTextField text_tiene75;
+    private javax.swing.JTextField text_tiene76;
+    private javax.swing.JTextField text_tiene77;
+    private javax.swing.JTextField text_tiene78;
+    private javax.swing.JTextField text_tiene81;
+    private javax.swing.JTextField text_tiene82;
+    private javax.swing.JTextField text_tiene83;
+    private javax.swing.JTextField text_tiene84;
+    private javax.swing.JTextField text_tiene85;
+    private javax.swing.JTextField text_tiene86;
+    private javax.swing.JTextField text_tiene87;
+    private javax.swing.JTextField text_tiene88;
     // End of variables declaration//GEN-END:variables
     private final Timer messageTimer;
     private final Timer busyIconTimer;

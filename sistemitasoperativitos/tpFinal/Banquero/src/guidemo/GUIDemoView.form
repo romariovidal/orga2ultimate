@@ -95,98 +95,98 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField1" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField5" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField6" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField7" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField8" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene11" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene21" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene31" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene41" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene51" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene61" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene71" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene81" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField9" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField10" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField11" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField12" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField13" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField14" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField15" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField16" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene12" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene22" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene32" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene42" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene52" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene62" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene72" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene82" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField17" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField18" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField19" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField20" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField21" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField22" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField23" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField24" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene13" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene23" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene33" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene43" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene53" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene63" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene73" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene83" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField25" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField26" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField27" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField28" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField29" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField30" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField31" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField32" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene14" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene24" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene34" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene44" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene54" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene64" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene74" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene84" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField33" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField34" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField35" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField36" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField37" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField38" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField39" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField40" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene15" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene25" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene35" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene45" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene55" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene65" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene75" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene85" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel13" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField41" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField42" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField43" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField44" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField45" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField46" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField47" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField48" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene16" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene26" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene36" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene46" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene56" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene66" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene76" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene86" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField49" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField50" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField51" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField52" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField53" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField54" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField55" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField56" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene17" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene27" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene37" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene47" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene57" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene67" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene77" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene87" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel15" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jTextField57" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField58" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField59" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField60" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField61" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField62" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField63" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTextField64" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene18" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene28" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene38" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene48" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene58" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene68" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene78" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="text_tiene88" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -201,40 +201,40 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextField57" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField58" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene28" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField59" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene38" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField60" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene48" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField61" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene58" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField62" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene68" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField63" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene78" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField64" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene88" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextField49" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene17" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField50" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene27" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField51" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene37" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField52" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene47" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField53" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene57" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField54" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene67" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField55" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene77" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField56" min="-2" max="-2" attributes="0"/>
+                              <Component id="text_tiene87" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="2" attributes="0">
@@ -249,133 +249,133 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField41" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene16" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField42" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene26" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField43" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene36" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField44" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene46" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField45" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene56" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField46" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene66" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField47" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene76" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField48" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene86" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jTextField33" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene15" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField34" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene25" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField35" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene35" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField36" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene45" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField37" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene55" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField38" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene65" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField39" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene75" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField40" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene85" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jTextField25" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene14" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField26" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene24" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField27" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene34" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField28" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene44" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField29" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene54" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField30" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene64" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField31" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene74" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField32" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene84" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField17" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene13" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField18" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene23" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField19" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene33" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField20" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene43" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField21" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene53" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField22" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene63" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField23" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene73" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField24" min="-2" max="-2" attributes="0"/>
+                                          <Component id="text_tiene83" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene12" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField10" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene22" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField11" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene32" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField12" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene42" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField13" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene52" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField14" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene62" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField15" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene72" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField16" min="-2" max="-2" attributes="0"/>
+                                              <Component id="text_tiene82" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene11" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene21" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene31" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene41" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene51" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene61" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene71" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="text_tiene81" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -390,448 +390,448 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="text_tiene11">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" resourceKey="tiene11.text"/>
-                <Property name="name" type="java.lang.String" value="tiene11" noResource="true"/>
+                <Property name="text" type="java.lang.String" resourceKey="text_tiene11.text"/>
+                <Property name="name" type="java.lang.String" value="text_tiene11" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="text_tiene21">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene12.text"/>
                 <Property name="name" type="java.lang.String" value="tiene12" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="text_tiene31">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene13.text"/>
                 <Property name="name" type="java.lang.String" value="tiene13" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="text_tiene41">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene14.text"/>
                 <Property name="name" type="java.lang.String" value="tiene14" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="text_tiene51">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene15.text"/>
                 <Property name="name" type="java.lang.String" value="tiene15" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField6">
+            <Component class="javax.swing.JTextField" name="text_tiene61">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene16.text"/>
                 <Property name="name" type="java.lang.String" value="tiene16" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField7">
+            <Component class="javax.swing.JTextField" name="text_tiene71">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene17.text"/>
                 <Property name="name" type="java.lang.String" value="tiene17" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField8">
+            <Component class="javax.swing.JTextField" name="text_tiene81">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene18.text"/>
                 <Property name="name" type="java.lang.String" value="tiene18" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField9">
+            <Component class="javax.swing.JTextField" name="text_tiene12">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene12.text"/>
                 <Property name="name" type="java.lang.String" value="tiene12" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField10">
+            <Component class="javax.swing.JTextField" name="text_tiene22">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene22.text"/>
                 <Property name="name" type="java.lang.String" value="tiene22" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField11">
+            <Component class="javax.swing.JTextField" name="text_tiene32">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene32.text"/>
                 <Property name="name" type="java.lang.String" value="tiene32" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField12">
+            <Component class="javax.swing.JTextField" name="text_tiene42">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene42.text"/>
                 <Property name="name" type="java.lang.String" value="tiene42" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField13">
+            <Component class="javax.swing.JTextField" name="text_tiene52">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene52.text"/>
                 <Property name="name" type="java.lang.String" value="tiene52" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField14">
+            <Component class="javax.swing.JTextField" name="text_tiene62">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene62.text"/>
                 <Property name="name" type="java.lang.String" value="tiene62" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField15">
+            <Component class="javax.swing.JTextField" name="text_tiene72">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene72.text"/>
                 <Property name="name" type="java.lang.String" value="tiene72" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField16">
+            <Component class="javax.swing.JTextField" name="text_tiene82">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene82.text"/>
                 <Property name="name" type="java.lang.String" value="tiene82" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField17">
+            <Component class="javax.swing.JTextField" name="text_tiene13">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene13.text"/>
                 <Property name="name" type="java.lang.String" value="tiene13" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField18">
+            <Component class="javax.swing.JTextField" name="text_tiene23">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene23.text"/>
                 <Property name="name" type="java.lang.String" value="tiene23" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField19">
+            <Component class="javax.swing.JTextField" name="text_tiene33">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene33.text"/>
                 <Property name="name" type="java.lang.String" value="tiene33" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField20">
+            <Component class="javax.swing.JTextField" name="text_tiene43">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene43.text"/>
                 <Property name="name" type="java.lang.String" value="tiene43" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField21">
+            <Component class="javax.swing.JTextField" name="text_tiene53">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene53.text"/>
                 <Property name="name" type="java.lang.String" value="tiene53" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField22">
+            <Component class="javax.swing.JTextField" name="text_tiene63">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene63.text"/>
                 <Property name="name" type="java.lang.String" value="tiene63" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField23">
+            <Component class="javax.swing.JTextField" name="text_tiene73">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene73.text"/>
                 <Property name="name" type="java.lang.String" value="tiene73" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField24">
+            <Component class="javax.swing.JTextField" name="text_tiene83">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene83.text"/>
                 <Property name="name" type="java.lang.String" value="tiene83" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField25">
+            <Component class="javax.swing.JTextField" name="text_tiene14">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene14.text"/>
                 <Property name="name" type="java.lang.String" value="tiene14" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField26">
+            <Component class="javax.swing.JTextField" name="text_tiene24">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene24.text"/>
                 <Property name="name" type="java.lang.String" value="tiene24" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField27">
+            <Component class="javax.swing.JTextField" name="text_tiene34">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene34.text"/>
                 <Property name="name" type="java.lang.String" value="tiene34" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField28">
+            <Component class="javax.swing.JTextField" name="text_tiene44">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene44.text"/>
                 <Property name="name" type="java.lang.String" value="tiene44" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField29">
+            <Component class="javax.swing.JTextField" name="text_tiene54">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene54.text"/>
                 <Property name="name" type="java.lang.String" value="tiene54" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField30">
+            <Component class="javax.swing.JTextField" name="text_tiene64">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene64.text"/>
                 <Property name="name" type="java.lang.String" value="tiene64" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField31">
+            <Component class="javax.swing.JTextField" name="text_tiene74">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene74.text"/>
                 <Property name="name" type="java.lang.String" value="tiene74" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField32">
+            <Component class="javax.swing.JTextField" name="text_tiene84">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene84.text"/>
                 <Property name="name" type="java.lang.String" value="tiene84" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField33">
+            <Component class="javax.swing.JTextField" name="text_tiene15">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene15.text"/>
                 <Property name="name" type="java.lang.String" value="tiene15" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField34">
+            <Component class="javax.swing.JTextField" name="text_tiene25">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene25.text"/>
                 <Property name="name" type="java.lang.String" value="tiene25" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField35">
+            <Component class="javax.swing.JTextField" name="text_tiene35">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene35.text"/>
                 <Property name="name" type="java.lang.String" value="tiene35" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField36">
+            <Component class="javax.swing.JTextField" name="text_tiene45">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene45.text"/>
                 <Property name="name" type="java.lang.String" value="tiene45" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField37">
+            <Component class="javax.swing.JTextField" name="text_tiene55">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene55.text"/>
                 <Property name="name" type="java.lang.String" value="tiene55" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField38">
+            <Component class="javax.swing.JTextField" name="text_tiene65">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene65.text"/>
                 <Property name="name" type="java.lang.String" value="tiene65" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField39">
+            <Component class="javax.swing.JTextField" name="text_tiene75">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene75.text"/>
                 <Property name="name" type="java.lang.String" value="tiene75" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField40">
+            <Component class="javax.swing.JTextField" name="text_tiene85">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene85.text"/>
                 <Property name="name" type="java.lang.String" value="tiene85" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField41">
+            <Component class="javax.swing.JTextField" name="text_tiene16">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene16.text"/>
                 <Property name="name" type="java.lang.String" value="tiene16" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField42">
+            <Component class="javax.swing.JTextField" name="text_tiene26">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene26.text"/>
                 <Property name="name" type="java.lang.String" value="tiene26" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField43">
+            <Component class="javax.swing.JTextField" name="text_tiene36">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene36.text"/>
                 <Property name="name" type="java.lang.String" value="tiene36" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField44">
+            <Component class="javax.swing.JTextField" name="text_tiene46">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene46.text"/>
                 <Property name="name" type="java.lang.String" value="tiene46" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField45">
+            <Component class="javax.swing.JTextField" name="text_tiene56">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene56.text"/>
                 <Property name="name" type="java.lang.String" value="tiene56" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField46">
+            <Component class="javax.swing.JTextField" name="text_tiene66">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene66.text"/>
                 <Property name="name" type="java.lang.String" value="tiene66" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField47">
+            <Component class="javax.swing.JTextField" name="text_tiene76">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene76.text"/>
                 <Property name="name" type="java.lang.String" value="tiene76" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField48">
+            <Component class="javax.swing.JTextField" name="text_tiene86">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene86.text"/>
                 <Property name="name" type="java.lang.String" value="tiene86" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField49">
+            <Component class="javax.swing.JTextField" name="text_tiene17">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene17.text"/>
                 <Property name="name" type="java.lang.String" value="tiene17" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField50">
+            <Component class="javax.swing.JTextField" name="text_tiene27">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene27.text"/>
                 <Property name="name" type="java.lang.String" value="tiene27" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField51">
+            <Component class="javax.swing.JTextField" name="text_tiene37">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene37.text"/>
                 <Property name="name" type="java.lang.String" value="tiene37" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField52">
+            <Component class="javax.swing.JTextField" name="text_tiene47">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene47.text"/>
                 <Property name="name" type="java.lang.String" value="tiene47" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField53">
+            <Component class="javax.swing.JTextField" name="text_tiene57">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene57.text"/>
                 <Property name="name" type="java.lang.String" value="tiene57" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField54">
+            <Component class="javax.swing.JTextField" name="text_tiene67">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene67.text"/>
                 <Property name="name" type="java.lang.String" value="tiene67" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField55">
+            <Component class="javax.swing.JTextField" name="text_tiene77">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene77.text"/>
                 <Property name="name" type="java.lang.String" value="tiene77" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField56">
+            <Component class="javax.swing.JTextField" name="text_tiene87">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene87.text"/>
                 <Property name="name" type="java.lang.String" value="tiene87" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField57">
+            <Component class="javax.swing.JTextField" name="text_tiene18">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene18.text"/>
                 <Property name="name" type="java.lang.String" value="tiene18" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField58">
+            <Component class="javax.swing.JTextField" name="text_tiene28">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene28.text"/>
                 <Property name="name" type="java.lang.String" value="tiene28" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField59">
+            <Component class="javax.swing.JTextField" name="text_tiene38">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene38.text"/>
                 <Property name="name" type="java.lang.String" value="tiene38" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField60">
+            <Component class="javax.swing.JTextField" name="text_tiene48">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene48.text"/>
                 <Property name="name" type="java.lang.String" value="tiene48" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField61">
+            <Component class="javax.swing.JTextField" name="text_tiene58">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene58.text"/>
                 <Property name="name" type="java.lang.String" value="tiene58" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField62">
+            <Component class="javax.swing.JTextField" name="text_tiene68">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene68.text"/>
                 <Property name="name" type="java.lang.String" value="tiene68" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField63">
+            <Component class="javax.swing.JTextField" name="text_tiene78">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene78.text"/>
                 <Property name="name" type="java.lang.String" value="tiene78" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField64">
+            <Component class="javax.swing.JTextField" name="text_tiene88">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" resourceKey="tiene88.text"/>
@@ -1811,19 +1811,19 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="63" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                                   <Component id="jTextField268" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                                   <Component id="jTextField267" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1835,7 +1835,7 @@
                                       <Component id="jLabel26" alignment="2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel27" alignment="2" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                           <Component id="jTextField265" alignment="0" min="-2" max="-2" attributes="0"/>
