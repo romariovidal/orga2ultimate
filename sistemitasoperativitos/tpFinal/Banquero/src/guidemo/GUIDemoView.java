@@ -386,197 +386,261 @@ public class GUIDemoView extends FrameView {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel1.border.title"))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
 
-        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
-        jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText(resourceMap.getString("tiene11.text")); // NOI18N
+        jTextField1.setName("tiene11"); // NOI18N
 
-        jTextField2.setText(resourceMap.getString("jTextField2.text")); // NOI18N
-        jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText(resourceMap.getString("tiene12.text")); // NOI18N
+        jTextField2.setName("tiene12"); // NOI18N
 
-        jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
-        jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setText(resourceMap.getString("tiene13.text")); // NOI18N
+        jTextField3.setName("tiene13"); // NOI18N
 
-        jTextField4.setText(resourceMap.getString("jTextField4.text")); // NOI18N
-        jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.setText(resourceMap.getString("tiene14.text")); // NOI18N
+        jTextField4.setName("tiene14"); // NOI18N
 
-        jTextField5.setText(resourceMap.getString("jTextField5.text")); // NOI18N
-        jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField5.setText(resourceMap.getString("tiene15.text")); // NOI18N
+        jTextField5.setName("tiene15"); // NOI18N
 
-        jTextField6.setText(resourceMap.getString("jTextField6.text")); // NOI18N
-        jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField6.setText(resourceMap.getString("tiene16.text")); // NOI18N
+        jTextField6.setName("tiene16"); // NOI18N
 
-        jTextField7.setText(resourceMap.getString("jTextField7.text")); // NOI18N
-        jTextField7.setName("jTextField7"); // NOI18N
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField7.setText(resourceMap.getString("tiene17.text")); // NOI18N
+        jTextField7.setName("tiene17"); // NOI18N
 
-        jTextField8.setText(resourceMap.getString("jTextField8.text")); // NOI18N
-        jTextField8.setName("jTextField8"); // NOI18N
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField8.setText(resourceMap.getString("tiene18.text")); // NOI18N
+        jTextField8.setName("tiene18"); // NOI18N
 
-        jTextField9.setText(resourceMap.getString("jTextField9.text")); // NOI18N
-        jTextField9.setName("jTextField9"); // NOI18N
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField9.setText(resourceMap.getString("tiene12.text")); // NOI18N
+        jTextField9.setName("tiene12"); // NOI18N
 
-        jTextField10.setText(resourceMap.getString("jTextField10.text")); // NOI18N
-        jTextField10.setName("jTextField10"); // NOI18N
+        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField10.setText(resourceMap.getString("tiene22.text")); // NOI18N
+        jTextField10.setName("tiene22"); // NOI18N
 
-        jTextField11.setText(resourceMap.getString("jTextField11.text")); // NOI18N
-        jTextField11.setName("jTextField11"); // NOI18N
+        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField11.setText(resourceMap.getString("tiene32.text")); // NOI18N
+        jTextField11.setName("tiene32"); // NOI18N
 
-        jTextField12.setText(resourceMap.getString("jTextField12.text")); // NOI18N
-        jTextField12.setName("jTextField12"); // NOI18N
+        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField12.setText(resourceMap.getString("tiene42.text")); // NOI18N
+        jTextField12.setName("tiene42"); // NOI18N
 
-        jTextField13.setText(resourceMap.getString("jTextField13.text")); // NOI18N
-        jTextField13.setName("jTextField13"); // NOI18N
+        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField13.setText(resourceMap.getString("tiene52.text")); // NOI18N
+        jTextField13.setName("tiene52"); // NOI18N
 
-        jTextField14.setText(resourceMap.getString("jTextField14.text")); // NOI18N
-        jTextField14.setName("jTextField14"); // NOI18N
+        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField14.setText(resourceMap.getString("tiene62.text")); // NOI18N
+        jTextField14.setName("tiene62"); // NOI18N
 
-        jTextField15.setText(resourceMap.getString("jTextField15.text")); // NOI18N
-        jTextField15.setName("jTextField15"); // NOI18N
+        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField15.setText(resourceMap.getString("tiene72.text")); // NOI18N
+        jTextField15.setName("tiene72"); // NOI18N
 
-        jTextField16.setText(resourceMap.getString("jTextField16.text")); // NOI18N
-        jTextField16.setName("jTextField16"); // NOI18N
+        jTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField16.setText(resourceMap.getString("tiene82.text")); // NOI18N
+        jTextField16.setName("tiene82"); // NOI18N
 
-        jTextField17.setText(resourceMap.getString("jTextField17.text")); // NOI18N
-        jTextField17.setName("jTextField17"); // NOI18N
+        jTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField17.setText(resourceMap.getString("tiene13.text")); // NOI18N
+        jTextField17.setName("tiene13"); // NOI18N
 
-        jTextField18.setText(resourceMap.getString("jTextField18.text")); // NOI18N
-        jTextField18.setName("jTextField18"); // NOI18N
+        jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField18.setText(resourceMap.getString("tiene23.text")); // NOI18N
+        jTextField18.setName("tiene23"); // NOI18N
 
-        jTextField19.setText(resourceMap.getString("jTextField19.text")); // NOI18N
-        jTextField19.setName("jTextField19"); // NOI18N
+        jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField19.setText(resourceMap.getString("tiene33.text")); // NOI18N
+        jTextField19.setName("tiene33"); // NOI18N
 
-        jTextField20.setText(resourceMap.getString("jTextField20.text")); // NOI18N
-        jTextField20.setName("jTextField20"); // NOI18N
+        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField20.setText(resourceMap.getString("tiene43.text")); // NOI18N
+        jTextField20.setName("tiene43"); // NOI18N
 
-        jTextField21.setText(resourceMap.getString("jTextField21.text")); // NOI18N
-        jTextField21.setName("jTextField21"); // NOI18N
+        jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField21.setText(resourceMap.getString("tiene53.text")); // NOI18N
+        jTextField21.setName("tiene53"); // NOI18N
 
-        jTextField22.setText(resourceMap.getString("jTextField22.text")); // NOI18N
-        jTextField22.setName("jTextField22"); // NOI18N
+        jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField22.setText(resourceMap.getString("tiene63.text")); // NOI18N
+        jTextField22.setName("tiene63"); // NOI18N
 
-        jTextField23.setText(resourceMap.getString("jTextField23.text")); // NOI18N
-        jTextField23.setName("jTextField23"); // NOI18N
+        jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField23.setText(resourceMap.getString("tiene73.text")); // NOI18N
+        jTextField23.setName("tiene73"); // NOI18N
 
-        jTextField24.setText(resourceMap.getString("jTextField24.text")); // NOI18N
-        jTextField24.setName("jTextField24"); // NOI18N
+        jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField24.setText(resourceMap.getString("tiene83.text")); // NOI18N
+        jTextField24.setName("tiene83"); // NOI18N
 
-        jTextField25.setText(resourceMap.getString("jTextField25.text")); // NOI18N
-        jTextField25.setName("jTextField25"); // NOI18N
+        jTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField25.setText(resourceMap.getString("tiene14.text")); // NOI18N
+        jTextField25.setName("tiene14"); // NOI18N
 
-        jTextField26.setText(resourceMap.getString("jTextField26.text")); // NOI18N
-        jTextField26.setName("jTextField26"); // NOI18N
+        jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField26.setText(resourceMap.getString("tiene24.text")); // NOI18N
+        jTextField26.setName("tiene24"); // NOI18N
 
-        jTextField27.setText(resourceMap.getString("jTextField27.text")); // NOI18N
-        jTextField27.setName("jTextField27"); // NOI18N
+        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField27.setText(resourceMap.getString("tiene34.text")); // NOI18N
+        jTextField27.setName("tiene34"); // NOI18N
 
-        jTextField28.setText(resourceMap.getString("jTextField28.text")); // NOI18N
-        jTextField28.setName("jTextField28"); // NOI18N
+        jTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField28.setText(resourceMap.getString("tiene44.text")); // NOI18N
+        jTextField28.setName("tiene44"); // NOI18N
 
-        jTextField29.setText(resourceMap.getString("jTextField29.text")); // NOI18N
-        jTextField29.setName("jTextField29"); // NOI18N
+        jTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField29.setText(resourceMap.getString("tiene54.text")); // NOI18N
+        jTextField29.setName("tiene54"); // NOI18N
 
-        jTextField30.setText(resourceMap.getString("jTextField30.text")); // NOI18N
-        jTextField30.setName("jTextField30"); // NOI18N
+        jTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField30.setText(resourceMap.getString("tiene64.text")); // NOI18N
+        jTextField30.setName("tiene64"); // NOI18N
 
-        jTextField31.setText(resourceMap.getString("jTextField31.text")); // NOI18N
-        jTextField31.setName("jTextField31"); // NOI18N
+        jTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField31.setText(resourceMap.getString("tiene74.text")); // NOI18N
+        jTextField31.setName("tiene74"); // NOI18N
 
-        jTextField32.setText(resourceMap.getString("jTextField32.text")); // NOI18N
-        jTextField32.setName("jTextField32"); // NOI18N
+        jTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField32.setText(resourceMap.getString("tiene84.text")); // NOI18N
+        jTextField32.setName("tiene84"); // NOI18N
 
-        jTextField33.setText(resourceMap.getString("jTextField33.text")); // NOI18N
-        jTextField33.setName("jTextField33"); // NOI18N
+        jTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField33.setText(resourceMap.getString("tiene15.text")); // NOI18N
+        jTextField33.setName("tiene15"); // NOI18N
 
-        jTextField34.setText(resourceMap.getString("jTextField34.text")); // NOI18N
-        jTextField34.setName("jTextField34"); // NOI18N
+        jTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField34.setText(resourceMap.getString("tiene25.text")); // NOI18N
+        jTextField34.setName("tiene25"); // NOI18N
 
-        jTextField35.setText(resourceMap.getString("jTextField35.text")); // NOI18N
-        jTextField35.setName("jTextField35"); // NOI18N
+        jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField35.setText(resourceMap.getString("tiene35.text")); // NOI18N
+        jTextField35.setName("tiene35"); // NOI18N
 
-        jTextField36.setText(resourceMap.getString("jTextField36.text")); // NOI18N
-        jTextField36.setName("jTextField36"); // NOI18N
+        jTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField36.setText(resourceMap.getString("tiene45.text")); // NOI18N
+        jTextField36.setName("tiene45"); // NOI18N
 
-        jTextField37.setText(resourceMap.getString("jTextField37.text")); // NOI18N
-        jTextField37.setName("jTextField37"); // NOI18N
+        jTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField37.setText(resourceMap.getString("tiene55.text")); // NOI18N
+        jTextField37.setName("tiene55"); // NOI18N
 
-        jTextField38.setText(resourceMap.getString("jTextField38.text")); // NOI18N
-        jTextField38.setName("jTextField38"); // NOI18N
+        jTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField38.setText(resourceMap.getString("tiene65.text")); // NOI18N
+        jTextField38.setName("tiene65"); // NOI18N
 
-        jTextField39.setText(resourceMap.getString("jTextField39.text")); // NOI18N
-        jTextField39.setName("jTextField39"); // NOI18N
+        jTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField39.setText(resourceMap.getString("tiene75.text")); // NOI18N
+        jTextField39.setName("tiene75"); // NOI18N
 
-        jTextField40.setText(resourceMap.getString("jTextField40.text")); // NOI18N
-        jTextField40.setName("jTextField40"); // NOI18N
+        jTextField40.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField40.setText(resourceMap.getString("tiene85.text")); // NOI18N
+        jTextField40.setName("tiene85"); // NOI18N
 
-        jTextField41.setText(resourceMap.getString("jTextField41.text")); // NOI18N
-        jTextField41.setName("jTextField41"); // NOI18N
+        jTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField41.setText(resourceMap.getString("tiene16.text")); // NOI18N
+        jTextField41.setName("tiene16"); // NOI18N
 
-        jTextField42.setText(resourceMap.getString("jTextField42.text")); // NOI18N
-        jTextField42.setName("jTextField42"); // NOI18N
+        jTextField42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField42.setText(resourceMap.getString("tiene26.text")); // NOI18N
+        jTextField42.setName("tiene26"); // NOI18N
 
-        jTextField43.setText(resourceMap.getString("jTextField43.text")); // NOI18N
-        jTextField43.setName("jTextField43"); // NOI18N
+        jTextField43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField43.setText(resourceMap.getString("tiene36.text")); // NOI18N
+        jTextField43.setName("tiene36"); // NOI18N
 
-        jTextField44.setText(resourceMap.getString("jTextField44.text")); // NOI18N
-        jTextField44.setName("jTextField44"); // NOI18N
+        jTextField44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField44.setText(resourceMap.getString("tiene46.text")); // NOI18N
+        jTextField44.setName("tiene46"); // NOI18N
 
-        jTextField45.setText(resourceMap.getString("jTextField45.text")); // NOI18N
-        jTextField45.setName("jTextField45"); // NOI18N
+        jTextField45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField45.setText(resourceMap.getString("tiene56.text")); // NOI18N
+        jTextField45.setName("tiene56"); // NOI18N
 
-        jTextField46.setText(resourceMap.getString("jTextField46.text")); // NOI18N
-        jTextField46.setName("jTextField46"); // NOI18N
+        jTextField46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField46.setText(resourceMap.getString("tiene66.text")); // NOI18N
+        jTextField46.setName("tiene66"); // NOI18N
 
-        jTextField47.setText(resourceMap.getString("jTextField47.text")); // NOI18N
-        jTextField47.setName("jTextField47"); // NOI18N
+        jTextField47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField47.setText(resourceMap.getString("tiene76.text")); // NOI18N
+        jTextField47.setName("tiene76"); // NOI18N
 
-        jTextField48.setText(resourceMap.getString("jTextField48.text")); // NOI18N
-        jTextField48.setName("jTextField48"); // NOI18N
+        jTextField48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField48.setText(resourceMap.getString("tiene86.text")); // NOI18N
+        jTextField48.setName("tiene86"); // NOI18N
 
-        jTextField49.setText(resourceMap.getString("jTextField49.text")); // NOI18N
-        jTextField49.setName("jTextField49"); // NOI18N
+        jTextField49.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField49.setText(resourceMap.getString("tiene17.text")); // NOI18N
+        jTextField49.setName("tiene17"); // NOI18N
 
-        jTextField50.setText(resourceMap.getString("jTextField50.text")); // NOI18N
-        jTextField50.setName("jTextField50"); // NOI18N
+        jTextField50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField50.setText(resourceMap.getString("tiene27.text")); // NOI18N
+        jTextField50.setName("tiene27"); // NOI18N
 
-        jTextField51.setText(resourceMap.getString("jTextField51.text")); // NOI18N
-        jTextField51.setName("jTextField51"); // NOI18N
+        jTextField51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField51.setText(resourceMap.getString("tiene37.text")); // NOI18N
+        jTextField51.setName("tiene37"); // NOI18N
 
-        jTextField52.setText(resourceMap.getString("jTextField52.text")); // NOI18N
-        jTextField52.setName("jTextField52"); // NOI18N
+        jTextField52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField52.setText(resourceMap.getString("tiene47.text")); // NOI18N
+        jTextField52.setName("tiene47"); // NOI18N
 
-        jTextField53.setText(resourceMap.getString("jTextField53.text")); // NOI18N
-        jTextField53.setName("jTextField53"); // NOI18N
+        jTextField53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField53.setText(resourceMap.getString("tiene57.text")); // NOI18N
+        jTextField53.setName("tiene57"); // NOI18N
 
-        jTextField54.setText(resourceMap.getString("jTextField54.text")); // NOI18N
-        jTextField54.setName("jTextField54"); // NOI18N
+        jTextField54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField54.setText(resourceMap.getString("tiene67.text")); // NOI18N
+        jTextField54.setName("tiene67"); // NOI18N
 
-        jTextField55.setText(resourceMap.getString("jTextField55.text")); // NOI18N
-        jTextField55.setName("jTextField55"); // NOI18N
+        jTextField55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField55.setText(resourceMap.getString("tiene77.text")); // NOI18N
+        jTextField55.setName("tiene77"); // NOI18N
 
-        jTextField56.setText(resourceMap.getString("jTextField56.text")); // NOI18N
-        jTextField56.setName("jTextField56"); // NOI18N
+        jTextField56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField56.setText(resourceMap.getString("tiene87.text")); // NOI18N
+        jTextField56.setName("tiene87"); // NOI18N
 
-        jTextField57.setText(resourceMap.getString("jTextField57.text")); // NOI18N
-        jTextField57.setName("jTextField57"); // NOI18N
+        jTextField57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField57.setText(resourceMap.getString("tiene18.text")); // NOI18N
+        jTextField57.setName("tiene18"); // NOI18N
 
-        jTextField58.setText(resourceMap.getString("jTextField58.text")); // NOI18N
-        jTextField58.setName("jTextField58"); // NOI18N
+        jTextField58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField58.setText(resourceMap.getString("tiene28.text")); // NOI18N
+        jTextField58.setName("tiene28"); // NOI18N
 
-        jTextField59.setText(resourceMap.getString("jTextField59.text")); // NOI18N
-        jTextField59.setName("jTextField59"); // NOI18N
+        jTextField59.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField59.setText(resourceMap.getString("tiene38.text")); // NOI18N
+        jTextField59.setName("tiene38"); // NOI18N
 
-        jTextField60.setText(resourceMap.getString("jTextField60.text")); // NOI18N
-        jTextField60.setName("jTextField60"); // NOI18N
+        jTextField60.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField60.setText(resourceMap.getString("tiene48.text")); // NOI18N
+        jTextField60.setName("tiene48"); // NOI18N
 
-        jTextField61.setText(resourceMap.getString("jTextField61.text")); // NOI18N
-        jTextField61.setName("jTextField61"); // NOI18N
+        jTextField61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField61.setText(resourceMap.getString("tiene58.text")); // NOI18N
+        jTextField61.setName("tiene58"); // NOI18N
 
-        jTextField62.setText(resourceMap.getString("jTextField62.text")); // NOI18N
-        jTextField62.setName("jTextField62"); // NOI18N
+        jTextField62.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField62.setText(resourceMap.getString("tiene68.text")); // NOI18N
+        jTextField62.setName("tiene68"); // NOI18N
 
-        jTextField63.setText(resourceMap.getString("jTextField63.text")); // NOI18N
-        jTextField63.setName("jTextField63"); // NOI18N
+        jTextField63.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField63.setText(resourceMap.getString("tiene78.text")); // NOI18N
+        jTextField63.setName("tiene78"); // NOI18N
 
-        jTextField64.setText(resourceMap.getString("jTextField64.text")); // NOI18N
-        jTextField64.setName("jTextField64"); // NOI18N
+        jTextField64.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField64.setText(resourceMap.getString("tiene88.text")); // NOI18N
+        jTextField64.setName("tiene88"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
@@ -1517,18 +1581,18 @@ public class GUIDemoView extends FrameView {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addGap(0, 61, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(1, 1, 1)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel29)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                             .addComponent(jTextField268, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel28)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                             .addComponent(jTextField267, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -1538,7 +1602,7 @@ public class GUIDemoView extends FrameView {
                                 .addComponent(jLabel25)
                                 .addComponent(jLabel26)
                                 .addComponent(jLabel27))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField265, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1722,7 +1786,7 @@ public class GUIDemoView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(811, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1732,7 +1796,7 @@ public class GUIDemoView extends FrameView {
                 .addComponent(botonGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonSimulacion)
-                .addContainerGap(447, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1794,7 +1858,7 @@ public class GUIDemoView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 604, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 606, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)

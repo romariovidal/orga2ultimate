@@ -20,7 +20,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="811" max="32767" attributes="0"/>
+                  <EmptySpace pref="434" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -31,7 +31,7 @@
                   <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="botonSimulacion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="447" max="32767" attributes="0"/>
+                  <EmptySpace pref="77" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -392,386 +392,450 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="jTextField1">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene11.text"/>
+                <Property name="name" type="java.lang.String" value="tiene11" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField2">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField2.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField2" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene12.text"/>
+                <Property name="name" type="java.lang.String" value="tiene12" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField3">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField3.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField3" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene13.text"/>
+                <Property name="name" type="java.lang.String" value="tiene13" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField4.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField4" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene14.text"/>
+                <Property name="name" type="java.lang.String" value="tiene14" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField5">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField5.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField5" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene15.text"/>
+                <Property name="name" type="java.lang.String" value="tiene15" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField6">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField6.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField6" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene16.text"/>
+                <Property name="name" type="java.lang.String" value="tiene16" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField7">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField7.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField7" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene17.text"/>
+                <Property name="name" type="java.lang.String" value="tiene17" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField8">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField8.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField8" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene18.text"/>
+                <Property name="name" type="java.lang.String" value="tiene18" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField9">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField9.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField9" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene12.text"/>
+                <Property name="name" type="java.lang.String" value="tiene12" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField10">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField10.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField10" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene22.text"/>
+                <Property name="name" type="java.lang.String" value="tiene22" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField11">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField11.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField11" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene32.text"/>
+                <Property name="name" type="java.lang.String" value="tiene32" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField12">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField12.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField12" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene42.text"/>
+                <Property name="name" type="java.lang.String" value="tiene42" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField13">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField13.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField13" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene52.text"/>
+                <Property name="name" type="java.lang.String" value="tiene52" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField14">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField14.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField14" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene62.text"/>
+                <Property name="name" type="java.lang.String" value="tiene62" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField15">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField15.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField15" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene72.text"/>
+                <Property name="name" type="java.lang.String" value="tiene72" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField16">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField16.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField16" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene82.text"/>
+                <Property name="name" type="java.lang.String" value="tiene82" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField17">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField17.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField17" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene13.text"/>
+                <Property name="name" type="java.lang.String" value="tiene13" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField18">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField18.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField18" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene23.text"/>
+                <Property name="name" type="java.lang.String" value="tiene23" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField19">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField19.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField19" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene33.text"/>
+                <Property name="name" type="java.lang.String" value="tiene33" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField20">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField20.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField20" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene43.text"/>
+                <Property name="name" type="java.lang.String" value="tiene43" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField21">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField21.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField21" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene53.text"/>
+                <Property name="name" type="java.lang.String" value="tiene53" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField22">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField22.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField22" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene63.text"/>
+                <Property name="name" type="java.lang.String" value="tiene63" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField23">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField23.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField23" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene73.text"/>
+                <Property name="name" type="java.lang.String" value="tiene73" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField24">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField24.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField24" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene83.text"/>
+                <Property name="name" type="java.lang.String" value="tiene83" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField25">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField25.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField25" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene14.text"/>
+                <Property name="name" type="java.lang.String" value="tiene14" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField26">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField26.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField26" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene24.text"/>
+                <Property name="name" type="java.lang.String" value="tiene24" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField27">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField27.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField27" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene34.text"/>
+                <Property name="name" type="java.lang.String" value="tiene34" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField28">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField28.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField28" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene44.text"/>
+                <Property name="name" type="java.lang.String" value="tiene44" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField29">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField29.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField29" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene54.text"/>
+                <Property name="name" type="java.lang.String" value="tiene54" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField30">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField30.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField30" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene64.text"/>
+                <Property name="name" type="java.lang.String" value="tiene64" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField31">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField31.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField31" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene74.text"/>
+                <Property name="name" type="java.lang.String" value="tiene74" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField32">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField32.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField32" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene84.text"/>
+                <Property name="name" type="java.lang.String" value="tiene84" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField33">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField33.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField33" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene15.text"/>
+                <Property name="name" type="java.lang.String" value="tiene15" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField34">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField34.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField34" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene25.text"/>
+                <Property name="name" type="java.lang.String" value="tiene25" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField35">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField35.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField35" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene35.text"/>
+                <Property name="name" type="java.lang.String" value="tiene35" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField36">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField36.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField36" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene45.text"/>
+                <Property name="name" type="java.lang.String" value="tiene45" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField37">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField37.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField37" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene55.text"/>
+                <Property name="name" type="java.lang.String" value="tiene55" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField38">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField38.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField38" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene65.text"/>
+                <Property name="name" type="java.lang.String" value="tiene65" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField39">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField39.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField39" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene75.text"/>
+                <Property name="name" type="java.lang.String" value="tiene75" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField40">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField40.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField40" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene85.text"/>
+                <Property name="name" type="java.lang.String" value="tiene85" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField41">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField41.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField41" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene16.text"/>
+                <Property name="name" type="java.lang.String" value="tiene16" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField42">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField42.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField42" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene26.text"/>
+                <Property name="name" type="java.lang.String" value="tiene26" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField43">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField43.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField43" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene36.text"/>
+                <Property name="name" type="java.lang.String" value="tiene36" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField44">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField44.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField44" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene46.text"/>
+                <Property name="name" type="java.lang.String" value="tiene46" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField45">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField45.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField45" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene56.text"/>
+                <Property name="name" type="java.lang.String" value="tiene56" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField46">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField46.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField46" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene66.text"/>
+                <Property name="name" type="java.lang.String" value="tiene66" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField47">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField47.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField47" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene76.text"/>
+                <Property name="name" type="java.lang.String" value="tiene76" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField48">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField48.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField48" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene86.text"/>
+                <Property name="name" type="java.lang.String" value="tiene86" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField49">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField49.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField49" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene17.text"/>
+                <Property name="name" type="java.lang.String" value="tiene17" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField50">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField50.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField50" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene27.text"/>
+                <Property name="name" type="java.lang.String" value="tiene27" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField51">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField51.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField51" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene37.text"/>
+                <Property name="name" type="java.lang.String" value="tiene37" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField52">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField52.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField52" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene47.text"/>
+                <Property name="name" type="java.lang.String" value="tiene47" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField53">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField53.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField53" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene57.text"/>
+                <Property name="name" type="java.lang.String" value="tiene57" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField54">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField54.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField54" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene67.text"/>
+                <Property name="name" type="java.lang.String" value="tiene67" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField55">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField55.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField55" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene77.text"/>
+                <Property name="name" type="java.lang.String" value="tiene77" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField56">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField56.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField56" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene87.text"/>
+                <Property name="name" type="java.lang.String" value="tiene87" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField57">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField57.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField57" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene18.text"/>
+                <Property name="name" type="java.lang.String" value="tiene18" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField58">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField58.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField58" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene28.text"/>
+                <Property name="name" type="java.lang.String" value="tiene28" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField59">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField59.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField59" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene38.text"/>
+                <Property name="name" type="java.lang.String" value="tiene38" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField60">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField60.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField60" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene48.text"/>
+                <Property name="name" type="java.lang.String" value="tiene48" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField61">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField61.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField61" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene58.text"/>
+                <Property name="name" type="java.lang.String" value="tiene58" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField62">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField62.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField62" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene68.text"/>
+                <Property name="name" type="java.lang.String" value="tiene68" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField63">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField63.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField63" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene78.text"/>
+                <Property name="name" type="java.lang.String" value="tiene78" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField64">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jTextField64.text"/>
-                <Property name="name" type="java.lang.String" value="jTextField64" noResource="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" resourceKey="tiene88.text"/>
+                <Property name="name" type="java.lang.String" value="tiene88" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
@@ -1747,19 +1811,19 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
                                   <Component id="jTextField268" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
                                   <Component id="jTextField267" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -1771,7 +1835,7 @@
                                       <Component id="jLabel26" alignment="2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel27" alignment="2" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                           <Component id="jTextField265" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2223,7 +2287,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="604" max="32767" attributes="0"/>
+                  <EmptySpace pref="606" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
