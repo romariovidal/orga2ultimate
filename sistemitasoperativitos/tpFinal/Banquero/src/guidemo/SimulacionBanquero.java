@@ -8,7 +8,6 @@
  *
  * Created on Aug 6, 2009, 1:22:22 PM
  */
-
 package guidemo;
 
 /**
@@ -20,6 +19,10 @@ public class SimulacionBanquero extends javax.swing.JFrame {
     /** Creates new form SimulacionBanquero */
     public SimulacionBanquero() {
         initComponents();
+    }
+
+    public void llenar(String arg) {
+        resultado.setText(arg);
     }
 
     /** This method is called from within the constructor to
@@ -60,16 +63,12 @@ public class SimulacionBanquero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void llenar(String arg) {
-        resultado.setText(arg);
-    }
-
-
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new SimulacionBanquero().setVisible(true);
             }
@@ -79,5 +78,4 @@ public class SimulacionBanquero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField resultado;
     // End of variables declaration//GEN-END:variables
-
 }
