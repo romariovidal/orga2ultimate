@@ -1,7 +1,6 @@
 /*
  * GUIDemoView.java
  */
-
 package guidemo;
 
 import org.jdesktop.application.Action;
@@ -30,6 +29,7 @@ public class GUIDemoView extends FrameView {
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 statusMessageLabel.setText("");
             }
@@ -40,6 +40,7 @@ public class GUIDemoView extends FrameView {
             busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
                 statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
@@ -52,6 +53,7 @@ public class GUIDemoView extends FrameView {
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 String propertyName = evt.getPropertyName();
                 if ("started".equals(propertyName)) {
@@ -68,11 +70,11 @@ public class GUIDemoView extends FrameView {
                     progressBar.setVisible(false);
                     progressBar.setValue(0);
                 } else if ("message".equals(propertyName)) {
-                    String text = (String)(evt.getNewValue());
+                    String text = (String) (evt.getNewValue());
                     statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
                 } else if ("progress".equals(propertyName)) {
-                    int value = (Integer)(evt.getNewValue());
+                    int value = (Integer) (evt.getNewValue());
                     progressBar.setVisible(true);
                     progressBar.setIndeterminate(false);
                     progressBar.setValue(value);
@@ -299,9 +301,9 @@ public class GUIDemoView extends FrameView {
         jLabel34 = new javax.swing.JLabel();
         jTextField274 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonCargar = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
+        botonSimulacion = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -1148,7 +1150,6 @@ public class GUIDemoView extends FrameView {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1254,7 +1255,6 @@ public class GUIDemoView extends FrameView {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 299, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1524,11 +1524,11 @@ public class GUIDemoView extends FrameView {
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel29)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                             .addComponent(jTextField268, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel28)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                             .addComponent(jTextField267, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -1538,7 +1538,7 @@ public class GUIDemoView extends FrameView {
                                 .addComponent(jLabel25)
                                 .addComponent(jLabel26)
                                 .addComponent(jLabel27))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField265, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1695,14 +1695,19 @@ public class GUIDemoView extends FrameView {
                 .addContainerGap())
         );
 
-        jButton1.setText(resourceMap.getString("cargar.text")); // NOI18N
-        jButton1.setName("cargar"); // NOI18N
+        botonCargar.setText(resourceMap.getString("cargar.text")); // NOI18N
+        botonCargar.setName("cargar"); // NOI18N
 
-        jButton2.setText(resourceMap.getString("guardar.text")); // NOI18N
-        jButton2.setName("guardar"); // NOI18N
+        botonGuardar.setText(resourceMap.getString("guardar.text")); // NOI18N
+        botonGuardar.setName("guardar"); // NOI18N
 
-        jButton3.setText(resourceMap.getString("simulacion.text")); // NOI18N
-        jButton3.setName("simulacion"); // NOI18N
+        botonSimulacion.setText(resourceMap.getString("simulacion.text")); // NOI18N
+        botonSimulacion.setName("simulacion"); // NOI18N
+        botonSimulacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonSimulacionMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -1717,17 +1722,17 @@ public class GUIDemoView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(811, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(botonCargar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(botonGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addComponent(botonSimulacion)
+                .addContainerGap(447, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1743,9 +1748,9 @@ public class GUIDemoView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3)))
+                        .addComponent(botonCargar)
+                        .addComponent(botonGuardar)
+                        .addComponent(botonSimulacion)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1789,7 +1794,7 @@ public class GUIDemoView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 606, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 604, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -2234,10 +2239,19 @@ public class GUIDemoView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonSimulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSimulacionMouseClicked
+        // TODO add your handling code here:
+
+            SimulacionBanquero nuevaVentana = new SimulacionBanquero();
+            nuevaVentana.llenar("glu glu glu");
+            
+            nuevaVentana.setVisible(true);
+    }//GEN-LAST:event_botonSimulacionMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonCargar;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonSimulacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2260,7 +2274,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -2271,7 +2284,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -2292,7 +2304,6 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField jTextField1;
@@ -2399,77 +2410,13 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JTextField jTextField190;
     private javax.swing.JTextField jTextField191;
     private javax.swing.JTextField jTextField192;
-    private javax.swing.JTextField jTextField193;
-    private javax.swing.JTextField jTextField194;
-    private javax.swing.JTextField jTextField195;
-    private javax.swing.JTextField jTextField196;
-    private javax.swing.JTextField jTextField197;
-    private javax.swing.JTextField jTextField198;
-    private javax.swing.JTextField jTextField199;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField200;
-    private javax.swing.JTextField jTextField201;
-    private javax.swing.JTextField jTextField202;
-    private javax.swing.JTextField jTextField203;
-    private javax.swing.JTextField jTextField204;
-    private javax.swing.JTextField jTextField205;
-    private javax.swing.JTextField jTextField206;
-    private javax.swing.JTextField jTextField207;
-    private javax.swing.JTextField jTextField208;
-    private javax.swing.JTextField jTextField209;
     private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField210;
-    private javax.swing.JTextField jTextField211;
-    private javax.swing.JTextField jTextField212;
-    private javax.swing.JTextField jTextField213;
-    private javax.swing.JTextField jTextField214;
-    private javax.swing.JTextField jTextField215;
-    private javax.swing.JTextField jTextField216;
-    private javax.swing.JTextField jTextField217;
-    private javax.swing.JTextField jTextField218;
-    private javax.swing.JTextField jTextField219;
     private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField220;
-    private javax.swing.JTextField jTextField221;
-    private javax.swing.JTextField jTextField222;
-    private javax.swing.JTextField jTextField223;
-    private javax.swing.JTextField jTextField224;
-    private javax.swing.JTextField jTextField225;
-    private javax.swing.JTextField jTextField226;
-    private javax.swing.JTextField jTextField227;
-    private javax.swing.JTextField jTextField228;
-    private javax.swing.JTextField jTextField229;
     private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField230;
-    private javax.swing.JTextField jTextField231;
-    private javax.swing.JTextField jTextField232;
-    private javax.swing.JTextField jTextField233;
-    private javax.swing.JTextField jTextField234;
-    private javax.swing.JTextField jTextField235;
-    private javax.swing.JTextField jTextField236;
-    private javax.swing.JTextField jTextField237;
-    private javax.swing.JTextField jTextField238;
-    private javax.swing.JTextField jTextField239;
     private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField240;
-    private javax.swing.JTextField jTextField241;
-    private javax.swing.JTextField jTextField242;
-    private javax.swing.JTextField jTextField243;
-    private javax.swing.JTextField jTextField244;
-    private javax.swing.JTextField jTextField245;
-    private javax.swing.JTextField jTextField246;
-    private javax.swing.JTextField jTextField247;
-    private javax.swing.JTextField jTextField248;
-    private javax.swing.JTextField jTextField249;
     private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField250;
-    private javax.swing.JTextField jTextField251;
-    private javax.swing.JTextField jTextField252;
-    private javax.swing.JTextField jTextField253;
-    private javax.swing.JTextField jTextField254;
-    private javax.swing.JTextField jTextField255;
-    private javax.swing.JTextField jTextField256;
     private javax.swing.JTextField jTextField257;
     private javax.swing.JTextField jTextField258;
     private javax.swing.JTextField jTextField26;
@@ -2575,12 +2522,10 @@ public class GUIDemoView extends FrameView {
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
     // End of variables declaration//GEN-END:variables
-
     private final Timer messageTimer;
     private final Timer busyIconTimer;
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
-
     private JDialog aboutBox;
 }
