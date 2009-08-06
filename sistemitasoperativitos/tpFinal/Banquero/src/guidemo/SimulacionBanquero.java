@@ -25,7 +25,8 @@ import java.awt.Label;
  */
 public class SimulacionBanquero extends javax.swing.JFrame {
 
-    private JTextField[][] matriz1;
+    private JTextField[][] matrizTiene;
+    private JTextField[][] matrizMaximo;
 
     /** Creates new form SimulacionBanquero */
     public SimulacionBanquero() {
@@ -90,50 +91,79 @@ public class SimulacionBanquero extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        for (Integer i = 0; i < this.matriz1.length; i++) {
-            for (Integer j = 0; j < this.matriz1.length; j++) {
+        for (Integer i = 0; i < this.matrizTiene.length; i++) {
+            for (Integer j = 0; j < this.matrizTiene.length; j++) {
                 Integer unNumeroAleatorio = ((int) (Math.random() * 10) % 5) + 1;
-                this.matriz1[i][j].setText(unNumeroAleatorio.toString());
+                this.matrizTiene[i][j].setText(unNumeroAleatorio.toString());
             }
-            this.matriz1[i][3].setBackground(Color.RED);
-            this.matriz1[i][3].setForeground(Color.GREEN);
+            this.matrizTiene[i][3].setBackground(Color.RED);
+            this.matrizTiene[i][3].setForeground(Color.GREEN);
 
-            Font f = this.matriz1[i][3].getFont();
+            Font f = this.matrizTiene[i][3].getFont();
             Font fBold = new Font(f.getName(), Font.BOLD, f.getSize()+1);
-            this.matriz1[3][i].setFont(fBold);
+            this.matrizTiene[3][i].setFont(fBold);
 
         }
 
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void initComponents2() {
-        JPanel componentes = new JPanel();
-        componentes.setBorder(new TitledBorder("Matriz"));
+        JPanel matTiene = new JPanel();
+        matTiene.setBorder(new TitledBorder("Matriz de tiene"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
         GridLayout layoutGrilla = new GridLayout(9, 9);
         layoutGrilla.setHgap(2);
         layoutGrilla.setVgap(2);
 
-        this.matriz1 = new JTextField[8][8];
+        this.matrizTiene = new JTextField[8][8];
 
-        componentes.setLayout(layoutGrilla);
+        matTiene.setLayout(layoutGrilla);
 
-        componentes.add(new Label(" "));
+        matTiene.add(new Label(" "));
         for (Integer i = 0; i <= 7; i++) {
-            componentes.add(new Label("  R" + (i+1)));
+            matTiene.add(new Label("  R" + (i+1)));
         }
         for (Integer i = 0; i <= 7; i++) {
-            componentes.add(new Label("P" + (i+1)));
+            matTiene.add(new Label("P" + (i+1)));
             for (Integer j = 0; j <= 7; j++) {
-                this.matriz1[i][j] = new JTextField(2);
-                this.matriz1[i][j].setText(i + ", " + j);
-                this.matriz1[i][j].setHorizontalAlignment(JTextField.CENTER);
-                this.matriz1[i][j].setEditable(false);
-                this.matriz1[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
-                componentes.add(this.matriz1[i][j]);
+                this.matrizTiene[i][j] = new JTextField(2);
+                this.matrizTiene[i][j].setText(i + ", " + j);
+                this.matrizTiene[i][j].setHorizontalAlignment(JTextField.CENTER);
+                this.matrizTiene[i][j].setEditable(false);
+                this.matrizTiene[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
+                matTiene.add(this.matrizTiene[i][j]);
             }
         }
+
+        JPanel matMaximos = new JPanel();
+        matMaximos.setBorder(new TitledBorder("Matriz de máximos"));
+        //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
+
+        GridLayout layout2 = new GridLayout(9, 9);
+        layout2.setHgap(2);
+        layout2.setVgap(2);
+
+        this.matrizMaximo = new JTextField[8][8];
+
+        matMaximos.setLayout(layoutGrilla);
+
+        matMaximos.add(new Label(" "));
+        for (Integer i = 0; i <= 7; i++) {
+            matMaximos.add(new Label("  R" + (i+1)));
+        }
+        for (Integer i = 0; i <= 7; i++) {
+            matMaximos.add(new Label("P" + (i+1)));
+            for (Integer j = 0; j <= 7; j++) {
+                this.matrizMaximo[i][j] = new JTextField(2);
+                this.matrizMaximo[i][j].setText(i + ", " + j);
+                this.matrizMaximo[i][j].setHorizontalAlignment(JTextField.CENTER);
+                this.matrizMaximo[i][j].setEditable(false);
+                this.matrizMaximo[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
+                matMaximos.add(this.matrizMaximo[i][j]);
+            }
+        }
+
 
         
         GroupLayout layout = new GroupLayout(getContentPane());
@@ -148,11 +178,16 @@ public class SimulacionBanquero extends javax.swing.JFrame {
 
         layout.setHorizontalGroup(
                 layout.createSequentialGroup() //.addGap(160,260,36)
-                .addComponent(componentes) //.addGap(180, Short.MAX_VALUE))
+                .addComponent(matTiene)
+                .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
                 );
         layout.setVerticalGroup(
                 layout.createSequentialGroup() //.addGap(160,260,36)
-                .addComponent(componentes) //.addGap(180, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(matTiene)
+                    .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
+
+                 )
                 );
         pack();
 
