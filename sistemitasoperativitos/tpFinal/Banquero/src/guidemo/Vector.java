@@ -26,4 +26,11 @@ public class Vector {
     public Integer dameValor (Integer pos){
         return this.vectInterno[pos];
     }
+
+    public void agregar (Vector v){
+        for(Integer i=1; i<=8; i++){
+            this.asignar(i, this.dameValor(i) + v.dameValor(i));
+            //this.vectInterno[i] += v.dameValor(i);
+        }
+    }
 }

@@ -10,19 +10,31 @@
  */
 package guidemo;
 
+import java.awt.GridLayout;
+import javax.swing.GroupLayout;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Label;
+
 /**
  *
  * @author mlopez
  */
 public class SimulacionBanquero extends javax.swing.JFrame {
 
+    private JTextField[][] matriz1;
+
     /** Creates new form SimulacionBanquero */
     public SimulacionBanquero() {
+        initComponents2();
         initComponents();
     }
 
     public void llenar(String arg) {
-        resultado.setText(arg);
+        //resultado.setText(arg);
     }
 
     /** This method is called from within the constructor to
@@ -34,34 +46,117 @@ public class SimulacionBanquero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        resultado = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Form"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(guidemo.GUIDemoApp.class).getContext().getResourceMap(SimulacionBanquero.class);
-        resultado.setText(resourceMap.getString("resultado.text")); // NOI18N
-        resultado.setName("resultado"); // NOI18N
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(220, 220, 220)
+                .addComponent(jButton1)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(389, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        for (Integer i = 0; i < this.matriz1.length; i++) {
+            for (Integer j = 0; j < this.matriz1.length; j++) {
+                Integer unNumeroAleatorio = ((int) (Math.random() * 10) % 5) + 1;
+                this.matriz1[i][j].setText(unNumeroAleatorio.toString());
+            }
+            this.matriz1[i][3].setBackground(Color.RED);
+            this.matriz1[i][3].setForeground(Color.GREEN);
+
+            Font f = this.matriz1[i][3].getFont();
+            Font fBold = new Font(f.getName(), Font.BOLD, f.getSize()+1);
+            this.matriz1[3][i].setFont(fBold);
+
+        }
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void initComponents2() {
+        JPanel componentes = new JPanel();
+        componentes.setBorder(new TitledBorder("Matriz"));
+        //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
+
+        GridLayout layoutGrilla = new GridLayout(9, 9);
+        layoutGrilla.setHgap(2);
+        layoutGrilla.setVgap(2);
+
+        this.matriz1 = new JTextField[8][8];
+
+        componentes.setLayout(layoutGrilla);
+
+        componentes.add(new Label(" "));
+        for (Integer i = 0; i <= 7; i++) {
+            componentes.add(new Label("  R" + (i+1)));
+        }
+        for (Integer i = 0; i <= 7; i++) {
+            componentes.add(new Label("P" + (i+1)));
+            for (Integer j = 0; j <= 7; j++) {
+                this.matriz1[i][j] = new JTextField(2);
+                this.matriz1[i][j].setText(i + ", " + j);
+                this.matriz1[i][j].setHorizontalAlignment(JTextField.CENTER);
+                this.matriz1[i][j].setEditable(false);
+                this.matriz1[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
+                componentes.add(this.matriz1[i][j]);
+            }
+        }
+
+        
+        GroupLayout layout = new GroupLayout(getContentPane());
+
+        //PanelBuilder builder = new PanelBuilder(layout);
+        getContentPane().setLayout(layout);
+
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+
+
+        layout.setHorizontalGroup(
+                layout.createSequentialGroup() //.addGap(160,260,36)
+                .addComponent(componentes) //.addGap(180, Short.MAX_VALUE))
+                );
+        layout.setVerticalGroup(
+                layout.createSequentialGroup() //.addGap(160,260,36)
+                .addComponent(componentes) //.addGap(180, Short.MAX_VALUE))
+                );
+        pack();
+
+    }// </editor-fold>
 
     /**
      * @param args the command line arguments
@@ -76,6 +171,6 @@ public class SimulacionBanquero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField resultado;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
