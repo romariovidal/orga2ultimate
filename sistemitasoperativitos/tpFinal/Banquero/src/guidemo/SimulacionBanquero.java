@@ -28,6 +28,7 @@ public class SimulacionBanquero extends javax.swing.JFrame {
     private JTextField[][] matrizTiene;
     private JTextField[][] matrizMaximo;
     private JTextField[] vectorDisponible;
+    private Label[] pasos;
 
     /** Creates new form SimulacionBanquero */
     public SimulacionBanquero() {
@@ -191,7 +192,11 @@ public class SimulacionBanquero extends javax.swing.JFrame {
             vectDisponibles.add(this.vectorDisponible[i]);
         }
 
-        
+
+         JPanel consolaControl = new JPanel();
+         llenarConsola(consolaControl);
+
+
         GroupLayout layout = new GroupLayout(getContentPane());
 
         //PanelBuilder builder = new PanelBuilder(layout);
@@ -208,7 +213,10 @@ public class SimulacionBanquero extends javax.swing.JFrame {
                     .addComponent(matTiene)
                     .addComponent(vectDisponibles)
                 )
-                .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(consolaControl)
+                    )
                 );
         layout.setVerticalGroup(
                 layout.createSequentialGroup() //.addGap(160,260,36)
@@ -217,11 +225,23 @@ public class SimulacionBanquero extends javax.swing.JFrame {
                     .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
 
                  )
-                 .addComponent(vectDisponibles)
+                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(vectDisponibles)
+                    .addComponent(consolaControl)
+                    )
                 );
         pack();
 
     }// </editor-fold>
+
+    private void llenarConsola(JPanel consola){
+        consola.setBorder(new TitledBorder("Control"));
+
+        this.pasos = new Label[10];
+        this.pasos[0] = new Label("Entrega el pedido y se corre el algoritmo de seguridad para ver si encuentra una secuencia segura.");
+
+        consola.add(this.pasos[0]);
+    }
 
     /**
      * @param args the command line arguments
