@@ -27,6 +27,7 @@ public class SimulacionBanquero extends javax.swing.JFrame {
 
     private JTextField[][] matrizTiene;
     private JTextField[][] matrizMaximo;
+    private JTextField[] vectorDisponible;
 
     /** Creates new form SimulacionBanquero */
     public SimulacionBanquero() {
@@ -50,9 +51,10 @@ public class SimulacionBanquero extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(guidemo.GUIDemoApp.class).getContext().getResourceMap(SimulacionBanquero.class);
+        setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(guidemo.GUIDemoApp.class).getContext().getResourceMap(SimulacionBanquero.class);
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,12 +75,12 @@ public class SimulacionBanquero extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(220, 220, 220)
                 .addComponent(jButton1)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(396, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(389, Short.MAX_VALUE)
+                .addContainerGap(390, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -112,13 +114,13 @@ public class SimulacionBanquero extends javax.swing.JFrame {
         matTiene.setBorder(new TitledBorder("Matriz de tiene"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
-        GridLayout layoutGrilla = new GridLayout(9, 9);
-        layoutGrilla.setHgap(2);
-        layoutGrilla.setVgap(2);
+        GridLayout layout1 = new GridLayout(9, 9);
+        layout1.setHgap(2);
+        layout1.setVgap(2);
 
         this.matrizTiene = new JTextField[8][8];
 
-        matTiene.setLayout(layoutGrilla);
+        matTiene.setLayout(layout1);
 
         matTiene.add(new Label(" "));
         for (Integer i = 0; i <= 7; i++) {
@@ -146,7 +148,7 @@ public class SimulacionBanquero extends javax.swing.JFrame {
 
         this.matrizMaximo = new JTextField[8][8];
 
-        matMaximos.setLayout(layoutGrilla);
+        matMaximos.setLayout(layout2);
 
         matMaximos.add(new Label(" "));
         for (Integer i = 0; i <= 7; i++) {
@@ -165,6 +167,30 @@ public class SimulacionBanquero extends javax.swing.JFrame {
         }
 
 
+        JPanel vectDisponibles = new JPanel();
+        vectDisponibles.setBorder(new TitledBorder("Recursos Disponibles"));
+        //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
+
+        GridLayout layout3 = new GridLayout(2, 8);
+        layout3.setHgap(2);
+        layout3.setVgap(2);
+
+        this.vectorDisponible = new JTextField[8];
+
+        vectDisponibles.setLayout(layout3);
+
+        for (Integer i = 0; i <= 7; i++) {
+            vectDisponibles.add(new Label("  R" + (i+1)));
+        }
+        for (Integer i = 0; i <= 7; i++) {
+            this.vectorDisponible[i] = new JTextField(2);
+            this.vectorDisponible[i].setText(i.toString());
+            this.vectorDisponible[i].setHorizontalAlignment(JTextField.CENTER);
+            this.vectorDisponible[i].setEditable(false);
+            this.vectorDisponible[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
+            vectDisponibles.add(this.vectorDisponible[i]);
+        }
+
         
         GroupLayout layout = new GroupLayout(getContentPane());
 
@@ -178,7 +204,10 @@ public class SimulacionBanquero extends javax.swing.JFrame {
 
         layout.setHorizontalGroup(
                 layout.createSequentialGroup() //.addGap(160,260,36)
-                .addComponent(matTiene)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(matTiene)
+                    .addComponent(vectDisponibles)
+                )
                 .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
                 );
         layout.setVerticalGroup(
@@ -188,6 +217,7 @@ public class SimulacionBanquero extends javax.swing.JFrame {
                     .addComponent(matMaximos) //.addGap(180, Short.MAX_VALUE))
 
                  )
+                 .addComponent(vectDisponibles)
                 );
         pack();
 
