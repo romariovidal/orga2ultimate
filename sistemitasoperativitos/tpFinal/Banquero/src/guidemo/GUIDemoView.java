@@ -2348,7 +2348,8 @@ public class GUIDemoView extends FrameView {
         ObjectOutputStream s = new ObjectOutputStream(f); 
         String company = "My Good Company"; 
         s.writeObject(company); 
-        s.writeObject(this.text_tiene11.getText());
+        //s.writeObject(this.text_tiene11.getText());
+        //s.writeObject(this.);
         s.flush();
         } catch (IOException io) {
             System.out.println(io.getMessage());
@@ -2362,7 +2363,8 @@ public class GUIDemoView extends FrameView {
         String company = ""; 
 
         company = (String) s.readObject();
-        this.text_tiene11.setText((String) s.readObject());
+        //this.text_tiene11.setText((String) s.readObject());
+        //this = s.readObject();
         System.out.println(company + " "); 
         } catch (IOException io) {
             System.out.println(io.getMessage());
