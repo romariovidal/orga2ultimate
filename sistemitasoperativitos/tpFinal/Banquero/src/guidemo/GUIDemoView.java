@@ -10,10 +10,16 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+
 
 /**
  * The application's main frame.
@@ -1761,9 +1767,19 @@ public class GUIDemoView extends FrameView {
 
         botonCargar.setText(resourceMap.getString("cargar.text")); // NOI18N
         botonCargar.setName("cargar"); // NOI18N
+        botonCargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonCargarMouseClicked(evt);
+            }
+        });
 
         botonGuardar.setText(resourceMap.getString("guardar.text")); // NOI18N
         botonGuardar.setName("guardar"); // NOI18N
+        botonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonGuardarMouseClicked(evt);
+            }
+        });
 
         botonSimulacion.setText(resourceMap.getString("simulacion.text")); // NOI18N
         botonSimulacion.setName("simulacion"); // NOI18N
@@ -1810,12 +1826,15 @@ public class GUIDemoView extends FrameView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonCargar)
-                        .addComponent(botonGuardar)
-                        .addComponent(botonSimulacion)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonCargar)
+                            .addComponent(botonGuardar)
+                            .addComponent(botonSimulacion))
+                        .addGap(23, 23, 23))))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -1858,7 +1877,7 @@ public class GUIDemoView extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 606, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 602, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -2312,6 +2331,47 @@ public class GUIDemoView extends FrameView {
             nuevaVentana.setVisible(true);
     }//GEN-LAST:event_botonSimulacionMouseClicked
 
+    private void botonGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarMouseClicked
+        // TODO add your handling code here:
+        //this.getFrame();
+        this.serializar();
+    }//GEN-LAST:event_botonGuardarMouseClicked
+
+    private void botonCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCargarMouseClicked
+        // TODO add your handling code here:
+        this.desserializar();
+    }//GEN-LAST:event_botonCargarMouseClicked
+
+    private void serializar() { 
+        try {
+        FileOutputStream f = new FileOutputStream("tmp.txt"); 
+        ObjectOutputStream s = new ObjectOutputStream(f); 
+        String company = "My Good Company"; 
+        s.writeObject(company); 
+        s.writeObject(this.text_tiene11.getText());
+        s.flush();
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
+    }
+    
+    private void desserializar() { 
+        try {
+        FileInputStream f = new FileInputStream("tmp.txt"); 
+        ObjectInputStream s = new ObjectInputStream(f); 
+        String company = ""; 
+
+        company = (String) s.readObject();
+        this.text_tiene11.setText((String) s.readObject());
+        System.out.println(company + " "); 
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        } catch (ClassNotFoundException cl) {
+            System.out.println(cl.getMessage());
+        }
+    }
+    
+    
     private Matriz matrizDeTiene (){/* TODO esto debería devolver algo de tipo matriz*/
         Matriz laMatriz = new Matriz();
 
