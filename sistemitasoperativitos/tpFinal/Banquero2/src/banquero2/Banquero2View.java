@@ -329,7 +329,8 @@ public class Banquero2View extends FrameView implements ActionListener {
             matTiene.add(new Label("P" + i));
             for (Integer j = 1; j <= 8; j++) {
                 this.matrizTiene[i][j] = new JTextField(2);
-                this.matrizTiene[i][j].setText(i + ", " + j);
+                //this.matrizTiene[i][j].setText(i + ", " + j);
+                this.matrizTiene[i][j].setText("0");
                 this.matrizTiene[i][j].setHorizontalAlignment(JTextField.CENTER);
                 //this.matrizTiene[i][j].setEditable(false);
                 this.matrizTiene[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
@@ -358,7 +359,8 @@ public class Banquero2View extends FrameView implements ActionListener {
             matNecesidad.add(new Label("P" + i));
             for (Integer j = 1; j <= 8; j++) {
                 this.matrizNecesidad[i][j] = new JTextField(2);
-                this.matrizNecesidad[i][j].setText(i + ", " + j);
+                //this.matrizNecesidad[i][j].setText(i + ", " + j);
+                this.matrizNecesidad[i][j].setText("0");
                 this.matrizNecesidad[i][j].setHorizontalAlignment(JTextField.CENTER);
                 //this.matrizNecesidad[i][j].setEditable(false);
                 this.matrizNecesidad[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
@@ -387,7 +389,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         
         for (Integer i = 1; i <= 8; i++) {
             this.vectorDisponible[i] = new JTextField(2);
-            this.vectorDisponible[i].setText(i.toString());
+            this.vectorDisponible[i].setText("0");
             this.vectorDisponible[i].setHorizontalAlignment(JTextField.CENTER);
             //this.vectorDisponible[i].setEditable(false);
             this.vectorDisponible[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
@@ -416,14 +418,14 @@ public class Banquero2View extends FrameView implements ActionListener {
         }
         
         this.procPedido = new JTextField(2);
-        this.procPedido.setText("3");
+        this.procPedido.setText("");
         this.procPedido.setHorizontalAlignment(JTextField.CENTER);
         this.procPedido.setToolTipText("Proceso que realiza el pedido." );
         vectPedido.add(this.procPedido);
         
         for (Integer i = 1; i <= 8; i++) {
             this.vectorPedido[i] = new JTextField(2);
-            this.vectorPedido[i].setText(i.toString());
+            this.vectorPedido[i].setText("0");
             this.vectorPedido[i].setHorizontalAlignment(JTextField.CENTER);
             //this.vectorPedido[i].setEditable(false);
             this.vectorPedido[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
@@ -458,7 +460,7 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
 //     private void actionPerformed( Event evt ) {
-     public void actionPerformed(ActionEvent evt) {
+    public void actionPerformed(ActionEvent evt) {
 
          if( evt.getSource().equals( this.cargar ) ){
             System.out.println( "Se ha pulsado el boton de cargar" );
@@ -491,7 +493,7 @@ public class Banquero2View extends FrameView implements ActionListener {
          }         
      }
      
-     private String seleccionarArchivo() throws IOException {
+    private String seleccionarArchivo() throws IOException {
         JFrame frame2 = new JFrame();        
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -520,7 +522,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         return archivo;        
      }
      
-     private void serializar(String archivo) { 
+    private void serializar(String archivo) { 
         try {
         FileOutputStream f = new FileOutputStream(archivo); 
         ObjectOutputStream s = new ObjectOutputStream(f); 
