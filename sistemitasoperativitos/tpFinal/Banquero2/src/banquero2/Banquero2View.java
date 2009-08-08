@@ -28,6 +28,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.Label;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -460,21 +461,68 @@ public class Banquero2View extends FrameView implements ActionListener {
      public void actionPerformed(ActionEvent evt) {
 
          if( evt.getSource().equals( this.cargar ) ){
-             System.out.println( "Se ha pulsado el boton de cargar" );
-             this.desserializar();
+            System.out.println( "Se ha pulsado el boton de cargar" );
+            String archivo = null;
+            try {
+                archivo = this.seleccionarArchivo();
+                System.out.println("Leido2 " + archivo);
+            } catch (IOException io) {
+                System.out.println(io.getMessage());
+            }
+            
+            this.desserializar(archivo);
          }
-         if( evt.getSource().equals( this.guardar ) ){
-             System.out.println( "Se ha pulsado el boton de guardar" );
-             this.serializar();
+         if(evt.getSource().equals( this.guardar ) ){
+            System.out.println( "Se ha pulsado el boton de guardar" );
+            String archivo = null;
+            try {
+                archivo = this.seleccionarArchivo();
+                System.out.println("Leido2 " + archivo);
+            } catch (IOException io) {
+                System.out.println(io.getMessage());
+            }
+            this.serializar(archivo);
          }
-         if( evt.getSource().equals( this.simular ) ){
-             System.out.println( "Se ha pulsado el boton de simular" );
+         if(evt.getSource().equals( this.simular ) ){
+            System.out.println( "Se ha pulsado el boton de simular" );
+
+            
+            
          }         
      }
      
-     private void serializar() { 
+     private String seleccionarArchivo() throws IOException {
+        JFrame frame2 = new JFrame();        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        //int result = fileChooser.showOpenDialog(frame2);
+        int result = fileChooser.showDialog(frame2, "Seleccionar");
+        String archivo = null;
+        
+        if (result == JFileChooser.APPROVE_OPTION){
+            File filename2 = fileChooser.getSelectedFile();
+            System.out.println("Leido: " + filename2.getAbsolutePath());
+            archivo = new String(filename2.toString());
+            
+        } else {
+            throw new IOException("No file selected");
+        }
+        
+        /*if (result == JFileChooser.APPROVE_OPTION){
+            File filename2 = fileChooser.getSelectedFile();
+            System.out.println("Leido: " + filename2.getAbsolutePath());
+            archivo = new String(filename2.toString());
+            return true;
+        } else {
+            System.out.println("Cancelado");
+            return false;
+        }*/
+        return archivo;        
+     }
+     
+     private void serializar(String archivo) { 
         try {
-        FileOutputStream f = new FileOutputStream("tmp.txt"); 
+        FileOutputStream f = new FileOutputStream(archivo); 
         ObjectOutputStream s = new ObjectOutputStream(f); 
         //String company = "My Good Company"; 
         //s.writeObject(company); 
@@ -508,9 +556,9 @@ public class Banquero2View extends FrameView implements ActionListener {
         }
     }
     
-    private void desserializar() { 
+    private void desserializar(String archivo) { 
         try {
-        FileInputStream f = new FileInputStream("tmp.txt"); 
+        FileInputStream f = new FileInputStream(archivo); 
         ObjectInputStream s = new ObjectInputStream(f); 
         //String company = ""; 
 
