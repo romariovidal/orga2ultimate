@@ -238,6 +238,9 @@ public class Banquero2View extends FrameView implements ActionListener {
     private JTextField[] vectorPedido;
     private JTextField procPedido;
     private Button cargar, guardar, simular;
+
+    private JPanel panelLlenado;
+    private JPanel panelSimulacion;
     
     private void initComponents2() {
         JPanel matTiene = new JPanel();
@@ -254,7 +257,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         
         //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(mainPanel);
         //mainPanel.setLayout(layout);
-        JPanel panelLlenado = new JPanel();
+        this.panelLlenado = new JPanel();
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelLlenado);
         panelLlenado.setLayout(layout);       
         
@@ -434,7 +437,7 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
     
     private void crearBotonera (JPanel botonera) {
-        GridLayout layout = new GridLayout(3, 1);
+        GridLayout layout = new GridLayout(5, 1);
         layout.setHgap(2);
         layout.setVgap(2);
 
@@ -487,9 +490,7 @@ public class Banquero2View extends FrameView implements ActionListener {
          }
          if(evt.getSource().equals( this.simular ) ){
             System.out.println( "Se ha pulsado el boton de simular" );
-
-            
-            
+            this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
          }         
      }
      
