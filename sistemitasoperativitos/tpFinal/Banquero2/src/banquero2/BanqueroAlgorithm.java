@@ -64,8 +64,42 @@ public class BanqueroAlgorithm {
 
     public BanqueroAlgorithm(){}
 
-    void nextStep(){
+    void nextStep(int i){
 
+        switch(i){
+            case 1:
+                pasoUno();
+                break;
+            case 2:
+                pasoDos();
+                break;
+            case 3:
+                pasoTres();
+                break;
+            case 4:
+                pasoCuatro();
+                break;
+            case 5:
+                pasoCinco();
+                break;
+            case 6:
+                pasoSeis();
+                break;
+            case 7:
+                pasoSiete();
+                break;
+            case 8:
+                pasoOcho();
+                break;
+            case 9:
+                pasoNueve();
+                break;
+            case 10:
+                pasoDiez();
+                break;
+            default:
+                System.out.println("Error: numero de paso invalido, para la simulacion");
+        }
 
     }
     /**
@@ -106,7 +140,7 @@ public class BanqueroAlgorithm {
         }
         i++;
         if(i>8){
-        paso=11;
+        paso=6;
         }
     }
 
@@ -115,9 +149,35 @@ public class BanqueroAlgorithm {
      */
     void pasoCinco(){
         if(necesidad.filaEsMenorOIgual(i, disponibles)){
-            paso++;
+            paso+=2;
         }
     }
 
+    /**
+     * Si no existe i que cumpla estas condiciones ir al paso 3.
+     */
+    void pasoSeis(){
+        paso=11;
+    }
+    
+    void pasoSiete(){
+        disponibles.agregar(asignacion.dameFila(i));
+        paso++;
+    }
 
+    void pasoOcho(){
+        finish.asignar(i, 1);
+        paso++;
+    }
+
+    void pasoNueve(){
+        paso=1;
+    }
+
+    void pasoDiez(){
+        Vector vector = new Vector(1);
+        if(finish.mayorOIgual(vector)){
+            System.out.println("El sistema esta en estado seguro");
+        }
+    }
 }
