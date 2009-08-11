@@ -16,7 +16,7 @@ public class BanqueroAlgorithm {
     private Vector disponibles;
     private Vector request;
     private Matriz asignacion;
-    private Integer i=1;
+    private Integer procesoActual=1;
     private Integer proceso;
     private Integer paso;
 
@@ -41,7 +41,7 @@ public class BanqueroAlgorithm {
     }
 
     public Integer getI() {
-        return i;
+        return procesoActual;
     }
 
     public Matriz getNecesidad() {
@@ -135,11 +135,11 @@ public class BanqueroAlgorithm {
      * Finish[i] == false
      */
     void pasoCuatro(){
-        if(finish.dameValor(i)==0){
+        if(finish.dameValor(procesoActual)==0){
             paso++;
         }
-        i++;
-        if(i>8){
+        procesoActual++;
+        if(procesoActual>8){
         paso=6;
         }
     }
@@ -148,7 +148,7 @@ public class BanqueroAlgorithm {
      * Need(i) <= Work
      */
     void pasoCinco(){
-        if(necesidad.filaEsMenorOIgual(i, disponibles)){
+        if(necesidad.filaEsMenorOIgual(procesoActual, disponibles)){
             paso+=2;
         }
     }
@@ -161,12 +161,12 @@ public class BanqueroAlgorithm {
     }
     
     void pasoSiete(){
-        disponibles.agregar(asignacion.dameFila(i));
+        disponibles.agregar(asignacion.dameFila(procesoActual));
         paso++;
     }
 
     void pasoOcho(){
-        finish.asignar(i, 1);
+        finish.asignar(procesoActual, 1);
         paso++;
     }
 
