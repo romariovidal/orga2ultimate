@@ -232,11 +232,17 @@ public class Banquero2View extends FrameView implements ActionListener {
     
     /* MATIAS CODE */
     
-    private JTextField[][] matrizTiene;
-    private JTextField[][] matrizNecesidad;
+    private JTextField[][] matrizAsignacion;
+    private JTextField[][] matrizMaximos;
     private JTextField[] vectorDisponible;
     private JTextField[] vectorPedido;
     private JTextField procPedido;
+
+    private JTextField[][] matrizAsignacionSimulacion;
+    private JTextField[][] matrizNecesidadSimulacion;
+    private JTextField[] vectorWorkSimulacion;
+    private JTextField[] vectorFinishSimulacion;
+
     private Button cargar, guardar, simular;
 
     private JPanel panelLlenado;
@@ -244,13 +250,13 @@ public class Banquero2View extends FrameView implements ActionListener {
     
     private void initComponents2() {
         JPanel matTiene = new JPanel();
-        crearMatrizTiene(matTiene);
+        crearMatrizAsignacion(matTiene, false);
 
         JPanel matNecesidad = new JPanel();
-        crearMatrizNecesida(matNecesidad);
+        crearMatrizMaximosONecesidad(matNecesidad, false);
 
         JPanel vectDisponibles = new JPanel();
-        crearVectDisponibles(vectDisponibles);
+        crearVectDisponibles(vectDisponibles, false);
 
         JPanel vectPedido = new JPanel();
         crearVectPedido(vectPedido);
@@ -258,39 +264,92 @@ public class Banquero2View extends FrameView implements ActionListener {
         //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(mainPanel);
         //mainPanel.setLayout(layout);
         this.panelLlenado = new JPanel();
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(panelLlenado);
-        panelLlenado.setLayout(layout);       
-        
-        layout.setAutoCreateGaps(true);
-        layout.setAutoCreateContainerGaps(true);
+                
+        javax.swing.GroupLayout layoutLlenado = new javax.swing.GroupLayout(panelLlenado);
+        panelLlenado.setLayout(layoutLlenado);
+           
+        layoutLlenado.setAutoCreateGaps(true);
+        layoutLlenado.setAutoCreateContainerGaps(true);
 
-        layout.setHorizontalGroup(
-                layout.createSequentialGroup() //.addGap(160,260,36)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        layoutLlenado.setHorizontalGroup(
+                layoutLlenado.createSequentialGroup() //.addGap(160,260,36)
+                .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(matTiene)
                     .addComponent(vectDisponibles)
                 )
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(matNecesidad) //.addGap(180, Short.MAX_VALUE))
                     .addComponent(vectPedido)
                     )
                 );
-        layout.setVerticalGroup(
-                layout.createSequentialGroup() //.addGap(160,260,36)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+        layoutLlenado.setVerticalGroup(
+                layoutLlenado.createSequentialGroup() //.addGap(160,260,36)
+                .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(matTiene)
                     .addComponent(matNecesidad) //.addGap(180, Short.MAX_VALUE))
 
                  )
-                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(vectDisponibles)
                     .addComponent(vectPedido)
                     )
                 );
-        
+
+        /*
+         * Panel de simulación
+         */
+
+        this.panelSimulacion = new JPanel();
+        javax.swing.GroupLayout layoutSimulacion = new javax.swing.GroupLayout(panelSimulacion);
+        panelSimulacion.setLayout(layoutSimulacion);
+
+        JPanel matAsignacionSim = new JPanel();
+        crearMatrizAsignacion(matAsignacionSim, true);
+
+        JPanel matNecesidadSim = new JPanel();
+        crearMatrizMaximosONecesidad(matNecesidadSim, true);
+
+        JPanel vectDisponiblesSim = new JPanel();
+        crearVectDisponibles(vectDisponiblesSim, true);
+
+        JPanel vectFinish = new JPanel();
+        crearVectFinish(vectFinish);
+
         JPanel botonera = new JPanel();
         crearBotonera(botonera);
-        
+
+        layoutSimulacion.setAutoCreateGaps(true);
+        layoutSimulacion.setAutoCreateContainerGaps(true);
+
+        layoutSimulacion.setHorizontalGroup(
+                layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
+                .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(vectFinish)
+                )
+                .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(matAsignacionSim)
+                    .addComponent(vectDisponiblesSim)
+                )               
+                );
+        layoutSimulacion.setVerticalGroup(
+                layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
+                .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(vectFinish)
+                    .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
+
+                 )                 
+                    .addComponent(vectDisponiblesSim)
+                    .addComponent(matAsignacionSim)
+                 
+                );
+
+
+
+        /*
+         * Panel general
+         */
+
         javax.swing.GroupLayout layoutGral = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(layoutGral);
         layoutGral.setAutoCreateGaps(true);
@@ -298,30 +357,40 @@ public class Banquero2View extends FrameView implements ActionListener {
         layoutGral.setHorizontalGroup(
                 layoutGral.createSequentialGroup() //.addGap(160,260,36)
                     .addComponent(panelLlenado)
+                    .addComponent(panelSimulacion)
                     .addComponent(botonera)
                 );
         layoutGral.setVerticalGroup(
                 layoutGral.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutGral.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(panelLlenado)
+                    .addComponent(panelSimulacion)
                     .addComponent(botonera) //.addGap(180, Short.MAX_VALUE))
                  )
                 );
-        
+
+        this.panelSimulacion.setVisible(false);
         //lalalala.pack();
 
     }// </editor-fold>
     
-    private void crearMatrizTiene(JPanel matTiene){
-        matTiene.setBorder(new TitledBorder("Matriz de tiene"));
+    private void crearMatrizAsignacion(JPanel matTiene, Boolean simulando){
+
+        matTiene.setBorder(new TitledBorder("Matriz de asignación"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
         GridLayout layout1 = new GridLayout(9, 9);
         layout1.setHgap(2);
         layout1.setVgap(2);
 
-        this.matrizTiene = new JTextField[9][9];
+        JTextField[][] m;
+        if(simulando){
+            m = this.matrizAsignacionSimulacion;
+        } else {
+            m = this.matrizAsignacion;
+        }
 
+        m = new JTextField[9][9];
         matTiene.setLayout(layout1);
 
         matTiene.add(new Label(" "));
@@ -331,26 +400,36 @@ public class Banquero2View extends FrameView implements ActionListener {
         for (Integer i = 1; i <= 8; i++) {
             matTiene.add(new Label("P" + i));
             for (Integer j = 1; j <= 8; j++) {
-                this.matrizTiene[i][j] = new JTextField(2);
+                m[i][j] = new JTextField(2);
                 //this.matrizTiene[i][j].setText(i + ", " + j);
-                this.matrizTiene[i][j].setText("0");
-                this.matrizTiene[i][j].setHorizontalAlignment(JTextField.CENTER);
-                //this.matrizTiene[i][j].setEditable(false);
-                this.matrizTiene[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
-                matTiene.add(this.matrizTiene[i][j]);
+                m[i][j].setText("0");
+                m[i][j].setHorizontalAlignment(JTextField.CENTER);
+                if(simulando)
+                    m[i][j].setEditable(false);
+                m[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
+                matTiene.add(m[i][j]);
             }
         }
     }
  
-    private void crearMatrizNecesida(JPanel matNecesidad){
-        matNecesidad.setBorder(new TitledBorder("Matriz de máximos"));
+    private void crearMatrizMaximosONecesidad(JPanel matNecesidad, Boolean simulando){
+        if(simulando)
+            matNecesidad.setBorder(new TitledBorder("Matriz de necesidad"));
+        else
+            matNecesidad.setBorder(new TitledBorder("Matriz de máximos"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
         GridLayout layout2 = new GridLayout(9, 9);
         layout2.setHgap(2);
         layout2.setVgap(2);
 
-        this.matrizNecesidad = new JTextField[9][9];
+        JTextField[][] m;
+        if(simulando)
+            m = this.matrizNecesidadSimulacion;
+        else 
+            m= this.matrizMaximos;
+
+        m = new JTextField[9][9];
 
         matNecesidad.setLayout(layout2);
 
@@ -361,19 +440,24 @@ public class Banquero2View extends FrameView implements ActionListener {
         for (Integer i = 1; i <= 8; i++) {
             matNecesidad.add(new Label("P" + i));
             for (Integer j = 1; j <= 8; j++) {
-                this.matrizNecesidad[i][j] = new JTextField(2);
+                m[i][j] = new JTextField(2);
                 //this.matrizNecesidad[i][j].setText(i + ", " + j);
-                this.matrizNecesidad[i][j].setText("0");
-                this.matrizNecesidad[i][j].setHorizontalAlignment(JTextField.CENTER);
+                m[i][j].setText("0");
+                m[i][j].setHorizontalAlignment(JTextField.CENTER);
+                if(simulando)
+                    m[i][j].setEditable(false);
                 //this.matrizNecesidad[i][j].setEditable(false);
-                this.matrizNecesidad[i][j].setToolTipText("Cantidad del recurso " + j + " que tiene el proceso " + i + "." );
-                matNecesidad.add(this.matrizNecesidad[i][j]);
+                if(simulando)
+                    m[i][j].setToolTipText("Cantidad del recurso " + j + " podría pedir el proceso " + i + "." );
+                else
+                    m[i][j].setToolTipText("Cantidad del recurso " + j + " que pedirá como máximo el proceso " + i + "." );
+                matNecesidad.add(m[i][j]);
             }
         }
 
     }
     
-    private void crearVectDisponibles(JPanel vectDisponibles){
+    private void crearVectDisponibles(JPanel vectDisponibles, Boolean simulando){
         vectDisponibles.setBorder(new TitledBorder("Recursos Disponibles"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
@@ -381,25 +465,35 @@ public class Banquero2View extends FrameView implements ActionListener {
         layout3.setHgap(2);
         layout3.setVgap(2);
 
-        this.vectorDisponible = new JTextField[9];
+        JTextField[] v;
+        if(simulando)
+            v = this.vectorWorkSimulacion;
+        else 
+            v = this.vectorDisponible;
+
+        v = new JTextField[9];
 
         vectDisponibles.setLayout(layout3);
 
+        vectDisponibles.add(new Label(" "));
         for (Integer i = 1; i <= 8; i++) {
             vectDisponibles.add(new Label("  R" + i));
         }
-        vectDisponibles.add(new Label(" "));
+
+        vectDisponibles.add(new Label("  "));
         
         for (Integer i = 1; i <= 8; i++) {
-            this.vectorDisponible[i] = new JTextField(2);
-            this.vectorDisponible[i].setText("0");
-            this.vectorDisponible[i].setHorizontalAlignment(JTextField.CENTER);
+            v[i] = new JTextField(2);
+            v[i].setText("0");
+            v[i].setHorizontalAlignment(JTextField.CENTER);
+            if(simulando)
+                    v[i].setEditable(false);
             //this.vectorDisponible[i].setEditable(false);
-            this.vectorDisponible[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
-            vectDisponibles.add(this.vectorDisponible[i]);
+            v[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
+            vectDisponibles.add(v[i]);
         }
         
-        vectDisponibles.add(new Label(" "));
+        //vectDisponibles.add(new Label(" "));
 
     }
     
@@ -431,11 +525,39 @@ public class Banquero2View extends FrameView implements ActionListener {
             this.vectorPedido[i].setText("0");
             this.vectorPedido[i].setHorizontalAlignment(JTextField.CENTER);
             //this.vectorPedido[i].setEditable(false);
-            this.vectorPedido[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
+            this.vectorPedido[i].setToolTipText("Cantidad del recurso " + i + " pedido." );
             vectPedido.add(this.vectorPedido[i]);
         }
     }
-    
+
+    private void crearVectFinish (JPanel vectFinish){
+        vectFinish.setBorder(new TitledBorder("Finish"));
+        //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
+
+        GridLayout layout3 = new GridLayout(9, 2);
+        layout3.setHgap(2);
+        layout3.setVgap(2);
+
+        JTextField[] v = this.vectorFinishSimulacion;
+        v = new JTextField[9];
+
+        vectFinish.setLayout(layout3);
+
+        vectFinish.add(new JLabel(""));
+        vectFinish.add(new JLabel(""));
+        
+        for (Integer i = 1; i <= 8; i++) {
+            v[i] = new JTextField(2);
+            v[i].setText("F");
+            v[i].setHorizontalAlignment(JTextField.CENTER);
+            //this.vectorPedido[i].setEditable(false);
+            v[i].setToolTipText("Terminó el proceso " + i + "." );
+            v[i].setEditable(false);
+            vectFinish.add(new JLabel("R"+i));
+            vectFinish.add(v[i]);
+        }
+    }
+
     private void crearBotonera (JPanel botonera) {
         GridLayout layout = new GridLayout(5, 1);
         layout.setHgap(2);
@@ -491,6 +613,8 @@ public class Banquero2View extends FrameView implements ActionListener {
          if(evt.getSource().equals( this.simular ) ){
             System.out.println( "Se ha pulsado el boton de simular" );
             this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
+            this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
+
          }         
      }
      
@@ -533,13 +657,13 @@ public class Banquero2View extends FrameView implements ActionListener {
         //s.writeObject(this.);
         for (Integer i = 1; i <= 8; i++) {
             for (Integer j = 1; j <= 8; j++) {
-                s.writeObject(this.matrizTiene[i][j].getText());                
+                s.writeObject(this.matrizAsignacion[i][j].getText());
             }
         }
         
         for (Integer i = 1; i <= 8; i++) {
             for (Integer j = 1; j <= 8; j++) {
-                s.writeObject(this.matrizNecesidad[i][j].getText());                
+                s.writeObject(this.matrizMaximos[i][j].getText());
             }
         }
         for (Integer j = 1; j <= 8; j++) {
@@ -571,12 +695,12 @@ public class Banquero2View extends FrameView implements ActionListener {
         //System.out.println(company + " "); 
         for (Integer i = 1; i <= 8; i++) {
             for (Integer j = 1; j <= 8; j++) {
-                this.matrizTiene[i][j].setText((String) s.readObject());                
+                this.matrizAsignacion[i][j].setText((String) s.readObject());
             }
         }
         for (Integer i = 1; i <= 8; i++) {
             for (Integer j = 1; j <= 8; j++) {
-                this.matrizNecesidad[i][j].setText((String) s.readObject());                
+                this.matrizMaximos[i][j].setText((String) s.readObject());
             }
         }
         
