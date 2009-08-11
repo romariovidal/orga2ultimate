@@ -14,7 +14,7 @@ public class Matriz {
     
     public Matriz(){
         this.matInterna = new Integer[9][9];
-        for (Integer i=0; i<=9; i++){
+        for (Integer i=0; i<=8; i++){
             this.matInterna[0][i] = null;
             this.matInterna[i][0] = null;
         }

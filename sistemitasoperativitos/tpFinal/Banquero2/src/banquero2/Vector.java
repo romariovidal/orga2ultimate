@@ -14,7 +14,7 @@ public class Vector {
 
     public Vector(){
         this.vectInterno = new Integer[9];
-        for (Integer i=0; i<=9; i++){
+        for (Integer i=0; i<=8; i++){
             this.vectInterno[i] = null;
         }
     }

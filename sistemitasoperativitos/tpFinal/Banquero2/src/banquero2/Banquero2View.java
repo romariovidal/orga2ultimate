@@ -234,6 +234,7 @@ public class Banquero2View extends FrameView implements ActionListener {
     private JPanel panelLlenado;
     private JPanel botoneraLlenado;
     private JPanel panelSimulacion;
+    private BanqueroAlgorithm bankSolver;
 
     
     private void initComponents2() {
@@ -810,27 +811,44 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
     private void copiarDatosParaIniciarSimulacion(){
+        Matriz asignacionT = new Matriz();
+        Matriz necesidadT = new Matriz();
+        Vector requestT = new Vector();
+        Vector workT = new Vector();
+        Integer procesoT = 0;
+
         Integer aux = 0;
         for(Integer i=1; i<=8; i++){
             for(Integer j=1; j<=8; j++){
-                this.matrizAsignacionSimulacion[i][j].setText(this.matrizAsignacion[i][j].getText());
+                aux = new Integer (this.matrizAsignacion[i][j].getText());
+                asignacionT.asignar(i,j,aux);
+                this.matrizAsignacionSimulacion[i][j].setText(aux.toString());
                 this.matrizAsignacionSimulacion[i][j].setForeground(Color.BLACK);
 
                 aux = new Integer(this.matrizMaximos[i][j].getText()) - new Integer(this.matrizAsignacion[i][j].getText());
+                necesidadT.asignar(i,j,aux);
                 this.matrizNecesidadSimulacion[i][j].setText(aux.toString());
-                this.matrizAsignacionSimulacion[i][j].setForeground(Color.BLACK);
+                this.matrizNecesidadSimulacion[i][j].setForeground(Color.BLACK);                
             }
         }
 
         for(Integer j=1; j<=8; j++){
-            this.vectorWorkSimulacion[j].setText(this.vectorDisponible[j].getText());
+            aux = new Integer(this.vectorDisponible[j].getText());
+            workT.asignar(j, aux);
+            this.vectorWorkSimulacion[j].setText(aux.toString());
             this.vectorWorkSimulacion[j].setForeground(Color.BLACK);
 
-            this.vectorPedidoSimulacion[j].setText(this.vectorPedido[j].getText());
+            aux = new Integer(this.vectorPedido[j].getText());
+            requestT.asignar(j, aux);
+            this.vectorPedidoSimulacion[j].setText(aux.toString());
             this.vectorPedidoSimulacion[j].setForeground(Color.BLACK);
         }
 
-        this.procPedidoSimulacion.setText(this.procPedido.getText());
+        aux = new Integer (this.procPedido.getText());
+        procesoT = aux;
+        this.procPedidoSimulacion.setText(aux.toString());
+
+        this.bankSolver = new BanqueroAlgorithm(necesidadT,  workT, requestT, asignacionT, procesoT);
 
     }
 
