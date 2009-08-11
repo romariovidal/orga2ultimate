@@ -54,5 +54,11 @@ public class Matriz {
         }
             return res;
     }
+
+    void ponerCerosEnFila(Integer procesoActual) {
+        for(Integer j=1; j<=8; j++){
+            this.asignar(procesoActual,j,0);
+        }
+    }
     
 }

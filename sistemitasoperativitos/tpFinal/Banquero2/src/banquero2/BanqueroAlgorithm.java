@@ -162,6 +162,7 @@ public class BanqueroAlgorithm {
     
     void pasoSiete(){
         disponibles.agregar(asignacion.dameFila(procesoActual));
+        asignacion.ponerCerosEnFila(procesoActual);
         paso++;
     }
 
@@ -171,7 +172,8 @@ public class BanqueroAlgorithm {
     }
 
     void pasoNueve(){
-        paso=1;
+        paso=4;
+        procesoActual=1;
     }
 
     void pasoDiez(){
