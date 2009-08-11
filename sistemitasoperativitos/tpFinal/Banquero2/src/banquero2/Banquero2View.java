@@ -383,12 +383,14 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         JTextField[][] m;
         if(simulando){
+            this.matrizAsignacionSimulacion = new JTextField[9][9];
             m = this.matrizAsignacionSimulacion;
         } else {
+            this.matrizAsignacion =  new JTextField[9][9];
             m = this.matrizAsignacion;
         }
 
-        m = new JTextField[9][9];
+        
         matTiene.setLayout(layout1);
 
         matTiene.add(new Label(" "));
@@ -422,12 +424,14 @@ public class Banquero2View extends FrameView implements ActionListener {
         layout2.setVgap(2);
 
         JTextField[][] m;
-        if(simulando)
+        if(simulando){
+            this.matrizNecesidadSimulacion = new JTextField[9][9];
             m = this.matrizNecesidadSimulacion;
-        else 
+        }else{
+            this.matrizMaximos = new JTextField[9][9];
             m= this.matrizMaximos;
-
-        m = new JTextField[9][9];
+        }
+        
 
         matNecesidad.setLayout(layout2);
 
@@ -464,12 +468,15 @@ public class Banquero2View extends FrameView implements ActionListener {
         layout3.setVgap(2);
 
         JTextField[] v;
-        if(simulando)
+        if(simulando){
+            this.vectorWorkSimulacion = new JTextField[9];
             v = this.vectorWorkSimulacion;
-        else 
+        } else {
+            this.vectorDisponible = new JTextField[9];
             v = this.vectorDisponible;
+        }
 
-        v = new JTextField[9];
+        
 
         vectDisponibles.setLayout(layout3);
 
@@ -536,8 +543,9 @@ public class Banquero2View extends FrameView implements ActionListener {
         layout3.setHgap(2);
         layout3.setVgap(2);
 
+        this.vectorFinishSimulacion = new JTextField[9];
         JTextField[] v = this.vectorFinishSimulacion;
-        v = new JTextField[9];
+       
 
         vectFinish.setLayout(layout3);
 
@@ -619,6 +627,7 @@ public class Banquero2View extends FrameView implements ActionListener {
             System.out.println( "Se ha pulsado el boton de step" );
             //this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
             //this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
+            pintarLineaMatriz(this.matrizAsignacionSimulacion, 2, Color.RED);
 
          }
      }
@@ -729,10 +738,23 @@ public class Banquero2View extends FrameView implements ActionListener {
 
     private void pintarLineaMatriz(JTextField[][] m, Integer fila, Color col){
         for(Integer j=1; j<=8; j++){
-            m[fila][j].setBackground(Color.RED);
+            m[fila][j].setBackground(Color.red);
             //m[fila][j].set(Color.RED);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
