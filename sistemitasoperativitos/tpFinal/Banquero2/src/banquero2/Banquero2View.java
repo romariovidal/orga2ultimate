@@ -738,7 +738,7 @@ public class Banquero2View extends FrameView implements ActionListener {
 
     private void pintarLineaMatriz(JTextField[][] m, Integer fila, Color col){
         for(Integer j=1; j<=8; j++){
-            m[fila][j].setBackground(Color.red);
+            m[fila][j].setForeground(Color.red);
             //m[fila][j].set(Color.RED);
         }
     }
