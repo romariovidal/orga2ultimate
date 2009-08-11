@@ -225,11 +225,14 @@ public class Banquero2View extends FrameView implements ActionListener {
     private JTextField[][] matrizNecesidadSimulacion;
     private JTextField[] vectorWorkSimulacion;
     private JTextField[] vectorFinishSimulacion;
+    private JTextField[] vectorPedidoSimulacion;
+    private JTextField procPedidoSimulacion;
     private PanelSim seguimientoSimulacion;
 
     private Button cargar, guardar, simular;
 
     private JPanel panelLlenado;
+    private JPanel botoneraLlenado;
     private JPanel panelSimulacion;
 
     
@@ -244,7 +247,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         crearVectDisponibles(vectDisponibles, false);
 
         JPanel vectPedido = new JPanel();
-        crearVectPedido(vectPedido);
+        crearVectPedido(vectPedido, false);
         
         //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(mainPanel);
         //mainPanel.setLayout(layout);
@@ -300,8 +303,11 @@ public class Banquero2View extends FrameView implements ActionListener {
         JPanel vectFinish = new JPanel();
         crearVectFinish(vectFinish);
 
-        JPanel botonera = new JPanel();
-        crearBotonera(botonera);
+        JPanel vectPedido2 = new JPanel();
+        crearVectPedido(vectPedido2, true);
+
+        this.botoneraLlenado = new JPanel();
+        crearBotonera(botoneraLlenado);
 
         //BanqueroFrameSeguimiento seguimSimulacion = this.seguimientoSimulacion;
         //seguimSimulacion = new BanqueroFrameSeguimiento();
@@ -310,6 +316,8 @@ public class Banquero2View extends FrameView implements ActionListener {
         PanelSim seguimSimulacion = new PanelSim();
         this.seguimientoSimulacion = seguimSimulacion;
         this.seguimientoSimulacion.step.addActionListener(this);
+        this.seguimientoSimulacion.stop.addActionListener(this);
+        this.seguimientoSimulacion.play.addActionListener(this);
 
         layoutSimulacion.setAutoCreateGaps(true);
         layoutSimulacion.setAutoCreateContainerGaps(true);
@@ -318,6 +326,7 @@ public class Banquero2View extends FrameView implements ActionListener {
                 layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(vectFinish)
+                    .addGap(60)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
@@ -325,6 +334,7 @@ public class Banquero2View extends FrameView implements ActionListener {
                     .addComponent(vectDisponiblesSim)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(vectPedido2)
                     .addComponent(seguimSimulacion)
                 )
                 );
@@ -339,7 +349,10 @@ public class Banquero2View extends FrameView implements ActionListener {
                         .addComponent(vectDisponiblesSim)
                         .addComponent(matAsignacionSim)
                     )
-                    .addComponent(seguimSimulacion)
+                    .addGroup(layoutSimulacion.createSequentialGroup()
+                        .addComponent(vectPedido2)
+                        .addComponent(seguimSimulacion)
+                    )
                 );
 
 
@@ -356,14 +369,14 @@ public class Banquero2View extends FrameView implements ActionListener {
                 layoutGral.createSequentialGroup() //.addGap(160,260,36)
                     .addComponent(panelLlenado)
                     .addComponent(panelSimulacion)
-                    .addComponent(botonera)
+                    .addComponent(botoneraLlenado)
                 );
         layoutGral.setVerticalGroup(
                 layoutGral.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutGral.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(panelLlenado)
                     .addComponent(panelSimulacion)
-                    .addComponent(botonera) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(botoneraLlenado) //.addGap(180, Short.MAX_VALUE))
                  )
                 );
 
@@ -502,15 +515,24 @@ public class Banquero2View extends FrameView implements ActionListener {
 
     }
     
-    private void crearVectPedido (JPanel vectPedido){
-        vectPedido.setBorder(new TitledBorder("Nuevo pedido"));
+    private void crearVectPedido (JPanel vectPedido, Boolean simulando){
+        vectPedido.setBorder(new TitledBorder("Request"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
         GridLayout layout3 = new GridLayout(2, 9);
         layout3.setHgap(2);
         layout3.setVgap(2);
 
-        this.vectorPedido = new JTextField[9];
+        JTextField[] v;
+        if(simulando){
+            this.vectorPedidoSimulacion = new JTextField[9];
+            v = this.vectorPedidoSimulacion;
+        } else {
+            this.vectorPedido = new JTextField[9];
+            v = this.vectorPedido;
+        }
+
+
 
         vectPedido.setLayout(layout3);
 
@@ -518,20 +540,28 @@ public class Banquero2View extends FrameView implements ActionListener {
         for (Integer i = 1; i <= 8; i++) {
             vectPedido.add(new Label("  R" + i));
         }
+
+        JTextField t = new JTextField(2);;
+        if (simulando){
+            this.procPedidoSimulacion = t;
+            t.setEditable(false);
+        } else {
+            this.procPedido = t;
+        }
+        t.setText("");
+        t.setHorizontalAlignment(JTextField.CENTER);
+        t.setToolTipText("Proceso que realiza el pedido." );
         
-        this.procPedido = new JTextField(2);
-        this.procPedido.setText("");
-        this.procPedido.setHorizontalAlignment(JTextField.CENTER);
-        this.procPedido.setToolTipText("Proceso que realiza el pedido." );
-        vectPedido.add(this.procPedido);
+        vectPedido.add(t);
         
         for (Integer i = 1; i <= 8; i++) {
-            this.vectorPedido[i] = new JTextField(2);
-            this.vectorPedido[i].setText("0");
-            this.vectorPedido[i].setHorizontalAlignment(JTextField.CENTER);
-            //this.vectorPedido[i].setEditable(false);
-            this.vectorPedido[i].setToolTipText("Cantidad del recurso " + i + " pedido." );
-            vectPedido.add(this.vectorPedido[i]);
+            v[i] = new JTextField(2);
+            v[i].setText("0");
+            v[i].setHorizontalAlignment(JTextField.CENTER);
+            if(simulando)
+                v[i].setEditable(false);
+            v[i].setToolTipText("Cantidad del recurso " + i + " pedido." );
+            vectPedido.add(v[i]);
         }
     }
 
@@ -620,16 +650,31 @@ public class Banquero2View extends FrameView implements ActionListener {
             System.out.println( "Se ha pulsado el boton de simular" );
             this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
             this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
-
+            this.botoneraLlenado.setVisible(!this.botoneraLlenado.isShowing());
+            this.copiarDatosParaIniciarSimulacion();
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.step) ){
             System.out.println( "Se ha pulsado el boton de step" );
-            //this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
-            //this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
-            pintarLineaMatriz(this.matrizAsignacionSimulacion, 2, Color.RED);
-
+            Integer unNumeroAleatorio = ((int) (Math.random() * 10) % 5) + 1;
+            pintarLineaMatriz(this.matrizAsignacionSimulacion, unNumeroAleatorio, Color.RED);
+            pintarLineaMatriz(this.matrizNecesidadSimulacion, unNumeroAleatorio, Color.ORANGE);
+            pintarCeldaVector(this.vectorFinishSimulacion, unNumeroAleatorio, Color.PINK);
+            pintarCeldaVector(this.vectorWorkSimulacion, unNumeroAleatorio, Color.GREEN);
          }
+
+         if(evt.getSource().equals( this.seguimientoSimulacion.play) ){
+            System.out.println( "Se ha pulsado el boton de play" );
+            
+         }
+
+         if(evt.getSource().equals( this.seguimientoSimulacion.stop) ){
+            System.out.println( "Se ha pulsado el boton de stop" );
+            this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
+            this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
+            this.botoneraLlenado.setVisible(!this.botoneraLlenado.isShowing());
+         }
+
      }
      
     private String seleccionarArchivo() throws IOException {
@@ -737,14 +782,56 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
     private void pintarLineaMatriz(JTextField[][] m, Integer fila, Color col){
-        for(Integer j=1; j<=8; j++){
-            m[fila][j].setForeground(col);
-            //m[fila][j].set(Color.RED);
+        for(Integer i=1; i<=8; i++){
+            for(Integer j=1; j<=8; j++){
+                m[i][j].setForeground(i.equals(fila) ? col : Color.black);
+                //m[fila][j].set(Color.RED);
+            }
         }
     }
 
     private void pintarCeldaVector(JTextField[] v, Integer elem, Color col){
-        v[elem].setForeground(col);
+        for(Integer j=1; j<=8; j++){
+            v[j].setForeground(j.equals(elem) ? col : Color.black);
+        }
+        
+    }
+
+    private void pintarVector(JTextField[] v, Color col){
+        for(Integer j=1; j<=8; j++){
+            v[j].setForeground(col);
+        }
+    }
+
+    private void pintarLabelVector(JLabel[] v, Integer elem, Color col){
+        for(Integer j=1; j<=8; j++){
+            v[j].setForeground(j.equals(elem) ? col : Color.black);
+        }
+    }
+
+    private void copiarDatosParaIniciarSimulacion(){
+        Integer aux = 0;
+        for(Integer i=1; i<=8; i++){
+            for(Integer j=1; j<=8; j++){
+                this.matrizAsignacionSimulacion[i][j].setText(this.matrizAsignacion[i][j].getText());
+                this.matrizAsignacionSimulacion[i][j].setForeground(Color.BLACK);
+
+                aux = new Integer(this.matrizMaximos[i][j].getText()) - new Integer(this.matrizAsignacion[i][j].getText());
+                this.matrizNecesidadSimulacion[i][j].setText(aux.toString());
+                this.matrizAsignacionSimulacion[i][j].setForeground(Color.BLACK);
+            }
+        }
+
+        for(Integer j=1; j<=8; j++){
+            this.vectorWorkSimulacion[j].setText(this.vectorDisponible[j].getText());
+            this.vectorWorkSimulacion[j].setForeground(Color.BLACK);
+
+            this.vectorPedidoSimulacion[j].setText(this.vectorPedido[j].getText());
+            this.vectorPedidoSimulacion[j].setForeground(Color.BLACK);
+        }
+
+        this.procPedidoSimulacion.setText(this.procPedido.getText());
+
     }
 
 
