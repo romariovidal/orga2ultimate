@@ -306,7 +306,7 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         JPanel vectPedido2 = new JPanel();
         crearVectPedido(vectPedido2, true);
-        vectPedido2.setSize(400, 60);
+        //vectPedido2.setSize(100, 60);
 
         this.botoneraLlenado = new JPanel();
         crearBotonera(botoneraLlenado);
@@ -323,7 +323,7 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         layoutSimulacion.setAutoCreateGaps(true);
         layoutSimulacion.setAutoCreateContainerGaps(true);
-
+        
         layoutSimulacion.setHorizontalGroup(
                 layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -336,7 +336,7 @@ public class Banquero2View extends FrameView implements ActionListener {
                     .addComponent(vectDisponiblesSim)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(vectPedido2)
+                    .addComponent(vectPedido2, 400, 400, 400)
                     .addComponent(seguimSimulacion)
                 )
                 );
@@ -352,7 +352,7 @@ public class Banquero2View extends FrameView implements ActionListener {
                         .addComponent(matAsignacionSim)
                     )
                     .addGroup(layoutSimulacion.createSequentialGroup()
-                        .addComponent(vectPedido2)
+                        .addComponent(vectPedido2, 100, 100, 100)
                         .addComponent(seguimSimulacion)
                     )
                 );
@@ -550,7 +550,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         } else {
             this.procPedido = t;
         }
-        t.setText("");
+        t.setText("0");
         t.setHorizontalAlignment(JTextField.CENTER);
         t.setToolTipText("Proceso que realiza el pedido." );
         
@@ -658,11 +658,13 @@ public class Banquero2View extends FrameView implements ActionListener {
 
          if(evt.getSource().equals( this.seguimientoSimulacion.step) ){
             System.out.println( "Se ha pulsado el boton de step" );
-            Integer unNumeroAleatorio = ((int) (Math.random() * 10) % 5) + 1;
+            /*Integer unNumeroAleatorio = ((int) (Math.random() * 10) % 5) + 1;
             pintarLineaMatriz(this.matrizAsignacionSimulacion, unNumeroAleatorio, Color.RED);
             pintarLineaMatriz(this.matrizNecesidadSimulacion, unNumeroAleatorio, Color.ORANGE);
             pintarCeldaVector(this.vectorFinishSimulacion, unNumeroAleatorio, Color.PINK);
-            pintarCeldaVector(this.vectorWorkSimulacion, unNumeroAleatorio, Color.GREEN);
+            pintarCeldaVector(this.vectorWorkSimulacion, unNumeroAleatorio, Color.GREEN);*/
+            this.bankSolver.nextStep();
+            this.refrescar();
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.play) ){
@@ -850,8 +852,36 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         this.bankSolver = new BanqueroAlgorithm(necesidadT,  workT, requestT, asignacionT, procesoT);
 
+        this.refrescar();
     }
 
+
+private void refrescar(){
+        Integer aux = 0;
+        for(Integer i=1; i<=8; i++){
+            for(Integer j=1; j<=8; j++){
+                aux = this.bankSolver.getAsignacion().dameValor(i, j);
+                this.matrizAsignacionSimulacion[i][j].setText(aux.toString());
+
+                aux = this.bankSolver.getNecesidad().dameValor(i, j);
+                this.matrizNecesidadSimulacion[i][j].setText(aux.toString());
+            }
+        }
+
+        for(Integer j=1; j<=8; j++){
+            aux = this.bankSolver.getDisponibles().dameValor(j);
+            this.vectorWorkSimulacion[j].setText(aux.toString());
+
+            aux = this.bankSolver.getFinish().dameValor(j);
+            if(aux.equals(0))
+                this.vectorFinishSimulacion[j].setText("F");
+            else
+                this.vectorFinishSimulacion[j].setText("T");
+        }
+        this.pintarLabelVector(this.seguimientoSimulacion.arrLabels, this.bankSolver.getPaso(), Color.RED);
+        this.seguimientoSimulacion.iValor.setText(this.bankSolver.getI().toString());
+        this.seguimientoSimulacion.status.setText(this.bankSolver.getPaso().toString());
+    }
 
 
 

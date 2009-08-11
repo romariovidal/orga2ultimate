@@ -135,12 +135,14 @@ public class BanqueroAlgorithm {
      * Finish[i] == false
      */
     void pasoCuatro(){
-        if(finish.dameValor(procesoActual)==0){
+        System.out.println("El valor de la matriz de finish para " + procesoActual + " es "+finish.dameValor(procesoActual));
+        if(finish.dameValor(procesoActual).equals(0)){
             paso++;
-        }
-        procesoActual++;
-        if(procesoActual>8){
-        paso=6;
+        } else {
+            procesoActual++;
+            if(procesoActual>8){
+                paso=6;
+            }
         }
     }
 
@@ -150,6 +152,13 @@ public class BanqueroAlgorithm {
     void pasoCinco(){
         if(necesidad.filaEsMenorOIgual(procesoActual, disponibles)){
             paso+=2;
+        } else {
+            procesoActual++;
+            if(procesoActual>8){
+                paso=6;
+            } else {
+                paso = 4;
+            }
         }
     }
 

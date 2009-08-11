@@ -47,10 +47,11 @@ public class Matriz {
 
         return res;
     }
-        public Vector dameFila(int i){
-         Vector res=null;
+
+    public Vector dameFila(int i){
+         Vector res= new Vector();
          for(Integer j=1; j<=8; j++){
-            res.asignar(i, this.dameValor(i, j));
+            res.asignar(j, this.dameValor(i, j));
         }
             return res;
     }
