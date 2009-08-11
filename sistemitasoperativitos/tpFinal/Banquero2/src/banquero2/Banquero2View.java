@@ -306,6 +306,7 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         JPanel vectPedido2 = new JPanel();
         crearVectPedido(vectPedido2, true);
+        vectPedido2.setSize(400, 60);
 
         this.botoneraLlenado = new JPanel();
         crearBotonera(botoneraLlenado);
@@ -666,7 +667,6 @@ public class Banquero2View extends FrameView implements ActionListener {
 
          if(evt.getSource().equals( this.seguimientoSimulacion.play) ){
             System.out.println( "Se ha pulsado el boton de play" );
-            
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.stop) ){
