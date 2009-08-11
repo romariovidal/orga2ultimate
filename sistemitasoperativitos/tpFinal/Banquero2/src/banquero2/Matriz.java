@@ -37,5 +37,22 @@ public class Matriz {
 
         return res;
     }
+
+        public Boolean arregloMenorOIgualQue(Integer fila, Vector v){
+        Boolean res = true;
+
+        for(Integer i=1; i<=8; i++){
+            res &= (v.dameValor(i) <= this.dameValor(fila, i));
+        }
+
+        return res;
+    }
+        public Vector dameFila(int i){
+         Vector res=null;
+         for(Integer j=1; j<=8; j++){
+            res.asignar(i, this.dameValor(i, j));
+        }
+            return res;
+    }
     
 }
