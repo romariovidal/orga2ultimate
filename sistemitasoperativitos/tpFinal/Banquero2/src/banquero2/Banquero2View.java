@@ -242,7 +242,7 @@ public class Banquero2View extends FrameView implements ActionListener {
     private JTextField[][] matrizNecesidadSimulacion;
     private JTextField[] vectorWorkSimulacion;
     private JTextField[] vectorFinishSimulacion;
-    private BanqueroFrameSeguimiento seguimientoSimulacion;
+    private PanelSim seguimientoSimulacion;
 
     private Button cargar, guardar, simular;
 
@@ -324,8 +324,8 @@ public class Banquero2View extends FrameView implements ActionListener {
         //seguimSimulacion = new BanqueroFrameSeguimiento();
         //JLabel seguimSimulacion = new JLabel("HOLA");
 
-        BanqueroFrameSeguimiento b = new BanqueroFrameSeguimiento();
-        JPanel seguimSimulacion = new PanelSim();
+        PanelSim seguimSimulacion = new PanelSim();
+        this.seguimientoSimulacion = seguimSimulacion;
 
         layoutSimulacion.setAutoCreateGaps(true);
         layoutSimulacion.setAutoCreateContainerGaps(true);
