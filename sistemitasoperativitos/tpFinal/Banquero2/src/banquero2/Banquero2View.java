@@ -242,11 +242,13 @@ public class Banquero2View extends FrameView implements ActionListener {
     private JTextField[][] matrizNecesidadSimulacion;
     private JTextField[] vectorWorkSimulacion;
     private JTextField[] vectorFinishSimulacion;
+    private BanqueroFrameSeguimiento seguimientoSimulacion;
 
     private Button cargar, guardar, simular;
 
     private JPanel panelLlenado;
     private JPanel panelSimulacion;
+
     
     private void initComponents2() {
         JPanel matTiene = new JPanel();
@@ -318,6 +320,13 @@ public class Banquero2View extends FrameView implements ActionListener {
         JPanel botonera = new JPanel();
         crearBotonera(botonera);
 
+        //BanqueroFrameSeguimiento seguimSimulacion = this.seguimientoSimulacion;
+        //seguimSimulacion = new BanqueroFrameSeguimiento();
+        //JLabel seguimSimulacion = new JLabel("HOLA");
+
+        BanqueroFrameSeguimiento b = new BanqueroFrameSeguimiento();
+        JPanel seguimSimulacion = new PanelSim();
+
         layoutSimulacion.setAutoCreateGaps(true);
         layoutSimulacion.setAutoCreateContainerGaps(true);
 
@@ -330,18 +339,23 @@ public class Banquero2View extends FrameView implements ActionListener {
                     .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
                     .addComponent(matAsignacionSim)
                     .addComponent(vectDisponiblesSim)
-                )               
+                )
+                .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(seguimSimulacion)
+                )
                 );
         layoutSimulacion.setVerticalGroup(
-                layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
-                .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(vectFinish)
-                    .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
+                layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addGroup(layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
+                        .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(vectFinish)
+                            .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
 
-                 )                 
-                    .addComponent(vectDisponiblesSim)
-                    .addComponent(matAsignacionSim)
-                 
+                        )
+                        .addComponent(vectDisponiblesSim)
+                        .addComponent(matAsignacionSim)
+                    )
+                    .addComponent(seguimSimulacion)
                 );
 
 

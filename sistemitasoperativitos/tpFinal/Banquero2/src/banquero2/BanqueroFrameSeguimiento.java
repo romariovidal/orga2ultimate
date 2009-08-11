@@ -4,22 +4,28 @@
  */
 
 /*
- * BanqueroSimulacion.java
+ * BanqueroFrameSeguimiento.java
  *
  * Created on Aug 11, 2009, 12:46:10 PM
  */
 
 package banquero2;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author tomas
  */
-public class BanqueroSimulacion extends javax.swing.JFrame {
+public class BanqueroFrameSeguimiento extends javax.swing.JFrame {
 
-    /** Creates new form BanqueroSimulacion */
-    public BanqueroSimulacion() {
+    /** Creates new form BanqueroFrameSeguimiento */
+    public BanqueroFrameSeguimiento() {
         initComponents();
+    }
+
+    public JFrame elFrame(){
+        return this;
     }
 
     /** This method is called from within the constructor to
@@ -60,7 +66,7 @@ public class BanqueroSimulacion extends javax.swing.JFrame {
 
         jSeparator1.setName("jSeparator1"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(banquero2.Banquero2App.class).getContext().getResourceMap(BanqueroSimulacion.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(banquero2.Banquero2App.class).getContext().getResourceMap(BanqueroFrameSeguimiento.class);
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
@@ -127,7 +133,7 @@ public class BanqueroSimulacion extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(iValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,10 +152,10 @@ public class BanqueroSimulacion extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)))
                     .addComponent(jLabel2))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,13 +240,13 @@ public class BanqueroSimulacion extends javax.swing.JFrame {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BanqueroSimulacion().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new BanqueroFrameSeguimiento().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField iValor;
