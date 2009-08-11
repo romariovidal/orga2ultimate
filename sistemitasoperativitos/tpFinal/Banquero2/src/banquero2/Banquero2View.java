@@ -559,7 +559,7 @@ public class Banquero2View extends FrameView implements ActionListener {
             //this.vectorPedido[i].setEditable(false);
             v[i].setToolTipText("Terminó el proceso " + i + "." );
             v[i].setEditable(false);
-            vectFinish.add(new JLabel("R"+i));
+            vectFinish.add(new JLabel("P"+i));
             vectFinish.add(v[i]);
         }
     }
@@ -738,9 +738,13 @@ public class Banquero2View extends FrameView implements ActionListener {
 
     private void pintarLineaMatriz(JTextField[][] m, Integer fila, Color col){
         for(Integer j=1; j<=8; j++){
-            m[fila][j].setForeground(Color.red);
+            m[fila][j].setForeground(col);
             //m[fila][j].set(Color.RED);
         }
+    }
+
+    private void pintarCeldaVector(JTextField[] v, Integer elem, Color col){
+        v[elem].setForeground(col);
     }
 
 
