@@ -181,12 +181,21 @@
             <Property name="text" type="java.lang.String" resourceKey="step.text"/>
             <Property name="name" type="java.lang.String" value="step" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="play">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="play.text"/>
             <Property name="name" type="java.lang.String" value="play" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="playMouseClicked"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -247,6 +256,9 @@
             <Property name="text" type="java.lang.String" resourceKey="iValor.text"/>
             <Property name="name" type="java.lang.String" value="iValor" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -259,12 +271,18 @@
             <Property name="text" type="java.lang.String" resourceKey="intevalo.text"/>
             <Property name="name" type="java.lang.String" value="intevalo" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="stop">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="stop.text"/>
             <Property name="name" type="java.lang.String" value="stop" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -277,6 +295,9 @@
             <Property name="text" type="java.lang.String" resourceKey="status.text"/>
             <Property name="name" type="java.lang.String" value="status" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

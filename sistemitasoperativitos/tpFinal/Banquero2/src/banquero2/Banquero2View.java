@@ -4,28 +4,12 @@
 
 package banquero2;
 
-import java.awt.GridLayout;
-import java.awt.Label;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.GroupLayout;
-import javax.swing.Timer;
-import javax.swing.Icon;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import javax.swing.GroupLayout;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
-import java.awt.Label;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -35,7 +19,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.*;
-import javax.swing.event.*;
 
 
 
@@ -326,6 +309,7 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         PanelSim seguimSimulacion = new PanelSim();
         this.seguimientoSimulacion = seguimSimulacion;
+        this.seguimientoSimulacion.step.addActionListener(this);
 
         layoutSimulacion.setAutoCreateGaps(true);
         layoutSimulacion.setAutoCreateContainerGaps(true);
@@ -629,7 +613,14 @@ public class Banquero2View extends FrameView implements ActionListener {
             this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
             this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
 
-         }         
+         }
+
+         if(evt.getSource().equals( this.seguimientoSimulacion.step) ){
+            System.out.println( "Se ha pulsado el boton de step" );
+            //this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
+            //this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
+
+         }
      }
      
     private String seleccionarArchivo() throws IOException {
@@ -736,7 +727,12 @@ public class Banquero2View extends FrameView implements ActionListener {
         }
     }
 
-
+    private void pintarLineaMatriz(JTextField[][] m, Integer fila, Color col){
+        for(Integer j=1; j<=8; j++){
+            m[fila][j].setBackground(Color.RED);
+            //m[fila][j].set(Color.RED);
+        }
+    }
 }
 
 

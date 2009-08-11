@@ -68,6 +68,11 @@ public class PanelSim extends javax.swing.JPanel {
 
         play.setText(resourceMap.getString("play.text")); // NOI18N
         play.setName("play"); // NOI18N
+        play.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                playMouseClicked(evt);
+            }
+        });
 
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
@@ -230,10 +235,14 @@ public class PanelSim extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void playMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField iValor;
-    private javax.swing.JTextField intevalo;
+    protected javax.swing.JTextField iValor;
+    protected javax.swing.JTextField intevalo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -248,10 +257,10 @@ public class PanelSim extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton play;
-    private javax.swing.JTextField status;
-    private javax.swing.JButton step;
-    private javax.swing.JButton stop;
+    protected javax.swing.JButton play;
+    protected javax.swing.JTextField status;
+    protected javax.swing.JButton step;
+    protected javax.swing.JButton stop;
     // End of variables declaration//GEN-END:variables
 
 }
