@@ -27,6 +27,38 @@ public class BanqueroAlgorithm {
         this.asignacion = asignacion;
         this.proceso = proceso;
     }
+
+    public Matriz getAsignacion() {
+        return asignacion;
+    }
+
+    public Vector getDisponibles() {
+        return disponibles;
+    }
+
+    public Vector getFinish() {
+        return finish;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public Matriz getNecesidad() {
+        return necesidad;
+    }
+
+    public int getPaso() {
+        return paso;
+    }
+
+    public int getProceso() {
+        return proceso;
+    }
+
+    public Vector getRequest() {
+        return request;
+    }
     
 
 
