@@ -18,7 +18,7 @@ public class BanqueroAlgorithm {
     private Matriz asignacion;
     private Integer procesoActual=1;
     private Integer proceso;
-    private Integer paso;
+    private Integer paso=1;
 
     public BanqueroAlgorithm(Matriz necesidad, Vector disponibles, Vector request, Matriz asignacion, Integer proceso) {
         this.necesidad = necesidad;
@@ -64,9 +64,9 @@ public class BanqueroAlgorithm {
 
     public BanqueroAlgorithm(){}
 
-    void nextStep(int i){
+    void nextStep(){
 
-        switch(i){
+        switch(paso){
             case 1:
                 pasoUno();
                 break;
