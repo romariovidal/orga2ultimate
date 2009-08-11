@@ -16,11 +16,11 @@ public class BanqueroAlgorithm {
     private Vector disponibles;
     private Vector request;
     private Matriz asignacion;
-    private int i=1;
-    private int proceso;
-    private int paso;
+    private Integer i=1;
+    private Integer proceso;
+    private Integer paso;
 
-    public BanqueroAlgorithm(Matriz necesidad, Vector disponibles, Vector request, Matriz asignacion, int proceso) {
+    public BanqueroAlgorithm(Matriz necesidad, Vector disponibles, Vector request, Matriz asignacion, Integer proceso) {
         this.necesidad = necesidad;
         this.disponibles = disponibles;
         this.request = request;
@@ -40,7 +40,7 @@ public class BanqueroAlgorithm {
         return finish;
     }
 
-    public int getI() {
+    public Integer getI() {
         return i;
     }
 
@@ -48,11 +48,11 @@ public class BanqueroAlgorithm {
         return necesidad;
     }
 
-    public int getPaso() {
+    public Integer getPaso() {
         return paso;
     }
 
-    public int getProceso() {
+    public Integer getProceso() {
         return proceso;
     }
 
@@ -118,4 +118,6 @@ public class BanqueroAlgorithm {
             paso++;
         }
     }
+
+
 }
