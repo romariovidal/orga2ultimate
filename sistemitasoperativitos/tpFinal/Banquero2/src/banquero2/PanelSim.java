@@ -22,18 +22,18 @@ public class PanelSim extends javax.swing.JPanel {
     /** Creates new form PanelSim */
     public PanelSim() {
         initComponents();
-        arrLabels = new JLabel[12];
+        arrLabels = new JLabel[11];
         arrLabels[1] = jLabel01;
         arrLabels[2] = jLabel02;
         arrLabels[3] = jLabel03;
-        arrLabels[4] = jLabel04;
-        arrLabels[5] = jLabel05;
-        arrLabels[6] = jLabel06;
-        arrLabels[7] = jLabel07;
-        arrLabels[8] = jLabel08;
-        arrLabels[9] = jLabel09;
-        arrLabels[10] = jLabel10;
-        arrLabels[11] = jLabel11;
+        //arrLabels[4] = jLabel04;
+        arrLabels[4] = jLabel05;
+        arrLabels[5] = jLabel06;
+        arrLabels[6] = jLabel07;
+        arrLabels[7] = jLabel08;
+        arrLabels[8] = jLabel09;
+        arrLabels[9] = jLabel10;
+        arrLabels[10] = jLabel11;
 
     }
 
@@ -315,7 +315,7 @@ public class PanelSim extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     protected javax.swing.JButton play;
-    private javax.swing.JLabel status;
+    protected javax.swing.JLabel status;
     protected javax.swing.JButton step;
     protected javax.swing.JButton stop;
     // End of variables declaration//GEN-END:variables

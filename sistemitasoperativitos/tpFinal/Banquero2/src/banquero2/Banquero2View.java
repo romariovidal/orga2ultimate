@@ -663,12 +663,21 @@ public class Banquero2View extends FrameView implements ActionListener {
             pintarLineaMatriz(this.matrizNecesidadSimulacion, unNumeroAleatorio, Color.ORANGE);
             pintarCeldaVector(this.vectorFinishSimulacion, unNumeroAleatorio, Color.PINK);
             pintarCeldaVector(this.vectorWorkSimulacion, unNumeroAleatorio, Color.GREEN);*/
+            this.seguimientoSimulacion.step.setEnabled(false);
             this.bankSolver.nextStep();
-            this.refrescar();
+            this.refrescar();//// DEShabilitar el botón
+            this.seguimientoSimulacion.step.setEnabled(true);
+            
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.play) ){
             System.out.println( "Se ha pulsado el boton de play" );
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.stop) ){
@@ -679,6 +688,8 @@ public class Banquero2View extends FrameView implements ActionListener {
          }
 
      }
+
+
      
     private String seleccionarArchivo() throws IOException {
         JFrame frame2 = new JFrame();        
@@ -807,7 +818,7 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
     private void pintarLabelVector(JLabel[] v, Integer elem, Color col){
-        for(Integer j=1; j<=8; j++){
+        for(Integer j=1; j< v.length; j++){
             v[j].setForeground(j.equals(elem) ? col : Color.black);
         }
     }
@@ -881,9 +892,13 @@ private void refrescar(){
         this.pintarLabelVector(this.seguimientoSimulacion.arrLabels, this.bankSolver.getPaso(), Color.RED);
         this.seguimientoSimulacion.iValor.setText(this.bankSolver.getI().toString());
         this.seguimientoSimulacion.status.setText(this.bankSolver.getPaso().toString());
+        //System.out.println("Estoy en el paso: " + this.bankSolver.getPaso() + "cuyo label dice");
+        this.rePintar(this.bankSolver.getModificaciones());
     }
 
-
+    private void rePintar(Integer[] modificaciones) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 
 
 
