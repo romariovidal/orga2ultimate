@@ -242,7 +242,8 @@ public class Banquero2View extends FrameView implements ActionListener {
     private Integer ladoMatriz = 300;
     private Integer ladoVector = 79;
 
-    
+    Timer timer;
+
     private void initComponents2() {
         JPanel matTiene = new JPanel();
         crearMatrizAsignacion(matTiene, false);
@@ -399,6 +400,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         this.panelSimulacion.setVisible(false);
         //lalalala.pack();
 
+        timer = new Timer(5000, this);
     }// </editor-fold>
     
     private void crearMatrizAsignacion(JPanel matTiene, Boolean simulando){
@@ -668,31 +670,43 @@ public class Banquero2View extends FrameView implements ActionListener {
             this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
             this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
             this.botoneraLlenado.setVisible(!this.botoneraLlenado.isShowing());
+            
+            this.seguimientoSimulacion.play.setText("Play");
+            this.seguimientoSimulacion.step.setEnabled(true);
+            this.seguimientoSimulacion.stop.setEnabled(true);
             this.copiarDatosParaIniciarSimulacion();
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.step) ){
             System.out.println( "Se ha pulsado el boton de step" );
-            /*Integer unNumeroAleatorio = ((int) (Math.random() * 10) % 5) + 1;
-            pintarLineaMatriz(this.matrizAsignacionSimulacion, unNumeroAleatorio, Color.RED);
-            pintarLineaMatriz(this.matrizNecesidadSimulacion, unNumeroAleatorio, Color.ORANGE);
-            pintarCeldaVector(this.vectorFinishSimulacion, unNumeroAleatorio, Color.PINK);
-            pintarCeldaVector(this.vectorWorkSimulacion, unNumeroAleatorio, Color.GREEN);*/
             this.seguimientoSimulacion.step.setEnabled(false);
-            this.bankSolver.nextStep();
-            this.refrescar();//// DEShabilitar el botón
+            this.doStep();
             this.seguimientoSimulacion.step.setEnabled(true);
-            
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.play) ){
             System.out.println( "Se ha pulsado el boton de play" );
+            
+            Integer delay = 500;
             try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                delay = Integer.parseInt(this.seguimientoSimulacion.intevalo.getText()) * 100;
+            } catch (NumberFormatException exception) {
+                 delay = 500;
             }
+
+            timer.setDelay(delay);
+            if(timer.isRunning()){
+                timer.stop();
+                this.seguimientoSimulacion.play.setText("Play");
+                this.seguimientoSimulacion.step.setEnabled(true);
+                this.seguimientoSimulacion.stop.setEnabled(true);
+            } else {
+                timer.start();
+                this.seguimientoSimulacion.play.setText("Stop");
+                this.seguimientoSimulacion.step.setEnabled(false);
+                this.seguimientoSimulacion.stop.setEnabled(false);
+            }
+            
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.stop) ){
@@ -702,8 +716,26 @@ public class Banquero2View extends FrameView implements ActionListener {
             this.botoneraLlenado.setVisible(!this.botoneraLlenado.isShowing());
          }
 
+         if(evt.getSource().equals( this.timer) ){
+//            System.out.println( "Ocurrio"  + iiiji);
+//            iiiji++;
+            if(this.bankSolver.getCorriendo()){
+                this.doStep();
+            } else {
+                this.timer.stop();
+                this.seguimientoSimulacion.play.setText("Play");
+                this.seguimientoSimulacion.step.setEnabled(true);
+                this.seguimientoSimulacion.stop.setEnabled(true);
+            }
+
+         }
+
      }
 
+    private void doStep(){        
+        this.bankSolver.nextStep();
+        this.refrescar();//// DEShabilitar el botón
+    }
 
      
     private String seleccionarArchivo() throws IOException {

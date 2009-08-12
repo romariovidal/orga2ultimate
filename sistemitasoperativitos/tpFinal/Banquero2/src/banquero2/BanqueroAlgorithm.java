@@ -20,6 +20,7 @@ public class BanqueroAlgorithm {
     private Integer proceso;
     private Integer paso=1;
     private Integer[] modificaciones;
+    private Boolean corriendo = true;
 
     private String status;
         /*  modificaciones[0] finish - vector
@@ -87,8 +88,13 @@ public class BanqueroAlgorithm {
         return status;
     }
 
+    public Boolean getCorriendo() {
+        return corriendo;
+    }
 
-    public BanqueroAlgorithm(){}
+
+
+    //public BanqueroAlgorithm(){}
 
     void nextStep(){
         this.reiniciarModif();
@@ -188,6 +194,7 @@ public class BanqueroAlgorithm {
         }else{
             paso=-1;
             this.status = "Terminado. Pide más de lo que anunció como máximo.";
+            this.corriendo = false;
         }
     }
 
@@ -202,6 +209,7 @@ public class BanqueroAlgorithm {
         }else{
             paso=-1;
             this.status = "Terminado. No hay recursos disponible para satisfacer el pedido.";
+            this.corriendo = false;
         }
     }
     /**
@@ -211,7 +219,7 @@ public class BanqueroAlgorithm {
         disponibles.quitar(request);
         necesidad.restarFila(proceso, request);
         asignacion.agregar(proceso, request);
-        System.out.println("Aca debería cambiar");
+        //System.out.println("Aca debería cambiar");
         paso++;
     }
 
@@ -292,6 +300,8 @@ public class BanqueroAlgorithm {
             System.out.println("El sistema esta en estado seguro");
             this.status = "Terminado. No se puede otorgar ya que queda en estado inseguro.";
         }
+        this.corriendo = false;
+
     }
 
     private void reiniciarModif(){
