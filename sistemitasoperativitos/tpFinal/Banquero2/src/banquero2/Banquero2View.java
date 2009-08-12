@@ -236,10 +236,24 @@ public class Banquero2View extends FrameView implements ActionListener {
     private JPanel panelSimulacion;
     private BanqueroAlgorithm bankSolver;
 
+    private Font fontBold;
+    private Font fontNormal;
+
+    private Integer ladoMatriz = 300;
+    private Integer ladoVector = 79;
+
     
     private void initComponents2() {
         JPanel matTiene = new JPanel();
         crearMatrizAsignacion(matTiene, false);
+
+        this.fontBold =new Font(this.matrizAsignacion[1][1].getFont().getName(),
+                Font.BOLD,
+                this.matrizAsignacion[1][1].getFont().getSize()+1);
+        this.fontNormal =new Font(this.matrizAsignacion[1][1].getFont().getName(),
+                Font.PLAIN,
+                this.matrizAsignacion[1][1].getFont().getSize());
+
 
         JPanel matNecesidad = new JPanel();
         crearMatrizMaximosONecesidad(matNecesidad, false);
@@ -263,24 +277,24 @@ public class Banquero2View extends FrameView implements ActionListener {
         layoutLlenado.setHorizontalGroup(
                 layoutLlenado.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(matTiene)
-                    .addComponent(vectDisponibles)
+                    .addComponent(matTiene, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(vectDisponibles, ladoMatriz, ladoMatriz, ladoMatriz)
                 )
                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(matNecesidad) //.addGap(180, Short.MAX_VALUE))
-                    .addComponent(vectPedido)
+                    .addComponent(matNecesidad, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(vectPedido, ladoMatriz, ladoMatriz, ladoMatriz)
                     )
                 );
         layoutLlenado.setVerticalGroup(
                 layoutLlenado.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(matTiene)
-                    .addComponent(matNecesidad) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(matTiene, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(matNecesidad, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
 
                  )
                  .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(vectDisponibles)
-                    .addComponent(vectPedido)
+                    .addComponent(vectDisponibles, ladoVector, ladoVector, ladoVector)
+                    .addComponent(vectPedido, ladoVector, ladoVector, ladoVector)
                     )
                 );
 
@@ -327,16 +341,16 @@ public class Banquero2View extends FrameView implements ActionListener {
         layoutSimulacion.setHorizontalGroup(
                 layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(vectFinish)
+                    .addComponent(vectFinish, ladoVector, ladoVector, ladoVector)
                     .addGap(60)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
-                    .addComponent(matAsignacionSim)
-                    .addComponent(vectDisponiblesSim)
+                    .addComponent(matNecesidadSim, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(matAsignacionSim, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(vectDisponiblesSim, ladoMatriz, ladoMatriz, ladoMatriz)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(vectPedido2, 400, 400, 400)
+                    .addComponent(vectPedido2, ladoMatriz, ladoMatriz, ladoMatriz)
                     .addComponent(seguimSimulacion)
                 )
                 );
@@ -344,15 +358,15 @@ public class Banquero2View extends FrameView implements ActionListener {
                 layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addGroup(layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
                         .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(vectFinish)
-                            .addComponent(matNecesidadSim) //.addGap(180, Short.MAX_VALUE))
+                            .addComponent(vectFinish, ladoMatriz, ladoMatriz, ladoMatriz)
+                            .addComponent(matNecesidadSim, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
 
                         )
-                        .addComponent(vectDisponiblesSim)
-                        .addComponent(matAsignacionSim)
+                        .addComponent(vectDisponiblesSim, ladoVector, ladoVector, ladoVector)
+                        .addComponent(matAsignacionSim, ladoMatriz, ladoMatriz, ladoMatriz)
                     )
                     .addGroup(layoutSimulacion.createSequentialGroup()
-                        .addComponent(vectPedido2, 100, 100, 100)
+                        .addComponent(vectPedido2, ladoVector, ladoVector, ladoVector)
                         .addComponent(seguimSimulacion)
                     )
                 );
@@ -371,14 +385,14 @@ public class Banquero2View extends FrameView implements ActionListener {
                 layoutGral.createSequentialGroup() //.addGap(160,260,36)
                     .addComponent(panelLlenado)
                     .addComponent(panelSimulacion)
-                    .addComponent(botoneraLlenado)
+                    .addComponent(botoneraLlenado, 140, 140, 140)
                 );
         layoutGral.setVerticalGroup(
                 layoutGral.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutGral.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(panelLlenado)
                     .addComponent(panelSimulacion)
-                    .addComponent(botoneraLlenado) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(botoneraLlenado, 200, 200, 200) //.addGap(180, Short.MAX_VALUE))
                  )
                 );
 
@@ -606,7 +620,8 @@ public class Banquero2View extends FrameView implements ActionListener {
         this.cargar = new Button("Cargar");
         this.guardar = new Button("Guardar");
         this.simular = new Button("Simular");
-        
+
+        botonera.add(new Label(""));
         botonera.add(this.cargar);
         botonera.add(this.guardar);
         botonera.add(this.simular);
@@ -799,7 +814,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         for(Integer i=1; i<=8; i++){
             for(Integer j=1; j<=8; j++){
                 m[i][j].setForeground(i.equals(fila) ? col : Color.black);
-                //m[fila][j].set(Color.RED);
+                m[i][j].setFont(i.equals(fila) ? this.fontBold : this.fontNormal);
             }
         }
     }
@@ -807,6 +822,8 @@ public class Banquero2View extends FrameView implements ActionListener {
     private void pintarCeldaVector(JTextField[] v, Integer elem, Color col){
         for(Integer j=1; j<=8; j++){
             v[j].setForeground(j.equals(elem) ? col : Color.black);
+            v[j].setFont(j.equals(elem) ? this.fontBold : this.fontNormal);
+
         }
         
     }
@@ -815,18 +832,22 @@ public class Banquero2View extends FrameView implements ActionListener {
         for(Integer i=1; i<=8; i++){
             for(Integer j=1; j<=8; j++){
                 m[i][j].setForeground(col);
+                m[i][j].setFont(col.equals(Color.RED) ? this.fontBold : this.fontNormal);
+
             }
         }
     }
     private void pintarVector(JTextField[] v, Color col){
         for(Integer j=1; j<=8; j++){
             v[j].setForeground(col);
+            v[j].setFont(col.equals(Color.RED) ? this.fontBold : this.fontNormal);
         }
     }
 
     private void pintarLabelVector(JLabel[] v, Integer elem, Color col){
         for(Integer j=1; j< v.length; j++){
             v[j].setForeground(j.equals(elem) ? col : Color.black);
+            v[j].setFont(j.equals(elem) ? this.fontBold : this.fontNormal);
         }
     }
 
@@ -874,7 +895,7 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
 
-private void refrescar(){
+    private void refrescar(){
         Integer aux = 0;
         for(Integer i=1; i<=8; i++){
             for(Integer j=1; j<=8; j++){
@@ -898,7 +919,7 @@ private void refrescar(){
         }
         this.pintarLabelVector(this.seguimientoSimulacion.arrLabels, this.bankSolver.getPaso(), Color.RED);
         this.seguimientoSimulacion.iValor.setText(this.bankSolver.getI().toString());
-        this.seguimientoSimulacion.status.setText(this.bankSolver.getPaso().toString());
+        this.seguimientoSimulacion.status.setText(this.bankSolver.getStatus());
         //System.out.println("Estoy en el paso: " + this.bankSolver.getPaso() + "cuyo label dice");
         this.rePintar(this.bankSolver.getModificaciones());
     }
@@ -946,6 +967,16 @@ private void refrescar(){
                     else
                         pintarVector(this.vectorPedidoSimulacion, Color.BLACK);
                     break;
+                case 5:
+                    if(modif[i].equals(-1)){
+                        this.seguimientoSimulacion.iValor.setFont(fontBold);
+                        this.seguimientoSimulacion.iValor.setForeground(Color.RED);
+                    } else if(modif[i].equals(0)){
+                        this.seguimientoSimulacion.iValor.setFont(fontNormal);
+                        this.seguimientoSimulacion.iValor.setForeground(Color.BLACK);
+                    }
+                    break;
+
             }
 
         }

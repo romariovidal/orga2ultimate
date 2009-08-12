@@ -56,9 +56,21 @@ public class Matriz {
             return res;
     }
 
+    void agregar(Integer fila, Vector v) {
+        for(Integer j=1; j<=8; j++){
+            this.asignar(fila, j, this.dameValor(fila, j)+v.dameValor(j));
+        }
+    }
+
     void ponerCerosEnFila(Integer procesoActual) {
         for(Integer j=1; j<=8; j++){
             this.asignar(procesoActual,j,0);
+        }
+    }
+
+    void restarFila(Integer fila, Vector v) {
+        for(Integer j=1; j<=8; j++){
+            this.asignar(fila, j, this.dameValor(fila, j)-v.dameValor(j));
         }
     }
     

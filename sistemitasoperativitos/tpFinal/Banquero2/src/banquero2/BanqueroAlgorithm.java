@@ -16,15 +16,18 @@ public class BanqueroAlgorithm {
     private Vector disponibles;
     private Vector request;
     private Matriz asignacion;
-    private Integer procesoActual=1;
+    private Integer procesoActual=0;
     private Integer proceso;
     private Integer paso=1;
     private Integer[] modificaciones;
+
+    private String status;
         /*  modificaciones[0] finish - vector
          *  modificaciones[1] necesidad - matriz
          *  modificaciones[2] disponibles - vector
          *  modificaciones[3] asignacion - matriz
          *  modificaciones[4] request - vector
+         *  modificaciones[5] iValor - label
          * -1 todo, 0 nada, i fila o celda según corresponda
          */
 
@@ -34,10 +37,12 @@ public class BanqueroAlgorithm {
         this.request = request;
         this.asignacion = asignacion;
         this.proceso = proceso;
-        this.modificaciones = new Integer[5];
+        this.procesoActual = proceso;
+        this.modificaciones = new Integer[6];
         this.reiniciarModif();
         this.modificaciones[1] = proceso;
         this.modificaciones[4] = -1;
+        this.status = "Corriendo Banquero";
     }
 
     public Matriz getAsignacion() {
@@ -75,7 +80,10 @@ public class BanqueroAlgorithm {
     public Integer[] getModificaciones() {
         return modificaciones;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
 
 
     public BanqueroAlgorithm(){}
@@ -113,37 +121,56 @@ public class BanqueroAlgorithm {
             case 10:
                 pasoDiez();
                 break;
+            case 11:
+                pasoOnce();
+                break;
             default:
                 System.out.println("Error: numero de paso invalido, para la simulacion");
         }
 
         switch(paso){
-            case 1:
+            case 1:                
+                break;
+            case 2:
                 this.modificaciones[4] = -1;
                 this.modificaciones[2] = -1;
                 break;
-            case 2:
-                break;
             case 3:
-                this.modificaciones[0] = procesoActual;
+                this.modificaciones[4] = -1;
+                this.modificaciones[2] = -1;
+                this.modificaciones[1] = proceso;
+                this.modificaciones[3] = proceso;
                 break;
             case 4:
-                this.modificaciones[1] = procesoActual;
+                this.modificaciones[4] = -1;
                 this.modificaciones[2] = -1;
+                this.modificaciones[1] = proceso;
+                this.modificaciones[3] = proceso;
                 break;
             case 5:
+                this.modificaciones[5] = -1;
+                this.modificaciones[0] = procesoActual;
                 break;
             case 6:
+                this.modificaciones[1] = procesoActual;
                 this.modificaciones[2] = -1;
-                this.modificaciones[3] = procesoActual;
                 break;
             case 7:
                 break;
             case 8:
+                this.modificaciones[2] = -1;
+                this.modificaciones[3] = procesoActual;
                 break;
             case 9:
+                this.modificaciones[0] = procesoActual;
+                this.modificaciones[2] = -1;
+                this.modificaciones[3] = procesoActual;
                 break;
             case 10:
+                this.modificaciones[0] = procesoActual;
+                break;
+            case 11:
+                this.modificaciones[0] = -1;
                 break;
             default:
                 System.out.println("Error: numero de paso invalido, para la simulacion");
@@ -158,6 +185,7 @@ public class BanqueroAlgorithm {
             paso++;
         }else{
             paso=-1;
+            this.status = "Terminado. Pide más de lo que anunció como máximo.";
         }
     }
 
@@ -171,19 +199,30 @@ public class BanqueroAlgorithm {
             paso++;
         }else{
             paso=-1;
+            this.status = "Terminado. No hay recursos disponible para satisfacer el pedido.";
         }
     }
     /**
      * Simular asignacion y correr el algoritmo de seguridad.
      */
     void pasoTres(){
+        disponibles.quitar(request);
+        necesidad.restarFila(proceso, request);
+        asignacion.agregar(proceso, request);
+        System.out.println("Aca debería cambiar");
         paso++;
+    }
+
+     void pasoCuatro(){
+        paso++;
+        procesoActual = 1;
+        this.status = "Corriendo Algoritmo de Seguridad";
     }
 
     /**
      * Finish[i] == false
      */
-    void pasoCuatro(){
+    void pasoCinco(){
         //System.out.println("El valor de la matriz de finish para " + procesoActual + " es "+finish.dameValor(procesoActual));
         
 
@@ -191,8 +230,9 @@ public class BanqueroAlgorithm {
             paso++;
         } else {
             procesoActual++;
+            this.modificaciones[5] = -1;
             if(procesoActual>8){
-                paso=6;
+                paso=7;
             }
         }
     }
@@ -200,16 +240,17 @@ public class BanqueroAlgorithm {
     /**
      * Need(i) <= Work
      */
-    void pasoCinco(){
+    void pasoSeis(){
         
         if(necesidad.filaEsMenorOIgual(procesoActual, disponibles)){
             paso+=2;
         } else {
             procesoActual++;
+            this.modificaciones[5] = -1;
             if(procesoActual>8){
-                paso=6;
+                paso=7;
             } else {
-                paso = 4;
+                paso = 5;
             }
         }
     }
@@ -217,34 +258,37 @@ public class BanqueroAlgorithm {
     /**
      * Si no existe i que cumpla estas condiciones ir al paso 3.
      */
-    void pasoSeis(){
-        paso=10;
+    void pasoSiete(){
+        paso=11;
     }
     
-    void pasoSiete(){
+    void pasoOcho(){
         
         disponibles.agregar(asignacion.dameFila(procesoActual));
         asignacion.ponerCerosEnFila(procesoActual);
         paso++;
     }
 
-    void pasoOcho(){
-        this.modificaciones[0] = procesoActual;
+    void pasoNueve(){
+        
         finish.asignar(procesoActual, 1);
         paso++;
     }
 
-    void pasoNueve(){
-        paso=4;
+    void pasoDiez(){
+        paso=5;
         procesoActual=1;
+        this.modificaciones[5] = -1;
     }
 
-    void pasoDiez(){
+    void pasoOnce(){
         Vector vector = new Vector(1);
         if(finish.mayorOIgual(vector)){
             System.out.println("El sistema esta en estado seguro");
+            this.status = "Terminado. Se puede otorgar el pedido ya que existe una secuencia segura después de otorgarlo.";
         } else {
             System.out.println("El sistema esta en estado seguro");
+            this.status = "Terminado. No se puede otorgar ya que queda en estado inseguro.";
         }
     }
 
