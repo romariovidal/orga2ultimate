@@ -401,6 +401,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         //lalalala.pack();
 
         timer = new Timer(5000, this);
+        timer.setInitialDelay(0);
     }// </editor-fold>
     
     private void crearMatrizAsignacion(JPanel matTiene, Boolean simulando){
@@ -690,7 +691,7 @@ public class Banquero2View extends FrameView implements ActionListener {
             Integer delay = 500;
             try {
                 delay = Integer.parseInt(this.seguimientoSimulacion.intevalo.getText()) * 100;
-            } catch (NumberFormatException exception) {
+            } catch (NumberFormatException ex) {
                  delay = 500;
             }
 
