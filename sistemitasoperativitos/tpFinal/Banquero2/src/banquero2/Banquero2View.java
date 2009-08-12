@@ -351,7 +351,7 @@ public class Banquero2View extends FrameView implements ActionListener {
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(vectPedido2, ladoMatriz, ladoMatriz, ladoMatriz)
-                    .addComponent(seguimSimulacion)
+                    .addComponent(seguimSimulacion, 500, 500, 500)
                 )
                 );
         layoutSimulacion.setVerticalGroup(

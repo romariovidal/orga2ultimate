@@ -31,16 +31,18 @@ public class BanqueroAlgorithm {
          * -1 todo, 0 nada, i fila o celda según corresponda
          */
 
-    public BanqueroAlgorithm(Matriz necesidad, Vector disponibles, Vector request, Matriz asignacion, Integer proceso) {
+    public BanqueroAlgorithm(Matriz necesidad, Vector disponibles, Vector request, Matriz asignacion, Integer proc) {
         this.necesidad = necesidad;
         this.disponibles = disponibles;
         this.request = request;
         this.asignacion = asignacion;
-        this.proceso = proceso;
-        this.procesoActual = proceso;
+        if (proc.equals(0))
+            proc = 1;
+        this.proceso = proc;
+        this.procesoActual = proc;
         this.modificaciones = new Integer[6];
         this.reiniciarModif();
-        this.modificaciones[1] = proceso;
+        this.modificaciones[1] = proc;
         this.modificaciones[4] = -1;
         this.status = "Corriendo Banquero";
     }
