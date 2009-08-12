@@ -36,6 +36,8 @@ public class BanqueroAlgorithm {
         this.proceso = proceso;
         this.modificaciones = new Integer[5];
         this.reiniciarModif();
+        this.modificaciones[1] = proceso;
+        this.modificaciones[4] = -1;
     }
 
     public Matriz getAsignacion() {
@@ -115,13 +117,43 @@ public class BanqueroAlgorithm {
                 System.out.println("Error: numero de paso invalido, para la simulacion");
         }
 
+        switch(paso){
+            case 1:
+                this.modificaciones[4] = -1;
+                this.modificaciones[2] = -1;
+                break;
+            case 2:
+                break;
+            case 3:
+                this.modificaciones[0] = procesoActual;
+                break;
+            case 4:
+                this.modificaciones[1] = procesoActual;
+                this.modificaciones[2] = -1;
+                break;
+            case 5:
+                break;
+            case 6:
+                this.modificaciones[2] = -1;
+                this.modificaciones[3] = procesoActual;
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            default:
+                System.out.println("Error: numero de paso invalido, para la simulacion");
+        }
+
     }
     /**
      * Si Request <= Need(i), ir al paso 2, sino terminar.
      */
     void pasoUno(){
-        this.modificaciones[1] = -1;
-        this.modificaciones[4] = -1;
         if(necesidad.arregloMenorOIgualQue(proceso, request)){
             paso++;
         }else{
@@ -134,8 +166,7 @@ public class BanqueroAlgorithm {
      * Si Request <= Available, ir al paso 3, sino terminar.
      */
     void pasoDos(){
-        this.modificaciones[4] = -1;
-        this.modificaciones[2] = -1;
+
         if(request.mayorOIgual(disponibles)){
             paso++;
         }else{
@@ -154,7 +185,7 @@ public class BanqueroAlgorithm {
      */
     void pasoCuatro(){
         //System.out.println("El valor de la matriz de finish para " + procesoActual + " es "+finish.dameValor(procesoActual));
-        this.modificaciones[0] = procesoActual;
+        
 
         if(finish.dameValor(procesoActual).equals(0)){
             paso++;
@@ -170,7 +201,7 @@ public class BanqueroAlgorithm {
      * Need(i) <= Work
      */
     void pasoCinco(){
-        this.modificaciones[1] = procesoActual;
+        
         if(necesidad.filaEsMenorOIgual(procesoActual, disponibles)){
             paso+=2;
         } else {
@@ -191,8 +222,7 @@ public class BanqueroAlgorithm {
     }
     
     void pasoSiete(){
-        this.modificaciones[2] = -1;
-        this.modificaciones[3] = procesoActual;
+        
         disponibles.agregar(asignacion.dameFila(procesoActual));
         asignacion.ponerCerosEnFila(procesoActual);
         paso++;

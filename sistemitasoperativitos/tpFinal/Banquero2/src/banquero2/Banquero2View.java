@@ -811,6 +811,13 @@ public class Banquero2View extends FrameView implements ActionListener {
         
     }
 
+    private void pintarMatriz(JTextField[][] m, Color col){
+        for(Integer i=1; i<=8; i++){
+            for(Integer j=1; j<=8; j++){
+                m[i][j].setForeground(col);
+            }
+        }
+    }
     private void pintarVector(JTextField[] v, Color col){
         for(Integer j=1; j<=8; j++){
             v[j].setForeground(col);
@@ -896,8 +903,52 @@ private void refrescar(){
         this.rePintar(this.bankSolver.getModificaciones());
     }
 
-    private void rePintar(Integer[] modificaciones) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    private void rePintar(Integer[] modif) {
+        for(Integer i=0; i<modif.length; i++){
+            switch (i){
+                case 0:
+                    if(modif[i].equals(-1))
+                        pintarVector(this.vectorFinishSimulacion, Color.RED);
+                    else if(!modif[i].equals(0))
+                        pintarCeldaVector(this.vectorFinishSimulacion, modif[i], Color.RED);
+                    else
+                        pintarVector(this.vectorFinishSimulacion, Color.BLACK);
+                    break;
+                case 1:
+                    if(modif[i].equals(-1))
+                        pintarMatriz(this.matrizNecesidadSimulacion, Color.RED);
+                    else if(!modif[i].equals(0))
+                        pintarLineaMatriz(this.matrizNecesidadSimulacion, modif[i], Color.RED);
+                    else
+                        pintarMatriz(this.matrizNecesidadSimulacion, Color.BLACK);
+                    break;
+                case 2:
+                    if(modif[i].equals(-1))
+                        pintarVector(this.vectorWorkSimulacion, Color.RED);
+                    else if(!modif[i].equals(0))
+                        pintarCeldaVector(this.vectorWorkSimulacion, modif[i], Color.RED);
+                    else
+                        pintarVector(this.vectorWorkSimulacion, Color.BLACK);
+                    break;
+                case 3:
+                    if(modif[i].equals(-1))
+                        pintarMatriz(this.matrizAsignacionSimulacion, Color.RED);
+                    else if(!modif[i].equals(0))
+                        pintarLineaMatriz(this.matrizAsignacionSimulacion, modif[i], Color.RED);
+                    else
+                        pintarMatriz(this.matrizAsignacionSimulacion, Color.BLACK);
+                    break;
+                case 4:
+                    if(modif[i].equals(-1))
+                        pintarVector(this.vectorPedidoSimulacion, Color.RED);
+                    else if(!modif[i].equals(0))
+                        pintarCeldaVector(this.vectorPedidoSimulacion, modif[i], Color.RED);
+                    else
+                        pintarVector(this.vectorPedidoSimulacion, Color.BLACK);
+                    break;
+            }
+
+        }
     }
 
 
