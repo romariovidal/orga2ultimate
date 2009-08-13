@@ -43,10 +43,18 @@ public class Instance {
         this.nodos[nodo]=false;
     }
 
+    /**
+     *
+     * @return el nodo que inicializa el algoritmo.
+     */
     public Integer dameInicial(){
         return this.listados.get(listados.size()-1);
     }
 
+    /**
+     * Agrega un mensaje de log a la lista.
+     * @param logMsg
+     */
     public void log(String logMsg){
         this.log.add(logMsg);
     }
@@ -54,6 +62,39 @@ public class Instance {
     public void agregarAListados(Integer nodo){
         this.listados.add(nodo);
     }
+
+    public List<Integer> getListados() {
+        return listados;
+    }
+
+    public Boolean[] getNodos() {
+        return nodos;
+    }
+
+    public Integer getViejoCoordinador() {
+        return viejoCoordinador;
+    }
+
+    public void setListados(List<Integer> listados) {
+        this.listados = listados;
+    }
+
+    public void setLog(List<String> log) {
+        this.log = log;
+    }
+
+    public void setNodos(Boolean[] nodos) {
+        this.nodos = nodos;
+    }
+
+    public void setNuevoCoordinador(Integer nuevoCoordinador) {
+        this.nuevoCoordinador = nuevoCoordinador;
+    }
+
+    public void setViejoCoordinador(Integer viejoCoordinador) {
+        this.viejoCoordinador = viejoCoordinador;
+    }
+
 
 
 }
