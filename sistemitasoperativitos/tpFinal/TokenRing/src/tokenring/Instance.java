@@ -11,24 +11,22 @@ public class Instance {
 
     private Boolean[] nodos; //nodos que estan vivos cuando comienza la corrida del algoritmo.
     private List<Integer> listados; //nodos que estan el la lista de donde se eligira el coordinador.
-    private Integer viejoCoordinador; //el que todos creen que es el coordinador.
+    private Integer coordinador; //el que todos creen que es el coordinador.
     private List<String> log; //mensajes de log para mostrar en la consola.
-    private Integer nuevoCoordinador; //el que sera coordinador cuando termine la corrida del algoritmo. (podria ser el mismo que el viejo si es que cuando se mando a correr la simulacion el coordinador estaba vivo)
     
-    private Instance(Integer viejoCoordinador) {
+    private Instance() {
         this.nodos = new Boolean[8];
+        for (int i=1;i<nodos.length;i++) {
+            this.nodos[i]=true;
+        }
         this.listados = new LinkedList<Integer>();        
-        this.viejoCoordinador = viejoCoordinador;
+        this.coordinador = 7;
         this.log = new LinkedList<String>();
     }
 
-    public static Instance create(Integer inicial, Integer viejoCoordinador){
-        Instance instance = new Instance(viejoCoordinador);
+    public static Instance create(){
+        Instance instance = new Instance();
     return instance;
-    }
-
-    public Integer getNuevoCoordinador(){
-        return this.nuevoCoordinador;
     }
 
     public List<String> getLog(){
@@ -71,8 +69,8 @@ public class Instance {
         return nodos;
     }
 
-    public Integer getViejoCoordinador() {
-        return viejoCoordinador;
+    public Integer getCoordinador() {
+        return coordinador;
     }
 
     public void setListados(List<Integer> listados) {
@@ -87,12 +85,8 @@ public class Instance {
         this.nodos = nodos;
     }
 
-    public void setNuevoCoordinador(Integer nuevoCoordinador) {
-        this.nuevoCoordinador = nuevoCoordinador;
-    }
-
-    public void setViejoCoordinador(Integer viejoCoordinador) {
-        this.viejoCoordinador = viejoCoordinador;
+    public void setCoordinador(Integer coordinador) {
+        this.coordinador = coordinador;
     }
 
 
