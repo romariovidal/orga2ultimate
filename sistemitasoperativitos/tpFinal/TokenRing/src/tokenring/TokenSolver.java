@@ -11,22 +11,21 @@ package tokenring;
  */
 public class TokenSolver {
 
-    public Instance nextStep(Instance instance){
+    private Instance instance;
+
+    public TokenSolver(Instance instance) {
+        this.instance = instance;
+    }
+
+
+
+    public void  nextStep(){
         // cheque que el coordinador este realmente bajo.
         int intCoord=instance.getCoordinador();
         if(instance.getNodos()[intCoord].equals(true)){
             instance.log("El coordinador esta vivo!... is alive!");
-            return instance;
+            instance.setFinish(true);
         }
-
-
-
-
-
-
-
-
-        return instance;
     }
 
 
