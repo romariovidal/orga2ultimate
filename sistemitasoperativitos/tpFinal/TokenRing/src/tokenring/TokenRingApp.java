@@ -4,19 +4,26 @@
 
 package tokenring;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
 /**
  * The main class of the application.
  */
-public class TokenRingApp extends SingleFrameApplication {
+public class TokenRingApp extends SingleFrameApplication implements ActionListener {
 
     /**
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
-        show(new TokenRingView(this));
+        this.tokenView = new TokenRingView(this);
+        this.timer = new Timer(5000, this);
+        this.timer.setInitialDelay(0);
+        this.timerChange();
+        show(this.tokenView);
     }
 
     /**
@@ -31,7 +38,7 @@ public class TokenRingApp extends SingleFrameApplication {
      * A convenient static getter for the application instance.
      * @return the instance of TokenRingApp
      */
-    public static TokenRingApp getApplication() {
+    public static TokenRingApp getApplication() {        
         return Application.getInstance(TokenRingApp.class);
     }
 
@@ -39,6 +46,27 @@ public class TokenRingApp extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
-        launch(TokenRingApp.class, args);
+        launch(TokenRingApp.class, args);        
     }
+
+    private Instance tokenInstance = Instance.create();
+    private TokenRingView tokenView;
+    private Timer timer;
+
+    public void refrescarGraficos(){
+        this.tokenView.appendLog(new java.util.Date().toString());
+    }
+
+    public void timerChange(){
+        if(this.timer.isRunning()){
+            this.timer.stop();
+        } else{
+            this.timer.start();
+        }
+    }
+
+    public void actionPerformed(ActionEvent arg0) {
+        this.refrescarGraficos();
+    }
+    
 }

@@ -4,6 +4,8 @@
 
 package tokenring;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -11,20 +13,27 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.GroupLayout;
 import javax.swing.Timer;
 import javax.swing.Icon;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
 
 /**
  * The application's main frame.
  */
-public class TokenRingView extends FrameView {
+public class TokenRingView extends FrameView implements ActionListener {
 
     public TokenRingView(SingleFrameApplication app) {
         super(app);
 
         initComponents();
+        initComponents2();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -204,5 +213,115 @@ public class TokenRingView extends FrameView {
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
 
+    private final static String newline = "\n";
+
     private JDialog aboutBox;
+
+    private SimulacionDibujo unDibujo;
+    private JButton[] botonesUpDown;
+    private JButton[] botonesCoordinador;
+    private JTextArea logs;
+    
+
+    private Integer v1 = 80;
+    private Integer v2 = 550;
+    private Integer h1 = 600;
+    private Integer h2 = 400;
+    private Integer h3 = h1+h2;
+
+
+    private void initComponents2() {
+        this.statusMessageLabel.setText("Estamos trabajando para usted");
+        this.unDibujo = new SimulacionDibujo();
+
+        JPanel botonera = new JPanel();
+        this.botonesUpDown = new JButton[8];
+        this.botonesCoordinador = new JButton[8];
+        crearBotonera(botonera);
+
+        JPanel consola = new JPanel();
+        this.logs = new JTextArea();
+        //this.logs.setSize(new Dimension (400, 200));
+        logs.setEditable(false);
+        this.appendLog("Iniciando simulación");
+        
+        JScrollPane areaScrollPane = new JScrollPane(logs);
+        areaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        //areaScrollPane.setPreferredSize(new Dimension(h2-80, v2-80));
+
+        consola.setLayout(new GridLayout(1, 1));
+        consola.add(areaScrollPane);
+        consola.setBorder(new TitledBorder("Logs"));
+
+        GroupLayout layoutGral = new GroupLayout(mainPanel);
+        mainPanel.setLayout(layoutGral);
+        mainPanel.setSize(new Dimension(h3, v1+v2));
+        layoutGral.setAutoCreateGaps(true);
+        layoutGral.setAutoCreateContainerGaps(true);
+        layoutGral.setHorizontalGroup(
+                layoutGral.createSequentialGroup() //.addGap(160,260,36)                   
+                    .addGroup(layoutGral.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(botonera, h3, h3, h3)
+                        .addGroup(layoutGral.createSequentialGroup()
+                            .addComponent(this.unDibujo, h1, h1, h1)
+                            .addComponent(consola, h2, h2, h2)
+                        )
+                    )                    
+                );
+        layoutGral.setVerticalGroup(
+                layoutGral.createSequentialGroup() //.addGap(160,260,36)
+                .addComponent(botonera, v1, v1, v1)
+                .addGroup(layoutGral.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(this.unDibujo, v2, v2, v2)
+                    .addComponent(consola, v2, v2, v2)
+                 )
+                );
+
+
+    }
+
+    private void crearBotonera (JPanel botonera) {
+        GridLayout layout = new GridLayout(2, 8);
+        layout.setHgap(2);
+        layout.setVgap(2);
+
+        botonera.setLayout(layout);
+
+        for (Integer i=0; i< this.botonesUpDown.length; i++){
+            this.botonesUpDown[i] = new JButton("Offline - nodo " + i);
+            this.botonesUpDown[i].setToolTipText("Cambiar estado del nodo " + i);
+            botonera.add(this.botonesUpDown[i]);
+            this.botonesUpDown[i].addActionListener(this);
+        }        
+
+        for (Integer i=0; i< this.botonesCoordinador.length; i++){
+            this.botonesCoordinador[i] = new JButton("AYA Coordinador ");
+            this.botonesCoordinador[i].setToolTipText("Enviar AYA al coordinador desde el nodo " + i);
+            botonera.add(this.botonesCoordinador[i]);
+            this.botonesCoordinador[i].addActionListener(this);
+        }
+        
+    }
+
+    public void actionPerformed(ActionEvent evt) {
+        for (Integer i=0; i< this.botonesUpDown.length; i++){
+            if( evt.getSource().equals( this.botonesUpDown[i] ) ){
+                System.out.println( "Se ha pulsado el botón de Offline nodo " + i );
+                this.appendLog("Se ha pulsado el botón de Offline nodo " + i);
+                this.unDibujo.paint();
+            }
+        }
+
+        for (Integer i=0; i< this.botonesCoordinador.length; i++){
+            if( evt.getSource().equals( this.botonesCoordinador[i] ) ){
+                System.out.println( "El nodo " + i + " está AYA al coordinador");
+                this.appendLog("El nodo " + i + " está AYA al coordinador");
+                this.unDibujo.limpiar();
+            }
+        }
+    }
+
+    public void appendLog(String st){
+        this.logs.append(st + newline);
+    }
 }
