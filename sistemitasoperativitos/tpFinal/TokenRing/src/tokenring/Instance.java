@@ -13,6 +13,7 @@ public class Instance {
     private List<Integer> listados; //nodos que estan el la lista de donde se eligira el coordinador.
     private Integer coordinador; //el que todos creen que es el coordinador.
     private List<String> log; //mensajes de log para mostrar en la consola.
+    private Boolean finish;
     
     private Instance() {
         this.nodos = new Boolean[8];
@@ -22,6 +23,15 @@ public class Instance {
         this.listados = new LinkedList<Integer>();        
         this.coordinador = 7;
         this.log = new LinkedList<String>();
+        this.finish=false;
+    }
+
+    public void setFinish(Boolean finish) {
+        this.finish = finish;
+    }
+
+    public Boolean getFinish() {
+        return finish;
     }
 
     public static Instance create(){
