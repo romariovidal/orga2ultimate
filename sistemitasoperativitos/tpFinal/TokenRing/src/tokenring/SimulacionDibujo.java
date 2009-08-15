@@ -31,6 +31,9 @@ class SimulacionDibujo extends JPanel {
   private String st;
   private Point[] posiciones;
 
+  private Color caidoCol = new Color(255, 125, 0);
+  private Color activoCol = new Color(0, 125, 255);
+
     public SimulacionDibujo() {
         this.setSize(600, 550);
         this.setBorder(new TitledBorder("Simulación"));
@@ -62,73 +65,110 @@ class SimulacionDibujo extends JPanel {
             this.posiciones[i].x+=margen -lado/2;
             this.posiciones[i].y+=margen -lado/2;
         }
-
     }
 
-    @Override
+    //@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.miGr = g;
         Graphics2D g2 = (Graphics2D)g;
-        // Use g2 for all following operations
-        //g2.drawLine(...);
-        st = "holaaa";
-        g2.drawString(st, 0, 35);
-        //g2.draw(new Rectangle2D.Double(
-         //      res*0.5,res*0.5,res*1.0,res*1.0));
+        this.paint(g2);
+        //st = "holaaa";
+        //g2.drawString(st, 0, 35);
+    }
 
+    /*public void paint(){
+//        this.paint(this.getGraphics());
+        //this.limpiar();
+        Graphics g = this.getGraphics();
+        Graphics2D g2 = (Graphics2D)g;
+        
+        this.paint(g2);
+    }*/
+
+    public void paint(Graphics2D g2){
+        g2.setColor(Color.BLACK);
+        
+        for(Integer i=0; i<8; i++){
+            this.pintarLinea(g2, i, Color.BLACK);
+        }
+
+        for(Integer i=0; i<8; i++){
+            this.pintarNodo(g2, i, 1);
+        }
+        System.out.println("¿Dibujé?");
 
     }
 
-    public void paint(){
-        Graphics g = this.getGraphics();
-        Graphics2D g2 = (Graphics2D)g;
-        //super.dr
+    public void pintarLinea(Graphics2D g2, Integer i, Color col){
         Point[] p = this.posiciones;
-        g2.setColor(Color.BLACK);
-        for(Integer i=0; i<8; i++){
-            g2.drawLine(p[i].x+lado/2, p[i].y+lado/2, p[(i+1)%8].x+lado/2, p[(i+1)%8].y+lado/2);
-        }
-
-
-        for(Integer i=0; i<8; i++){
-            Ellipse2D d2 = new Ellipse2D.Double(posiciones[i].x, posiciones[i].y, lado, lado);
-
-            Rectangle r2 = new Rectangle(lado,lado);
-            r2.setLocation(posiciones[i]);
-            g2.setColor(Color.RED);
-            g2.fill(r2);
+        Color anteriorCol = g2.getColor().equals(null)?Color.BLACK:g2.getColor();
         
-            g2.draw(r2);
+        g2.setColor(col);
+        g2.drawLine(p[i].x+lado/2, p[i].y+lado/2, p[(i+1)%8].x+lado/2, p[(i+1)%8].y+lado/2);
 
-            g2.setColor(Color.GREEN);
-            g2.fill(d2);
+        g2.setColor(anteriorCol);
+    }
 
-            g2.draw(d2);
-        }        
-        System.out.println("¿Dibujé?");
+     /*0 caido, 1 activo, 2 cordinador, 3 coordinador caido*/
+    public void pintarNodo(Graphics2D g2, Integer i, Integer estado){
+        Point[] p = this.posiciones;
+        Color anteriorCol = g2.getColor().equals(null)?Color.BLACK:g2.getColor();
+        Font anteriorFont = g2.getFont();
+        Color col = estado.equals(1)?activoCol:caidoCol;
+        
+        Rectangle r2 = new Rectangle(lado,lado);
+        r2.setLocation(p[i]);
+        g2.setColor(Color.RED);
+        g2.fill(r2);
+        g2.draw(r2);
+
+        Ellipse2D d2 = new Ellipse2D.Double(p[i].x, p[i].y, lado, lado);
+        g2.setColor(col);
+        g2.fill(d2);
+        g2.draw(d2);
 
         g2.setColor(Color.BLACK);
-        //System.out.println(g2.getFont().getSize());
         g2.setFont(new Font(g2.getFont().getFontName(), Font.BOLD , 16));
+        Integer x= p[i].x+lado*2/5-1;
+        Integer y= p[i].y+lado*3/5;
+        g2.drawString(i.toString(), x, y);
 
-        for(Integer i=0; i<8; i++){
-            Integer x= p[i].x+lado*2/5-1;
-            Integer y= p[i].y+lado*3/5;
-            g2.drawString(i.toString(), x, y);
-        }
-
+        g2.setColor(anteriorCol);
+        g2.setFont(anteriorFont);
     }
 
     public void limpiar(){
         clearPanel(this);
     }
 
+    void redibujar(Instance tokenInstance) {
+        //this.limpiar();
+        Graphics g = this.getGraphics();
+        Graphics2D g2 = (Graphics2D)g;
+
+        for(Integer i=0; i<8; i++){
+            this.pintarLinea(g2, i, Color.BLACK);
+        }
+
+
+        for(Integer i=0; i<tokenInstance.getNodos().length; i++){
+            System.out.println("Mirando el " + i);
+            if(tokenInstance.statusNodo(i))
+                this.pintarNodo(g2, i, 1);
+            else
+                this.pintarNodo(g2, i, 0);
+        }
+        System.out.println("¿Dibujé?");
+
+    }
+
     private void clearPanel(SimulacionDibujo p) {
-        /*Graphics g = p.getGraphics();
+        Graphics g = p.getGraphics();
 		g.setColor(p.getBackground());
-		g.fillRect(0, 0, p.getBounds().wd, p.getBounds().hd);*/
-        this.repaint();
+		//g.fillRect(0, 0, p.getBounds().wd, p.getBounds().hd);
+        g.fillRect(margen, margen, p.getBounds().width-2*margen, p.getBounds().height-2*margen);
+        //this.repaint();
     }
 
     

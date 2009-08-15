@@ -17,7 +17,7 @@ public class Instance {
     
     private Instance() {
         this.nodos = new Boolean[8];
-        for (int i=1;i<nodos.length;i++) {
+        for (int i=0;i<nodos.length;i++) {
             this.nodos[i]=true;
         }
         this.listados = new LinkedList<Integer>();        
@@ -51,6 +51,9 @@ public class Instance {
         this.nodos[nodo]=false;
     }
 
+    public Boolean statusNodo(Integer nodo){
+        return this.nodos[nodo];
+    }
     /**
      *
      * @return el nodo que inicializa el algoritmo.

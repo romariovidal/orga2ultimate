@@ -28,9 +28,12 @@ import javax.swing.border.TitledBorder;
  * The application's main frame.
  */
 public class TokenRingView extends FrameView implements ActionListener {
+    private SingleFrameApplication appSide;
+    private Instance tokenInstance;
 
     public TokenRingView(SingleFrameApplication app) {
         super(app);
+        this.appSide = app;
 
         initComponents();
         initComponents2();
@@ -98,6 +101,10 @@ public class TokenRingView extends FrameView implements ActionListener {
             aboutBox.setLocationRelativeTo(mainFrame);
         }
         TokenRingApp.getApplication().show(aboutBox);
+    }
+
+    void setInstance(Instance tokenInstance) {
+        this.tokenInstance = tokenInstance;
     }
 
     /** This method is called from within the constructor to
@@ -277,7 +284,6 @@ public class TokenRingView extends FrameView implements ActionListener {
                  )
                 );
 
-
     }
 
     private void crearBotonera (JPanel botonera) {
@@ -308,7 +314,17 @@ public class TokenRingView extends FrameView implements ActionListener {
             if( evt.getSource().equals( this.botonesUpDown[i] ) ){
                 System.out.println( "Se ha pulsado el botón de Offline nodo " + i );
                 this.appendLog("Se ha pulsado el botón de Offline nodo " + i);
-                this.unDibujo.paint();
+                
+                if(this.tokenInstance.statusNodo(i)){
+                    this.tokenInstance.bajarNodo(i);
+                    this.appendLog("El nodo " + i + " está ahora offline");
+                } else {
+                    this.tokenInstance.subirNodo(i);
+                    this.appendLog("El nodo " + i + " está ahora online");
+                }
+
+                //this.unDibujo.paint();
+                this.redibujar(this.tokenInstance);
             }
         }
 
@@ -324,4 +340,9 @@ public class TokenRingView extends FrameView implements ActionListener {
     public void appendLog(String st){
         this.logs.append(st + newline);
     }
+
+    public void redibujar(Instance tokenInstance) {
+        this.unDibujo.redibujar(tokenInstance);
+    }
+
 }

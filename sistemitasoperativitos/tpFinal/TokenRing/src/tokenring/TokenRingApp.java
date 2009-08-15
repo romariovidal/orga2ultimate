@@ -14,12 +14,13 @@ import org.jdesktop.application.SingleFrameApplication;
  * The main class of the application.
  */
 public class TokenRingApp extends SingleFrameApplication implements ActionListener {
-
+    
     /**
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
         this.tokenView = new TokenRingView(this);
+        this.tokenView.setInstance(this.tokenInstance);
         this.timer = new Timer(5000, this);
         this.timer.setInitialDelay(0);
         this.timerChange();
@@ -55,6 +56,7 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
 
     public void refrescarGraficos(){
         this.tokenView.appendLog(new java.util.Date().toString());
+        //this.tokenView.redibujar(this.tokenInstance);
     }
 
     public void timerChange(){
