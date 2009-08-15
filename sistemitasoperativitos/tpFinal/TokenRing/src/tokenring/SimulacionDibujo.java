@@ -31,8 +31,10 @@ class SimulacionDibujo extends JPanel {
   private String st;
   private Point[] posiciones;
 
-  private Color caidoCol = new Color(255, 125, 0);
-  private Color activoCol = new Color(0, 125, 255);
+  private Color caidoCol = new Color(0,191,255, 150);
+  private Color activoCol = new Color(0,191,255);
+  private Color coordCaidoCol = new Color(85,107,47);
+  private Color coordActivoCol = new Color(60,179,113);
 
     public SimulacionDibujo() {
         this.setSize(600, 550);
@@ -110,12 +112,26 @@ class SimulacionDibujo extends JPanel {
         g2.setColor(anteriorCol);
     }
 
-     /*0 caido, 1 activo, 2 cordinador, 3 coordinador caido*/
+     /*0 caido, 1 activo, 2 cordinador y caido, 3 coordinador y activo*/
     public void pintarNodo(Graphics2D g2, Integer i, Integer estado){
         Point[] p = this.posiciones;
         Color anteriorCol = g2.getColor().equals(null)?Color.BLACK:g2.getColor();
         Font anteriorFont = g2.getFont();
-        Color col = estado.equals(1)?activoCol:caidoCol;
+        Color col = Color.BLACK;
+        switch (estado){
+            case 0:
+                col = caidoCol;
+                break;
+            case 1:
+                col = activoCol;
+                break;
+            case 2:
+                col = coordCaidoCol;
+                break;
+            case 3:
+                col = coordActivoCol;
+                break;
+        }
         
         Rectangle r2 = new Rectangle(lado,lado);
         r2.setLocation(p[i]);
@@ -151,13 +167,18 @@ class SimulacionDibujo extends JPanel {
             this.pintarLinea(g2, i, Color.BLACK);
         }
 
-
+        Integer status;
         for(Integer i=0; i<tokenInstance.getNodos().length; i++){
             System.out.println("Mirando el " + i);
+            status = 0;
+            if(tokenInstance.getCoordinador().equals(i))
+                status+=2;
+
             if(tokenInstance.statusNodo(i))
-                this.pintarNodo(g2, i, 1);
-            else
-                this.pintarNodo(g2, i, 0);
+                status+=1;
+
+            this.pintarNodo(g2, i, status);
+            
         }
         System.out.println("¿Dibujé?");
 
