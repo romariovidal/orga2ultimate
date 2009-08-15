@@ -28,10 +28,10 @@ import javax.swing.border.TitledBorder;
  * The application's main frame.
  */
 public class TokenRingView extends FrameView implements ActionListener {
-    private SingleFrameApplication appSide;
+    private TokenRingApp appSide;
     private Instance tokenInstance;
 
-    public TokenRingView(SingleFrameApplication app) {
+    public TokenRingView(TokenRingApp app) {
         super(app);
         this.appSide = app;
 
@@ -333,6 +333,7 @@ public class TokenRingView extends FrameView implements ActionListener {
                 System.out.println( "El nodo " + i + " está AYA al coordinador");
                 this.appendLog("El nodo " + i + " está AYA al coordinador");
                 this.unDibujo.limpiar();
+                this.appSide.agregarLog("AYA de " + i + " al coordinador");
             }
         }
     }

@@ -59,6 +59,10 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
         //this.tokenView.redibujar(this.tokenInstance);
     }
 
+    public void agregarLog(String st){
+        this.tokenView.appendLog(st);
+    }
+
     public void timerChange(){
         if(this.timer.isRunning()){
             this.timer.stop();
