@@ -294,7 +294,7 @@ public class TokenRingView extends FrameView implements ActionListener {
         botonera.setLayout(layout);
 
         for (Integer i=0; i< this.botonesUpDown.length; i++){
-            this.botonesUpDown[i] = new JButton("Offline - nodo " + i);
+            this.botonesUpDown[i] = new JButton("Go offline - Nodo " + i);
             this.botonesUpDown[i].setToolTipText("Cambiar estado del nodo " + i);
             botonera.add(this.botonesUpDown[i]);
             this.botonesUpDown[i].addActionListener(this);
@@ -318,9 +318,11 @@ public class TokenRingView extends FrameView implements ActionListener {
                 if(this.tokenInstance.statusNodo(i)){
                     this.tokenInstance.bajarNodo(i);
                     this.appendLog("El nodo " + i + " está ahora offline");
+                    this.botonesUpDown[i].setText("Go online - Nodo " + i);
                 } else {
                     this.tokenInstance.subirNodo(i);
                     this.appendLog("El nodo " + i + " está ahora online");
+                    this.botonesUpDown[i].setText("Go offline - Nodo " + i);
                 }
 
                 //this.unDibujo.paint();
