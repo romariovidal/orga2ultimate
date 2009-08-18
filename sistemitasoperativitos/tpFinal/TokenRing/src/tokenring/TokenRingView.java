@@ -31,9 +31,10 @@ public class TokenRingView extends FrameView implements ActionListener {
     private TokenRingApp appSide;
     private Instance tokenInstance;
 
-    public TokenRingView(TokenRingApp app) {
+    public TokenRingView(TokenRingApp app, Instance t) {
         super(app);
         this.appSide = app;
+        this.tokenInstance = t;
 
         initComponents();
         initComponents2();
@@ -239,7 +240,7 @@ public class TokenRingView extends FrameView implements ActionListener {
 
     private void initComponents2() {
         this.statusMessageLabel.setText("Estamos trabajando para usted");
-        this.unDibujo = new SimulacionDibujo();
+        this.unDibujo = new SimulacionDibujo(this.tokenInstance);
 
         JPanel botonera = new JPanel();
         this.botonesUpDown = new JButton[8];
@@ -313,16 +314,13 @@ public class TokenRingView extends FrameView implements ActionListener {
         for (Integer i=0; i< this.botonesUpDown.length; i++){
             if( evt.getSource().equals( this.botonesUpDown[i] ) ){
                 System.out.println( "Se ha pulsado el botón de Offline nodo " + i );
-                this.appendLog("Se ha pulsado el botón de Offline nodo " + i);
+                //this.appendLog("Se ha pulsado el botón de Offline nodo " + i);
                 
                 if(this.tokenInstance.statusNodo(i)){
-                    this.tokenInstance.bajarNodo(i);
-                    this.appendLog("El nodo " + i + " está ahora offline");
-                    this.botonesUpDown[i].setText("Go online - Nodo " + i);
+                    this.appSide.bajarNodo(i);
+                    
                 } else {
-                    this.tokenInstance.subirNodo(i);
-                    this.appendLog("El nodo " + i + " está ahora online");
-                    this.botonesUpDown[i].setText("Go offline - Nodo " + i);
+                    this.appSide.subirNodo(i);                    
                 }
 
                 //this.unDibujo.paint();
@@ -333,9 +331,9 @@ public class TokenRingView extends FrameView implements ActionListener {
         for (Integer i=0; i< this.botonesCoordinador.length; i++){
             if( evt.getSource().equals( this.botonesCoordinador[i] ) ){
                 System.out.println( "El nodo " + i + " está AYA al coordinador");
-                this.appendLog("El nodo " + i + " está AYA al coordinador");
-                this.unDibujo.limpiar();
-                this.appSide.agregarLog("AYA de " + i + " al coordinador");
+                //this.appendLog("El nodo " + i + " está AYA al coordinador");
+                //this.unDibujo.limpiar();
+                this.appSide.enviarAYA(i);
             }
         }
     }
@@ -345,7 +343,41 @@ public class TokenRingView extends FrameView implements ActionListener {
     }
 
     public void redibujar(Instance tokenInstance) {
+        this.redibujarBotonera(tokenInstance);
         this.unDibujo.redibujar(tokenInstance);
     }
+
+    private void redibujarBotonera(Instance tokenInstance) {
+        if(tokenInstance.getFinish()){
+            //Si no está corriendo el solver
+            for(Integer i=0; i < this.botonesUpDown.length; i++){
+                this.botonesUpDown[i].setEnabled(true);
+                if(tokenInstance.getStatusNodo(i)){
+                     this.botonesUpDown[i].setText("Go offline - Nodo " + i);
+                } else {
+                    this.botonesUpDown[i].setText("Go online - Nodo " + i);
+                }
+            }
+
+            for(Integer i=0; i < this.botonesCoordinador.length; i++){
+                if(tokenInstance.getStatusNodo(i)){
+                    this.botonesCoordinador[i].setEnabled(true);
+                } else {
+                    this.botonesCoordinador[i].setEnabled(false);
+                }
+            }
+        } else {
+            //Si está corriendo el solver
+            for(Integer i=0; i < this.botonesUpDown.length; i++){                
+                this.botonesUpDown[i].setEnabled(false);
+            }
+
+            for(Integer i=0; i < this.botonesCoordinador.length; i++){
+                 this.botonesCoordinador[i].setEnabled(false);
+            }
+        }
+    }
+
+
 
 }

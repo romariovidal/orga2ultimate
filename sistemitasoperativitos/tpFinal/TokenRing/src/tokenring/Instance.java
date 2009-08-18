@@ -23,7 +23,7 @@ public class Instance {
         this.listados = new LinkedList<Integer>();        
         this.coordinador = 7;
         this.log = new LinkedList<String>();
-        this.finish=false;
+        this.finish=true;
     }
 
     public void setFinish(Boolean finish) {
@@ -100,6 +100,24 @@ public class Instance {
 
     public void setCoordinador(Integer coordinador) {
         this.coordinador = coordinador;
+    }
+
+    public Boolean getStatusNodo(Integer i) {
+        return this.nodos[i];
+    }
+
+    public String printLog() {
+        String temp = "";
+
+        for (Integer i=0; i<listados.size(); i++){
+            if(!temp.equals("")){
+                temp += ", ";
+            }
+            temp += listados.get(i).toString();
+
+        }
+
+        return temp;
     }
 
 

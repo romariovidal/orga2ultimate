@@ -22,23 +22,26 @@ import javax.swing.border.TitledBorder;
  */
 class SimulacionDibujo extends JPanel {
 
-  int res = 90;//store screen resolution here
-  int wd;//store screen wd here
-  int hd;//store screen hd here
-  int lado = 45;
-  int margen = 25;
-  private Graphics miGr;
-  private String st;
-  private Point[] posiciones;
+    int res = 90;//store screen resolution here
+    int wd;//store screen wd here
+    int hd;//store screen hd here
+    int lado = 45;
+    int margen = 25;
+    private Graphics miGr;
+    private String st;
+    private Point[] posiciones;
 
-  private Color caidoCol = new Color(0,191,255, 150);
-  private Color activoCol = new Color(0,191,255);
-  private Color coordCaidoCol = new Color(85,107,47);
-  private Color coordActivoCol = new Color(60,179,113);
+    private Color caidoCol = new Color(0,191,255, 150);
+    private Color activoCol = new Color(0,191,255);
+    private Color coordCaidoCol = new Color(85,107,47);
+    private Color coordActivoCol = new Color(60,179,113);
+    private Instance tokenInstance;
 
-    public SimulacionDibujo() {
+    public SimulacionDibujo(Instance inst) {
         this.setSize(600, 550);
         this.setBorder(new TitledBorder("Simulación"));
+        this.tokenInstance = inst;
+
         res = Toolkit.getDefaultToolkit().
                          getScreenResolution();
         wd = this.getSize().width;
@@ -89,16 +92,36 @@ class SimulacionDibujo extends JPanel {
     }*/
 
     public void paint(Graphics2D g2){
-        g2.setColor(Color.BLACK);
+        //g2.setColor(Color.BLACK);
         
+        //for(Integer i=0; i<8; i++){
+        //    this.pintarLinea(g2, i, Color.BLACK);
+        //}
+
+        //for(Integer i=0; i<8; i++){
+        //    this.pintarNodo(g2, i, 1);
+        //}
+        //System.out.println("¿Dibujé?");
+
         for(Integer i=0; i<8; i++){
             this.pintarLinea(g2, i, Color.BLACK);
         }
 
-        for(Integer i=0; i<8; i++){
-            this.pintarNodo(g2, i, 1);
+        Integer status;
+        for(Integer i=0; i<tokenInstance.getNodos().length; i++){
+            //System.out.println("Mirando el " + i);
+            status = 0;
+            if(tokenInstance.getCoordinador().equals(i))
+                status+=2;
+
+            if(tokenInstance.statusNodo(i))
+                status+=1;
+
+            this.pintarNodo(g2, i, status);
+            
         }
-        System.out.println("¿Dibujé?");
+
+
 
     }
 
@@ -163,13 +186,13 @@ class SimulacionDibujo extends JPanel {
         Graphics g = this.getGraphics();
         Graphics2D g2 = (Graphics2D)g;
 
-        for(Integer i=0; i<8; i++){
-            this.pintarLinea(g2, i, Color.BLACK);
-        }
+        //for(Integer i=0; i<8; i++){
+        //    this.pintarLinea(g2, i, Color.BLACK);
+        //}
 
         Integer status;
         for(Integer i=0; i<tokenInstance.getNodos().length; i++){
-            System.out.println("Mirando el " + i);
+            //System.out.println("Mirando el " + i);
             status = 0;
             if(tokenInstance.getCoordinador().equals(i))
                 status+=2;
@@ -180,7 +203,7 @@ class SimulacionDibujo extends JPanel {
             this.pintarNodo(g2, i, status);
             
         }
-        System.out.println("¿Dibujé?");
+        //System.out.println("¿Dibujé?");
 
     }
 
