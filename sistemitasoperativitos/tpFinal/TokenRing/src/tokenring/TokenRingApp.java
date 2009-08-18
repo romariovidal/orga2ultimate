@@ -96,8 +96,10 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
                 } else {
                     this.tokenView.appendLog("Nodo " + enviador + " AYA -> TIMEOUT");
                     this.tokenView.appendLog("Nodo " + enviador + " inicia proceso de elección de nuevo coordinador");
+                    this.tokenInstance.setListados(new LinkedList<Integer>());
                     this.tokenSolver = new TokenSolver(tokenInstance, enviador);
                     tokenView.appendLog(tokenInstance.getLog().get(tokenInstance.getLog().size()-1));
+
                 }
                 //System.out.println("\t\tAhora es de " + this.ayaAlCoorinador.size() );
             }
