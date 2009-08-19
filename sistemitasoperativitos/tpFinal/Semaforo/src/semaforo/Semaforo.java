@@ -24,11 +24,15 @@ public class Semaforo {
     }
 
     public Semaforo crearP(Integer valor){
-        return new  Semaforo(true, valor, null);
+        return new Semaforo(true, valor, null);
     }
 
     public Semaforo crearV(Integer valor){
-        return new  Semaforo(false, valor, null);
+        return new Semaforo(false, valor, null);
+    }
+
+    public void addProceso(Integer proceso){
+        procesosEnCola.add(proceso);
     }
 
 /**
