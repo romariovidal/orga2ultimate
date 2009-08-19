@@ -23,11 +23,11 @@ public class Semaforo {
         this.procesosEnCola = cola;
     }
 
-    public Semaforo crearP(Integer valor){
+    public static Semaforo crearP(Integer valor){
         return new Semaforo(true, valor, null);
     }
 
-    public Semaforo crearV(Integer valor){
+    public static Semaforo crearV(Integer valor){
         return new Semaforo(false, valor, null);
     }
 
@@ -83,6 +83,14 @@ public class Semaforo {
     
     public void setProcesosEnCola(Queue<Integer> procesosEnCola) {
         this.procesosEnCola = procesosEnCola;
+    }
+
+    public Integer getCantProc() {
+        return this.procesosEnCola.size();
+    }
+
+    public Integer getProceso(Integer i){
+        return 3;
     }
     
 
