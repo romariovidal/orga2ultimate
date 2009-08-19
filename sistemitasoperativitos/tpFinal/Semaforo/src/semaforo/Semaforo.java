@@ -5,6 +5,8 @@
 
 package semaforo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -15,20 +17,20 @@ public class Semaforo {
 
     private Boolean esP;
     private Integer valor;
-    private Queue<Integer> procesosEnCola;
+    private List<Integer> procesosEnCola;
 
-    public Semaforo(Boolean esP, Integer valor, Queue<Integer> cola) {
+    public Semaforo(Boolean esP, Integer valor, List<Integer> cola) {
         this.esP = esP;
         this.valor = valor;
         this.procesosEnCola = cola;
     }
 
     public static Semaforo crearP(Integer valor){
-        return new Semaforo(true, valor, null);
+        return new Semaforo(true, valor, new ArrayList<Integer>());
     }
 
     public static Semaforo crearV(Integer valor){
-        return new Semaforo(false, valor, null);
+        return new Semaforo(false, valor, new ArrayList<Integer>());
     }
 
     public void addProceso(Integer proceso){
@@ -42,7 +44,7 @@ public class Semaforo {
     public Integer peek(){
         Integer res=null;
         if(!procesosEnCola.isEmpty()){
-            res = procesosEnCola.peek();
+            res = procesosEnCola.get(0);
         }
         return res;
     }
@@ -54,7 +56,8 @@ public class Semaforo {
     public Integer remove(){
         Integer res = null;
         if(!procesosEnCola.isEmpty()){
-            res = procesosEnCola.remove();
+            res = procesosEnCola.get(0);
+            procesosEnCola.remove(0);
         }
 
         return res;
@@ -69,7 +72,7 @@ public class Semaforo {
         return valor;
     }
     
-    public Queue<Integer> getProcesosEnCola() {
+    public List<Integer> getProcesosEnCola() {
         return procesosEnCola;
     }
 
@@ -81,7 +84,7 @@ public class Semaforo {
         this.valor = valor;
     }
     
-    public void setProcesosEnCola(Queue<Integer> procesosEnCola) {
+    public void setProcesosEnCola(List<Integer> procesosEnCola) {
         this.procesosEnCola = procesosEnCola;
     }
 
@@ -90,7 +93,7 @@ public class Semaforo {
     }
 
     public Integer getProceso(Integer i){
-        return 3;
+        return this.procesosEnCola.get(i);
     }
     
 

@@ -12,6 +12,7 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
@@ -303,7 +304,13 @@ public class SemaforoView extends FrameView implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Integer cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
+        Integer cantidadSemaforos = new Integer (String.valueOf(this.cantSemaforos.getSelectedItem()));
+
         this.panelInicial.setVisible(false);
+
+        this.semInstance = new Instancia(cantidadProcesos, cantidadSemaforos);
+
         this.cargarPanelSegundo();
         this.panelSegundo.setVisible(true);
         this.mainPanel.removeAll();
@@ -334,22 +341,52 @@ public class SemaforoView extends FrameView implements ActionListener {
     private int busyIconIndex = 0;
 
     private JDialog aboutBox;
+    private Instancia semInstance;
 
     public void actionPerformed(ActionEvent evt) {
         for (Integer i=0; i< this.semView.length; i++){
-            if( evt.getSource().equals( this.semView[i].botonAbajo ) ){
-                System.out.println( "Se ha pulsado el botón de agregar abajo del sem " + i );
-                //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
-                System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
-                            + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
-            }
-
+            //Semaforos de arriba
             if( evt.getSource().equals( this.semView[i].botonArriba ) ){
                 System.out.println( "Se ha pulsado el botón de agregar arriba del sem " + i );
                 System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
                             + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
                 //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
+                Semaforo nuevoSem = null;
+                if (this.semView[i].comboLet.getSelectedIndex() == 0)
+                    nuevoSem = Semaforo.crearP(this.semView[i].comboNum.getSelectedIndex());
+                else
+                    nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
+
+                this.semInstance.agregarSemaforoSuperior(nuevoSem, i);
+                List<String> l = this.semInstance.listaDeSemaforosSuperiores(i);
+                for(Integer j=0; j< l.size(); j++){
+                    System.out.println(l.get(j));
+                }
             }
+
+            //Semaforos de abajo
+            if( evt.getSource().equals( this.semView[i].botonAbajo ) ){
+                System.out.println( "Se ha pulsado el botón de agregar abajo del sem " + i );
+                //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
+                System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
+                            + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
+                
+                Semaforo nuevoSem = null;
+                if (this.semView[i].comboLet.getSelectedIndex() == 0)
+                    nuevoSem = Semaforo.crearP(this.semView[i].comboNum.getSelectedIndex());
+                else
+                    nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
+
+                this.semInstance.agregarSemaforoInferior(nuevoSem, i);
+                //this.semView[i].redibujarArriba(this.semInstance.);
+                List<String> l = this.semInstance.listaDeSemaforosInferiores(i);
+                for(Integer j=0; j< l.size(); j++){
+                    System.out.println(l.get(j));
+                }
+                
+            }
+
+            
         }
     }
 }
