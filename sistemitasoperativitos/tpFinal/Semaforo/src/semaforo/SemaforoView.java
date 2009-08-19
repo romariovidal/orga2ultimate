@@ -4,6 +4,7 @@
 
 package semaforo;
 
+import java.awt.GridLayout;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -15,11 +16,15 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 /**
  * The application's main frame.
  */
-public class SemaforoView extends FrameView {
+public class SemaforoView extends FrameView implements ActionListener {
+    private JPanel panelSegundo;
+    private VistaSemaforoCarga[] semView;
 
     public SemaforoView(SingleFrameApplication app) {
         super(app);
@@ -91,6 +96,35 @@ public class SemaforoView extends FrameView {
         SemaforoApp.getApplication().show(aboutBox);
     }
 
+    @SuppressWarnings("empty-statement")
+    private void cargarPanelSegundo() {
+        Integer anchoProceso = 50;
+        Integer altoProceso = 550;
+        Integer cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
+        Integer cantidadSemaforos = new Integer (String.valueOf(this.cantSemaforos.getSelectedItem()));
+
+        this.panelSegundo = new JPanel();
+        this.panelSegundo.setBorder(new TitledBorder("Configuración de semáforos."));
+        Integer anchoPanel = anchoProceso * cantidadProcesos;
+        this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
+
+        GridLayout layout = new GridLayout(1, 8);
+        layout.setHgap(10);
+        layout.setVgap(10);
+
+        this.panelSegundo.setLayout(layout);
+        this.semView = new VistaSemaforoCarga[cantidadProcesos];
+
+        for (Integer i=0; i<cantidadProcesos; i++){
+            this.semView[i] = new VistaSemaforoCarga(i, cantidadSemaforos, altoProceso, anchoProceso);
+            this.panelSegundo.add(this.semView[i]);
+            this.semView[i].botonAbajo.addActionListener(this);
+            this.semView[i].botonArriba.addActionListener(this);
+        }
+
+
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -101,6 +135,13 @@ public class SemaforoView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        panelInicial = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        cantProc = new javax.swing.JComboBox();
+        cantSemaforos = new javax.swing.JComboBox();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -114,20 +155,92 @@ public class SemaforoView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(semaforo.SemaforoApp.class).getContext().getResourceMap(SemaforoView.class);
+        panelInicial.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("panelInicial.border.title"))); // NOI18N
+        panelInicial.setName("panelInicial"); // NOI18N
+
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+
+        cantProc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        cantProc.setName("cantProc"); // NOI18N
+
+        cantSemaforos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cantSemaforos.setName("cantSemaforos"); // NOI18N
+
+        javax.swing.GroupLayout panelInicialLayout = new javax.swing.GroupLayout(panelInicial);
+        panelInicial.setLayout(panelInicialLayout);
+        panelInicialLayout.setHorizontalGroup(
+            panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicialLayout.createSequentialGroup()
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInicialLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cantSemaforos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cantProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelInicialLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        panelInicialLayout.setVerticalGroup(
+            panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicialLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cantProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cantSemaforos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(50, 50, 50))
+        );
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(panelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(semaforo.SemaforoApp.class).getContext().getResourceMap(SemaforoView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -162,11 +275,11 @@ public class SemaforoView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -189,9 +302,25 @@ public class SemaforoView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.panelInicial.setVisible(false);
+        this.cargarPanelSegundo();
+        this.panelSegundo.setVisible(true);
+        this.mainPanel.removeAll();
+        this.mainPanel.setLayout(new GridLayout(1,1));
+        this.mainPanel.add(this.panelSegundo);
+    }//GEN-LAST:event_jButton1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cantProc;
+    private javax.swing.JComboBox cantSemaforos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPanel panelInicial;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
@@ -205,4 +334,22 @@ public class SemaforoView extends FrameView {
     private int busyIconIndex = 0;
 
     private JDialog aboutBox;
+
+    public void actionPerformed(ActionEvent evt) {
+        for (Integer i=0; i< this.semView.length; i++){
+            if( evt.getSource().equals( this.semView[i].botonAbajo ) ){
+                System.out.println( "Se ha pulsado el botón de agregar abajo del sem " + i );
+                //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
+                System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
+                            + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
+            }
+
+            if( evt.getSource().equals( this.semView[i].botonArriba ) ){
+                System.out.println( "Se ha pulsado el botón de agregar arriba del sem " + i );
+                System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
+                            + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
+                //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
+            }
+        }
+    }
 }
