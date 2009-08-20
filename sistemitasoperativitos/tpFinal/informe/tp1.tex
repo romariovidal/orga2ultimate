@@ -1,0 +1,78 @@
+\documentclass[a4paper,spanish]{article}
+\usepackage[spanish, activeacute]{babel}
+\usepackage{fancyhdr}
+\usepackage{ecarat}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[all]{xy}
+\usepackage{clrscode}
+\usepackage{moreverb}
+%\usepackage{multicol}
+\usepackage{boxedminipage}
+%\usepackage[latin1]{inputenc} %acentos normales
+\usepackage{verbatimbox}
+
+\oddsidemargin 0in
+\textwidth 6.2in
+\topmargin 0in
+\textheight 18cm
+\addtolength{\topmargin}{-.5in}
+%textheight 10in
+\textheight 24cm
+\parskip=1ex
+\pagestyle{fancy}
+\newcommand{\real}{\hbox{\bf R}}
+
+%  \CodigoF{<Titulo>}{<Archivo>}
+\newcommand{\CodigoF}[2]{
+  \subsubsection{#1}
+  \verbatimtabinput[4]{#2}
+}
+
+\newcount\entrada
+\newcount\base
+\newif\ifgarb
+\def\imagenHoja{\entrada=\thepage \base=-11
+\loop
+    \ifnum\entrada<-\base \garbfalse
+        \else\garbtrue
+        \advance\entrada by \base\fi
+    \ifgarb%\number\entrada\\
+\repeat
+\advance\entrada by 1
+    \includegraphics[scale=0.40]{marios/m\number\entrada.png}
+}
+
+\newenvironment{envCodigo}
+{\verbbox}
+{\endverbbox \rule{\linewidth}{0.1mm}\vspace{6pt}\\\theverbbox\\\rule{\linewidth}{0.1mm}}
+
+
+\newenvironment{envRespuesta}
+{\begin{ttfamily}\begin{boxedminipage}{0.8\textwidth}}
+{\end{boxedminipage}\end{ttfamily}}
+
+\fboxsep 4pt
+
+\begin{document}
+
+\input{caratula.tex}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{2}
+
+\input{banquero.tex}
+\newpage
+
+\input{tokenRing.tex}
+\newpage
+
+\input{semaforos.tex}
+
+\appendix
+
+\label{fin}
+\end{document}

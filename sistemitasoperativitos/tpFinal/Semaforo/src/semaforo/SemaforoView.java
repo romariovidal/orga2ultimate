@@ -117,7 +117,9 @@ public class SemaforoView extends FrameView implements ActionListener {
         this.semView = new VistaSemaforoCarga[cantidadProcesos];
 
         for (Integer i=0; i<cantidadProcesos; i++){
-            this.semView[i] = new VistaSemaforoCarga(i, cantidadSemaforos, altoProceso, anchoProceso);
+            this.semView[i] = new VistaSemaforoCarga(i, cantidadSemaforos, altoProceso, 
+                    anchoProceso, this.semInstance.listaDeSemaforosSuperiores(i),
+                    this.semInstance.listaDeSemaforosInferiores(i));
             this.panelSegundo.add(this.semView[i]);
             this.semView[i].botonAbajo.addActionListener(this);
             this.semView[i].botonArriba.addActionListener(this);
@@ -358,10 +360,11 @@ public class SemaforoView extends FrameView implements ActionListener {
                     nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
 
                 this.semInstance.agregarSemaforoSuperior(nuevoSem, i);
-                List<String> l = this.semInstance.listaDeSemaforosSuperiores(i);
+                /*List<String> l = this.semInstance.listaDeSemaforosSuperiores(i);
                 for(Integer j=0; j< l.size(); j++){
                     System.out.println(l.get(j));
-                }
+                }*/
+                this.semView[i].redibujarSemaforo();
             }
 
             //Semaforos de abajo

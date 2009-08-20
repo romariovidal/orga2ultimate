@@ -1,0 +1,705 @@
+\section{Consignas}
+
+Antes de empezar, ejecute:
+
+\texttt{sudo apt-get install man-db manpages manpages-dev}
+
+
+De esta manera tendr'a acceso a ayuda en l'inea ejecutando:
+
+\texttt{man <comando>}
+
+Por ejemplo:
+
+\texttt{man cp}
+
+Puede adem'as instalar la versi'on en castellano de la ayuda ejecutando:
+
+\texttt{sudo apt-get install manpages-es}
+
+Para acceder a la ayuda en castellano ejecute por ejemplo:
+
+\texttt{man -L es cp}
+
+Tenga presente que no todos los comandos poseen ayuda en castellano.
+
+\texttt{sudo} permite a usuarios normales ejecutar comandos que requieren permisos de administrador.
+Al ejecutar un comando con \texttt{sudo} el sistema le pedir'a su password, y no el password del administrador
+(llamado \texttt{root} en Linux, siguiendo la tradici'on de Unix). Esto sucede ya que el sistema permite que
+ciertos usuarios (que deber'ian corresponderse con usuarios ``privilegiados'' del sistema) puedan utilizar \texttt{sudo}
+ingresando solamente su propio password. El usuario por defecto creado en una instalaci'on de Ubuntu tiene este permiso
+y por lo tanto en Ubuntu no es necesario una cuenta de administrador o \texttt{root}.
+
+\texttt{apt-get} es el manejador de paquetes de la distribuci'on Ubuntu. Permite instalar, actualizar y desinstalar
+programas. M'as adelante lo utilizaremos para instalar las herramientas necesarias para compilar programas en
+Linux.
+
+Si se encontrara detr'as de un proxy, antes de utilizar \texttt{apt-get} debe configurar el proxy. Ejecute el siguiente
+comando:
+
+\small
+\texttt{sudo echo ''Acquire::http::Proxy $\backslash$''http://proxy.uba.ar:8080$\backslash$'';'' > /etc/apt/apt.conf}
+\normalsize
+
+\subsection{Comandos b\'asicos de Unix}
+
+\begin{enumerate}
+
+\item \texttt{pwd} Indique qu'e directorio pasa a ser su directorio actual si ejecuta:
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ pwd\\
+/home/gr01
+\end{envRespuesta}
+
+\begin{enumerate}
+\item \texttt{cd /usr/bin}
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ cd /usr/bin/\\
+gr01@mondiola:/usr/bin\$ pwd\\
+/usr/bin
+\end{envRespuesta}
+
+\item \texttt{cd}
+
+\begin{envRespuesta}
+gr01@mondiola:/usr/bin\$ cd\\
+gr01@mondiola:~\$ pwd\\
+/home/gr01
+\end{envRespuesta}
+
+\item ?`C'omo explica el punto anterior?
+
+\begin{envRespuesta}Al utilizar el comando cd sin par'ametros, si existe la variable
+HOME entonces se hace un chdir a ese path.
+\end{envRespuesta}
+
+\end{enumerate}
+
+\item \texttt{cat} ?`Cu'al es el contenido del archivo \texttt{/home/<usuario>/.profile}?
+
+\begin{envCodigo}
+gr01@mondiola:~$ cat .profile
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+\end{envCodigo}
+
+\item \texttt{find} Liste \textbf{todos} los archivos que comienzan con \texttt{vmlinuz}.
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ sudo find / -name *vmlinuz* \\
+$[$sudo$]$ password for gr01: \\
+/boot/vmlinuz-2.6.24-23-virtual\\
+/boot/vmlinuz-2.6.24-24-virtual\\
+/vmlinuz.old
+\end{envRespuesta}
+
+Estos archivos son im'agenes del kernel Linux.
+
+\item \texttt{mkdir} Genere un directorio \texttt{/home/<usuario>/tp}.
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ mkdir tp
+\end{envRespuesta}
+
+\item \texttt{cp} Copie el archivo \texttt{/etc/passwd} al directorio \texttt{/home/<usuario>/tp}.
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ cp /etc/passwd tp/
+\end{envRespuesta}
+
+\item \texttt{chgrp} Cambie el grupo del archivo \texttt{/home/<usuario>/tp/passwd} para que sea el suyo.
+
+\begin{envRespuesta}
+El archivo ya pertenece a gr01, igualmente se puede hacer:\\
+gr01@mondiola:~\$ chgrp gr01 tp/passwd
+\end{envRespuesta}
+
+\item \texttt{chown} Cambie el due'no del archivo \texttt{/home/<usuario>/tp/passwd} para que sea su usuario.
+
+\begin{envRespuesta}
+El archivo ya es de gr01, pero en caso de tener que hacerlo:
+gr01@mondiola:~\$ chown gr01 tp/passwd
+\end{envRespuesta}
+
+\item \texttt{chmod} Cambie los permisos del archivo \texttt{/home/<usuario>/tp/passwd} para que:
+
+\begin{envRespuesta}
+Antes de empezar el pr'oximo paso: \\
+gr01@mondiola:~\$ chmod 000 tp/passwd \\
+para limpiar los permisos originales.
+\end{envRespuesta}
+\begin{itemize}
+\item el propietario tenga permisos de lectura, escritura y ejecuci'on
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ chmod u+r+w+x tp/passwd
+\end{envRespuesta}
+
+\item el grupo tenga s'olo permisos de lectura y ejecuci'on
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ chmod g+r+x tp/passwd
+\end{envRespuesta}
+
+\item el resto tenga s'olo permisos de ejecuci'on
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ chmod o+x tp/passwd
+\end{envRespuesta}
+\end{itemize}
+
+\item \texttt{grep}
+
+Muestre las l'ineas que tienen el texto ``localhost'' en el archivo \texttt{/etc/hosts}.
+
+\begin{envCodigo}
+gr01@mondiola:~\$ grep localhost /etc/hosts
+127.0.0.1   localhost
+::1     ip6-localhost ip6-loopback
+\end{envCodigo}
+
+Muestre todas las l'ineas que tengan el texto ``POSIX'' de todos los archivos (incluyendo subdirectorios) en \texttt{/etc}.
+Evite los archivos binarios y aquellos archivos y directorios que no tienen permiso de lectura para su usuario.
+
+\begin{envCodigo}
+gr01@mondiola:~\$ grep -R -I -s POSIX /etc/
+/etc/init.d/glibc.sh:                echo WARNING: POSIX threads library NPTL
+                                     requires kernel version
+/etc/security/limits.conf:#        - msgqueue - max memory used by POSIX
+                                     message queues (bytes)
+\end{envCodigo}
+
+\item \texttt{passwd} Cambie su password.
+
+\begin{envCodigo}
+gr01@mondiola:~$ passwd
+Changing password for gr01.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+\end{envCodigo}
+
+\item \texttt{rm} Borre el archivo \texttt{/home/<usuario>/tp/passwd}
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ rm tp/passwd
+\end{envRespuesta}
+\item \texttt{ln}
+
+Enlazar el archivo \texttt{/etc/passwd} a los archivos \texttt{/tmp/contra1} y \texttt{/tmp/contra2}.
+
+Hacer un \texttt{ls -l} para ver cuantos enlaces tiene \texttt{/etc/passwd}.
+
+\begin{envCodigo}
+gr01@mondiola:~$ ln /etc/passwd /tmp/contra1
+gr01@mondiola:~$ ln /etc/passwd /tmp/contra2
+gr01@mondiola:~$ ls -l /etc/passwd
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /etc/passwd
+\end{envCodigo}
+
+Estos enlaces se llaman ``hardlinks''. Cada nuevo enlace referencia el mismo espacio ocupado del disco r'igido,
+y por lo tanto cada hardlink es igual de representativo de esos bytes ocupados del disco r'igido.
+El espacio ocupado solamente se liberar'a cuando todos los enlaces hayan sido borrados.
+
+Ahora enlace el archivo \texttt{/etc/passwd} de manera ``soft'' al archivo \texttt{contra3}.
+
+Verifique con \texttt{ls -l} que no aument'o la cantidad de enlaces de \texttt{/etc/passwd}.
+
+\begin{envCodigo}
+gr01@mondiola:~$ ln -s /etc/passwd /tmp/contra3
+gr01@mondiola:~$ ls -l /etc/passwd
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /etc/passwd
+gr01@mondiola:~$ ls -l /tmp/contra*
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /tmp/contra1
+-rw-r--r-- 3 root root 1544 2009-06-14 15:03 /tmp/contra2
+lrwxrwxrwx 1 gr01 gr01   11 2009-06-16 00:48 /tmp/contra3 -> /etc/passwd
+\end{envCodigo}
+
+Estos enlaces se llaman ``softlinks'' y apuntan no a los bytes del disco r'igido sino a la ruta del archivo a ser enlazado.
+Operar sobre el softlink es igual que operar sobre el archivo, sin embargo los softlinks no cuentan en la cantidad de
+enlaces (ya que no apuntan a los bytes ocupados del disco r'igido) y pueden ser borrados sin afectar al archivo original,
+aunque si se borra el archivo original el softlink quedar'a hu'erfano y no apuntar'a a nada.
+
+\item \texttt{mount}
+
+Monte el CD-ROM de instalaci'on de Ubuntu JeOS y liste su contenido.
+
+Para hacer esto deber'a especificar la ISO de instalaci'on de Ubuntu JeOS como CD-ROM de la m'aquina virtual.
+Si bien puede hacer esto como lo hizo para instalar el sistema, si la m'aquina virtual est'a corriendo debe hacer click
+derecho en el 'icono con forma de CD-ROM en la esquina inferior derecha de la m'aquina virtual, y seleccionar
+\textbf{CD/DVD-ROM Image...} (ver figura \ref{isocdrom3}). En la ventana que aparece seleccione la ISO de instalaci'on
+(ver figura \ref{isocdrom4}).
+
+%\Imagen{vb_ubuntu/vb_isocdrom3.png}{7cm}{Usando una imagen ISO con la m'aquina virtual corriendo.}{isocdrom3}
+%\Imagen{vb_ubuntu/vb_isocdrom4.png}{7cm}{Seleccionando la ISO de instalaci'on.}{isocdrom4}
+
+Presente los filesystems que tiene montados.
+
+\begin{envCodigo}
+gr01@mondiola:~$ mount
+/dev/sda1 on / type ext3 (rw,relatime,errors=remount-ro)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+/sys on /sys type sysfs (rw,noexec,nosuid,nodev)
+varrun on /var/run type tmpfs (rw,noexec,nosuid,nodev,mode=0755)
+varlock on /var/lock type tmpfs (rw,noexec,nosuid,nodev,mode=1777)
+udev on /dev type tmpfs (rw,mode=0755)
+devshm on /dev/shm type tmpfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+compartida on /home/gr01/compartida type vboxsf (uid=1000,gid=1000,rw)
+\end{envCodigo}
+
+\item \texttt{df} ?`Qu'e espacio libre tiene cada uno de los filesystems montados?
+
+\begin{envCodigo}
+gr01@mondiola:~$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda1             3.0G  2.3G  471M  84% /
+varrun                251M  100K  251M   1% /var/run
+varlock               251M     0  251M   0% /var/lock
+udev                  251M   40K  251M   1% /dev
+devshm                251M     0  251M   0% /dev/shm
+compartida             33G   30G  3.2G  91% /home/gr01/compartida
+\end{envCodigo}
+
+\item \texttt{ps} ?`Cu'antos procesos de usuario tiene ejecutando? Indique cu'antos son del sistema.
+
+\begin{envCodigo}
+gr01@mondiola:~$ ps
+  PID TTY          TIME CMD
+ 5068 pts/0    00:00:02 bash
+ 5458 pts/0    00:00:00 man
+ 5468 pts/0    00:00:00 pager
+26937 pts/0    00:00:00 ps
+\end{envCodigo}
+
+\begin{envCodigo}
+gr01@mondiola:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.3   2844  1688 ?        Ss   Jun15   0:01 /sbin/init
+root         2  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S<   Jun15   0:00 [migration/]
+root         4  0.0  0.0      0     0 ?        S<   Jun15   0:01 [ksoftirqd/]
+root         5  0.0  0.0      0     0 ?        S<   Jun15   0:00 [watchdog/0]
+root         6  0.0  0.0      0     0 ?        S<   Jun15   0:01 [events/0]
+root         7  0.0  0.0      0     0 ?        S<   Jun15   0:00 [khelper]
+root        36  0.0  0.0      0     0 ?        S<   Jun15   0:02 [kblockd/0]
+root        39  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kacpid]
+root        40  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kacpi_noti]
+root        82  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kseriod]
+root       117  0.0  0.0      0     0 ?        S    Jun15   0:00 [pdflush]
+root       118  0.0  0.0      0     0 ?        S    Jun15   0:02 [pdflush]
+root       119  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kswapd0]
+root       162  0.0  0.0      0     0 ?        S<   Jun15   0:00 [aio/0]
+root      1312  0.1  0.0      0     0 ?        S<   Jun15   0:04 [ata/0]
+root      1315  0.0  0.0      0     0 ?        S<   Jun15   0:00 [ata_aux]
+root      1320  0.0  0.0      0     0 ?        S<   Jun15   0:00 [ksuspend_u]
+root      1327  0.0  0.0      0     0 ?        S<   Jun15   0:00 [khubd]
+root      2452  0.0  0.1   2260   752 ?        S<s  Jun15   0:01 /sbin/udevd
+root      2665  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kpsmoused]
+dhcp      3709  0.0  0.1   2436   552 ?        S<s  Jun15   0:00 dhclient3 -e
+root      4094  0.0  0.0   1844   232 ?        Ss   Jun15   0:00 /usr/sbin/vb
+root      4173  0.0  0.2   2456  1356 ?        Ss   Jun15   0:00 /usr/sbin/ac
+root      4212  0.0  0.0      0     0 ?        S<   Jun15   0:00 [kondemand/]
+syslog    4276  0.0  0.1   1936   684 ?        Ss   Jun15   0:00 /sbin/syslog
+root      4414  0.0  0.1   5316   992 ?        Ss   Jun15   0:00 /usr/sbin/ss
+avahi     4435  0.0  0.2   2756  1380 ?        Ss   Jun15   0:00 avahi-daemon
+avahi     4436  0.0  0.0   2756   460 ?        Ss   Jun15   0:00 avahi-daemon
+root      4743  4.8  3.3  24764 16972 tty7     Rs+  Jun15   3:13 /usr/bin/X :
+root      4853  0.0  0.0   1716   508 tty1     Ss+  Jun15   0:00 /sbin/getty
+gr01      4865  0.0  0.0   1772   504 ?        Ss   Jun15   0:00 /bin/sh /etc
+gr01      4965  0.6  0.3   5256  1652 ?        Sl   Jun15   0:24 /usr/bin/VBo
+gr01      4969  0.2  0.2   5256  1060 ?        Sl   Jun15   0:08 /usr/bin/VBo
+gr01      4984  0.0  0.1   4480   536 ?        Ss   Jun15   0:00 /usr/bin/ssh
+gr01      5023  0.0  0.9  15168  4968 ?        S    Jun15   0:00 Thunar --sm-
+gr01      5026  0.0  2.6  34416 13820 ?        S    Jun15   0:03 xfdesktop --
+gr01      5028  0.2  2.5  24340 13024 ?        S    Jun15   0:09 xfce4-panel
+gr01      5068  0.0  0.8   6812  4276 pts/0    Ss   Jun15   0:02 bash
+gr01      5338  0.0  0.8   7100  4536 pts/1    Ss+  Jun15   0:00 bash
+gr01      5438  2.1  2.8  32220 14548 ?        Ss   Jun15   1:17 gvim tp1.tex
+gr01      5458  0.0  0.2   3236  1104 pts/0    T    00:05   0:00 man find
+gr01      5468  0.0  0.1   3236   932 pts/0    T    00:05   0:00 pager -s
+gr01     26746  0.8  7.4  59924 38096 ?        Sl   00:27   0:16 evince tp1.p
+gr01     26938  0.0  0.1   2644  1008 pts/0    R+   00:58   0:00 ps aux
+\end{envCodigo}
+
+\item \texttt{umount} Desmonte el CD-ROM de instalaci'on de Ubuntu JeOS.
+
+\begin{envRespuesta}
+gr01@mondiola:~\$ sudo umount /media/cdrom
+\end{envRespuesta}
+
+\item \texttt{uptime} ?`Cuanto tiempo lleva ejecutando su m'aquina virtual?
+
+\begin{envCodigo}
+gr01@mondiola:~$ uptime
+ 01:05:38 up  1:14,  3 users,  load average: 0.21, 0.33, 0.35
+\end{envCodigo}
+
+\item \texttt{uname} ?`Qu'e versi'on del kernel de Linux est'a utilizando?
+
+\begin{envCodigo}
+gr01@mondiola:~$ uname -a
+Linux mondiola 2.6.24-24-virtual #1 SMP Wed Apr 15 17:16:48 UTC 2009 i686 GNU/Linux
+\end{envCodigo}
+
+\end{enumerate}
+
+\subsection{Salida est\'andar y pipes}
+
+\begin{enumerate}
+
+\item STDOUT
+
+\begin{enumerate}
+
+\item Conserve en el archivo \texttt{/home/<usuario>/tp/config} la salida del comando \texttt{ls} que muestra todos los
+archivos del directorio \texttt{/etc} y de los subdirectorios bajo \texttt{/etc}.
+
+\begin{envCodigo}
+gr01@mondiola:~$ ls -R /etc/ > ~/tp/config
+ls: cannot open directory /etc/cups/ssl: Permission denied
+ls: cannot open directory /etc/ssl/private: Permission denied
+\end{envCodigo}
+
+\item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
+
+\fboxsep 0pt
+\begin{envCodigo}
+gr01@mondiola:~$ wc -l tp/config
+2553 tp/config
+gr01@mondiola:~$ wc -w tp/config
+2295 tp/config
+gr01@mondiola:~$ wc -m tp/config
+34633 tp/config
+\end{envCodigo}
+
+\item Agregue el contenido, ordenado alfab'eticamente, del archivo \texttt{/etc/passwd} al final del
+archivo \texttt{/home/<usuario>/tp/config}.
+
+\begin{envCodigo}
+gr01@mondiola:~$ sort /etc/passwd >> ~/tp/config
+\end{envCodigo}
+
+\item Presente cuantas l'ineas, palabras y caracteres tiene \texttt{/home/<usuario>/tp/config}.
+
+\begin{envCodigo}
+gr01@mondiola:~$ wc -l tp/config
+2586 tp/config
+gr01@mondiola:~$ wc -w tp/config
+2345 tp/config
+gr01@mondiola:~$ wc -m tp/config
+36177 tp/config
+\end{envCodigo}
+
+\end{enumerate}
+
+\item Pipes
+
+\begin{enumerate}
+
+\item Liste en forma amplia los archivos del directorio \texttt{/usr/bin} que comiencen con la letra ``a''.
+Del resultado obtenido, seleccione las l'ineas que contienen el texto \texttt{apt} e informe la cantidad de caracteres,
+palabras y l'ineas.
+
+Est'a prohibido, en este 'item, usar archivos temporales de trabajo.
+
+\begin{envCodigo}
+gr01@mondiola:~/informeTP$ ls -lh /usr/bin/a* | grep apt
+-rwxr-xr-x 1 root root  63K 2009-04-17 13:30 /usr/bin/apt-cache
+-rwxr-xr-x 1 root root  18K 2009-04-17 13:30 /usr/bin/apt-cdrom
+-rwxr-xr-x 1 root root 9.9K 2009-04-17 13:30 /usr/bin/apt-config
+-rwxr-xr-x 1 root root  22K 2009-04-17 13:30 /usr/bin/apt-extracttemplates
+-rwxr-xr-x 1 root root 187K 2009-04-17 13:30 /usr/bin/apt-ftparchive
+-rwxr-xr-x 1 root root 139K 2009-04-17 13:30 /usr/bin/apt-get
+-rwxr-xr-x 1 root root 2.2M 2008-04-04 06:56 /usr/bin/aptitude
+-rwxr-xr-x 1 root root 1.9K 2008-04-04 06:56 /usr/bin/aptitude-create-state-bundle
+-rwxr-xr-x 1 root root 3.0K 2008-04-04 06:56 /usr/bin/aptitude-run-state-bundle
+-rwxr-xr-x 1 root root 5.0K 2009-04-17 13:30 /usr/bin/apt-key
+-rwxr-xr-x 1 root root 2.2K 2009-04-17 13:30 /usr/bin/apt-mark
+-rwxr-xr-x 1 root root  26K 2009-04-17 13:30 /usr/bin/apt-sortpkgs
+-rwxr-xr-x 1 root root  12K 2008-04-15 18:40 /usr/bin/apturl
+\end{envCodigo}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\subsection{Scripting}
+
+Escriba un script de shell que sincronice dos carpetas. El script debe recibir las dos carpetas (origen y destino, en ese
+orden) desde la l'inea de comando, o preguntarlas interactivamente al usuario en caso de no recibirlas. Adem'as, debe
+aceptar un modificador \texttt{-r} que indica modo de operaci'on recursivo.
+
+Una vez conocidas las dos carpetas con las que se operar'a, el script deber'a copiar todos los archivos de la carpeta origen
+que no est'en presentes en la carpeta destino, y adem'as tambi'en deber'a copiar todos los archivos presentes en ambas
+carpetas que tengan una fecha de modificaci'on posterior en la carpeta origen que en la carpeta destino. De esta manera, al
+ejecutar el script, estar'a seguro de que la carpeta destino contiene toda la informaci'on de la carpeta origen, excepto lo
+que fue modificado posteriormente en la carpeta destino.
+
+El modificador \texttt{-r} indica al script realizar la sincronizaci'on tambi'en con los archivos de todos los
+subdirectorios de la carpetas origen y destino.
+
+\CodigoF{Script de sincronizaci'on}{grupo1/scriptSincro.sh}
+
+\paragraph{Sugerencia}
+
+Recuerde que generalmente el esp'iritu de los scripts es proveer la m'inima l'ogica necesaria alrededor de otros programas
+ya presentes en el sistema que puedan proveer parte de la funcionalidad requerida para resolver un determinado problema.
+
+\subsection{Ejecuci\'on de procesos en background}
+
+Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina virtual:
+
+\begin{itemize}
+\item \texttt{nano}: editor de texto.
+\item \texttt{mc}: manejador de archivos.
+\item \texttt{gcc}: compilador de C.
+\item \texttt{libc6-dev}: biblioteca est'andar de C.
+\end{itemize}
+
+Cree el archivo \texttt{/home/<usuario>/tp/loop.c}. Comp'ilelo con \texttt{gcc}. El programa compilado debe llamarse
+\texttt{loop}.
+
+\begin{envRespuesta}
+gr01@mondiola:~/tp\$ gcc -o loop loop.c
+\end{envRespuesta}
+
+\CodigoF{loop.c}{grupo1/loop.c}
+
+\begin{enumerate}
+\item Correrlo en foreground. ?`Qu'e sucede? Mate el proceso con \texttt{Ctrl-c}.
+
+\begin{envRespuesta}
+gr01@mondiola:~/tp\$ ./loop\\
+-120820995248484848484848484848484848484848484848484848484848\\
+4848484848484848484848484848484848484848484848484848484848484\\
+8484848484848484848484848484848484848484848484848484848484848\\
+4848484848484848484848484848484848484848484848484848484848484\\
+8484848484848484848484848484848484848484848484848484848484848\\
+4848484848484848484848484848484848484848484848484848484848484\\
+8484848484848484848484848484848484848484848484848484848484
+\end{envRespuesta}
+
+\item Ahora ejec'utelo en background: \texttt{/usr/src/loop > /dev/null \&}. Mate el proceso con el comando \texttt{kill}.
+
+\begin{envCodigo}
+gr01@mondiola:~/tp$ ./loop > /dev/null &
+[1] 5467
+gr01@mondiola:~/tp$ ps
+  PID TTY          TIME CMD
+ 5084 pts/0    00:00:01 bash
+ 5467 pts/0    00:00:07 loop
+ 5510 pts/0    00:00:00 ps
+gr01@mondiola:~/tp$ kill -9 5467
+gr01@mondiola:~/tp$
+[1]+  Killed                  ./loop > /dev/null
+gr01@mondiola:~/tp$ ps
+  PID TTY          TIME CMD
+ 5084 pts/0    00:00:01 bash
+ 5961 pts/0    00:00:00 ps
+\end{envCodigo}
+
+\end{enumerate}
+
+\subsection{IPC y sincronizaci\'on}
+
+\subsubsection{Pipes}
+
+Muestre con un ejemplo en lenguaje C como realizar exclusi'on mutua entre dos procesos utilizando un s'olo pipe.
+
+\paragraph{Sugerencia}
+
+Revise la ayuda de la llamada al sistema \texttt{pipe} para construir el pipe y de \texttt{fork} para crear
+nuevos procesos.
+
+\CodigoF{pipe.c}{grupo1/pipe.c}
+
+\subsubsection{Threads}
+
+Antes de resolver este ejercicio instale el paquete \texttt{glibc-doc}.
+
+Resuelva el problema de productor/consumidor utilizando threads.
+
+\paragraph{Sugerencia}
+
+Revise la ayuda de \texttt{pthreads}, la implementaci'on de threads en Linux, para conocer los mecanismos de creaci'on y
+destrucci'on de threads. Adem'as, \texttt{pthreads} provee mecanismos de sincronizaci'on que le ayudar'an a resolver este
+ejercicio.
+
+
+\CodigoF{productorConsumidor.c}{grupo1/productorConsumidor.c}
+
+\begin{envRespuesta}
+Para compilar: \\
+gr01@mondiola:~/tp\$ gcc productorConsumidor.c -o productorConsumidor -lpthread
+\\
+gr01@mondiola:~/tp\$ ./productorConsumidor
+\end{envRespuesta}
+
+\subsection{El kernel Linux}
+
+Antes de resolver esta secci'on instale los siguientes paquetes en la m'aquina
+virtual:
+
+\begin{itemize}
+\item \texttt{make}: utilidad para mantener grupos de programas.
+\item \texttt{linux-headers-<version>}: headers del kernel de Linux.
+\end{itemize}
+
+Sustituya \texttt{<version>} por el resultado del comando \texttt{uname -r}.
+
+\begin{envRespuesta}
+gr01@mondiola:~/tp\$ sudo apt-get install linux-headers-`uname -r`
+\end{envRespuesta}
+
+\subsubsection{Funcionamiento del kernel Linux}
+
+\begin{enumerate}
+
+\item Describa la administraci'on del procesador utilizada por defecto en el kernel Linux.
+\vspace{.5cm}
+\input{admproc.tex}
+
+
+\item Describa la administraci'on de memoria utilizada por defecto en el kernel Linux.
+\vspace{.5cm}
+\input{admmem.tex}
+
+\item Describa el sistema de archivos utilizado en la distribuci'on de Linux que instal'o en la m'aquina virtual.
+?`Qu'e capas existen en el kernel Linux para soportar sistemas de
+archivos sobre dispositivos de bloques?
+
+\vspace{.5cm}
+
+\input{fs.tex}
+
+\end{enumerate}
+
+\subsubsection{M'odulos de kernel}
+
+El kernel de Linux permite ser ampliado en \textbf{runtime} con m'odulos. Los m'odulos son objetos de c'odigo compilado
+que pueden ser insertados en runtime al kernel, siendo linkeados contra el kernel al momento de ser insertados. De esta
+manera puede ampliarser la funcionalidad del kernel en runtime, sin tener que incluir todo el c'odigo en el binario
+original.
+
+\subsubsection{Compilando un m'odulo de kernel}
+
+\begin{envRespuesta}
+En esta secci'on omitimos el enunciado y vamos directo a lo que hicimos. \\
+\textbf{Nota:} Para ejecutar la siguiente parte debe pasar a modo consola (Host+F1).
+\end{envRespuesta}
+
+\CodigoF{cambiarLuces.c}{grupo1/cambiarLuces.c}
+
+Para compilar este c'odigo deber'a construir una \textbf{Makefile}. Este archivo Makefile es utilizado luego por el
+comando \texttt{make} para compilar el m'odulo con las opciones correctas. En el mismo directorio donde se encuentra
+\texttt{cambiarLuces.c} cree un archivo \texttt{Makefile} conteniendo:
+
+\CodigoF{Makefile}{grupo1/Makefile.txt}
+
+Luego ejecute:
+
+\texttt{make}
+
+Para compilar el m'odulo. Finalmente, pruebe insertar el m'odulo usando:
+
+\texttt{insmod cambiarLuces.ko} esto tambi'en viene facilitado con el siguiente script
+\CodigoF{./cargarKernel.sh}{grupo1/cargarKernel.sh}
+
+Deber'ia ver un mensaje en la consola indicando que se cargo correctamente o que fall'o.
+
+Para hacer funcionar el m'odulo escribir como root en \texttt{/proc/lasluces/escribaAqui} o, nuevamente, con un script que toma un dato:
+
+\CodigoF{./escribir.sh dato}{grupo1/escribir.sh}
+
+Para sacar el m'odulo:
+
+\texttt{rmmod cambiarLuces.ko} o su versi'on script.
+
+\CodigoF{./descargarKernel.sh }{grupo1/descargarKernel.sh}
+
+Esto tambi'en deber'ia dar un mensaje indicando lo sucedido.
+
+\subsubsection{Un m'odulo propio}
+
+Escriba un m'odulo de kernel que permita controlar los LEDs del teclado \textbf{sin necesidad de escribir un programa
+en lenguaje C}. El m'odulo deber'a permitir prender o apagar cada LED usando simplemente comandos del shell.
+
+Dado que la m'aquina virtual provista por VirtualBox no muestra el estado de los LEDs, la c'atedra provee abajo
+un programa que lo hace. Compile utilizando:
+
+\texttt{gcc -o check\_kbleds check\_kbleds.c}
+
+\CodigoF{check\_kbleds.c}{grupo1/checkkbleds.c}
+
+\paragraph{Sugerencia}
+
+Haga que su m'odulo cree un archivo en \texttt{/proc} y que las escrituras a ese archivo controlen los LEDs utilizando
+la IOCTL \texttt{KDSETLED} de la consola de Linux.
+
+\subsection{Temas del sistema operativo}
+
+\subsubsection{File system}
+En el ejercicio 3.1.12 se hace menci'on a los hardlinks como
+apuntadores a un mismo espacio de disco. C'omo se llama ese espacio
+de disco, que estructura tiene y por qu'e se pueden borrar los
+hardlinks sin borrar al archivo.\\
+
+\input{sisopfs.tex}
+
+\subsubsection{Prioridades}
+Genere tres versiones del programa loop (3.4.1) (loop1, loop2 y
+loop3) y ejec'utelos en background. Logre que loop3 ejecute m'as
+r'apido que los otros dos (prioridad). Obtenga los tiempos de
+ejecuci'on de cada uno de ellos (uso de procesador) y sus estados.
+Explique detalladamente como logra obtener esta informaci'on.\\
+
+\input{prioridades.tex}
+
+\subsubsection{Par'ametros del Kernel}
+Determine la cantidad de memoria RAM que usa su sistema, ahora
+encuentre una manera para que use menor cantidad de memoria RAM.
+Explique detalladamente como logra obtener este cambio y como
+obtiene la informaci'on.
+
+\input{paramKernel.tex}
+
+\subsubsection{Administraci'on de Memoria}
+Determine el tama\~{n}o de la partici'on swap que est'a utilizando.
+Ampl'ie el tama~no del swap por medio de un archivo en un FS.
+H'agalo persistente. Explique detalladamente como logra obtener este
+cambio.
+
+\input{swap.tex}
+
+\subsubsection*{(The End...)}
+
+\begin{envRespuesta}
+This is the end, beautiful friend\\
+This is the end, my only friend\\
+The end of our elaborate plans\\
+The end of everything that stands\\
+The end\\
+\end{envRespuesta}

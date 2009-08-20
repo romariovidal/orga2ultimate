@@ -6,6 +6,7 @@
 package semaforo;
 
 import java.awt.Graphics;
+import java.util.List;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -26,8 +27,9 @@ class VistaSemaforoCarga extends JPanel {
     public JButton botonArriba;
     public JButton botonAbajo;
 
-    public VistaSemaforoCarga(Integer nroSem, Integer cantidadSemaforos, Integer altoProceso, Integer anchoProceso) {
-        this.elDibujo = new DibujoSemaforo(altoProceso*6/8, anchoProceso/4, (char) (65+nroSem));
+    public VistaSemaforoCarga(Integer nroSem, Integer cantidadSemaforos, Integer altoProceso,
+                Integer anchoProceso, List<String> lSup, List<String> lInf) {
+        this.elDibujo = new DibujoSemaforo(altoProceso*6/8, anchoProceso/4, (char) (65+nroSem), lSup, lInf);
 
         this.setSize(altoProceso, anchoProceso);
         
@@ -72,6 +74,10 @@ class VistaSemaforoCarga extends JPanel {
                     .addComponent(this.elDibujo)
                 );       
 
+    }
+
+    public void redibujarSemaforo(){
+        this.elDibujo.repintar();
     }
 
 
