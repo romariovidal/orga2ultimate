@@ -5,6 +5,8 @@
 
 package semaforo;
 
+import java.util.List;
+
 /**
  *
  * @author tomas
@@ -17,13 +19,32 @@ public class SemaforoSolver {
         if (colasVacias(instancia)) {
             System.out.println("Estan todas las colas vacias, tanto las superiores como las inferiores");
         }
+        if(zonasCriticasVacias(instancia)){
+            System.out.println("Estan todas las zonas criticas vacias");
+        }
+        
 
 
         return instancia;
     }
 
     private static boolean colasVacias(Instancia instancia) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        List<Columna> columnas = instancia.getListaColumna();
+        for (Columna columna : columnas) {
+            if(!(columna.getColaInicial().isEmpty() && columna.getColaInferior().isEmpty())){
+                return false;
+            }
+        }
+        return true;
     }
 
+    private static boolean zonasCriticasVacias(Instancia instancia) {
+        List<Columna> columnas = instancia.getListaColumna();
+        for (Columna columna : columnas) {
+            if(!columna.getProcesosEnZonaCritica().isEmpty()){
+                return false;
+            }
+        }
+        return true;
+    }
 }

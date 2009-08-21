@@ -74,6 +74,10 @@ public class Instancia {
         return this.listaColumna.get(nroSem);
     }
 
+    public List<Columna> getListaColumna() {
+        return listaColumna;
+    }
+
 
     private List<String> listaDeSemaforos(Boolean b, Integer i) {
 //        List<String> res = new ArrayList<String>();
