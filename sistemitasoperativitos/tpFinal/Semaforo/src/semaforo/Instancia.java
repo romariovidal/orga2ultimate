@@ -70,6 +70,10 @@ public class Instancia {
         return this.listaDeSemaforos(false, i);
     }
 
+    public Columna getColumna(Integer nroSem) {
+        return this.listaColumna.get(nroSem);
+    }
+
 
     private List<String> listaDeSemaforos(Boolean b, Integer i) {
 //        List<String> res = new ArrayList<String>();

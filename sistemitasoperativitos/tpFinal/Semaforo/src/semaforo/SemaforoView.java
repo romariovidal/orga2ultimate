@@ -118,8 +118,7 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         for (Integer i=0; i<cantidadProcesos; i++){
             this.semView[i] = new VistaSemaforoCarga(i, cantidadSemaforos, altoProceso, 
-                    anchoProceso, this.semInstance.listaDeSemaforosSuperiores(i),
-                    this.semInstance.listaDeSemaforosInferiores(i));
+                    anchoProceso, this.semInstance);
             this.panelSegundo.add(this.semView[i]);
             this.semView[i].botonAbajo.addActionListener(this);
             this.semView[i].botonArriba.addActionListener(this);

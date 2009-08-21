@@ -94,6 +94,25 @@ public class Semaforo {
     public Integer getProceso(Integer i){
         return this.procesosEnCola.get(i);
     }
+
+    public String mostrar(){
+        String temp = "";
+
+        if(this.getEsP())
+            temp += "P(X"+ this.getValor()+")";
+        else
+            temp += "V(X"+ this.getValor()+")";
+
+        temp += " - ";
+
+        for(Integer k=0; k< this.getCantProc(); k++){
+            if(k>0)
+                temp+=", ";
+
+            temp += (char) (65+this.valor) +"" + this.getProceso(k);
+        }
+        return temp;
+    }
     
 
 }

@@ -20,15 +20,13 @@ class DibujoSemaforo extends JPanel {
     private Integer alto;
     private Integer ancho;
     private Character letra;
-    private List<String> listaStSup;
-    private List<String> listaStInf;
+    private Columna columna;
 
-    public DibujoSemaforo(Integer alto, Integer ancho, Character letra, List<String> lSup, List<String> lInf) {
+    public DibujoSemaforo(Integer alto, Integer ancho, Character letra, Columna c) {
         this.alto = alto;
         this.ancho = ancho;
         this.letra = letra;
-        this.listaStSup = lSup;
-        this.listaStInf = lInf;
+        this.columna = c;
     }
 
     @Override
@@ -55,15 +53,13 @@ class DibujoSemaforo extends JPanel {
     public void dibujarSemaforosSup(Graphics2D g2) {
         Integer posX = ancho*1/4;
         Integer posY = alto*1/32;
-        List<String> s = this.listaStSup;
-        
+               
         Integer fontSize = g2.getFont().getSize();
-        System.out.println("Superior " + this.listaStSup.size());
-        System.out.println("Inferios " + this.listaStInf.size());
-        for (Integer i=0; i< s.size(); i++) {
-            g2.drawString(s.get(i), posX, posY);
+        
+        for (Integer i=0; i< this.columna.cantSemaforosSup(); i++) {
+            g2.drawString(this.columna.mostrarSemaforoSup(i), posX, posY);
             posY += fontSize*6/5;
-            System.out.println(s.get(i));
+            System.out.println("Printing: "+this.columna.mostrarSemaforoSup(i));
         }
                         /*List<String> l = this.semInstance.listaDeSemaforosSuperiores(i);
                 for(Integer j=0; j< l.size(); j++){

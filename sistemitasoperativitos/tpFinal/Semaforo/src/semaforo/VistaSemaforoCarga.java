@@ -28,8 +28,8 @@ class VistaSemaforoCarga extends JPanel {
     public JButton botonAbajo;
 
     public VistaSemaforoCarga(Integer nroSem, Integer cantidadSemaforos, Integer altoProceso,
-                Integer anchoProceso, List<String> lSup, List<String> lInf) {
-        this.elDibujo = new DibujoSemaforo(altoProceso*6/8, anchoProceso/4, (char) (65+nroSem), lSup, lInf);
+                Integer anchoProceso, Instancia inst) {
+        this.elDibujo = new DibujoSemaforo(altoProceso*6/8, anchoProceso/4, (char) (65+nroSem), inst.getColumna(nroSem));
 
         this.setSize(altoProceso, anchoProceso);
         

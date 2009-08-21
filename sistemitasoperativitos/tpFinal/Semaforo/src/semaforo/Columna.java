@@ -15,10 +15,10 @@ import java.util.List;
 public class Columna {
 
     private List<Integer>   colaInicial=new ArrayList<Integer>();
-    private List<Semaforo>  semaforosSuperiores=null;
+    private List<Semaforo>  semaforosSuperiores= new ArrayList<Semaforo>();
     private List<Integer>   procesosEnZonaCritica=new ArrayList<Integer>();
     private List<Integer>   colaInferior=new ArrayList<Integer>();
-    private List<Semaforo>  semaforosInferiores=null;
+    private List<Semaforo>  semaforosInferiores= new ArrayList<Semaforo>();
 
     public Columna() {
     }
@@ -37,6 +37,22 @@ public class Columna {
 
     public List<Integer> getColaInicial() {
         return colaInicial;
+    }
+
+    public Integer cantSemaforosSup(){
+        return this.semaforosSuperiores.size();
+    }
+
+    public Integer cantSemaforosInf(){
+        return this.semaforosInferiores.size();
+    }
+
+    public String mostrarSemaforoSup(Integer i){
+        return this.semaforosSuperiores.get(i).mostrar();
+    }
+    
+    public String mostrarSemaforoInf(Integer i){
+        return this.semaforosInferiores.get(i).mostrar();
     }
 
 }
