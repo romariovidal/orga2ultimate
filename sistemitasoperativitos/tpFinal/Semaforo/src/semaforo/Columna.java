@@ -31,6 +31,12 @@ public class Columna {
         semaforosInferiores.add(semaforo);
     }
 
+    public List<Integer> getColaInferior() {
+        return colaInferior;
+    }
 
+    public List<Integer> getColaInicial() {
+        return colaInicial;
+    }
 
 }
