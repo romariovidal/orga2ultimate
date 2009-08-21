@@ -19,25 +19,28 @@ public class Instancia {
     private List<Character> resultado; // lista de los distintos tipos de procesos que van finalizando su corrida.
 
     public Instancia(Integer cantidadTiposProcesos, Integer cantidadSemaforos) {
-        
+        listaColumna = new ArrayList<Columna>();
+        for (int i = 0; i < cantidadTiposProcesos; i++) {
+            listaColumna.add(new Columna());
+        }
+
         this.valoresSemaforos = new Integer[cantidadSemaforos];
         for(Integer i=0; i< cantidadSemaforos; i++){
             this.valoresSemaforos[i] = 0;
         }
-
         this.resultado = new ArrayList<Character>();
     }
 
     public void agregarSemaforoSuperior(Semaforo semaforo, Integer numTipoProc){
-        System.out.println("Antes " + this.listaColumna.get(numTipoProc).getSemaforosSuperiores().size());
-        this.listaColumna.get(numTipoProc).getSemaforosSuperiores().add(semaforo);
-        System.out.println("Despues " + this.listaColumna.get(numTipoProc).getSemaforosSuperiores().size());
+        //System.out.println("Antes " + this.listaColumna.get(numTipoProc).getSemaforosSuperiores().size());
+        this.listaColumna.get(numTipoProc).agregarSemaforoSuperior(semaforo);
+        //System.out.println("Despues " + this.listaColumna.get(numTipoProc).getSemaforosSuperiores().size());
     }
 
     public void agregarSemaforoInferior(Semaforo semaforo, Integer numTipoProc){
-        System.out.println("Antes " + this.listaColumna.get(numTipoProc).getSemaforosInferiores().size());
-        this.listaColumna.get(numTipoProc).getSemaforosInferiores().add(semaforo);
-        System.out.println("Despues " + this.listaColumna.get(numTipoProc).getSemaforosInferiores().size());
+        //System.out.println("Antes " + this.listaColumna.get(numTipoProc).getSemaforosInferiores().size());
+        this.listaColumna.get(numTipoProc).agregarSemaforoInferior(semaforo);
+        //System.out.println("Despues " + this.listaColumna.get(numTipoProc).getSemaforosInferiores().size());
 
     }
 

@@ -5,6 +5,7 @@
 
 package semaforo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,62 +14,23 @@ import java.util.List;
  */
 public class Columna {
 
-    private List<Integer>   colaInicial=null;
+    private List<Integer>   colaInicial=new ArrayList<Integer>();
     private List<Semaforo>  semaforosSuperiores=null;
-    private List<Integer>   semaforosEnZonaCritica=null;
-    private Boolean         zonaCriticaOcupada=false;
-    private List<Integer>   colaInferior=null;
+    private List<Integer>   procesosEnZonaCritica=new ArrayList<Integer>();
+    private List<Integer>   colaInferior=new ArrayList<Integer>();
     private List<Semaforo>  semaforosInferiores=null;
 
     public Columna() {
     }
 
-    public void setColaInferior(List<Integer> colaInferior) {
-        this.colaInferior = colaInferior;
+    void agregarSemaforoSuperior(Semaforo semaforo) {
+        semaforosSuperiores.add(semaforo);
     }
 
-    public void setColaInicial(List<Integer> colaInicial) {
-        this.colaInicial = colaInicial;
+    void agregarSemaforoInferior(Semaforo semaforo) {
+        semaforosInferiores.add(semaforo);
     }
 
-    public void setSemaforosEnZonaCritica(List<Integer> semaforosEnZonaCritica) {
-        this.semaforosEnZonaCritica = semaforosEnZonaCritica;
-    }
 
-    public void setSemaforosInferiores(List<Semaforo> semaforosInferiores) {
-        this.semaforosInferiores = semaforosInferiores;
-    }
-
-    public void setSemaforosSuperiores(List<Semaforo> semaforosSuperiores) {
-        this.semaforosSuperiores = semaforosSuperiores;
-    }
-
-    public void setZonaCriticaOcupada(Boolean zonaCriticaOcupada) {
-        this.zonaCriticaOcupada = zonaCriticaOcupada;
-    }
-
-    public List<Integer> getColaInferior() {
-        return colaInferior;
-    }
-
-    public List<Integer> getColaInicial() {
-        return colaInicial;
-    }
-
-    public List<Integer> getSemaforosEnZonaCritica() {
-        return semaforosEnZonaCritica;
-    }
-
-    public List<Semaforo> getSemaforosInferiores() {
-        return semaforosInferiores;
-    }
-
-    public List<Semaforo> getSemaforosSuperiores() {
-        return semaforosSuperiores;
-    }
-
-    public Boolean getZonaCriticaOcupada() {
-        return zonaCriticaOcupada;
-    }
 
 }
