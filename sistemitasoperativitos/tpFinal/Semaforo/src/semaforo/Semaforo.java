@@ -5,6 +5,7 @@
 
 package semaforo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author tomas
  */
-public class Semaforo {
+public class Semaforo implements Serializable {
 
     private Boolean esP;
     private Integer valor;
