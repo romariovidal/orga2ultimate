@@ -649,11 +649,10 @@ public class Banquero2View extends FrameView implements ActionListener {
             try {
                 archivo = this.seleccionarArchivo();
                 System.out.println("Leido2 " + archivo);
+                this.desserializar(archivo);
             } catch (IOException io) {
                 System.out.println(io.getMessage());
             }
-            
-            this.desserializar(archivo);
          }
          if(evt.getSource().equals( this.guardar ) ){
             System.out.println( "Se ha pulsado el boton de guardar" );
@@ -661,10 +660,10 @@ public class Banquero2View extends FrameView implements ActionListener {
             try {
                 archivo = this.seleccionarArchivo();
                 System.out.println("Leido2 " + archivo);
+                this.serializar(archivo);
             } catch (IOException io) {
                 System.out.println(io.getMessage());
-            }
-            this.serializar(archivo);
+            }            
          }
          if(evt.getSource().equals( this.simular ) ){
             System.out.println( "Se ha pulsado el boton de simular" );
