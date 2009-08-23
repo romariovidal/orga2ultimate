@@ -40,6 +40,10 @@ public class Columna implements Serializable {
         return procesosEnZonaCritica;
     }
 
+    public List<Integer> getProcesosTerminados() {
+        return procesosTerminados;
+    }
+
     void agregarSemaforoSuperior(Semaforo semaforo) {
         semaforosSuperiores.add(semaforo);
     }
