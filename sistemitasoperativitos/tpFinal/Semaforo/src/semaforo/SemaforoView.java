@@ -5,6 +5,7 @@
 package semaforo;
 
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -12,14 +13,23 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javax.swing.GroupLayout;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -32,6 +42,15 @@ public class SemaforoView extends FrameView implements ActionListener {
     private JTextField[] valoresVarSemaforos;
     private JButton buttonEmpezar;
     private JButton buttonGuardar;
+    private JPanel panelTercero;
+    private VistaSemaforoSimulacion[] semViewSimul;
+    private JTextField[] valoresVarSemaforosSim;
+    private JButton buttonStartStop;
+    private JButton buttonLiberarZonaCritica;
+    private JButton buttonTerminar;
+    private JTextArea logs;
+    private JTextArea resultado;
+    private final static String newline = "\n";
 
     public SemaforoView(SingleFrameApplication app) {
         super(app);
@@ -103,6 +122,69 @@ public class SemaforoView extends FrameView implements ActionListener {
         SemaforoApp.getApplication().show(aboutBox);
     }
 
+    private JPanel botoneraDeAccion() {
+        JPanel panelRigthUp = new JPanel();
+        Integer cantSem = this.semInstance.getCantSemaforos();
+        panelRigthUp.setBorder(new TitledBorder("Valores de las variables"));
+        //this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
+
+        GridLayout layout = new GridLayout(cantSem, 2);
+        layout.setHgap(10);
+        layout.setVgap(10);
+
+        panelRigthUp.setLayout(layout);
+        this.valoresVarSemaforosSim = new JTextField[cantSem];
+
+        for (Integer i=0; i<cantSem; i++){
+            this.valoresVarSemaforosSim[i] = new JTextField(2);
+            this.valoresVarSemaforosSim[i].setText(this.semInstance.getValorSemaforo(i).toString());
+            this.valoresVarSemaforosSim[i].setHorizontalAlignment(JTextField.CENTER);
+            this.valoresVarSemaforosSim[i].setEditable(false);
+            panelRigthUp.add(new JLabel("   X" + i + ":"));
+            panelRigthUp.add(this.valoresVarSemaforosSim[i]);
+        }
+
+        //panelRigthUp.setSize(10, 10);
+
+        JPanel panelRigthDown = new JPanel();
+
+        //panelRigthDown.setBorder();
+        //this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
+
+        GridLayout layout2 = new GridLayout(3, 1);
+        layout2.setHgap(10);
+        layout2.setVgap(10);
+
+        this.buttonStartStop = new JButton("Empezar");
+        this.buttonLiberarZonaCritica = new JButton("Liberar zona crítica");
+        this.buttonTerminar = new JButton("Terminar");
+
+        this.buttonStartStop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStartStopClicked(evt);
+            }
+        });
+
+        panelRigthDown.setLayout(layout2);
+        
+        panelRigthDown.add(this.buttonLiberarZonaCritica);
+        panelRigthDown.add(this.buttonStartStop);
+        panelRigthDown.add(this.buttonTerminar);
+
+        JPanel panelRigthAll = new JPanel();
+
+        GridLayout layout3 = new GridLayout(2, 1);
+        layout3.setHgap(10);
+        layout3.setVgap(10);
+
+        panelRigthAll.setLayout(layout3);
+
+        panelRigthAll.add(panelRigthUp);
+        panelRigthAll.add(panelRigthDown);
+
+        return panelRigthAll;
+    }
+
     private JPanel botoneraDeCarga(Integer cantSem) {
         JPanel panelRigthUp = new JPanel();
 
@@ -120,7 +202,7 @@ public class SemaforoView extends FrameView implements ActionListener {
             this.valoresVarSemaforos[i] = new JTextField(2);
             this.valoresVarSemaforos[i].setText("0");
             this.valoresVarSemaforos[i].setHorizontalAlignment(JTextField.CENTER);
-            panelRigthUp.add(new JLabel("   X" + i));
+            panelRigthUp.add(new JLabel("   X" + i + ":"));
             panelRigthUp.add(this.valoresVarSemaforos[i]);
         }
 
@@ -137,6 +219,18 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         this.buttonEmpezar = new JButton("Empezar");
         this.buttonGuardar = new JButton("Guardar");
+
+        this.buttonEmpezar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEmpezarClicked(evt);
+            }
+        });
+
+        this.buttonGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonGuardarClicked(evt);
+            }
+        });
 
         panelRigthDown.setLayout(layout2);
         
@@ -170,7 +264,7 @@ public class SemaforoView extends FrameView implements ActionListener {
         Integer anchoPanel = anchoProceso * cantidadProcesos;
         this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
 
-        GridLayout layout = new GridLayout(1, 9);
+        GridLayout layout = new GridLayout(1, cantidadProcesos+1);
         layout.setHgap(10);
         layout.setVgap(10);
 
@@ -190,14 +284,104 @@ public class SemaforoView extends FrameView implements ActionListener {
         this.panelSegundo.add(panelSegundoRight);
     }
 
+    private void cargarPanelTercero() {
+        Integer anchoProceso = 50;
+        Integer altoProceso = 550;
+        Integer cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
 
+        GridLayout layoutSup = new GridLayout(1, cantidadProcesos);
+        layoutSup.setHgap(10);
+        layoutSup.setVgap(10);
+        JPanel panelSup = new JPanel(layoutSup);
+        this.semViewSimul = new VistaSemaforoSimulacion[cantidadProcesos];
+
+        for (Integer i=0; i<cantidadProcesos; i++){
+            this.semViewSimul[i] = new VistaSemaforoSimulacion(i, altoProceso, anchoProceso, this.semInstance);
+            panelSup.add(this.semViewSimul[i]);
+            //this.semView[i].botonAbajo.addActionListener(this);
+            final Integer t = i;
+            this.semViewSimul[i].botonAgregarProc.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    jButtonAgregarProcClicked(evt, t);
+                }
+            });
+            
+        }
+
+        JPanel panelTerceroRight = this.botoneraDeAccion();
+
+
+        JPanel consola = new JPanel();
+        this.logs = new JTextArea();
+        logs.setEditable(false);
+        this.appendLog("Iniciando simulación");
+
+        JScrollPane areaScrollPane = new JScrollPane(logs);
+        areaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        consola.setLayout(new GridLayout(1, 1));
+        consola.add(areaScrollPane);
+        consola.setBorder(new TitledBorder("Logs"));
+
+        JPanel resultadoPanel = new JPanel();
+        resultadoPanel.setBorder(new TitledBorder("Secuencia resultado"));
+        GridLayout layoutRes = new GridLayout(1,1);
+        layoutRes.setHgap(5);
+        layoutRes.setVgap(5);
+        resultadoPanel.setLayout(layoutRes);
+        this.resultado = new JTextArea("");
+        this.resultado.setBackground(this.mainPanel.getBackground());
+        resultadoPanel.add(this.resultado);
+
+        this.panelTercero = new JPanel();
+        this.panelTercero.setBorder(new TitledBorder("Simulación."));
+        GroupLayout layoutGral = new GroupLayout(this.panelTercero);
+        
+        //this.panelTercero.setSize(anchoPanel+20, altoProceso+80);
+        this.panelTercero.setLayout(layoutGral);
+
+        layoutGral.setHorizontalGroup(
+                layoutGral.createSequentialGroup() //.addGap(160,260,36)
+                .addGroup(layoutGral.createParallelGroup()
+                    .addComponent(panelSup)
+                    .addComponent(consola)
+                    )
+                .addGroup(layoutGral.createParallelGroup()
+                    .addComponent(panelTerceroRight)
+                    .addComponent(resultadoPanel)
+                    )
+                );
+        layoutGral.setVerticalGroup(
+                layoutGral.createSequentialGroup()
+                    .addGroup(layoutGral.createParallelGroup()
+                        .addComponent(panelSup)
+                        .addComponent(panelTerceroRight)
+                    )
+                    .addGroup(layoutGral.createParallelGroup()
+                        .addComponent(consola)
+                        .addComponent(resultadoPanel)//, alto, alto, alto) //.addGap(180, Short.MAX_VALUE))
+                    )
+                );
+
+    }
+
+    private void actualizarInfoSimulacion(){
+        for(Integer i=0; i<this.semInstance.getCantSemaforos(); i++){
+            Integer valor = new Integer(this.valoresVarSemaforos[i].getText());
+            this.semInstance.setValorSemaforo(i, valor);
+        }
+
+        for(Integer i=0; i< this.semViewSimul.length; i++){
+            this.semViewSimul[i].redibujarSemaforo();
+        }
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.
      */
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -242,6 +426,11 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         cantProc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
         cantProc.setName("cantProc"); // NOI18N
@@ -303,7 +492,7 @@ public class SemaforoView extends FrameView implements ActionListener {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -369,6 +558,44 @@ public class SemaforoView extends FrameView implements ActionListener {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAgregarProcClicked(MouseEvent evt, Integer i) {
+        //throw new UnsupportedOperationException("Not yet implemented");
+        System.out.println("Se cliqueo el proceso " +  i);
+        this.semInstance.crearProceso(i);
+        this.semViewSimul[i].redibujarSemaforo();
+    }
+
+    private void jButtonGuardarClicked(java.awt.event.MouseEvent evt) {
+        System.out.println( "Se ha pulsado el boton de cargar" );
+        String archivo = null;
+        try {
+            archivo = this.seleccionarArchivo();
+            System.out.println("Leido para Guardar " + archivo);
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
+
+        this.serializar(archivo);
+    }
+
+    private void jButtonEmpezarClicked(MouseEvent evt) {
+        for(Integer i=0; i<this.semInstance.getCantSemaforos(); i++){
+            Integer valor = new Integer(this.valoresVarSemaforos[i].getText());
+            this.semInstance.setValorSemaforo(i, valor);
+        }
+        
+        this.cargarPanelTercero();
+        this.panelSegundo.setVisible(false);
+        this.panelTercero.setVisible(true);
+        this.mainPanel.removeAll();
+        this.mainPanel.setLayout(new GridLayout(1,1));
+        this.mainPanel.add(this.panelTercero);
+    }
+
+    private void jButtonStartStopClicked(MouseEvent evt) {
+
+    }
+
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         Integer cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
         Integer cantidadSemaforos = new Integer (String.valueOf(this.cantSemaforos.getSelectedItem()));
@@ -383,6 +610,19 @@ public class SemaforoView extends FrameView implements ActionListener {
         this.mainPanel.setLayout(new GridLayout(1,1));
         this.mainPanel.add(this.panelSegundo);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        System.out.println( "Se ha pulsado el boton de cargar" );
+        String archivo = null;
+        try {
+            archivo = this.seleccionarArchivo();
+            System.out.println("Leido2 " + archivo);
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
+
+        this.desserializar(archivo);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cantProc;
@@ -447,4 +687,97 @@ public class SemaforoView extends FrameView implements ActionListener {
             
         }
     }
+
+    public void appendLog(String st){
+        this.logs.append(st + newline);
+    }
+
+
+
+
+
+    private String seleccionarArchivo() throws IOException {
+        JFrame frame2 = new JFrame();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        //int result = fileChooser.showOpenDialog(frame2);
+        int result = fileChooser.showDialog(frame2, "Seleccionar");
+        String archivo = null;
+
+        if (result == JFileChooser.APPROVE_OPTION){
+            File filename2 = fileChooser.getSelectedFile();
+            System.out.println("Leido: " + filename2.getAbsolutePath());
+            archivo = new String(filename2.toString());
+        } else {
+            throw new IOException("No file selected");
+        }
+
+        /*if (result == JFileChooser.APPROVE_OPTION){
+            File filename2 = fileChooser.getSelectedFile();
+            System.out.println("Leido: " + filename2.getAbsolutePath());
+            archivo = new String(filename2.toString());
+            return true;
+        } else {
+            System.out.println("Cancelado");
+            return false;
+        }*/
+        return archivo;
+     }
+
+    private void serializar(String archivo) {
+        try {
+            FileOutputStream f = new FileOutputStream(archivo);
+            ObjectOutputStream s = new ObjectOutputStream(f);
+
+            s.writeObject(this.semInstance);
+
+            System.out.println("Grabado");
+
+            s.flush();
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
+    }
+
+    private void desserializar(String archivo) {
+        try {
+        FileInputStream f = new FileInputStream(archivo);
+        ObjectInputStream s = new ObjectInputStream(f);
+        //String company = "";
+
+        //company = (String) s.readObject();
+        //this.text_tiene11.setText((String) s.readObject());
+        //this = s.readObject();
+        //System.out.println(company + " ");
+        for (Integer i = 1; i <= 8; i++) {
+            for (Integer j = 1; j <= 8; j++) {
+   //             this.matrizAsignacion[i][j].setText((String) s.readObject());
+            }
+        }
+        for (Integer i = 1; i <= 8; i++) {
+            for (Integer j = 1; j <= 8; j++) {
+   //             this.matrizMaximos[i][j].setText((String) s.readObject());
+            }
+        }
+
+        for (Integer j = 1; j <= 8; j++) {
+    //        this.vectorDisponible[j].setText((String) s.readObject());
+        }
+
+      //  this.procPedido.setText((String) s.readObject());
+        for (Integer j = 1; j <= 8; j++) {
+//            this.vectorPedido[j].setText((String) s.readObject());
+        }
+
+        System.out.println("\tCargado");
+
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
+//        } catch (ClassNotFoundException cl) {
+//            System.out.println(cl.getMessage());
+//        }
+    }
+
+
 }

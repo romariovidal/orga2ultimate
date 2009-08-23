@@ -8,6 +8,7 @@ package semaforo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -60,7 +61,18 @@ class DibujoSemaforo extends JPanel {
     private void dibujarSemaforos(Graphics2D g2) {
         Integer fontSize = g2.getFont().getSize();
         Integer posX = ancho*1/4;
-        Integer posY = alto*1/16 + fontSize;      
+        Integer posY = alto*1/16 + fontSize;
+
+        List<Integer> inicial = this.columna.getColaInicial();
+        String esperando = "";
+        for (Integer i=0; i< inicial.size(); i++) {
+            if(esperando!= "")
+                esperando += ", ";
+
+            esperando += this.letra +"" + inicial.get(i);
+        }
+        g2.drawString(esperando, posX, posY);
+        posY += fontSize*6/5;
 
         for (Integer i=0; i< this.columna.cantSemaforosSup(); i++) {
             g2.drawString(this.columna.mostrarSemaforoSup(i), posX, posY);

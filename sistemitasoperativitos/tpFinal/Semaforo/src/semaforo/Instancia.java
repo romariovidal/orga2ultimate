@@ -5,6 +5,7 @@
 
 package semaforo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author tomas
  */
-public class Instancia {
+public class Instancia implements Serializable {
 
     private List<Columna> listaColumna; // lista de las columnas copadas que tienen casi todo.
     private Integer[] valoresSemaforos; //valor de las variables de los semaforos.
@@ -136,6 +137,10 @@ public class Instancia {
 
     public void  setValorSemaforo(Integer i, Integer valor) {
         this.valoresSemaforos[i] = valor;
+    }
+
+    public void  crearProceso(Integer tipoProceso) {
+        this.listaColumna.get(tipoProceso).agregarNuevoProcesoAColaInicial();
     }
 
 }
