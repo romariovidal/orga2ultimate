@@ -6,6 +6,8 @@ package semaforo;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -19,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Date;
 import javax.swing.GroupLayout;
 import javax.swing.Timer;
 import javax.swing.Icon;
@@ -51,6 +54,8 @@ public class SemaforoView extends FrameView implements ActionListener {
     private JTextArea logs;
     private JTextArea resultado;
     private final static String newline = "\n";
+    private Timer timer;
+    private JTextField intevalo;
 
     public SemaforoView(SingleFrameApplication app) {
         super(app);
@@ -151,11 +156,11 @@ public class SemaforoView extends FrameView implements ActionListener {
         //panelRigthDown.setBorder();
         //this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
 
-        GridLayout layout2 = new GridLayout(3, 1);
+        GridLayout layout2 = new GridLayout(4, 1);
         layout2.setHgap(10);
         layout2.setVgap(10);
 
-        this.buttonStartStop = new JButton("Empezar");
+        this.buttonStartStop = new JButton("Play");
         this.buttonLiberarZonaCritica = new JButton("Liberar zona crítica");
         this.buttonTerminar = new JButton("Terminar");
 
@@ -165,11 +170,31 @@ public class SemaforoView extends FrameView implements ActionListener {
             }
         });
 
+        JPanel intervaloPanel = new JPanel(new GridLayout(1,2));
+        intervaloPanel.add(new JLabel("Intervalo: "));
+        this.intevalo = new JTextField("20");
+        this.intevalo.setColumns(3);
+        intervaloPanel.add(this.intevalo);
+
+
         panelRigthDown.setLayout(layout2);
-        
-        panelRigthDown.add(this.buttonLiberarZonaCritica);
+
+        panelRigthDown.add(intervaloPanel);
         panelRigthDown.add(this.buttonStartStop);
+        panelRigthDown.add(this.buttonLiberarZonaCritica);        
         panelRigthDown.add(this.buttonTerminar);
+
+        this.buttonTerminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonTerminarClicked(evt);
+            }
+        });
+
+        this.buttonLiberarZonaCritica.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                liberarZonaCritica();
+            }
+        });
 
         JPanel panelRigthAll = new JPanel();
 
@@ -200,7 +225,7 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         for (Integer i=0; i<cantSem; i++){
             this.valoresVarSemaforos[i] = new JTextField(2);
-            this.valoresVarSemaforos[i].setText("0");
+            this.valoresVarSemaforos[i].setText(this.semInstance.getValorSemaforo(i).toString());
             this.valoresVarSemaforos[i].setHorizontalAlignment(JTextField.CENTER);
             panelRigthUp.add(new JLabel("   X" + i + ":"));
             panelRigthUp.add(this.valoresVarSemaforos[i]);
@@ -253,11 +278,18 @@ public class SemaforoView extends FrameView implements ActionListener {
     }
 
     @SuppressWarnings("empty-statement")
-    private void cargarPanelSegundo() {
+    private void cargarPanelSegundo(Boolean serializado) {
         Integer anchoProceso = 50;
         Integer altoProceso = 550;
-        Integer cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
-        Integer cantidadSemaforos = new Integer (String.valueOf(this.cantSemaforos.getSelectedItem()));
+        Integer cantidadProcesos;
+        Integer cantidadSemaforos;
+        if(!serializado){
+            cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
+            cantidadSemaforos = new Integer (String.valueOf(this.cantSemaforos.getSelectedItem()));
+        } else {
+            cantidadProcesos = this.semInstance.getCantTiposProcesos();
+            cantidadSemaforos = this.semInstance.getCantSemaforos();
+        }
 
         this.panelSegundo = new JPanel();
         this.panelSegundo.setBorder(new TitledBorder("Configuración de semáforos."));
@@ -287,7 +319,7 @@ public class SemaforoView extends FrameView implements ActionListener {
     private void cargarPanelTercero() {
         Integer anchoProceso = 50;
         Integer altoProceso = 550;
-        Integer cantidadProcesos = new Integer (String.valueOf(this.cantProc.getSelectedItem()));
+        Integer cantidadProcesos = this.semInstance.getCantTiposProcesos();
 
         GridLayout layoutSup = new GridLayout(1, cantidadProcesos);
         layoutSup.setHgap(10);
@@ -302,7 +334,7 @@ public class SemaforoView extends FrameView implements ActionListener {
             final Integer t = i;
             this.semViewSimul[i].botonAgregarProc.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jButtonAgregarProcClicked(evt, t);
+                    jButtonAgregarProcesoClicked(evt, t);
                 }
             });
             
@@ -358,8 +390,8 @@ public class SemaforoView extends FrameView implements ActionListener {
                         .addComponent(panelTerceroRight)
                     )
                     .addGroup(layoutGral.createParallelGroup()
-                        .addComponent(consola)
-                        .addComponent(resultadoPanel)//, alto, alto, alto) //.addGap(180, Short.MAX_VALUE))
+                        .addComponent(consola, 200, 200, 200)
+                        .addComponent(resultadoPanel, 200, 200, 200)//, alto, alto, alto) //.addGap(180, Short.MAX_VALUE))
                     )
                 );
 
@@ -373,6 +405,13 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         for(Integer i=0; i< this.semViewSimul.length; i++){
             this.semViewSimul[i].redibujarSemaforo();
+        }
+    }
+
+    private void actualizarInstanciaVarSemaforos() {
+        for(Integer i=0; i<this.semInstance.getCantSemaforos(); i++){
+            Integer valor = new Integer(this.valoresVarSemaforos[i].getText());
+            this.semInstance.setValorSemaforo(i, valor);
         }
     }
 
@@ -558,7 +597,7 @@ public class SemaforoView extends FrameView implements ActionListener {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAgregarProcClicked(MouseEvent evt, Integer i) {
+    private void jButtonAgregarProcesoClicked(MouseEvent evt, Integer i) {
         //throw new UnsupportedOperationException("Not yet implemented");
         System.out.println("Se cliqueo el proceso " +  i);
         this.semInstance.crearProceso(i);
@@ -566,23 +605,20 @@ public class SemaforoView extends FrameView implements ActionListener {
     }
 
     private void jButtonGuardarClicked(java.awt.event.MouseEvent evt) {
-        System.out.println( "Se ha pulsado el boton de cargar" );
+        this.actualizarInstanciaVarSemaforos();
+        System.out.println( "Se ha pulsado el boton de guardar" );
         String archivo = null;
         try {
             archivo = this.seleccionarArchivo();
             System.out.println("Leido para Guardar " + archivo);
+            this.serializar(archivo);
         } catch (IOException io) {
             System.out.println(io.getMessage());
-        }
-
-        this.serializar(archivo);
+        }        
     }
 
     private void jButtonEmpezarClicked(MouseEvent evt) {
-        for(Integer i=0; i<this.semInstance.getCantSemaforos(); i++){
-            Integer valor = new Integer(this.valoresVarSemaforos[i].getText());
-            this.semInstance.setValorSemaforo(i, valor);
-        }
+        this.actualizarInstanciaVarSemaforos();
         
         this.cargarPanelTercero();
         this.panelSegundo.setVisible(false);
@@ -590,10 +626,47 @@ public class SemaforoView extends FrameView implements ActionListener {
         this.mainPanel.removeAll();
         this.mainPanel.setLayout(new GridLayout(1,1));
         this.mainPanel.add(this.panelTercero);
+
+        this.timer = new Timer(3000, this);
+        this.timer.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                timerOcurrio();
+            }
+        });
+
+        this.timer.setInitialDelay(0);
+        this.timer.stop();
     }
 
     private void jButtonStartStopClicked(MouseEvent evt) {
+        System.out.println( "Se ha pulsado el boton de play" );
+        Integer delay = 2000;
+        try {
+            delay = Integer.parseInt(this.intevalo.getText()) * 100;
+        } catch (NumberFormatException ex) {
+             delay = 500;
+        }
 
+        timer.setDelay(delay);
+        if(timer.isRunning()){
+            timer.stop();
+            this.buttonStartStop.setText("Play");
+        } else {
+            timer.start();
+            this.buttonStartStop.setText("Stop");
+
+        }
+    }
+
+    private void jButtonTerminarClicked(MouseEvent evt) {
+        this.semInstance.borrarTodosLosProcesos();
+
+        this.panelSegundo.setVisible(true);
+        this.panelTercero.setVisible(false);
+        this.mainPanel.removeAll();
+        this.mainPanel.setLayout(new GridLayout(1,1));
+        this.mainPanel.add(this.panelSegundo);
+        this.timer.stop();
     }
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -604,7 +677,7 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         this.semInstance = new Instancia(cantidadProcesos, cantidadSemaforos);
 
-        this.cargarPanelSegundo();
+        this.cargarPanelSegundo(false);
         this.panelSegundo.setVisible(true);
         this.mainPanel.removeAll();
         this.mainPanel.setLayout(new GridLayout(1,1));
@@ -616,12 +689,11 @@ public class SemaforoView extends FrameView implements ActionListener {
         String archivo = null;
         try {
             archivo = this.seleccionarArchivo();
-            System.out.println("Leido2 " + archivo);
+            System.out.println("Leido2 " + archivo); 
+            this.desserializar(archivo);
         } catch (IOException io) {
             System.out.println(io.getMessage());
-        }
-
-        this.desserializar(archivo);
+        }       
     }//GEN-LAST:event_jButton2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -693,6 +765,22 @@ public class SemaforoView extends FrameView implements ActionListener {
     }
 
 
+    private void timerOcurrio() {
+        this.appendLog(new Date().toString());
+
+        for (VistaSemaforoSimulacion semaforoDibujo : semViewSimul) {
+            semaforoDibujo.redibujarSemaforo();
+        }
+        
+        for (Integer i=0; i<this.valoresVarSemaforosSim.length; i++){
+            this.valoresVarSemaforosSim[i].setText(this.semInstance.getValorSemaforo(i).toString());
+        }
+
+    }
+
+    private void liberarZonaCritica() {
+        this.appendLog("Liberando zona crítica");
+    }
 
 
 
@@ -702,7 +790,7 @@ public class SemaforoView extends FrameView implements ActionListener {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         //int result = fileChooser.showOpenDialog(frame2);
         int result = fileChooser.showDialog(frame2, "Seleccionar");
-        String archivo = null;
+        String archivo = "";
 
         if (result == JFileChooser.APPROVE_OPTION){
             File filename2 = fileChooser.getSelectedFile();
@@ -711,16 +799,6 @@ public class SemaforoView extends FrameView implements ActionListener {
         } else {
             throw new IOException("No file selected");
         }
-
-        /*if (result == JFileChooser.APPROVE_OPTION){
-            File filename2 = fileChooser.getSelectedFile();
-            System.out.println("Leido: " + filename2.getAbsolutePath());
-            archivo = new String(filename2.toString());
-            return true;
-        } else {
-            System.out.println("Cancelado");
-            return false;
-        }*/
         return archivo;
      }
 
@@ -743,30 +821,18 @@ public class SemaforoView extends FrameView implements ActionListener {
         try {
         FileInputStream f = new FileInputStream(archivo);
         ObjectInputStream s = new ObjectInputStream(f);
-        //String company = "";
+        
+        try {
+            this.semInstance = (Instancia) s.readObject();
+            this.panelInicial.setVisible(false);
 
-        //company = (String) s.readObject();
-        //this.text_tiene11.setText((String) s.readObject());
-        //this = s.readObject();
-        //System.out.println(company + " ");
-        for (Integer i = 1; i <= 8; i++) {
-            for (Integer j = 1; j <= 8; j++) {
-   //             this.matrizAsignacion[i][j].setText((String) s.readObject());
-            }
-        }
-        for (Integer i = 1; i <= 8; i++) {
-            for (Integer j = 1; j <= 8; j++) {
-   //             this.matrizMaximos[i][j].setText((String) s.readObject());
-            }
-        }
-
-        for (Integer j = 1; j <= 8; j++) {
-    //        this.vectorDisponible[j].setText((String) s.readObject());
-        }
-
-      //  this.procPedido.setText((String) s.readObject());
-        for (Integer j = 1; j <= 8; j++) {
-//            this.vectorPedido[j].setText((String) s.readObject());
+            this.cargarPanelSegundo(true);
+            this.panelSegundo.setVisible(true);
+            this.mainPanel.removeAll();
+            this.mainPanel.setLayout(new GridLayout(1,1));
+            this.mainPanel.add(this.panelSegundo);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SemaforoView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         System.out.println("\tCargado");

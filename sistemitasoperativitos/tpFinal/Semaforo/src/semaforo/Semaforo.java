@@ -18,6 +18,7 @@ public class Semaforo implements Serializable {
     private Boolean esP;
     private Integer valor;
     private List<Integer> procesosEnCola;
+    private static final long serialVersionUID = 667;
 
     public Semaforo(Boolean esP, Integer valor, List<Integer> cola) {
         this.esP = esP;
@@ -113,6 +114,10 @@ public class Semaforo implements Serializable {
             temp += (char) (65+this.valor) +"" + this.getProceso(k);
         }
         return temp;
+    }
+
+    void borrarTodosLosProcesos() {
+        procesosEnCola = new ArrayList<Integer>();
     }
     
 

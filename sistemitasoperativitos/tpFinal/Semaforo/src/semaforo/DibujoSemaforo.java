@@ -81,9 +81,21 @@ class DibujoSemaforo extends JPanel {
         }
 
         posY = this.getHeight();
+
+        List<Integer> terminados = this.columna.getProcesosTerminados();
+        String terminadosSt = "";
+        for (Integer i=0; i< terminados.size(); i++) {
+            if(terminadosSt!= "")
+                esperando += ", ";
+
+            terminadosSt += this.letra +"" + terminados.get(i);
+        }
+        g2.drawString(terminadosSt, posX, posY);
+        posY -= fontSize*6/5;
+
+
         Integer cant =this.columna.cantSemaforosInf()-1;
         for (Integer i= cant; i>=0 ; i--) {
-
             g2.drawString(this.columna.mostrarSemaforoInf(i), posX, posY);
             posY -= fontSize*6/5;
             System.out.println("Printing: "+this.columna.mostrarSemaforoInf(i));

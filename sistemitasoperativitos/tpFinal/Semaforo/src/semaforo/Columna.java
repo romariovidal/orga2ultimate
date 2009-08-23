@@ -22,6 +22,7 @@ public class Columna implements Serializable {
     private List<Semaforo>  semaforosInferiores = new ArrayList<Semaforo>();
     private Integer         procesoID = 1;
     private List<Integer>   procesosTerminados = new ArrayList<Integer>();
+    private static final long serialVersionUID = 666;
 
     public Columna() {
     }
@@ -82,6 +83,20 @@ public class Columna implements Serializable {
 
     public String mostrarSemaforoInf(Integer i){
         return this.semaforosInferiores.get(i).mostrar();
+    }
+
+    void borrarTodosLosProcesos() {
+        colaInicial = new ArrayList<Integer>();
+
+        for (Semaforo s : semaforosSuperiores) { s.borrarTodosLosProcesos();}
+
+        procesosEnZonaCritica = new ArrayList<Integer>();
+
+        colaInferior = new ArrayList<Integer>();
+
+        for (Semaforo s : semaforosInferiores) { s.borrarTodosLosProcesos();}
+
+        procesosTerminados = new ArrayList<Integer>();
     }
 
 }

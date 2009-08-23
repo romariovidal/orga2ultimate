@@ -20,6 +20,7 @@ public class Instancia implements Serializable {
     private List<Character> resultado; // lista de los distintos tipos de procesos que van finalizando su corrida.
     private Integer cantTiposProcesos;
     private Integer cantSemaforos;
+    private static final long serialVersionUID = 665;
 
     public Instancia(Integer cantidadTiposProcesos, Integer cantidadSemaforos) {
         this.cantTiposProcesos = cantidadTiposProcesos;
@@ -143,4 +144,9 @@ public class Instancia implements Serializable {
         this.listaColumna.get(tipoProceso).agregarNuevoProcesoAColaInicial();
     }
 
+    public void borrarTodosLosProcesos(){
+        for (Columna columna : listaColumna) {
+            columna.borrarTodosLosProcesos();
+        }
+    }
 }
