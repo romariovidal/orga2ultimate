@@ -5,10 +5,9 @@
 
 package semaforo;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Date;
-import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -27,48 +26,76 @@ class DibujoSemaforo extends JPanel {
         this.ancho = ancho;
         this.letra = letra;
         this.columna = c;
+        this.actualizarMedidas();
+    }
+
+    private void actualizarMedidas(){
+        this.alto = this.getHeight();
+        this.ancho = this.getWidth();
     }
 
     @Override
     public void paintComponent(Graphics g) {
+        this.actualizarMedidas();
         super.paintComponent(g);
         this.miGr = g;
         Graphics2D g2 = (Graphics2D)g;
-        this.paint(g2);
-        this.dibujarSemaforosSup(g2);
+        this.pintarLetra(g2);
+        this.dibujarSemaforos(g2);
         //st = "holaaa";
         //g2.drawString(st, 0, 35);
     }
 
-    public void paint(Graphics2D g2){
+    private void pintarLetra(Graphics2D g2){
         this.pintarLinea(g2);
-        g2.drawString(letra.toString(), ancho/4, alto*1/32);
-        g2.drawString(new Date()+" ", ancho/2, alto*9/32);
-    }
-
-    public void pintarLinea(Graphics2D g2){
-        g2.drawLine(ancho/4, alto/16, ancho/4 , alto);
-    }
-
-    public void dibujarSemaforosSup(Graphics2D g2) {
-        Integer posX = ancho*1/4;
-        Integer posY = alto*1/32;
-               
         Integer fontSize = g2.getFont().getSize();
-        
+        g2.drawString(letra.toString(), ancho/8, fontSize*5/6);
+        //g2.drawString(new Date()+" ", ancho/2, alto*9/32);
+    }
+
+    private void pintarLinea(Graphics2D g2){
+        g2.drawLine(ancho/8, alto/16, ancho/8 , alto);
+    }
+
+    private void dibujarSemaforos(Graphics2D g2) {
+        Integer fontSize = g2.getFont().getSize();
+        Integer posX = ancho*1/4;
+        Integer posY = alto*1/16 + fontSize;      
+
         for (Integer i=0; i< this.columna.cantSemaforosSup(); i++) {
             g2.drawString(this.columna.mostrarSemaforoSup(i), posX, posY);
             posY += fontSize*6/5;
             System.out.println("Printing: "+this.columna.mostrarSemaforoSup(i));
         }
-                        /*List<String> l = this.semInstance.listaDeSemaforosSuperiores(i);
-                for(Integer j=0; j< l.size(); j++){
-                    System.out.println(l.get(j));
-                }*/
+
+        posY = this.getHeight();
+        Integer cant =this.columna.cantSemaforosInf()-1;
+        for (Integer i= cant; i>=0 ; i--) {
+
+            g2.drawString(this.columna.mostrarSemaforoInf(i), posX, posY);
+            posY -= fontSize*6/5;
+            System.out.println("Printing: "+this.columna.mostrarSemaforoInf(i));
+        }
+
     }
 
     public void repintar(){
+        this.actualizarMedidas();
+        this.clearPanel();
         //this.paintComponent(miGr);
-        this.dibujarSemaforosSup((Graphics2D) miGr);
+        Graphics g = this.getGraphics();
+//        Graphics2D g2 = (Graphics2D)g;
+//        this.dibujarSemaforos(g2);
+//        this.pintarLinea(g2);
+        this.paintComponent(g);
+    }
+
+    private void clearPanel() {
+        Graphics g = this.getGraphics();
+		g.setColor(this.getBackground());
+		//g.fillRect(0, 0, p.getBounds().wd, p.getBounds().hd);
+        g.fillRect(10, 10, ancho-10, alto-10);
+        //this.repaint();
+        g.setColor(Color.BLACK);
     }
 }

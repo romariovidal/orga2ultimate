@@ -15,9 +15,12 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.Timer;
 import javax.swing.Icon;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 /**
@@ -26,6 +29,9 @@ import javax.swing.border.TitledBorder;
 public class SemaforoView extends FrameView implements ActionListener {
     private JPanel panelSegundo;
     private VistaSemaforoCarga[] semView;
+    private JTextField[] valoresVarSemaforos;
+    private JButton buttonEmpezar;
+    private JButton buttonGuardar;
 
     public SemaforoView(SingleFrameApplication app) {
         super(app);
@@ -97,6 +103,61 @@ public class SemaforoView extends FrameView implements ActionListener {
         SemaforoApp.getApplication().show(aboutBox);
     }
 
+    private JPanel botoneraDeCarga(Integer cantSem) {
+        JPanel panelRigthUp = new JPanel();
+
+        panelRigthUp.setBorder(new TitledBorder("Valores de las variables"));
+        //this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
+
+        GridLayout layout = new GridLayout(cantSem, 2);
+        layout.setHgap(10);
+        layout.setVgap(10);
+
+        panelRigthUp.setLayout(layout);
+        this.valoresVarSemaforos = new JTextField[cantSem];
+
+        for (Integer i=0; i<cantSem; i++){
+            this.valoresVarSemaforos[i] = new JTextField(2);
+            this.valoresVarSemaforos[i].setText("0");
+            this.valoresVarSemaforos[i].setHorizontalAlignment(JTextField.CENTER);
+            panelRigthUp.add(new JLabel("   X" + i));
+            panelRigthUp.add(this.valoresVarSemaforos[i]);
+        }
+
+        //panelRigthUp.setSize(10, 10);
+
+        JPanel panelRigthDown = new JPanel();
+
+        //panelRigthDown.setBorder();
+        //this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
+
+        GridLayout layout2 = new GridLayout(2, 1);
+        layout2.setHgap(10);
+        layout2.setVgap(10);
+
+        this.buttonEmpezar = new JButton("Empezar");
+        this.buttonGuardar = new JButton("Guardar");
+
+        panelRigthDown.setLayout(layout2);
+        
+        panelRigthDown.add(this.buttonGuardar);
+        panelRigthDown.add(this.buttonEmpezar);
+        
+
+        JPanel panelRigthAll = new JPanel();
+
+        GridLayout layout3 = new GridLayout(2, 1);
+        layout3.setHgap(10);
+        layout3.setVgap(10);
+
+        panelRigthAll.setLayout(layout3);
+
+        panelRigthAll.add(panelRigthUp);
+        panelRigthAll.add(panelRigthDown);
+
+        return panelRigthAll;
+    }
+
     @SuppressWarnings("empty-statement")
     private void cargarPanelSegundo() {
         Integer anchoProceso = 50;
@@ -109,7 +170,7 @@ public class SemaforoView extends FrameView implements ActionListener {
         Integer anchoPanel = anchoProceso * cantidadProcesos;
         this.panelSegundo.setSize(anchoPanel+20, altoProceso+20);
 
-        GridLayout layout = new GridLayout(1, 8);
+        GridLayout layout = new GridLayout(1, 9);
         layout.setHgap(10);
         layout.setVgap(10);
 
@@ -125,7 +186,11 @@ public class SemaforoView extends FrameView implements ActionListener {
         }
 
 
+        JPanel panelSegundoRight = this.botoneraDeCarga(cantidadSemaforos);
+        this.panelSegundo.add(panelSegundoRight);
     }
+
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -359,10 +424,6 @@ public class SemaforoView extends FrameView implements ActionListener {
                     nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
 
                 this.semInstance.agregarSemaforoSuperior(nuevoSem, i);
-                /*List<String> l = this.semInstance.listaDeSemaforosSuperiores(i);
-                for(Integer j=0; j< l.size(); j++){
-                    System.out.println(l.get(j));
-                }*/
                 this.semView[i].redibujarSemaforo();
             }
 
@@ -380,12 +441,7 @@ public class SemaforoView extends FrameView implements ActionListener {
                     nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
 
                 this.semInstance.agregarSemaforoInferior(nuevoSem, i);
-                //this.semView[i].redibujarArriba(this.semInstance.);
-                List<String> l = this.semInstance.listaDeSemaforosInferiores(i);
-                for(Integer j=0; j< l.size(); j++){
-                    System.out.println(l.get(j));
-                }
-                
+                this.semView[i].redibujarSemaforo();
             }
 
             
