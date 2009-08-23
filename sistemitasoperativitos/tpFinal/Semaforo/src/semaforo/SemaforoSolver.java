@@ -22,6 +22,7 @@ public class SemaforoSolver {
         if(zonasCriticasVacias(instancia)){
             System.out.println("Estan todas las zonas criticas vacias");
         }
+
         
 
 

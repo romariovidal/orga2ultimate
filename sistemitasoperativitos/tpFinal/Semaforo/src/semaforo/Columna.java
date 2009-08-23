@@ -18,14 +18,15 @@ public class Columna implements Serializable {
     private List<Integer>   colaInicial=new ArrayList<Integer>();
     private List<Semaforo>  semaforosSuperiores= new ArrayList<Semaforo>();
     private List<Integer>   procesosEnZonaCritica=new ArrayList<Integer>();
-
-    public List<Integer> getProcesosEnZonaCritica() {
-        return procesosEnZonaCritica;
-    }
     private List<Integer>   colaInferior=new ArrayList<Integer>();
     private List<Semaforo>  semaforosInferiores= new ArrayList<Semaforo>();
 
     public Columna() {
+    }
+
+
+    public List<Integer> getProcesosEnZonaCritica() {
+        return procesosEnZonaCritica;
     }
 
     void agregarSemaforoSuperior(Semaforo semaforo) {
