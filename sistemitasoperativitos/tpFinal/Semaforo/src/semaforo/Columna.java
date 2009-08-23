@@ -24,7 +24,7 @@ public class Columna implements Serializable {
     public Columna() {
     }
 
-    public void agregarNuevoProcesoACola(Integer proceso){
+    public void agregarNuevoProcesoAColaInicial(Integer proceso){
         colaInicial.add(proceso);
     }
 
