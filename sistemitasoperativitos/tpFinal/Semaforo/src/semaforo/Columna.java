@@ -20,12 +20,14 @@ public class Columna implements Serializable {
     private List<Integer>   procesosEnZonaCritica=new ArrayList<Integer>();
     private List<Integer>   colaInferior=new ArrayList<Integer>();
     private List<Semaforo>  semaforosInferiores= new ArrayList<Semaforo>();
+    private Integer         procesoID=1;
 
     public Columna() {
     }
 
-    public void agregarNuevoProcesoAColaInicial(Integer proceso){
-        colaInicial.add(proceso);
+    public void agregarNuevoProcesoAColaInicial(){
+        colaInicial.add(procesoID);
+        procesoID++;
     }
 
     public List<Integer> getProcesosEnZonaCritica() {
