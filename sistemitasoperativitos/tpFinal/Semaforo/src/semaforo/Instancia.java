@@ -17,8 +17,12 @@ public class Instancia {
     private List<Columna> listaColumna; // lista de las columnas copadas que tienen casi todo.
     private Integer[] valoresSemaforos; //valor de las variables de los semaforos.
     private List<Character> resultado; // lista de los distintos tipos de procesos que van finalizando su corrida.
+    private Integer cantTiposProcesos;
+    private Integer cantSemaforos;
 
     public Instancia(Integer cantidadTiposProcesos, Integer cantidadSemaforos) {
+        this.cantTiposProcesos = cantidadTiposProcesos;
+        this.cantSemaforos = cantidadSemaforos;
         listaColumna = new ArrayList<Columna>();
         for (int i = 0; i < cantidadTiposProcesos; i++) {
             listaColumna.add(new Columna());
@@ -116,6 +120,14 @@ public class Instancia {
 //
 //        return res;
         return null;
+    }
+
+    public Integer getCantSemaforos() {
+        return cantSemaforos;
+    }
+
+    public Integer getCantTiposProcesos() {
+        return cantTiposProcesos;
     }
     
 
