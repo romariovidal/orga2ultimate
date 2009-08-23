@@ -129,6 +129,13 @@ public class Instancia {
     public Integer getCantTiposProcesos() {
         return cantTiposProcesos;
     }
-    
+
+    public Integer getValorSemaforo(Integer i) {
+        return this.valoresSemaforos[i];
+    }
+
+    public void  setValorSemaforo(Integer i, Integer valor) {
+        this.valoresSemaforos[i] = valor;
+    }
 
 }
