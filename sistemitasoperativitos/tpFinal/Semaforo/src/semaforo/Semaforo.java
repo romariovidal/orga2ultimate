@@ -26,6 +26,19 @@ public class Semaforo implements Serializable {
         this.procesosEnCola = cola;
     }
 
+    public Boolean puedoPasar(){
+        if(this.valor>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void pasar(Integer numeroProceso){
+        this.procesosEnCola.remove(numeroProceso);
+        this.valor--;
+    }
+
     public static Semaforo crearP(Integer valor){
         return new Semaforo(true, valor, new ArrayList<Integer>());
     }

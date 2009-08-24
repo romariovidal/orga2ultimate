@@ -27,6 +27,30 @@ public class Columna implements Serializable {
     public Columna() {
     }
 
+    public void avanzarColaArriba(){
+        for (Integer i=0;i<semaforosSuperiores.size()-2;i++){
+            Semaforo semaforo = semaforosSuperiores.get(i);
+            if((semaforo.getProcesosEnCola().size() != 0) && ((semaforo.getEsP() && semaforo.getValor()>0) || !semaforo.getEsP())){
+                Integer procesoEnMovimiento = semaforo.remove();
+                semaforosSuperiores.get(i+1).addProceso(procesoEnMovimiento);
+                
+            }
+        }
+    }
+
+    public void encolarEnSemaforoSuperior(Integer proceso){
+        this.semaforosSuperiores.get(0).addProceso(proceso);
+
+    }
+
+    public void removePrimeroColaInicial(){
+        colaInicial.remove(0);
+    }
+
+    public void removePrimeroColaInferior(){
+        colaInferior.remove(0);
+    }
+
     public void vaciarColumnas(){
         List<Integer> none = new ArrayList<Integer>();
         this.colaInferior.retainAll(none);

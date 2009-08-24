@@ -16,7 +16,7 @@ import java.util.List;
 public class Instancia implements Serializable {
 
     private List<Columna> listaColumna; // lista de las columnas copadas que tienen casi todo.
-    private Integer[] valoresSemaforos; //valor de las variables de los semaforos.
+    public  Integer[] valoresSemaforos; //valor de las variables de los semaforos.
     private List<Character> resultado; // lista de los distintos tipos de procesos que van finalizando su corrida.
     private Integer cantTiposProcesos;
     private Integer cantSemaforos;
