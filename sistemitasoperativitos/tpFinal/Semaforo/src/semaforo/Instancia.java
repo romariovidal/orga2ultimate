@@ -141,10 +141,10 @@ public class Instancia implements Serializable {
             return false;
     }
 
-    public void signal(Integer signal) {
+    public void signal(Integer signal, SemaforoView padre) {
         Boolean yaDesperteUnProceso = false;
         for(Integer i=0; i<listaColumna.size() && !yaDesperteUnProceso; i++){
-            yaDesperteUnProceso = this.listaColumna.get(i).llegaSignal(signal);
+            yaDesperteUnProceso = this.listaColumna.get(i).llegaSignal(signal, padre);
         }        
     }
 

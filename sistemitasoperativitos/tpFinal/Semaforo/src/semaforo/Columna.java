@@ -102,21 +102,29 @@ public class Columna implements Serializable {
 
                 // Veo donde queda el proceso;
                 Integer procesoMoviendose = semaforActual.retirarProcesoAPuntoDeEntrar();
-                if(semaforActual.getEsP() &&
-                        (this.instanciaPadre.getValorSemaforo(tipoSemaforoActual)<0)) { //Condiciones de WAIT
-                    semaforActual.procesoEntraAlWait(procesoMoviendose);
-                    padre.appendLog("Ejecutando. " + this.letra.toString()
-                            + procesoMoviendose.toString() + " -> WAIT ");
-                } else { //Paso de largo
-                    this.encolarEnSiguiente(estoyArriba, posSemaforo, procesoMoviendose);
-                    padre.appendLog("Ejecutando. " + this.letra.toString()
-                            + procesoMoviendose.toString());
+                if(semaforActual.getEsP()){
+                    if (this.instanciaPadre.getValorSemaforo(tipoSemaforoActual)<0) { //Condiciones de WAIT
+                        semaforActual.procesoEntraAlWait(procesoMoviendose);
+                        padre.appendLog("Ejecutando una P. " + this.letra.toString()
+                                + procesoMoviendose.toString() + " -> WAIT ");
+                    } else { //Paso de largo
+                        padre.appendLog("Ejecutando una P. " + this.letra.toString()
+                                + procesoMoviendose.toString());
+                        this.encolarEnSiguiente(estoyArriba, posSemaforo, procesoMoviendose, padre);
+                    }
+                } else {
+                    if(huboSignal){
+                        padre.appendLog("Ejecutando una V. " + this.letra.toString()
+                            + procesoMoviendose.toString() + " - Signal X" + tipoSemaforoActual);
+                    } else {
+                        padre.appendLog("Ejecutando una V. " + this.letra.toString()
+                                + procesoMoviendose.toString());
+                    }
+                    
+                    this.encolarEnSiguiente(estoyArriba, posSemaforo, procesoMoviendose, padre);
                 }
 
-                if(huboSignal){
-                    padre.appendLog("Ejecutando. " + this.letra.toString()
-                            + procesoMoviendose.toString() + " - Signal X" + tipoSemaforoActual);
-                }
+
 
                 res = true;
             } else {
@@ -132,7 +140,7 @@ public class Columna implements Serializable {
         }
 
         if(huboSignal){
-            this.instanciaPadre.signal(signal);
+            this.instanciaPadre.signal(signal, padre);
         }
 
         return res;
@@ -143,7 +151,7 @@ public class Columna implements Serializable {
      * @param signalID
      * @return true sii se desperto a un proceso
      */
-    public Boolean llegaSignal(Integer signalID){
+    public Boolean llegaSignal(Integer signalID, SemaforoView padre){
         Boolean res = false;
 
         Semaforo semaforActual; Integer tipoSemaforoActual;
@@ -168,7 +176,7 @@ public class Columna implements Serializable {
                 tipoSemaforoActual.equals(signalID) &&
                 semaforActual.alguienEnLaColaWAIT()){
                     procesoMoviendose = semaforActual.retirarProcesoADeWAIT();
-                    this.encolarEnSiguiente(estoyArriba, posSemaforo, procesoMoviendose);
+                    this.encolarEnSiguiente(estoyArriba, posSemaforo, procesoMoviendose, padre);
                     res = true;
             }
         }
@@ -181,7 +189,7 @@ public class Columna implements Serializable {
      * @param posSemaforo = posicion de la lista en la que está el semaforo actual
      * @param procesoMoviendose = id del proceso
      */
-    private void encolarEnSiguiente(Boolean estaArriba, Integer posSemaforo, Integer procesoMoviendose) {
+    private void encolarEnSiguiente(Boolean estaArriba, Integer posSemaforo, Integer procesoMoviendose, SemaforoView padre) {
         //throw new UnsupportedOperationException("Not yet implemented");
         String pista = "";
         if (estaArriba){
@@ -191,6 +199,7 @@ public class Columna implements Serializable {
             } else {
                 // Paso a la zona crítica
                 this.procesosEnZonaCritica.add(procesoMoviendose);
+                padre.appendLog("Proceso entrando a la zona crítica: " + this.letra.toString() + procesoMoviendose.toString());
             }
         } else { //Esta abajo
            if(posSemaforo<(this.semaforosInferiores.size()-1)){
@@ -200,6 +209,7 @@ public class Columna implements Serializable {
                 // Paso a la zona de terminados
                 this.procesosTerminados.add(procesoMoviendose);
                 this.instanciaPadre.procesoTermino(this.letra);
+                padre.appendLog("Proceso terminado: " + this.letra.toString() + procesoMoviendose.toString());
             }
         }
         System.out.println(pista + " para ubicacion: " + estaArriba +

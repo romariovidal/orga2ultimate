@@ -4,6 +4,7 @@
 
 package semaforo;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
@@ -21,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Date;
 import javax.swing.GroupLayout;
 import javax.swing.Timer;
 import javax.swing.Icon;
@@ -342,7 +342,6 @@ public class SemaforoView extends FrameView implements ActionListener {
 
         JPanel panelTerceroRight = this.botoneraDeAccion();
 
-
         JPanel consola = new JPanel();
         this.logs = new JTextArea();
         logs.setEditable(false);
@@ -600,6 +599,7 @@ public class SemaforoView extends FrameView implements ActionListener {
     private void jButtonAgregarProcesoClicked(MouseEvent evt, Integer i) {
         //throw new UnsupportedOperationException("Not yet implemented");
         System.out.println("Se cliqueo el proceso " +  i);
+        this.appendLog("Creado proceso de tipo "+ (char) (65+i));
         this.semInstance.crearProceso(i);
         this.semViewSimul[i].redibujarSemaforo();
     }
@@ -721,6 +721,7 @@ public class SemaforoView extends FrameView implements ActionListener {
 
     private JDialog aboutBox;
     private Instancia semInstance;
+    private int cuak = 3;
 
     public void actionPerformed(ActionEvent evt) {
         for (Integer i=0; i< this.semView.length; i++){
@@ -763,6 +764,16 @@ public class SemaforoView extends FrameView implements ActionListener {
 
     public void appendLog(String st){
         this.logs.append(st + newline);
+        /*if(cuak%2 == 0){
+            this.logs.setForeground(Color.RED);
+            this.logs.setFont(this.logs.getFont());
+            this.logs.setForeground(Color.blue);
+            this.logs.append("0 " +st + newline);
+        } else {
+            this.logs.setForeground(Color.BLACK);
+            this.logs.append("1 " + st + newline);
+        }
+        cuak++;*/
     }
 
 
