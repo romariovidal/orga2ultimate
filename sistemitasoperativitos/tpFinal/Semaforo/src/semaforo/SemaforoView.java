@@ -619,6 +619,7 @@ public class SemaforoView extends FrameView implements ActionListener {
 
     private void jButtonEmpezarClicked(MouseEvent evt) {
         this.actualizarInstanciaVarSemaforos();
+        this.semInstance.borrarTodosLosProcesos();
         
         this.cargarPanelTercero();
         this.panelSegundo.setVisible(false);
@@ -725,15 +726,15 @@ public class SemaforoView extends FrameView implements ActionListener {
         for (Integer i=0; i< this.semView.length; i++){
             //Semaforos de arriba
             if( evt.getSource().equals( this.semView[i].botonArriba ) ){
-                System.out.println( "Se ha pulsado el botón de agregar arriba del sem " + i );
+                System.out.println( "Se ha pulsado el botón de agregar arriba del proc " + i );
                 System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
                             + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
                 //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
                 Semaforo nuevoSem = null;
                 if (this.semView[i].comboLet.getSelectedIndex() == 0)
-                    nuevoSem = Semaforo.crearP(this.semView[i].comboNum.getSelectedIndex());
+                    nuevoSem = Semaforo.crearP(this.semView[i].comboNum.getSelectedIndex(), (char) (65+i));
                 else
-                    nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
+                    nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex(), (char) (65+i));
 
                 this.semInstance.agregarSemaforoSuperior(nuevoSem, i);
                 this.semView[i].redibujarSemaforo();
@@ -741,16 +742,16 @@ public class SemaforoView extends FrameView implements ActionListener {
 
             //Semaforos de abajo
             if( evt.getSource().equals( this.semView[i].botonAbajo ) ){
-                System.out.println( "Se ha pulsado el botón de agregar abajo del sem " + i );
+                System.out.println( "Se ha pulsado el botón de agregar abajo del proc " + i );
                 //this.appendLog("Se ha pulsado el botón de Offline nodo " + i)
                 System.out.println( "\t\tAgregar tipo " + this.semView[i].comboLet.getSelectedIndex()
                             + " el semaforo " + this.semView[i].comboNum.getSelectedIndex() );
                 
                 Semaforo nuevoSem = null;
                 if (this.semView[i].comboLet.getSelectedIndex() == 0)
-                    nuevoSem = Semaforo.crearP(this.semView[i].comboNum.getSelectedIndex());
+                    nuevoSem = Semaforo.crearP(this.semView[i].comboNum.getSelectedIndex(), (char) (65+i));
                 else
-                    nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex());
+                    nuevoSem = Semaforo.crearV(this.semView[i].comboNum.getSelectedIndex(), (char) (65+i));
 
                 this.semInstance.agregarSemaforoInferior(nuevoSem, i);
                 this.semView[i].redibujarSemaforo();
@@ -766,7 +767,8 @@ public class SemaforoView extends FrameView implements ActionListener {
 
 
     private void timerOcurrio() {
-        this.appendLog(new Date().toString());
+        //this.appendLog(new Date().toString());
+        this.semInstance.nextStep(this);
 
         for (VistaSemaforoSimulacion semaforoDibujo : semViewSimul) {
             semaforoDibujo.redibujarSemaforo();
@@ -776,10 +778,25 @@ public class SemaforoView extends FrameView implements ActionListener {
             this.valoresVarSemaforosSim[i].setText(this.semInstance.getValorSemaforo(i).toString());
         }
 
+        String resultadoSt = "";
+        Integer i =0;
+        for(Character c :this.semInstance.getResultado()){
+            resultadoSt += c + " ";
+            i++;
+            if(i.equals(8)){i=0; resultadoSt += "\n";}
+        }
+
+        this.resultado.setText(resultadoSt);
+
     }
 
     private void liberarZonaCritica() {
         this.appendLog("Liberando zona crítica");
+        this.semInstance.liberarZonaCritica();
+
+        for (VistaSemaforoSimulacion semaforoDibujo : semViewSimul) {
+            semaforoDibujo.redibujarSemaforo();
+        }
     }
 
 

@@ -16,40 +16,98 @@ import java.util.List;
 public class Semaforo implements Serializable {
 
     private Boolean esP;
-    private Integer valor;
-    private List<Integer> procesosEnCola;
+    private Integer nroVariableDelSemaforo = -15;
+    private Character letra;
+    private List<Integer> procesosAPuntoDeEntrar;
+    private List<Integer> procesosEnColaWait;
     private static final long serialVersionUID = 667;
 
-    public Semaforo(Boolean esP, Integer valor, List<Integer> cola) {
+    /* Funciones de construcción de semáforos */
+    public Semaforo(Boolean esP, Integer valor, List<Integer> colaWait, List<Integer> cola, Character tipoProceso) {
         this.esP = esP;
-        this.valor = valor;
-        this.procesosEnCola = cola;
+        this.nroVariableDelSemaforo = valor;
+        this.letra = tipoProceso;
+        this.procesosAPuntoDeEntrar = colaWait;
+        this.procesosEnColaWait = cola;
     }
 
-    public Boolean puedoPasar(){
-        if(this.valor>0){
-            return true;
-        }else{
-            return false;
+    public static Semaforo crearP(Integer nroVariableDelSemaforo, Character tipoProceso){
+        return new Semaforo(true, nroVariableDelSemaforo, new ArrayList<Integer>(), new ArrayList<Integer>(), tipoProceso);
+    }
+
+    public static Semaforo crearV(Integer nroVariableDelSemaforo, Character tipoProceso){
+        return new Semaforo(false, nroVariableDelSemaforo, new ArrayList<Integer>(), new ArrayList<Integer>(), tipoProceso);
+    }
+
+
+    /* Funciones con funcionalidad */
+    public void llegaProcesoNuevo(Integer procId){
+        this.procesosAPuntoDeEntrar.add(procId);
+    }
+
+    public void procesoEntraAlWait(Integer procId){
+        this.procesosEnColaWait.add(procId);
+    }
+
+    public Integer retirarProcesoAPuntoDeEntrar(){
+        Integer res = null;
+        if(!procesosAPuntoDeEntrar.isEmpty()){
+            res = procesosAPuntoDeEntrar.get(0);
+            procesosAPuntoDeEntrar.remove(0);
         }
+
+        return res;
+    }
+
+    public Integer retirarProcesoADeWAIT() {
+        Integer res = null;
+        if(!procesosEnColaWait.isEmpty()){
+            res = procesosEnColaWait.get(0);
+            procesosEnColaWait.remove(0);
+        }
+
+        return res;
+    }
+
+    /**
+     *  @return devuelve un proceso de la cola de wait y lo retira
+     */
+    public Integer huboUnSignal() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+
+    /* NUEVOS GETTERS LOCOS */
+    public Boolean alguienEsperaParaEntrar(){
+        return (this.procesosAPuntoDeEntrar.size()>0);
+    }
+
+    public Boolean alguienEnLaColaWAIT(){
+        return (this.procesosEnColaWait.size()>0);
+    }
+
+
+
+
+    /* Viejas */
+
+    public Boolean puedoPasar(){
+//        if(this.valor>0){
+//            return true;
+//        }else{
+//            return false;
+//        }
+        return false;
     }
 
     public void pasar(Integer numeroProceso){
-        this.procesosEnCola.remove(numeroProceso);
-        this.valor--;
+        this.procesosEnColaWait.remove(numeroProceso);
+        this.nroVariableDelSemaforo--;
     }
 
-    public static Semaforo crearP(Integer valor){
-        return new Semaforo(true, valor, new ArrayList<Integer>());
-    }
-
-    public static Semaforo crearV(Integer valor){
-        return new Semaforo(false, valor, new ArrayList<Integer>());
-    }
-
-    public void addProceso(Integer proceso){
-        procesosEnCola.add(proceso);
-    }
+    //public void addProceso(Integer proceso){
+    //    procesosEnColaWait.add(proceso);
+    //}
 
 /**
  *
@@ -57,8 +115,8 @@ public class Semaforo implements Serializable {
  */
     public Integer peek(){
         Integer res=null;
-        if(!procesosEnCola.isEmpty()){
-            res = procesosEnCola.get(0);
+        if(!procesosEnColaWait.isEmpty()){
+            res = procesosEnColaWait.get(0);
         }
         return res;
     }
@@ -69,25 +127,58 @@ public class Semaforo implements Serializable {
  */
     public Integer remove(){
         Integer res = null;
-        if(!procesosEnCola.isEmpty()){
-            res = procesosEnCola.get(0);
-            procesosEnCola.remove(0);
+        if(!procesosEnColaWait.isEmpty()){
+            res = procesosEnColaWait.get(0);
+            procesosEnColaWait.remove(0);
         }
 
         return res;
 
     }
 
+    public String mostrar(Boolean previo){
+        String temp = "";
+
+        if(previo){
+            for(Integer k=0; k< this.procesosAPuntoDeEntrar.size(); k++){
+                if(k>0)
+                    temp+=", ";
+
+                temp += this.letra +"" + this.procesosAPuntoDeEntrar.get(k);
+            }
+        } else {
+            if(this.getEsP())
+                temp += "P(X"+ this.getValor()+")";
+            else
+                temp += "V(X"+ this.getValor()+")";
+
+            temp += " - ";
+
+            for(Integer k=0; k< this.getCantProc(); k++){
+                if(k>0)
+                    temp+=", ";
+
+                temp += this.letra +"" + this.getProceso(k);
+            }
+        }
+        return temp;
+    }
+
+    void borrarTodosLosProcesos() {
+        procesosEnColaWait = new ArrayList<Integer>();
+    }
+
+    /* Getters y Setters */
     public Boolean getEsP() {
         return esP;
     }
 
     public Integer getValor() {
-        return valor;
+        return nroVariableDelSemaforo;
     }
     
     public List<Integer> getProcesosEnCola() {
-        return procesosEnCola;
+        return procesosEnColaWait;
     }
 
     public void setEsP(Boolean esP) {
@@ -95,43 +186,25 @@ public class Semaforo implements Serializable {
     }
 
     public void setValor(Integer valor) {
-        this.valor = valor;
+        this.nroVariableDelSemaforo = valor;
     }
     
     public void setProcesosEnCola(List<Integer> procesosEnCola) {
-        this.procesosEnCola = procesosEnCola;
+        this.procesosEnColaWait = procesosEnCola;
     }
 
     public Integer getCantProc() {
-        return this.procesosEnCola.size();
+        return this.procesosEnColaWait.size();
     }
 
     public Integer getProceso(Integer i){
-        return this.procesosEnCola.get(i);
+        return this.procesosEnColaWait.get(i);
     }
 
-    public String mostrar(){
-        String temp = "";
 
-        if(this.getEsP())
-            temp += "P(X"+ this.getValor()+")";
-        else
-            temp += "V(X"+ this.getValor()+")";
 
-        temp += " - ";
 
-        for(Integer k=0; k< this.getCantProc(); k++){
-            if(k>0)
-                temp+=", ";
 
-            temp += (char) (65+this.valor) +"" + this.getProceso(k);
-        }
-        return temp;
-    }
 
-    void borrarTodosLosProcesos() {
-        procesosEnCola = new ArrayList<Integer>();
-    }
-    
 
 }

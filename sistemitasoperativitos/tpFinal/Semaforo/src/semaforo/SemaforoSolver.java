@@ -12,7 +12,7 @@ import java.util.List;
  * @author tomas
  */
 public class SemaforoSolver {
-
+/*
     static Instancia nextStep(Instancia instancia){
 
         for (Columna columna : instancia.getListaColumna()) {
@@ -140,4 +140,5 @@ public class SemaforoSolver {
         }
         return true;
     }
+    */
 }

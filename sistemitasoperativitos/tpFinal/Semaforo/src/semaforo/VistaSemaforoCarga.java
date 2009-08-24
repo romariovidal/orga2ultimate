@@ -26,6 +26,7 @@ class VistaSemaforoCarga extends JPanel {
     private DibujoSemaforo elDibujo;
     public JButton botonArriba;
     public JButton botonAbajo;
+    private Character letra;
 
     public VistaSemaforoCarga(Integer nroSem, Integer cantidadSemaforos, Integer altoProceso,
                 Integer anchoProceso, Instancia inst) {
@@ -33,7 +34,7 @@ class VistaSemaforoCarga extends JPanel {
 
         this.setSize(altoProceso, anchoProceso);
         
-        char letra = (char) (65+nroSem);
+        this.letra = (char) (65+nroSem);
         this.setBorder(new TitledBorder("Semáforos " + letra));
 
         this.comboNum = new JComboBox();

@@ -20,6 +20,7 @@ class VistaSemaforoSimulacion extends JPanel {
     private Graphics miGr;
     private DibujoSemaforo elDibujo;
     public JButton botonAgregarProc;
+    private Character letra;
 
 
     public VistaSemaforoSimulacion(Integer nroSem, Integer altoProceso, Integer anchoProceso, Instancia inst) {
@@ -27,10 +28,10 @@ class VistaSemaforoSimulacion extends JPanel {
 
         this.setSize(altoProceso, anchoProceso);
 
-        char letra = (char) (65+nroSem);
+        this.letra = (char) (65+nroSem);
         this.setBorder(new TitledBorder("Semáforos " + letra + " - Sim"));
 
-        this.botonAgregarProc = new JButton ("Agregar proceso tipo " + (char) (65+nroSem));
+        this.botonAgregarProc = new JButton ("Agregar proceso tipo " + letra);
 
         GroupLayout layoutGral = new GroupLayout(this);
         this.setLayout(layoutGral);

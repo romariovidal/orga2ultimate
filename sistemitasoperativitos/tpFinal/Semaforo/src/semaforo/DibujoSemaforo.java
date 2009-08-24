@@ -63,30 +63,35 @@ class DibujoSemaforo extends JPanel {
         Integer posX = ancho*1/4;
         Integer posY = alto*1/16 + fontSize;
 
-        List<Integer> inicial = this.columna.getColaInicial();
-        String esperando = "";
-        for (Integer i=0; i< inicial.size(); i++) {
-            if(esperando!= "")
-                esperando += ", ";
-
-            esperando += this.letra +"" + inicial.get(i);
-        }
-        g2.drawString(esperando, posX, posY);
-        posY += fontSize*6/5;
+        //posY += fontSize*6/5;
 
         for (Integer i=0; i< this.columna.cantSemaforosSup(); i++) {
+            g2.drawString(this.columna.mostrarPrevioASemaforoSup(i), posX, posY);
+            posY += fontSize*6/5;
             g2.drawString(this.columna.mostrarSemaforoSup(i), posX, posY);
             posY += fontSize*6/5;
             System.out.println("Printing: "+this.columna.mostrarSemaforoSup(i));
         }
+
+        posY = this.getHeight()/2;
+        List<Integer> zonaCritica = this.columna.getProcesosEnZonaCritica();
+        String zonaCriticaSt = "Zona Crítica: ";
+        for (Integer i=0; i< zonaCritica.size(); i++) {
+            if(i>0)
+                zonaCriticaSt += ", ";
+
+            zonaCriticaSt += this.letra +"" + zonaCritica.get(i);
+        }
+        g2.drawString(zonaCriticaSt, posX, posY);
+
 
         posY = this.getHeight();
 
         List<Integer> terminados = this.columna.getProcesosTerminados();
         String terminadosSt = "";
         for (Integer i=0; i< terminados.size(); i++) {
-            if(terminadosSt!= "")
-                esperando += ", ";
+            if(!terminadosSt.equals(""))
+                terminadosSt += ", ";
 
             terminadosSt += this.letra +"" + terminados.get(i);
         }
@@ -97,6 +102,8 @@ class DibujoSemaforo extends JPanel {
         Integer cant =this.columna.cantSemaforosInf()-1;
         for (Integer i= cant; i>=0 ; i--) {
             g2.drawString(this.columna.mostrarSemaforoInf(i), posX, posY);
+            posY -= fontSize*6/5;
+            g2.drawString(this.columna.mostrarPrevioASemaforoInf(i), posX, posY);
             posY -= fontSize*6/5;
             System.out.println("Printing: "+this.columna.mostrarSemaforoInf(i));
         }

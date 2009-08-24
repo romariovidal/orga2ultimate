@@ -7,6 +7,7 @@ package semaforo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -16,25 +17,26 @@ import java.util.List;
 public class Instancia implements Serializable {
 
     private List<Columna> listaColumna; // lista de las columnas copadas que tienen casi todo.
-    public  Integer[] valoresSemaforos; //valor de las variables de los semaforos.
-    private List<Character> resultado; // lista de los distintos tipos de procesos que van finalizando su corrida.
+    private Integer[] valoresSemaforos; //valor de las variables de los semaforos.
+    private LinkedList<Character> resultado; // lista de los distintos tipos de procesos que van finalizando su corrida.
     private Integer cantTiposProcesos;
     private Integer cantSemaforos;
     private static final long serialVersionUID = 665;
 
+    /* Funciones de construcción */
     public Instancia(Integer cantidadTiposProcesos, Integer cantidadSemaforos) {
         this.cantTiposProcesos = cantidadTiposProcesos;
         this.cantSemaforos = cantidadSemaforos;
         listaColumna = new ArrayList<Columna>();
         for (int i = 0; i < cantidadTiposProcesos; i++) {
-            listaColumna.add(new Columna());
+            listaColumna.add(new Columna(this, i));
         }
 
         this.valoresSemaforos = new Integer[cantidadSemaforos];
         for(Integer i=0; i< cantidadSemaforos; i++){
             this.valoresSemaforos[i] = 0;
         }
-        this.resultado = new ArrayList<Character>();
+        this.resultado = new LinkedList<Character>();
     }
 
     public void agregarSemaforoSuperior(Semaforo semaforo, Integer numTipoProc){
@@ -50,6 +52,37 @@ public class Instancia implements Serializable {
 
     }
 
+    public void borrarTodosLosProcesos(){
+        if(!listaColumna.equals(null)){
+            for (Columna columna : listaColumna) {
+                columna.borrarTodosLosProcesos();
+                columna.reiniciarProcesoID();
+            }
+        }
+
+        this.resultado = new LinkedList<Character>();
+    }
+
+    /* Funciones de funcionalidad */
+    public void  crearProceso(Integer tipoProceso) {
+        this.listaColumna.get(tipoProceso).llegaProcesoNuevo();
+    }
+
+    public void nextStep(SemaforoView padre){
+        Boolean yaMovi = false;
+        for(Integer i=0; i<listaColumna.size() && !yaMovi; i++){
+            yaMovi = this.listaColumna.get(i).siPuedeMuevalo(padre);
+        }        
+    }
+
+    public void liberarZonaCritica(){
+        for(Integer i=0; i<listaColumna.size(); i++){
+            this.listaColumna.get(i).liberarZonaCritica();
+        }
+    }
+
+
+    /* Getteres */
     public List<Character> getResultado() {
         return resultado;
     }
@@ -58,70 +91,12 @@ public class Instancia implements Serializable {
         return valoresSemaforos;
     }
 
-    public void setResultado(List<Character> resultado) {
-        this.resultado = resultado;
-    }
-
-
-
-    public void setValoresSemaforos(Integer[] valoresSemaforos) {
-        this.valoresSemaforos = valoresSemaforos;
-    }
-
-    public List<String> listaDeSemaforosSuperiores(Integer i){
-        return this.listaDeSemaforos(true, i);
-    }
-
-    public List<String> listaDeSemaforosInferiores(Integer i){
-        return this.listaDeSemaforos(false, i);
-    }
-
     public Columna getColumna(Integer nroSem) {
         return this.listaColumna.get(nroSem);
     }
 
     public List<Columna> getListaColumna() {
         return listaColumna;
-    }
-
-
-    private List<String> listaDeSemaforos(Boolean b, Integer i) {
-//        List<String> res = new ArrayList<String>();
-//        List<List<Semaforo>> l = null;
-//        if(b)
-//            l = this.semaforosSuperiores;
-//        else
-//            l = this.semaforosInferiores;
-//
-//        List<Semaforo> lista = l.get(i);
-//        String temp; Semaforo semTemp = null;
-//        for(Integer j=0; j<lista.size(); j++){
-//            temp = "";
-//            semTemp = lista.get(j);
-//            if(semTemp.getEsP() != null){
-//                if(semTemp.getEsP())
-//                    temp += "P(X"+semTemp.getValor()+")";
-//                else
-//                    temp += "V(X"+semTemp.getValor()+")";
-//            } else {
-//                temp += "Previo";
-//            }
-//
-//            temp += " - ";
-//
-//            for(Integer k=0; k< semTemp.getCantProc(); k++){
-//                if(k>0)
-//                    temp+=", ";
-//
-//                temp += (char) (65+i) +"" + semTemp.getProceso(k);
-//            }
-//
-//            res.add(temp);
-//        }
-//
-//
-//        return res;
-        return null;
     }
 
     public Integer getCantSemaforos() {
@@ -136,17 +111,45 @@ public class Instancia implements Serializable {
         return this.valoresSemaforos[i];
     }
 
+
+    /* Setteres */
+    public void setValoresSemaforos(Integer[] valoresSemaforos) {
+        this.valoresSemaforos = valoresSemaforos;
+    }
+
+    public void setResultado(LinkedList<Character> resultado) {
+        this.resultado = resultado;
+    }
+
     public void  setValorSemaforo(Integer i, Integer valor) {
         this.valoresSemaforos[i] = valor;
     }
 
-    public void  crearProceso(Integer tipoProceso) {
-        this.listaColumna.get(tipoProceso).agregarNuevoProcesoAColaInicial();
+    public void  ocurreP(Integer i) {
+        this.valoresSemaforos[i]--;
     }
 
-    public void borrarTodosLosProcesos(){
-        for (Columna columna : listaColumna) {
-            columna.borrarTodosLosProcesos();
-        }
+    /**
+     *
+     * @return devuelve true sii debe enviarse un signal
+     */
+    public Boolean  ocurreV(Integer i) {
+        this.valoresSemaforos[i]++;
+        if (this.valoresSemaforos[i]<=0)
+            return true;
+        else
+            return false;
     }
+
+    public void signal(Integer signal) {
+        Boolean yaDesperteUnProceso = false;
+        for(Integer i=0; i<listaColumna.size() && !yaDesperteUnProceso; i++){
+            yaDesperteUnProceso = this.listaColumna.get(i).llegaSignal(signal);
+        }        
+    }
+
+    public void procesoTermino (Character tipoProc){
+        this.resultado.addLast(tipoProc);
+    }
+
 }
