@@ -8,7 +8,6 @@ package semaforo;
 import java.awt.Graphics;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
