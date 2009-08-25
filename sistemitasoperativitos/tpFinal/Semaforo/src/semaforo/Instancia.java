@@ -22,6 +22,7 @@ public class Instancia implements Serializable {
     private Integer cantTiposProcesos;
     private Integer cantSemaforos;
     private static final long serialVersionUID = 665;
+    private Boolean zonaCriticaOcupada = false;
 
     /* Funciones de construcción */
     public Instancia(Integer cantidadTiposProcesos, Integer cantidadSemaforos) {
@@ -61,11 +62,12 @@ public class Instancia implements Serializable {
         }
 
         this.resultado = new LinkedList<Character>();
+        this.zonaCriticaOcupada = false;
     }
 
     /* Funciones de funcionalidad */
-    public void  crearProceso(Integer tipoProceso) {
-        this.listaColumna.get(tipoProceso).llegaProcesoNuevo();
+    public void  crearProceso(Integer tipoProceso, SemaforoView padre) {
+        this.listaColumna.get(tipoProceso).llegaProcesoNuevo(padre);
     }
 
     public void nextStep(SemaforoView padre){
@@ -79,8 +81,17 @@ public class Instancia implements Serializable {
         for(Integer i=0; i<listaColumna.size(); i++){
             this.listaColumna.get(i).liberarZonaCritica();
         }
+
+        this.zonaCriticaOcupada = false;
     }
 
+    public Boolean zonaCriticaOcupada(){
+        return this.zonaCriticaOcupada;
+    }
+
+    public void ocuparZonaCritica(){
+        this.zonaCriticaOcupada = true;
+    }
 
     /* Getteres */
     public List<Character> getResultado() {

@@ -57,6 +57,8 @@ public class SemaforoView extends FrameView implements ActionListener {
     private Timer timer;
     private JTextField intevalo;
 
+
+
     public SemaforoView(SingleFrameApplication app) {
         super(app);
 
@@ -600,7 +602,7 @@ public class SemaforoView extends FrameView implements ActionListener {
         //throw new UnsupportedOperationException("Not yet implemented");
         System.out.println("Se cliqueo el proceso " +  i);
         this.appendLog("Creado proceso de tipo "+ (char) (65+i));
-        this.semInstance.crearProceso(i);
+        this.semInstance.crearProceso(i, this);
         this.semViewSimul[i].redibujarSemaforo();
     }
 
@@ -874,4 +876,7 @@ public class SemaforoView extends FrameView implements ActionListener {
     }
 
 
+    public Instancia getInstancia(){
+        return this.semInstance;
+    }
 }

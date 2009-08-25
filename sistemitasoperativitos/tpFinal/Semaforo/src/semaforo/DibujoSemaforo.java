@@ -82,7 +82,13 @@ class DibujoSemaforo extends JPanel {
 
             zonaCriticaSt += this.letra +"" + zonaCritica.get(i);
         }
-        g2.drawString(zonaCriticaSt, posX, posY);
+        if(zonaCriticaSt.equals("Zona Crítica: "))
+            g2.drawString(zonaCriticaSt, posX, posY);
+        else {
+            g2.setColor(Color.red);
+            g2.drawString(zonaCriticaSt, posX, posY);
+            g2.setColor(Color.BLACK);
+        }
 
 
         posY = this.getHeight();

@@ -47,11 +47,16 @@ public class Columna implements Serializable {
     }
 
     /* Nuevas funciones de movimiento */
-    public void llegaProcesoNuevo(){
+    public void llegaProcesoNuevo(SemaforoView padre){
         if(this.semaforosSuperiores.size()>0) //Si hay semaforos superiores
             this.semaforosSuperiores.get(0).llegaProcesoNuevo(procesoID);
-        else //sino, lo agrego a la zona crítica
-            this.procesosEnZonaCritica.add(procesoID);
+        else {//sino, lo agrego a la zona crítica
+            this.procesosEnZonaCritica.add(procesoID);            
+            if(padre.getInstancia().zonaCriticaOcupada()){
+                padre.appendLog("ZONA CRITICA OCUPADA POR MÁS DE UN PROCESO.");
+            }
+            padre.getInstancia().ocuparZonaCritica();
+        }
 
         procesoID++;
     }
@@ -200,6 +205,10 @@ public class Columna implements Serializable {
                 // Paso a la zona crítica
                 this.procesosEnZonaCritica.add(procesoMoviendose);
                 padre.appendLog("Proceso entrando a la zona crítica: " + this.letra.toString() + procesoMoviendose.toString());
+                if(padre.getInstancia().zonaCriticaOcupada()){
+                    padre.appendLog("ZONA CRITICA OCUPADA POR MÁS DE UN PROCESO.");
+                }
+                padre.getInstancia().ocuparZonaCritica();
             }
         } else { //Esta abajo
            if(posSemaforo<(this.semaforosInferiores.size()-1)){
