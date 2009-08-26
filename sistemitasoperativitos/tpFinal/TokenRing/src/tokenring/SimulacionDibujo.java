@@ -13,10 +13,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.awt.Toolkit;
 import java.awt.geom.Ellipse2D;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -45,44 +48,58 @@ class SimulacionDibujo extends JPanel {
 
 
     public SimulacionDibujo(Instance inst) {
-        this.setSize(600, 550);
-        this.setBorder(new TitledBorder("Simulación"));
-        this.tokenInstance = inst;
-
-        res = Toolkit.getDefaultToolkit().
-                         getScreenResolution();
-        wd = this.getSize().width;
-        hd = this.getSize().height;
-
-        System.out.println(res + " pixels per inch");
-        System.out.println(wd + " pixels wide");
-        System.out.println(hd + " pixels high");
-
-
-        this.posiciones = new Point[8];
-        int w = wd -2*margen;
-        int h = hd -2*margen;
-        int m2 = margen+5;
         
-        this.posiciones[0] = new Point(w/2, 0+m2);
-        this.posiciones[1] = new Point(w*8/10, h*2/10);
-        this.posiciones[2] = new Point(w-m2, h/2);
-        this.posiciones[3] = new Point(w*8/10, h*8/10);
-        this.posiciones[4] = new Point(w/2, h-m2);
-        this.posiciones[5] = new Point(w*2/10, h*8/10);
-        this.posiciones[6] = new Point(0+m2, h/2);
-        this.posiciones[7] = new Point(w*2/10, h*2/10);
+            this.setSize(600, 550);
+            this.setBorder(new TitledBorder("Simulación"));
+            this.tokenInstance = inst;
+            res = Toolkit.getDefaultToolkit().getScreenResolution();
+            wd = this.getSize().width;
+            hd = this.getSize().height;
+            System.out.println(res + " pixels per inch");
+            System.out.println(wd + " pixels wide");
+            System.out.println(hd + " pixels high");
+            this.posiciones = new Point[8];
+            int w = wd - 2 * margen;
+            int h = hd - 2 * margen;
+            int m2 = margen + 5;
+            this.posiciones[0] = new Point(w / 2, 0 + m2);
+            this.posiciones[1] = new Point(w * 8 / 10, h * 2 / 10);
+            this.posiciones[2] = new Point(w - m2, h / 2);
+            this.posiciones[3] = new Point(w * 8 / 10, h * 8 / 10);
+            this.posiciones[4] = new Point(w / 2, h - m2);
+            this.posiciones[5] = new Point(w * 2 / 10, h * 8 / 10);
+            this.posiciones[6] = new Point(0 + m2, h / 2);
+            this.posiciones[7] = new Point(w * 2 / 10, h * 2 / 10);
+            for (Integer i = 0; i < 8; i++) {
+                this.posiciones[i].x += margen;
+                this.posiciones[i].y += margen;
+            }
+            
+            arrImagen = new Image[4];
+    
+            URL imageURL[] = new URL[4];
+            imageURL[0] = SimulacionDibujo.class.getResource("imagenes/serverOff.png");
+            imageURL[1] = SimulacionDibujo.class.getResource("imagenes/serverOn.png");
+            imageURL[2] = SimulacionDibujo.class.getResource("imagenes/serverOff-coord.png");
+            imageURL[3] = SimulacionDibujo.class.getResource("imagenes/serverOn-coord.png");
 
-        for(Integer i=0; i<8 ; i++){
-            this.posiciones[i].x+=margen;
-            this.posiciones[i].y+=margen;
+    if (imageURL[0] != null && imageURL[1] != null && imageURL[2] != null && imageURL[3] != null) {
+        try {
+
+            //arrImagen[0] = Toolkit.getDefaultToolkit().createImage("./imagenes/serverOff.png");
+            arrImagen[0] = ImageIO.read(new File(imageURL[0].getFile()));
+            arrImagen[1] = ImageIO.read(new File(imageURL[1].getFile()));
+            arrImagen[2] = ImageIO.read(new File(imageURL[2].getFile()));
+            arrImagen[3] = ImageIO.read(new File(imageURL[3].getFile()));
+        } catch (IOException ex) {
+            System.out.println("AAAAAAAAAAAHHHHHHH");
+            ex.printStackTrace();
         }
+    } else {
+         System.out.println("Sin imagenes");
+         System.exit(1);
+    }
 
-        arrImagen = new Image[4];
-        arrImagen[0] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOff.png");
-        arrImagen[1] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOn.png");
-        arrImagen[2] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOff-coord.png");
-        arrImagen[3] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOn-coord.png");
     }
 
     //@Override
