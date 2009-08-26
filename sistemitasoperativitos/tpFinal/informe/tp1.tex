@@ -30,19 +30,19 @@
   \verbatimtabinput[4]{#2}
 }
 
-\newcount\entrada
-\newcount\base
-\newif\ifgarb
-\def\imagenHoja{\entrada=\thepage \base=-11
-\loop
-    \ifnum\entrada<-\base \garbfalse
-        \else\garbtrue
-        \advance\entrada by \base\fi
-    \ifgarb%\number\entrada\\
-\repeat
-\advance\entrada by 1
-    \includegraphics[scale=0.40]{marios/m\number\entrada.png}
-}
+%\newcount\entrada
+%\newcount\base
+%\newif\ifgarb
+%\def\imagenHoja{\entrada=\thepage \base=-11
+%\loop
+%    \ifnum\entrada<-\base \garbfalse
+%        \else\garbtrue
+%        \advance\entrada by \base\fi
+%    \ifgarb%\number\entrada\\
+%\repeat
+%\advance\entrada by 1
+%    \includegraphics[scale=0.40]{marios/m\number\entrada.png}
+%}
 
 \newenvironment{envCodigo}
 {\verbbox}
