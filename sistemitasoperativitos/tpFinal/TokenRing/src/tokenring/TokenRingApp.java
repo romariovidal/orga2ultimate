@@ -94,6 +94,7 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
                 Integer coordinador = this.tokenInstance.getCoordinador();
                 if(this.tokenInstance.getNodos()[coordinador]){
                     this.tokenView.appendLog("IAA del coordinador a  " + enviador);
+                    this.tokenView.dibujarMensaje(enviador, false);
                 } else {
                     this.tokenView.appendLog("Nodo " + enviador + " AYA -> TIMEOUT");
                     this.tokenView.appendLog("Nodo " + enviador + " inicia proceso de elección de nuevo coordinador");
@@ -120,6 +121,7 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
         this.ayaAlCoorinador.add(i);
         this.tokenView.appendLog("AYA de " + i + " al coordinador");
         this.refrescarGraficos();
+        this.tokenView.dibujarMensaje(i, true);
     }
 
     void subirNodo(Integer i) {

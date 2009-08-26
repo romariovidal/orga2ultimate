@@ -117,46 +117,22 @@ class SimulacionDibujo extends JPanel {
 
     }
 
-    //@Override
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.miGr = g;
         Graphics2D g2 = (Graphics2D)g;
         
-        //g2.drawImage(img, 50, 50, this);
         this.paint(g2);
-        //st = "holaaa";
-        //g2.drawString(st, 0, 35);
     }
 
-    /*public void paint(){
-//        this.paint(this.getGraphics());
-        //this.limpiar();
-        Graphics g = this.getGraphics();
-        Graphics2D g2 = (Graphics2D)g;
-        
-        this.paint(g2);
-    }*/
-
     public void paint(Graphics2D g2){
-        //g2.setColor(Color.BLACK);
-        
-        //for(Integer i=0; i<8; i++){
-        //    this.pintarLinea(g2, i, Color.BLACK);
-        //}
-
-        //for(Integer i=0; i<8; i++){
-        //    this.pintarNodo(g2, i, 1);
-        //}
-        //System.out.println("¿Dibujé?");
-
-        for(Integer i=0; i<8; i++){
-            this.pintarLinea(g2, i, Color.BLACK);
-        }
+//        for(Integer i=0; i<8; i++){
+//            this.pintarLinea(g2, i, Color.BLACK);
+//        }
 
         Integer status;
         for(Integer i=0; i<tokenInstance.getNodos().length; i++){
-            //System.out.println("Mirando el " + i);
             status = 0;
             if(tokenInstance.getCoordinador().equals(i))
                 status+=2;
@@ -182,6 +158,48 @@ class SimulacionDibujo extends JPanel {
         g2.setColor(anteriorCol);
     }
 
+    public void pintarAYAoIAA(Graphics2D g2, Integer sender, Integer receiver, Boolean esAYA){
+        Point[] p = this.posiciones;
+        g2.setColor(esAYA?Color.GREEN:Color.YELLOW);
+        Integer corrimiento =  esAYA?1:-1;
+        Integer xInic = p[sender].x + corrimiento * 10;
+        Integer yInic = p[sender].y - corrimiento * 10;
+        Integer xFinal = p[receiver].x + corrimiento * 10;
+        Integer yFinal = p[receiver].y - corrimiento * 10;
+        String mensaje = esAYA?"AYA":"IAA";
+
+        
+
+        Stroke sInicial = g2.getStroke();
+        Stroke strokeSenial = new BasicStroke(3);
+        g2.setStroke(strokeSenial);
+        g2.drawLine(xInic, yInic, xFinal, yFinal);
+        g2.setStroke(sInicial);
+        
+        Font anteriorFont = g2.getFont();
+        Font nuevaFont = new Font(g2.getFont().getFontName(), Font.BOLD , 14);
+        g2.setFont(nuevaFont);
+        Integer alturaFuente = nuevaFont.getSize();
+        FontMetrics fm = g2.getFontMetrics();
+        Integer wordWidth = fm.stringWidth(mensaje);
+
+        g2.setColor(Color.WHITE);
+        g2.fillRect((xInic+xFinal)/2 - wordWidth/2 - 3,
+                   (yInic+yFinal)/2-alturaFuente - 3,
+                   wordWidth + 6,
+                   alturaFuente + 6);
+        g2.setColor(Color.BLACK);
+        g2.drawRect((xInic+xFinal)/2 - wordWidth/2 - 3,
+                   (yInic+yFinal)/2-alturaFuente - 3,
+                   wordWidth + 6,
+                   alturaFuente + 6);
+        
+        g2.drawString(mensaje, (xInic+xFinal)/2 - wordWidth/2, (yInic+yFinal)/2);
+        g2.setFont(anteriorFont);
+
+    }
+
+
     public void pintarMensaje(Graphics2D g2, Integer sender, Integer receiver, String mensaje){
         Point[] p = this.posiciones;
         g2.setColor(Color.RED);
@@ -198,7 +216,7 @@ class SimulacionDibujo extends JPanel {
         g2.setColor(Color.BLACK);
 
         Font anteriorFont = g2.getFont();
-        Font nuevaFont = new Font(g2.getFont().getFontName(), Font.BOLD , 16);
+        Font nuevaFont = new Font(g2.getFont().getFontName(), Font.BOLD , 14);
         g2.setFont(nuevaFont);
         Integer alturaFuente = nuevaFont.getSize();
         FontMetrics fm = g2.getFontMetrics();
@@ -224,38 +242,6 @@ class SimulacionDibujo extends JPanel {
         Point[] p = this.posiciones;
         Color anteriorCol = g2.getColor().equals(null)?Color.BLACK:g2.getColor();
         Font anteriorFont = g2.getFont();
-        Color col = Color.BLACK;
-        /*switch (estado){
-            case 0:
-                col = caidoCol;
-                break;
-            case 1:
-                col = activoCol;
-                break;
-            case 2:
-                col = coordCaidoCol;
-                break;
-            case 3:
-                col = coordActivoCol;
-                break;
-        }
-        
-        Rectangle r2 = new Rectangle(lado,lado);
-        r2.setLocation(p[i]);
-        g2.setColor(Color.RED);
-        g2.fill(r2);
-        g2.draw(r2);
-
-        Ellipse2D d2 = new Ellipse2D.Double(p[i].x, p[i].y, lado, lado);
-        g2.setColor(col);
-        g2.fill(d2);
-        g2.draw(d2);
-
-        g2.setColor(Color.BLACK);
-        g2.setFont(new Font(g2.getFont().getFontName(), Font.BOLD , 16));
-        Integer x= p[i].x+lado*2/5-1;
-        Integer y= p[i].y+lado*3/5;
-        g2.drawString(i.toString(), x, y);*/
 
         Integer x = p[i].x - arrImagen[estado].getWidth(this)/2;
         Integer y = p[i].y - arrImagen[estado].getHeight(this)/2;
@@ -266,7 +252,7 @@ class SimulacionDibujo extends JPanel {
         x = x - lado/4;
         y = y - lado/4;
         Ellipse2D d2 = new Ellipse2D.Double(x, y, lado, lado);
-        g2.setColor(Color.WHITE);
+        g2.setColor(estado>1?Color.ORANGE:Color.WHITE);
         g2.fill(d2);
         g2.draw(d2);
 
@@ -291,19 +277,38 @@ class SimulacionDibujo extends JPanel {
         Graphics g = this.getGraphics();
         Graphics2D g2 = (Graphics2D)g;
 
+        //lasLineas(g2);
+
+        if(tokenInstance.getHayMensajeDandoVuelta()){
+            this.pintarMensaje(g2, tokenInstance.getSender(), tokenInstance.getReceiver(), tokenInstance.printLog());
+        }
+        
+        this.losNodos(g2, tokenInstance);
+    }
+
+    void dibujarAYA(Instance tokenInstance, Integer interlocutor, Boolean esAYA) {
+        if(esAYA)
+            this.clearPanel(this);
+        
+        Graphics g = this.getGraphics();
+        Graphics2D g2 = (Graphics2D)g;
+
+        //lasLineas(g2);
+
+        this.pintarAYAoIAA(g2, tokenInstance.getCoordinador(), interlocutor, esAYA);
+
+
+        this.losNodos(g2, tokenInstance);
+    }
+
+    private void lasLineas(Graphics2D g2){
         for(Integer i=0; i<8 && areaLimpia; i++){
             this.pintarLinea(g2, i, Color.BLACK);
         }
         areaLimpia = false;
+    }
 
-        if(tokenInstance.getHayMensajeDandoVuelta()){
-            this.pintarMensaje(g2, tokenInstance.getSender(), tokenInstance.getReceiver(), tokenInstance.printLog());
-            System.out.println("Hay mensaje");
-        } else {
-            System.out.println("No hay mensaje");
-        }
-
-
+    private void losNodos(Graphics2D g2, Instance tokenInstance) {
         Integer status;
         for(Integer i=0; i<tokenInstance.getNodos().length; i++){
             //System.out.println("Mirando el " + i);
@@ -315,10 +320,8 @@ class SimulacionDibujo extends JPanel {
                 status+=1;
 
             this.pintarNodo(g2, i, status);
-            
-        }
-        //System.out.println("¿Dibujé?");
 
+        }
     }
 
     private void clearPanel(SimulacionDibujo p) {

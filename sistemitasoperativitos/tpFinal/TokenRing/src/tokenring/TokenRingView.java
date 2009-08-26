@@ -104,6 +104,10 @@ public class TokenRingView extends FrameView implements ActionListener {
         TokenRingApp.getApplication().show(aboutBox);
     }
 
+    void dibujarMensaje(Integer enviador, Boolean b) {
+        this.unDibujo.dibujarAYA(this.tokenInstance, enviador, b);
+    }
+
     void setInstance(Instance tokenInstance) {
         this.tokenInstance = tokenInstance;
     }
@@ -353,9 +357,9 @@ public class TokenRingView extends FrameView implements ActionListener {
             for(Integer i=0; i < this.botonesUpDown.length; i++){
                 this.botonesUpDown[i].setEnabled(true);
                 if(tokenInstance.getStatusNodo(i)){
-                     this.botonesUpDown[i].setText("Go offline - Nodo " + i);
+                     this.botonesUpDown[i].setText("Offline - Nodo " + i);
                 } else {
-                    this.botonesUpDown[i].setText("Go online - Nodo " + i);
+                    this.botonesUpDown[i].setText("Online - Nodo " + i);
                 }
             }
 
