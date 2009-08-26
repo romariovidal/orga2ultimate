@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Stroke;
@@ -28,8 +29,8 @@ class SimulacionDibujo extends JPanel {
     int res = 90;//store screen resolution here
     int wd;//store screen wd here
     int hd;//store screen hd here
-    int lado = 45;
-    int margen = 25;
+    int lado = 25;
+    int margen = 30;
     private Graphics miGr;
     private String st;
     private Point[] posiciones;
@@ -40,6 +41,8 @@ class SimulacionDibujo extends JPanel {
     private Color coordCaidoCol = new Color(85,107,47);
     private Color coordActivoCol = new Color(60,179,113);
     private Instance tokenInstance;
+    private Image[] arrImagen;
+
 
     public SimulacionDibujo(Instance inst) {
         this.setSize(600, 550);
@@ -71,9 +74,15 @@ class SimulacionDibujo extends JPanel {
         this.posiciones[7] = new Point(w*2/10, h*2/10);
 
         for(Integer i=0; i<8 ; i++){
-            this.posiciones[i].x+=margen -lado/2;
-            this.posiciones[i].y+=margen -lado/2;
+            this.posiciones[i].x+=margen;
+            this.posiciones[i].y+=margen;
         }
+
+        arrImagen = new Image[4];
+        arrImagen[0] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOff.png");
+        arrImagen[1] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOn.png");
+        arrImagen[2] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOff-coord.png");
+        arrImagen[3] = Toolkit.getDefaultToolkit().createImage("imagenes/serverOn-coord.png");
     }
 
     //@Override
@@ -81,6 +90,8 @@ class SimulacionDibujo extends JPanel {
         super.paintComponent(g);
         this.miGr = g;
         Graphics2D g2 = (Graphics2D)g;
+        
+        //g2.drawImage(img, 50, 50, this);
         this.paint(g2);
         //st = "holaaa";
         //g2.drawString(st, 0, 35);
@@ -134,7 +145,7 @@ class SimulacionDibujo extends JPanel {
         Color anteriorCol = g2.getColor().equals(null)?Color.BLACK:g2.getColor();
         
         g2.setColor(col);
-        g2.drawLine(p[i].x+lado/2, p[i].y+lado/2, p[(i+1)%8].x+lado/2, p[(i+1)%8].y+lado/2);
+        g2.drawLine(p[i].x, p[i].y, p[(i+1)%8].x, p[(i+1)%8].y);
 
         g2.setColor(anteriorCol);
     }
@@ -142,11 +153,11 @@ class SimulacionDibujo extends JPanel {
     public void pintarMensaje(Graphics2D g2, Integer sender, Integer receiver, String mensaje){
         Point[] p = this.posiciones;
         g2.setColor(Color.RED);
-        Integer xInic = p[sender].x+lado*2/5-1;
-        Integer yInic = p[sender].y+lado*3/5;
+        Integer xInic = p[sender].x;
+        Integer yInic = p[sender].y;
 
-        Integer xFinal = p[receiver].x+lado*2/5-1;
-        Integer yFinal = p[receiver].y+lado*3/5;
+        Integer xFinal = p[receiver].x;
+        Integer yFinal = p[receiver].y;
         Stroke sInicial = g2.getStroke();
         Stroke mesg = new BasicStroke(5);
         g2.setStroke(mesg);
@@ -182,7 +193,7 @@ class SimulacionDibujo extends JPanel {
         Color anteriorCol = g2.getColor().equals(null)?Color.BLACK:g2.getColor();
         Font anteriorFont = g2.getFont();
         Color col = Color.BLACK;
-        switch (estado){
+        /*switch (estado){
             case 0:
                 col = caidoCol;
                 break;
@@ -212,7 +223,28 @@ class SimulacionDibujo extends JPanel {
         g2.setFont(new Font(g2.getFont().getFontName(), Font.BOLD , 16));
         Integer x= p[i].x+lado*2/5-1;
         Integer y= p[i].y+lado*3/5;
+        g2.drawString(i.toString(), x, y);*/
+
+        Integer x = p[i].x - arrImagen[estado].getWidth(this)/2;
+        Integer y = p[i].y - arrImagen[estado].getHeight(this)/2;
+
+        g2.drawImage(arrImagen[estado], x, y, this);
+
+
+        x = x - lado/4;
+        y = y - lado/4;
+        Ellipse2D d2 = new Ellipse2D.Double(x, y, lado, lado);
+        g2.setColor(Color.WHITE);
+        g2.fill(d2);
+        g2.draw(d2);
+
+        x = x + 1*lado/3;
+        y = y + 6*lado/8;
+
+        g2.setColor(Color.BLACK);
+        g2.setFont(new Font(g2.getFont().getFontName(), Font.BOLD , 16));
         g2.drawString(i.toString(), x, y);
+
 
         g2.setColor(anteriorCol);
         g2.setFont(anteriorFont);
