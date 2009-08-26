@@ -80,6 +80,7 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
         if(tokenSolver != null){
             System.out.println("El solver está andando");
             tokenSolver.nextStep();
+            
             tokenView.appendLog(tokenInstance.getLog().get(tokenInstance.getLog().size()-1));
 
             if (tokenInstance.getFinish()){
@@ -99,7 +100,7 @@ public class TokenRingApp extends SingleFrameApplication implements ActionListen
                     this.tokenInstance.setListados(new LinkedList<Integer>());
                     this.tokenSolver = new TokenSolver(tokenInstance, enviador);
                     tokenView.appendLog(tokenInstance.getLog().get(tokenInstance.getLog().size()-1));
-
+                    this.tokenView.clearDibujo();
                 }
                 //System.out.println("\t\tAhora es de " + this.ayaAlCoorinador.size() );
             }

@@ -25,6 +25,9 @@ public class TokenSolver {
         this.instance.log("Nodo " + nodoInicial +
                         " arma el mensaje para la elección.\n\tMensaje actual: " +
                         this.instance.printLog());
+        this.instance.setHayMensajeDandoVuelta(true);
+        this.instance.setSender(nodoInicial);
+        this.instance.setReceiver(proxNodo);
     }
 
 
@@ -46,20 +49,23 @@ public class TokenSolver {
             this.instance.log("Terminada la elección - Nuevo coordinador: " + nuevoCoordinador);
             this.instance.setFinish(true);
             this.instance.setCoordinador(nuevoCoordinador);
+            this.instance.setHayMensajeDandoVuelta(false);
         } else {
-            if(instance.getStatusNodo(proxNodo)){
+            if(instance.getStatusNodo(proxNodo)){//Caso en que recibe y está levantado
+                this.instance.setSender(proxNodo);
                 instance.agregarAListados(proxNodo);
                 this.instance.log("Nodo " + proxNodo + 
                         " recibe el mensaje y lo reenvía agregandose\n\tMensaje actual: " +
                         this.instance.printLog());
                 
                 //System.out.println("Agregando nodo al mensaje " + proxNodo);
-            } else {
+            } else {//Caso en que en el que recibe y está caido
                 this.instance.log("Nodo " + proxNodo +
                         " esta caido, se reenvía el mensaje al siguiente\n\tMensaje actual: " +
                         this.instance.printLog());
             }
             proxNodo = proximoNodo(proxNodo);
+            this.instance.setReceiver(proxNodo);
         }
     }
 

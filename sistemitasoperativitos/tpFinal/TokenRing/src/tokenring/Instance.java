@@ -14,7 +14,10 @@ public class Instance {
     private Integer coordinador; //el que todos creen que es el coordinador.
     private List<String> log; //mensajes de log para mostrar en la consola.
     private Boolean finish;
-    
+    private Boolean hayMensajeDandoVuelta = false;
+    private Integer sender = null; //el que todos creen que es el coordinador.
+    private Integer receiver = null; //el que todos creen que es el coordinador.
+
     private Instance() {
         this.nodos = new Boolean[8];
         for (int i=0;i<nodos.length;i++) {
@@ -118,6 +121,30 @@ public class Instance {
         }
 
         return temp;
+    }
+
+    public Boolean getHayMensajeDandoVuelta() {
+        return hayMensajeDandoVuelta;
+    }
+
+    public Integer getReceiver() {
+        return receiver;
+    }
+
+    public Integer getSender() {
+        return sender;
+    }
+
+    public void setHayMensajeDandoVuelta(Boolean hayMensajeDandoVuelta) {
+        this.hayMensajeDandoVuelta = hayMensajeDandoVuelta;
+    }
+
+    public void setReceiver(Integer receiver) {
+        this.receiver = receiver;
+    }
+
+    public void setSender(Integer sender) {
+        this.sender = sender;
     }
 
 

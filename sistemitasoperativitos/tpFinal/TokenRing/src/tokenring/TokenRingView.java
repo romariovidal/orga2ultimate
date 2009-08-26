@@ -378,6 +378,10 @@ public class TokenRingView extends FrameView implements ActionListener {
         }
     }
 
+    public void clearDibujo() {
+        this.unDibujo.limpiar();
+    }
+
 
 
 }

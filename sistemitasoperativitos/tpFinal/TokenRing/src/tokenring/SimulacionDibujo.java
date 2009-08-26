@@ -5,12 +5,15 @@
 
 package tokenring;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 import java.awt.Toolkit;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JPanel;
@@ -30,6 +33,7 @@ class SimulacionDibujo extends JPanel {
     private Graphics miGr;
     private String st;
     private Point[] posiciones;
+    private Boolean areaLimpia = true;
 
     private Color caidoCol = new Color(0,191,255, 150);
     private Color activoCol = new Color(0,191,255);
@@ -135,6 +139,43 @@ class SimulacionDibujo extends JPanel {
         g2.setColor(anteriorCol);
     }
 
+    public void pintarMensaje(Graphics2D g2, Integer sender, Integer receiver, String mensaje){
+        Point[] p = this.posiciones;
+        g2.setColor(Color.RED);
+        Integer xInic = p[sender].x+lado*2/5-1;
+        Integer yInic = p[sender].y+lado*3/5;
+
+        Integer xFinal = p[receiver].x+lado*2/5-1;
+        Integer yFinal = p[receiver].y+lado*3/5;
+        Stroke sInicial = g2.getStroke();
+        Stroke mesg = new BasicStroke(5);
+        g2.setStroke(mesg);
+        g2.drawLine(xInic, yInic, xFinal, yFinal);
+        g2.setStroke(sInicial);
+        g2.setColor(Color.BLACK);
+
+        Font anteriorFont = g2.getFont();
+        Font nuevaFont = new Font(g2.getFont().getFontName(), Font.BOLD , 16);
+        g2.setFont(nuevaFont);
+        Integer alturaFuente = nuevaFont.getSize();
+        FontMetrics fm = g2.getFontMetrics();
+        Integer wordWidth = fm.stringWidth(mensaje);
+
+        g2.setColor(Color.WHITE);
+        g2.fillRect((xInic+xFinal)/2 - wordWidth/2 - 3,
+                   (yInic+yFinal)/2-alturaFuente - 3,
+                   wordWidth + 6,
+                   alturaFuente + 6);
+        g2.setColor(Color.BLACK);
+        g2.drawRect((xInic+xFinal)/2 - wordWidth/2 - 3,
+                   (yInic+yFinal)/2-alturaFuente - 3,
+                   wordWidth + 6,
+                   alturaFuente + 6);
+        g2.drawString(mensaje, (xInic+xFinal)/2 - wordWidth/2, (yInic+yFinal)/2);
+        g2.setFont(anteriorFont);
+
+    }
+
      /*0 caido, 1 activo, 2 cordinador y caido, 3 coordinador y activo*/
     public void pintarNodo(Graphics2D g2, Integer i, Integer estado){
         Point[] p = this.posiciones;
@@ -186,9 +227,18 @@ class SimulacionDibujo extends JPanel {
         Graphics g = this.getGraphics();
         Graphics2D g2 = (Graphics2D)g;
 
-        //for(Integer i=0; i<8; i++){
-        //    this.pintarLinea(g2, i, Color.BLACK);
-        //}
+        for(Integer i=0; i<8 && areaLimpia; i++){
+            this.pintarLinea(g2, i, Color.BLACK);
+        }
+        areaLimpia = false;
+
+        if(tokenInstance.getHayMensajeDandoVuelta()){
+            this.pintarMensaje(g2, tokenInstance.getSender(), tokenInstance.getReceiver(), tokenInstance.printLog());
+            System.out.println("Hay mensaje");
+        } else {
+            System.out.println("No hay mensaje");
+        }
+
 
         Integer status;
         for(Integer i=0; i<tokenInstance.getNodos().length; i++){
@@ -213,6 +263,7 @@ class SimulacionDibujo extends JPanel {
 		//g.fillRect(0, 0, p.getBounds().wd, p.getBounds().hd);
         g.fillRect(margen, margen, p.getBounds().width-2*margen, p.getBounds().height-2*margen);
         //this.repaint();
+        this.areaLimpia = true;
     }
 
     
