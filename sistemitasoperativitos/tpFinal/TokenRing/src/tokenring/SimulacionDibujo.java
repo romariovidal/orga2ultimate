@@ -16,9 +16,12 @@ import java.awt.Point;
 import java.awt.Stroke;
 import java.awt.Toolkit;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -79,18 +82,30 @@ class SimulacionDibujo extends JPanel {
     
             URL imageURL[] = new URL[4];
             imageURL[0] = SimulacionDibujo.class.getResource("imagenes/serverOff.png");
-            imageURL[1] = SimulacionDibujo.class.getResource("imagenes/serverOn.png");
-            imageURL[2] = SimulacionDibujo.class.getResource("imagenes/serverOff-coord.png");
-            imageURL[3] = SimulacionDibujo.class.getResource("imagenes/serverOn-coord.png");
+            imageURL[1] = SimulacionDibujo.class.getResource("/tokenring/imagenes/serverOn.png");
+            imageURL[2] = SimulacionDibujo.class.getResource("/tokenring/imagenes/serverOff-coord.png");
+            imageURL[3] = SimulacionDibujo.class.getResource("/tokenring/imagenes/serverOn-coord.png");
 
+        try {
+            String path = new java.io.File(".").getCanonicalPath();
+            System.out.println("PAth: " + path);
+        } catch (IOException ex) {
+            Logger.getLogger(SimulacionDibujo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println("Path actual: " + System.getProperty("user.dir"));
     if (imageURL[0] != null && imageURL[1] != null && imageURL[2] != null && imageURL[3] != null) {
         try {
+            URL url = SimulacionDibujo.class.getResource( "imagenes/serverOff.png" );
+            Image blueball = Toolkit.getDefaultToolkit().createImage( ( ImageProducer ) url.getContent() );
 
             //arrImagen[0] = Toolkit.getDefaultToolkit().createImage("./imagenes/serverOff.png");
-            arrImagen[0] = ImageIO.read(new File(imageURL[0].getFile()));
-            arrImagen[1] = ImageIO.read(new File(imageURL[1].getFile()));
-            arrImagen[2] = ImageIO.read(new File(imageURL[2].getFile()));
-            arrImagen[3] = ImageIO.read(new File(imageURL[3].getFile()));
+            arrImagen[0] = blueball; //ImageIO.read(new File(imageURL[0].getFile()));
+            arrImagen[1] = Toolkit.getDefaultToolkit().createImage( ( ImageProducer ) imageURL[1].getContent() );
+            arrImagen[2] = Toolkit.getDefaultToolkit().createImage( ( ImageProducer ) imageURL[2].getContent() );
+            arrImagen[3] = Toolkit.getDefaultToolkit().createImage( ( ImageProducer ) imageURL[3].getContent() );
+            //arrImagen[1] = ImageIO.read(new File(imageURL[1].getFile()));
+            //arrImagen[2] = ImageIO.read(new File(imageURL[2].getFile()));
+            //arrImagen[3] = ImageIO.read(new File(imageURL[3].getFile()));
         } catch (IOException ex) {
             System.out.println("AAAAAAAAAAAHHHHHHH");
             ex.printStackTrace();
