@@ -56,6 +56,7 @@ public class SemaforoView extends FrameView implements ActionListener {
     private final static String newline = "\n";
     private Timer timer;
     private JTextField intevalo;
+    private JTextField timeout;
 
 
 
@@ -172,11 +173,16 @@ public class SemaforoView extends FrameView implements ActionListener {
             }
         });
 
-        JPanel intervaloPanel = new JPanel(new GridLayout(1,2));
+        JPanel intervaloPanel = new JPanel(new GridLayout(2,2));
         intervaloPanel.add(new JLabel("Intervalo: "));
         this.intevalo = new JTextField("20");
         this.intevalo.setColumns(3);
         intervaloPanel.add(this.intevalo);
+        
+        intervaloPanel.add(new JLabel("Timeout en zona crítica: "));
+        this.timeout = new JTextField("3");
+        this.timeout.setColumns(3);
+        intervaloPanel.add(this.timeout);
 
 
         panelRigthDown.setLayout(layout2);
@@ -643,11 +649,19 @@ public class SemaforoView extends FrameView implements ActionListener {
 
     private void jButtonStartStopClicked(MouseEvent evt) {
         System.out.println( "Se ha pulsado el boton de play" );
-        Integer delay = 2000;
+        Integer delay = 2000; Integer timeoutZC = null;
         try {
             delay = Integer.parseInt(this.intevalo.getText()) * 100;
         } catch (NumberFormatException ex) {
              delay = 500;
+        }
+
+        try {
+            timeoutZC = Integer.parseInt(this.timeout.getText());
+            if(timeoutZC<=0)
+                timeoutZC = null;
+        } catch (NumberFormatException ex) {
+             timeoutZC = null;
         }
 
         timer.setDelay(delay);
@@ -658,7 +672,17 @@ public class SemaforoView extends FrameView implements ActionListener {
             timer.start();
             this.buttonStartStop.setText("Stop");
 
+            this.appendLog("Velocidad de cada turno: " + delay/1000 + " segundos.");
+
+            if(timeoutZC == null)
+                this.appendLog("Modo de desalojo de los procesos de la zona crítica: MANUAL.");
+            else
+                this.appendLog("Modo de desalojo de los procesos de la zona crítica: AUTOMÁTICO (" + timeoutZC +" turnos).");
+
         }
+
+        this.semInstance.setTimeoutDeLaZonaCritica(timeoutZC);
+        System.out.println("timeout : " + timeoutZC);
     }
 
     private void jButtonTerminarClicked(MouseEvent evt) {
@@ -679,7 +703,6 @@ public class SemaforoView extends FrameView implements ActionListener {
         this.panelInicial.setVisible(false);
 
         this.semInstance = new Instancia(cantidadProcesos, cantidadSemaforos);
-
         this.cargarPanelSegundo(false);
         this.panelSegundo.setVisible(true);
         this.mainPanel.removeAll();

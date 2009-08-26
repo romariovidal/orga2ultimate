@@ -5,9 +5,11 @@
 
 package semaforo;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -55,7 +57,10 @@ class DibujoSemaforo extends JPanel {
     }
 
     private void pintarLinea(Graphics2D g2){
+        Stroke original = g2.getStroke();
+        g2.setStroke(new BasicStroke(3));
         g2.drawLine(ancho/8, alto/16, ancho/8 , alto);
+        g2.setStroke(original);
     }
 
     private void dibujarSemaforos(Graphics2D g2) {

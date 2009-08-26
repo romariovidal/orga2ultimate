@@ -82,7 +82,21 @@ public class Columna implements Serializable {
         Boolean huboSignal = false;
         Integer signal = -1;
 
-        for(Integer posSemaforoGlobal=0; posSemaforoGlobal< totalSemaforo && !res; posSemaforoGlobal++){
+        List<Integer> listaSemaforos = new ArrayList<Integer>();
+        Integer unNumeroAleatorio; Integer longitud;
+        for(Integer i=0; i< totalSemaforo; i++){
+            listaSemaforos.add(i);
+        }
+
+        Integer posSemaforoGlobal;
+        for(Integer iii=0; iii< totalSemaforo && !res; iii++){
+            longitud = listaSemaforos.size();
+            unNumeroAleatorio = ((int)(Math.random()*100)%longitud);
+            posSemaforoGlobal = listaSemaforos.get(unNumeroAleatorio);
+
+            listaSemaforos.remove(unNumeroAleatorio.intValue());
+
+
             posSemaforo = posSemaforoGlobal;
 
             if(posSemaforoGlobal>= this.semaforosSuperiores.size()){

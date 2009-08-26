@@ -23,6 +23,8 @@ public class Instancia implements Serializable {
     private Integer cantSemaforos;
     private static final long serialVersionUID = 665;
     private Boolean zonaCriticaOcupada = false;
+    private Integer tiempoQueLlevaEnLaZonaCritica = 0;
+    private Integer timeoutDeLaZonaCritica = 2;
 
     /* Funciones de construcción */
     public Instancia(Integer cantidadTiposProcesos, Integer cantidadSemaforos) {
@@ -38,6 +40,8 @@ public class Instancia implements Serializable {
             this.valoresSemaforos[i] = 0;
         }
         this.resultado = new LinkedList<Character>();
+        //this.tiempoQueLlevaEnLaZonaCritica = 0;
+        //this.timeoutDeLaZonaCritica = new Integer(5);
     }
 
     public void agregarSemaforoSuperior(Semaforo semaforo, Integer numTipoProc){
@@ -63,6 +67,7 @@ public class Instancia implements Serializable {
 
         this.resultado = new LinkedList<Character>();
         this.zonaCriticaOcupada = false;
+        this.tiempoQueLlevaEnLaZonaCritica = 0;
     }
 
     /* Funciones de funcionalidad */
@@ -70,11 +75,39 @@ public class Instancia implements Serializable {
         this.listaColumna.get(tipoProceso).llegaProcesoNuevo(padre);
     }
 
+    public void setTimeoutDeLaZonaCritica(Integer timeoutDeLaZonaCritica) {
+        this.timeoutDeLaZonaCritica = timeoutDeLaZonaCritica;
+    }
+
     public void nextStep(SemaforoView padre){
         Boolean yaMovi = false;
-        for(Integer i=0; i<listaColumna.size() && !yaMovi; i++){
-            yaMovi = this.listaColumna.get(i).siPuedeMuevalo(padre);
-        }        
+        if (timeoutDeLaZonaCritica != null && this.tiempoQueLlevaEnLaZonaCritica > timeoutDeLaZonaCritica){
+            this.liberarZonaCritica();
+            padre.appendLog("Zona Critica liberada por TIMEOUT.");
+        } else {
+            List<Integer> listaProcesos = new ArrayList<Integer>();
+            Integer unNumeroAleatorio; Integer longitud;
+            for(Integer i=0; i<listaColumna.size(); i++){
+                listaProcesos.add(i);
+            }
+            
+            while (!listaProcesos.isEmpty() && !yaMovi) {                
+                longitud = listaProcesos.size();
+                unNumeroAleatorio = ((int)(Math.random()*100)%longitud);
+                yaMovi = this.listaColumna.get(listaProcesos.get(unNumeroAleatorio)).siPuedeMuevalo(padre);
+                
+                listaProcesos.remove(unNumeroAleatorio.intValue());
+            }
+
+
+
+            //for(Integer i=0; i<listaColumna.size() && !yaMovi; i++){
+            //    yaMovi = this.listaColumna.get(i).siPuedeMuevalo(padre);
+            //}
+            
+            if(this.zonaCriticaOcupada)
+                tiempoQueLlevaEnLaZonaCritica++;
+        }
     }
 
     public void liberarZonaCritica(){
@@ -83,6 +116,7 @@ public class Instancia implements Serializable {
         }
 
         this.zonaCriticaOcupada = false;
+        tiempoQueLlevaEnLaZonaCritica = 0;
     }
 
     public Boolean zonaCriticaOcupada(){
