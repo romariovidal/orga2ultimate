@@ -93,7 +93,6 @@ public class Columna implements Serializable {
             longitud = listaSemaforos.size();
             unNumeroAleatorio = ((int)(Math.random()*100)%longitud);
             posSemaforoGlobal = listaSemaforos.get(unNumeroAleatorio);
-
             listaSemaforos.remove(unNumeroAleatorio.intValue());
 
 
@@ -178,7 +177,21 @@ public class Columna implements Serializable {
         Integer posSemaforo;
         Boolean estoyArriba;
         Integer procesoMoviendose;
-        for(Integer posSemaforoGlobal=0; posSemaforoGlobal< totalSemaforo && !res; posSemaforoGlobal++){
+
+        List<Integer> listaSemaforos = new ArrayList<Integer>();
+        Integer unNumeroAleatorio; Integer longitud;
+        for(Integer i=0; i< totalSemaforo; i++){
+            listaSemaforos.add(i);
+        }
+
+        Integer posSemaforoGlobal;
+        for(Integer iii=0; iii< totalSemaforo && !res; iii++){
+            longitud = listaSemaforos.size();
+            unNumeroAleatorio = ((int)(Math.random()*100)%longitud);
+            posSemaforoGlobal = listaSemaforos.get(unNumeroAleatorio);
+            listaSemaforos.remove(unNumeroAleatorio.intValue());
+
+       //for(Integer posSemaforoGlobal=0; posSemaforoGlobal< totalSemaforo && !res; posSemaforoGlobal++){
             posSemaforo = posSemaforoGlobal;
 
             if(posSemaforoGlobal>= this.semaforosSuperiores.size()){

@@ -188,9 +188,29 @@ public class Instancia implements Serializable {
 
     public void signal(Integer signal, SemaforoView padre) {
         Boolean yaDesperteUnProceso = false;
-        for(Integer i=0; i<listaColumna.size() && !yaDesperteUnProceso; i++){
-            yaDesperteUnProceso = this.listaColumna.get(i).llegaSignal(signal, padre);
-        }        
+
+        List<Integer> listaProcesos = new ArrayList<Integer>();
+        Integer unNumeroAleatorio; Integer longitud;
+        for(Integer i=0; i<listaColumna.size(); i++){
+            listaProcesos.add(i);
+        }
+
+        while (!listaProcesos.isEmpty() && !yaDesperteUnProceso) {
+            longitud = listaProcesos.size();
+            unNumeroAleatorio = ((int)(Math.random()*100)%longitud);
+            yaDesperteUnProceso = this.listaColumna.get(listaProcesos.get(unNumeroAleatorio)).llegaSignal(signal, padre);
+
+            listaProcesos.remove(unNumeroAleatorio.intValue());
+        }
+
+
+        //for(Integer i=0; i<listaColumna.size() && !yaDesperteUnProceso; i++){
+        //    yaDesperteUnProceso = this.listaColumna.get(i).llegaSignal(signal, padre);
+        //}
+
+        if (!yaDesperteUnProceso){
+            padre.appendLog("ERRROR di un signal y no desperté a nadie - Signal " + signal);
+        }
     }
 
     public void procesoTermino (Character tipoProc){
