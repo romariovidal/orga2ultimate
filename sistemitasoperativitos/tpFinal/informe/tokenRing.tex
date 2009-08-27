@@ -2,7 +2,18 @@
 En este simulador intentamos mostrar como es llevada acabo la elecci'on de un
 nuevo coordinador cuando el coordinador de una red en forma de anillo se cae
 por alg'un motivo.
-Para esto, cuando un nodo detecta que el coordinador actual dej'o de responder
+En este simulador decidimos suponer una red de ocho computadoras interconectadas que tienen como coordinador al nodo de mayor numero que esta activo. Creemos que ocho computadoras es un n'umero suficiente para ilustrar el algoritmo sin perdida de generalidad.
+Durante la simulaci'on, cuando un nodo detecta que el coordinador actual dej'o de responder
 mediante un AYA (\emph{Are you alive}), arma una lista que contendr'a los nodos
-activos, se incluye a si mismo en esta lista y la envia a trav'es de la red
+activos, se incluye a si mismo en esta lista y la envia a trav'es de la red a la siguiente computadora, si esta computadora esta activa y responde, entonces se agrega a la lista de los nodos activos, en caso contrario el nodo emisor le envia la lista de nodos activos a la siguiente computadora repitiendose el proceso anterior. Una vez que la lista realiza un vuelta entera al anillo vuelve al nodo emisor, este inspecciona la lista y selecciona el mayor de los numeros, este numero es el que identifica al nuevo coordinador, que es avisado y toma el control de la coordinaci'on.
+
+Veamos ahora un ejemplo de ejecucion del simulador:
+Supongamos que tenemos una red de ocho computadoras numeradas del cero al siete. En nodo siete es el coordinador, pero por alguna razon deja de responder y el nodo numero tres realiza un AYA al nodo coordinador para saber si esta activo, al no responder luego de un lapso de tiempo y dar \emph{timeout} el nodo numero tres arma la lista de nodos activos, se incluye en esta y la envia al siguiente nodo, en este caso sera el numero cuatro, que se incluira y asi sucesivamente hasta llegar al numero 6. En este caso el nodo numero 6 no recibe respuesta del nodo numero siete y entonces lo saltea, enviandole la lista al numero cero, siguiendo este esquema la lista llegara nuevamente al numero tres, que al verse incluido en la lista de nodos activos sabra que debe realizar la seleccion del nuevo coordinador. Para esto toma el mayor valor de la lista, resultando este el numero seis y le envia un mensaje al nodo numero seis para que comience a coordinar a la red.
+
+aqui van una serie de screenshot: 
+1) con todos los nodos activos menos el numero 7.
+2) con el nodo 3 mandando un mensaje al 4.
+3) con el 6 mandando al 7
+3) con el 6 mandando al 0
+4) con el 3 mandando al 6 (esto no se pinta como una linea, sino que se redibuja el icono de coordinador)
 
