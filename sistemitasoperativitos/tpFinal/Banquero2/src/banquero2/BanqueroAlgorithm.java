@@ -11,7 +11,7 @@ package banquero2;
  */
 public class BanqueroAlgorithm {
 
-    private Vector finish= new Vector(0);
+    private Vector finish;
     private Matriz necesidad;
     private Vector disponibles;
     private Vector request;
@@ -22,7 +22,11 @@ public class BanqueroAlgorithm {
     private Integer[] modificaciones;
     private Boolean corriendo = true;
 
+    private Integer cantidadProcesos;
+    private Integer cantidadRecursos;
+
     private String status;
+    private String status1;
         /*  modificaciones[0] finish - vector
          *  modificaciones[1] necesidad - matriz
          *  modificaciones[2] disponibles - vector
@@ -46,6 +50,12 @@ public class BanqueroAlgorithm {
         this.modificaciones[1] = proc;
         this.modificaciones[4] = -1;
         this.status = "Corriendo Banquero";
+        this.status1 = "";
+
+        this.cantidadProcesos = this.necesidad.tamProc();
+        this.cantidadRecursos = this.necesidad.tamRec();
+
+        this.finish = new Vector(this.cantidadProcesos, 0);
     }
 
     public Matriz getAsignacion() {
@@ -92,12 +102,18 @@ public class BanqueroAlgorithm {
         return corriendo;
     }
 
+    public String getStatus1() {
+        return status1;
+    }
+
 
 
     //public BanqueroAlgorithm(){}
 
     void nextStep(){
         this.reiniciarModif();
+
+        //System.out.println("Estoy en el paso " + paso + " revisando el proceso " + procesoActual);
         switch(paso){
             case 1:
                 pasoUno();
@@ -183,6 +199,7 @@ public class BanqueroAlgorithm {
             default:
                 System.out.println("Error: numero de paso invalido, para la simulacion");
         }
+        //System.out.println("Estoy en el paso " + paso + " revisando el proceso " + procesoActual);
 
     }
     /**
@@ -194,6 +211,7 @@ public class BanqueroAlgorithm {
         }else{
             paso=-1;
             this.status = "Terminado. Pide más de lo que anunció como máximo.";
+            this.status1 = "";
             this.corriendo = false;
         }
     }
@@ -209,6 +227,7 @@ public class BanqueroAlgorithm {
         }else{
             paso=-1;
             this.status = "Terminado. No hay recursos disponible para satisfacer el pedido.";
+            this.status1 = "";
             this.corriendo = false;
         }
     }
@@ -227,13 +246,16 @@ public class BanqueroAlgorithm {
         paso++;
         procesoActual = 1;
         this.status = "Corriendo Algoritmo de Seguridad";
+        this.status1 = "";
     }
 
     /**
      * Finish[i] == false
      */
     void pasoCinco(){
-        //System.out.println("El valor de la matriz de finish para " + procesoActual + " es "+finish.dameValor(procesoActual));
+//        System.out.println("El valor de la matriz de finish para " +
+//                procesoActual + "/" + this.cantidadProcesos +
+//                " es "+finish.dameValor(procesoActual) + "/" + finish.tam());
         
 
         if(finish.dameValor(procesoActual).equals(0)){
@@ -241,7 +263,7 @@ public class BanqueroAlgorithm {
         } else {
             procesoActual++;
             this.modificaciones[5] = -1;
-            if(procesoActual>8){
+            if(procesoActual>this.cantidadProcesos){
                 paso=7;
             }
         }
@@ -257,7 +279,7 @@ public class BanqueroAlgorithm {
         } else {
             procesoActual++;
             this.modificaciones[5] = -1;
-            if(procesoActual>8){
+            if(procesoActual>this.cantidadProcesos){
                 paso=7;
             } else {
                 paso = 5;
@@ -275,7 +297,7 @@ public class BanqueroAlgorithm {
     void pasoOcho(){
         
         disponibles.agregar(asignacion.dameFila(procesoActual));
-        asignacion.ponerCerosEnFila(procesoActual);
+        //asignacion.ponerCerosEnFila(procesoActual);
         paso++;
     }
 
@@ -292,13 +314,15 @@ public class BanqueroAlgorithm {
     }
 
     void pasoOnce(){
-        Vector vector = new Vector(1);
+        Vector vector = new Vector(this.cantidadProcesos,1);
         if(finish.mayorOIgual(vector)){
             System.out.println("El sistema esta en estado seguro");
-            this.status = "Terminado. Se puede otorgar el pedido ya que existe una secuencia segura después de otorgarlo.";
+            this.status = "Terminado. Se puede otorgar el pedido ya que existe";
+            this.status1 = "una secuencia segura después de otorgarlo.";
         } else {
             System.out.println("El sistema esta en estado seguro");
             this.status = "Terminado. No se puede otorgar ya que queda en estado inseguro.";
+            this.status1 = "";
         }
         this.corriendo = false;
 

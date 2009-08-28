@@ -12,16 +12,16 @@ package banquero2;
 public class Vector {
     private Integer[] vectInterno;
 
-    public Vector(){
-        this.vectInterno = new Integer[9];
-        for (Integer i=0; i<=8; i++){
+    public Vector(Integer cant){
+        this.vectInterno = new Integer[cant+1];
+        for (Integer i=0; i<=cant; i++){
             this.vectInterno[i] = null;
         }
     }
 
-    public Vector(Integer b){
-        this.vectInterno = new Integer[9];
-        for (Integer i=0; i<=8; i++){
+    public Vector(Integer cant, Integer b){
+        this.vectInterno = new Integer[cant+1];
+        for (Integer i=0; i<=cant; i++){
             this.vectInterno[i] = b;
         }
     }
@@ -35,7 +35,7 @@ public class Vector {
     }
 
     public void agregar (Vector v){
-        for(Integer i=1; i<=8; i++){
+        for(Integer i=1; i< v.tam(); i++){
             this.asignar(i, this.dameValor(i) + v.dameValor(i));
             //this.vectInterno[i] += v.dameValor(i);
         }
@@ -43,15 +43,19 @@ public class Vector {
 
     public boolean mayorOIgual(Vector vector){
     boolean res=true;
-    for(Integer i=1; i<=8; i++){
+    for(Integer i=1; i< vector.tam(); i++){
             res = res & this.dameValor(i) <= vector.dameValor(i);
         }
     return res;
     }
 
     void quitar(Vector v) {
-        for(Integer i=1; i<=8; i++){
+        for(Integer i=1; i< v.tam(); i++){
             this.asignar(i, this.dameValor(i) - v.dameValor(i));
         }
+    }
+
+    public Integer tam(){
+        return this.vectInterno.length;
     }
 }

@@ -26,12 +26,14 @@ import javax.swing.*;
  * The application's main frame.
  */
 public class Banquero2View extends FrameView implements ActionListener {
+    private JPanel panelSegundo;
+    private Color listos = new Color(50, 255, 50);
 
     public Banquero2View(SingleFrameApplication app) {
         super(app);
 
         initComponents();
-        initComponents2();
+        //initComponents2();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -107,6 +109,13 @@ public class Banquero2View extends FrameView implements ActionListener {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        panelInicial = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        cantProc = new javax.swing.JComboBox();
+        cantRec = new javax.swing.JComboBox();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -120,20 +129,97 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(banquero2.Banquero2App.class).getContext().getResourceMap(Banquero2View.class);
+        panelInicial.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("panelInicial.border.title"))); // NOI18N
+        panelInicial.setName("panelInicial"); // NOI18N
+
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        cantProc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" , "6", "7", "8"}));
+        cantProc.setName("cantProc"); // NOI18N
+
+        cantRec.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8"}));
+        cantRec.setName("cantRec"); // NOI18N
+
+        javax.swing.GroupLayout panelInicialLayout = new javax.swing.GroupLayout(panelInicial);
+        panelInicial.setLayout(panelInicialLayout);
+        panelInicialLayout.setHorizontalGroup(
+            panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicialLayout.createSequentialGroup()
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInicialLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cantRec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cantProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelInicialLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        panelInicialLayout.setVerticalGroup(
+            panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicialLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cantProc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cantRec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(50, 50, 50))
+        );
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(panelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(panelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(banquero2.Banquero2App.class).getContext().getResourceMap(Banquero2View.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -172,7 +258,7 @@ public class Banquero2View extends FrameView implements ActionListener {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -195,9 +281,43 @@ public class Banquero2View extends FrameView implements ActionListener {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.cantProcesos = new Integer(String.valueOf(this.cantProc.getSelectedItem()));
+        this.cantRecursos = new Integer(String.valueOf(this.cantRec.getSelectedItem()));
+
+        this.panelInicial.setVisible(false);
+
+        //this.semInstance = new Instancia(cantidadProcesos, cantidadSemaforos);
+        this.cargarSegundoPanel();
+        //this.panelSegundo.setVisible(true);
+        //this.mainPanel.removeAll();
+        //this.mainPanel.setLayout(new GridLayout(1,1));
+        //this.mainPanel.add(this.panelSegundo);
+}//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        System.out.println( "Se ha pulsado el boton de cargar" );
+        String archivo = null;
+        try {
+            archivo = this.seleccionarArchivo();
+            //System.out.println("Leido2 " + archivo);
+            this.panelInicial.setVisible(false);
+            this.desserializar(archivo);
+        } catch (IOException io) {
+            System.out.println(io.getMessage());
+        }
+}//GEN-LAST:event_jButton2MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cantProc;
+    private javax.swing.JComboBox cantRec;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPanel panelInicial;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
@@ -239,14 +359,24 @@ public class Banquero2View extends FrameView implements ActionListener {
     private Font fontBold;
     private Font fontNormal;
 
-    private Integer ladoMatriz = 300;
+    private Integer ladoMatrizProc = 300;
+    private Integer ladoMatrizRec = 300;
     private Integer ladoVector = 79;
+
+    private Integer cantProcesos;
+    private Integer cantRecursos;
 
     Timer timer;
 
-    private void initComponents2() {
+    private void cargarSegundoPanel() {
+        this.panelSegundo = new JPanel();
+
         JPanel matTiene = new JPanel();
         crearMatrizAsignacion(matTiene, false);
+
+        this.ladoMatrizProc = 40 * (cantProcesos+1);
+        this.ladoMatrizRec = 40 * (cantRecursos+1);
+        this.ladoVector = 80;
 
         this.fontBold =new Font(this.matrizAsignacion[1][1].getFont().getName(),
                 Font.BOLD,
@@ -278,19 +408,19 @@ public class Banquero2View extends FrameView implements ActionListener {
         layoutLlenado.setHorizontalGroup(
                 layoutLlenado.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(matTiene, ladoMatriz, ladoMatriz, ladoMatriz)
-                    .addComponent(vectDisponibles, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(matTiene, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec)
+                    .addComponent(vectDisponibles, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec)
                 )
                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(matNecesidad, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
-                    .addComponent(vectPedido, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(matNecesidad, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(vectPedido, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec)
                     )
                 );
         layoutLlenado.setVerticalGroup(
                 layoutLlenado.createSequentialGroup() //.addGap(160,260,36)
                 .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(matTiene, ladoMatriz, ladoMatriz, ladoMatriz)
-                    .addComponent(matNecesidad, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(matTiene, ladoMatrizProc, ladoMatrizProc, ladoMatrizProc)
+                    .addComponent(matNecesidad, ladoMatrizProc, ladoMatrizProc, ladoMatrizProc) //.addGap(180, Short.MAX_VALUE))
 
                  )
                  .addGroup(layoutLlenado.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -336,6 +466,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         this.seguimientoSimulacion.stop.addActionListener(this);
         this.seguimientoSimulacion.play.addActionListener(this);
 
+
         layoutSimulacion.setAutoCreateGaps(true);
         layoutSimulacion.setAutoCreateContainerGaps(true);
         
@@ -346,12 +477,12 @@ public class Banquero2View extends FrameView implements ActionListener {
                     .addGap(60)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addComponent(matNecesidadSim, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
-                    .addComponent(matAsignacionSim, ladoMatriz, ladoMatriz, ladoMatriz)
-                    .addComponent(vectDisponiblesSim, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(matNecesidadSim, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec) //.addGap(180, Short.MAX_VALUE))
+                    .addComponent(matAsignacionSim, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec)
+                    .addComponent(vectDisponiblesSim, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec)
                 )
                 .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(vectPedido2, ladoMatriz, ladoMatriz, ladoMatriz)
+                    .addComponent(vectPedido2, ladoMatrizRec, ladoMatrizRec, ladoMatrizRec)
                     .addComponent(seguimSimulacion, 500, 500, 500)
                 )
                 );
@@ -359,12 +490,12 @@ public class Banquero2View extends FrameView implements ActionListener {
                 layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addGroup(layoutSimulacion.createSequentialGroup() //.addGap(160,260,36)
                         .addGroup(layoutSimulacion.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(vectFinish, ladoMatriz, ladoMatriz, ladoMatriz)
-                            .addComponent(matNecesidadSim, ladoMatriz, ladoMatriz, ladoMatriz) //.addGap(180, Short.MAX_VALUE))
+                            .addComponent(vectFinish, ladoMatrizProc, ladoMatrizProc, ladoMatrizProc)
+                            .addComponent(matNecesidadSim, ladoMatrizProc, ladoMatrizProc, ladoMatrizProc) //.addGap(180, Short.MAX_VALUE))
 
                         )
                         .addComponent(vectDisponiblesSim, ladoVector, ladoVector, ladoVector)
-                        .addComponent(matAsignacionSim, ladoMatriz, ladoMatriz, ladoMatriz)
+                        .addComponent(matAsignacionSim, ladoMatrizProc, ladoMatrizProc, ladoMatrizProc)
                     )
                     .addGroup(layoutSimulacion.createSequentialGroup()
                         .addComponent(vectPedido2, ladoVector, ladoVector, ladoVector)
@@ -406,19 +537,19 @@ public class Banquero2View extends FrameView implements ActionListener {
     
     private void crearMatrizAsignacion(JPanel matTiene, Boolean simulando){
 
-        matTiene.setBorder(new TitledBorder("Matriz de asignación"));
+        matTiene.setBorder(new TitledBorder("Allocation"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
-        GridLayout layout1 = new GridLayout(9, 9);
+        GridLayout layout1 = new GridLayout(this.cantProcesos+1, this.cantRecursos);
         layout1.setHgap(2);
         layout1.setVgap(2);
 
         JTextField[][] m;
         if(simulando){
-            this.matrizAsignacionSimulacion = new JTextField[9][9];
+            this.matrizAsignacionSimulacion = new JTextField[this.cantProcesos+1][this.cantRecursos+1];
             m = this.matrizAsignacionSimulacion;
         } else {
-            this.matrizAsignacion =  new JTextField[9][9];
+            this.matrizAsignacion =  new JTextField[this.cantProcesos+1][this.cantRecursos+1];
             m = this.matrizAsignacion;
         }
 
@@ -426,12 +557,12 @@ public class Banquero2View extends FrameView implements ActionListener {
         matTiene.setLayout(layout1);
 
         matTiene.add(new Label(" "));
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantRecursos; i++) {
             matTiene.add(new Label("  R" + i));
         }
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
             matTiene.add(new Label("P" + i));
-            for (Integer j = 1; j <= 8; j++) {
+            for (Integer j = 1; j <= this.cantRecursos; j++) {
                 m[i][j] = new JTextField(2);
                 //this.matrizTiene[i][j].setText(i + ", " + j);
                 m[i][j].setText("0");
@@ -446,21 +577,21 @@ public class Banquero2View extends FrameView implements ActionListener {
  
     private void crearMatrizMaximosONecesidad(JPanel matNecesidad, Boolean simulando){
         if(simulando)
-            matNecesidad.setBorder(new TitledBorder("Matriz de necesidad"));
+            matNecesidad.setBorder(new TitledBorder("Need"));
         else
-            matNecesidad.setBorder(new TitledBorder("Matriz de máximos"));
+            matNecesidad.setBorder(new TitledBorder("Max"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
-        GridLayout layout2 = new GridLayout(9, 9);
+        GridLayout layout2 = new GridLayout(this.cantProcesos+1, this.cantRecursos+1);
         layout2.setHgap(2);
         layout2.setVgap(2);
 
         JTextField[][] m;
         if(simulando){
-            this.matrizNecesidadSimulacion = new JTextField[9][9];
+            this.matrizNecesidadSimulacion = new JTextField[this.cantProcesos+1][this.cantRecursos+1];
             m = this.matrizNecesidadSimulacion;
         }else{
-            this.matrizMaximos = new JTextField[9][9];
+            this.matrizMaximos = new JTextField[this.cantProcesos+1][this.cantRecursos+1];
             m= this.matrizMaximos;
         }
         
@@ -468,12 +599,12 @@ public class Banquero2View extends FrameView implements ActionListener {
         matNecesidad.setLayout(layout2);
 
         matNecesidad.add(new Label(" "));
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantRecursos; i++) {
             matNecesidad.add(new Label("  R" + i));
         }
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
             matNecesidad.add(new Label("P" + i));
-            for (Integer j = 1; j <= 8; j++) {
+            for (Integer j = 1; j <= this.cantRecursos; j++) {
                 m[i][j] = new JTextField(2);
                 //this.matrizNecesidad[i][j].setText(i + ", " + j);
                 m[i][j].setText("0");
@@ -492,19 +623,22 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
     
     private void crearVectDisponibles(JPanel vectDisponibles, Boolean simulando){
-        vectDisponibles.setBorder(new TitledBorder("Recursos Disponibles"));
+        if(simulando)
+            vectDisponibles.setBorder(new TitledBorder("Work"));
+        else
+            vectDisponibles.setBorder(new TitledBorder("Available"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
-        GridLayout layout3 = new GridLayout(2, 9);
+        GridLayout layout3 = new GridLayout(2, this.cantRecursos+1);
         layout3.setHgap(2);
         layout3.setVgap(2);
 
         JTextField[] v;
         if(simulando){
-            this.vectorWorkSimulacion = new JTextField[9];
+            this.vectorWorkSimulacion = new JTextField[this.cantRecursos+1];
             v = this.vectorWorkSimulacion;
         } else {
-            this.vectorDisponible = new JTextField[9];
+            this.vectorDisponible = new JTextField[this.cantRecursos+1];
             v = this.vectorDisponible;
         }
 
@@ -513,13 +647,13 @@ public class Banquero2View extends FrameView implements ActionListener {
         vectDisponibles.setLayout(layout3);
 
         vectDisponibles.add(new Label(" "));
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantRecursos; i++) {
             vectDisponibles.add(new Label("  R" + i));
         }
 
         vectDisponibles.add(new Label("  "));
         
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantRecursos; i++) {
             v[i] = new JTextField(2);
             v[i].setText("0");
             v[i].setHorizontalAlignment(JTextField.CENTER);
@@ -529,25 +663,22 @@ public class Banquero2View extends FrameView implements ActionListener {
             v[i].setToolTipText("Cantidad del recurso " + i + " disponible." );
             vectDisponibles.add(v[i]);
         }
-        
-        //vectDisponibles.add(new Label(" "));
-
     }
     
     private void crearVectPedido (JPanel vectPedido, Boolean simulando){
         vectPedido.setBorder(new TitledBorder("Request"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
-        GridLayout layout3 = new GridLayout(2, 9);
+        GridLayout layout3 = new GridLayout(2, this.cantRecursos+1);
         layout3.setHgap(2);
         layout3.setVgap(2);
 
         JTextField[] v;
         if(simulando){
-            this.vectorPedidoSimulacion = new JTextField[9];
+            this.vectorPedidoSimulacion = new JTextField[this.cantRecursos+1];
             v = this.vectorPedidoSimulacion;
         } else {
-            this.vectorPedido = new JTextField[9];
+            this.vectorPedido = new JTextField[this.cantRecursos+1];
             v = this.vectorPedido;
         }
 
@@ -556,7 +687,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         vectPedido.setLayout(layout3);
 
         vectPedido.add(new Label("  P"));
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantRecursos; i++) {
             vectPedido.add(new Label("  R" + i));
         }
 
@@ -573,7 +704,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         
         vectPedido.add(t);
         
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantRecursos; i++) {
             v[i] = new JTextField(2);
             v[i].setText("0");
             v[i].setHorizontalAlignment(JTextField.CENTER);
@@ -588,11 +719,11 @@ public class Banquero2View extends FrameView implements ActionListener {
         vectFinish.setBorder(new TitledBorder("Finish"));
         //componentes.setToolTipText("Acá se ve lo que tiene cada proceso");
 
-        GridLayout layout3 = new GridLayout(9, 2);
+        GridLayout layout3 = new GridLayout(this.cantProcesos+1, 2);
         layout3.setHgap(2);
         layout3.setVgap(2);
 
-        this.vectorFinishSimulacion = new JTextField[9];
+        this.vectorFinishSimulacion = new JTextField[this.cantProcesos+1];
         JTextField[] v = this.vectorFinishSimulacion;
        
 
@@ -601,7 +732,7 @@ public class Banquero2View extends FrameView implements ActionListener {
         vectFinish.add(new JLabel(""));
         vectFinish.add(new JLabel(""));
         
-        for (Integer i = 1; i <= 8; i++) {
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
             v[i] = new JTextField(2);
             v[i].setText("F");
             v[i].setHorizontalAlignment(JTextField.CENTER);
@@ -614,18 +745,18 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
     private void crearBotonera (JPanel botonera) {
-        GridLayout layout = new GridLayout(5, 1);
+        GridLayout layout = new GridLayout(4, 1);
         layout.setHgap(2);
         layout.setVgap(2);
 
         botonera.setLayout(layout);
         
-        this.cargar = new Button("Cargar");
+        //this.cargar = new Button("Cargar");
         this.guardar = new Button("Guardar");
         this.simular = new Button("Simular");
 
         botonera.add(new Label(""));
-        botonera.add(this.cargar);
+        //botonera.add(this.cargar);
         botonera.add(this.guardar);
         botonera.add(this.simular);
         /*ActionListener actionListener = new ActionListener() {
@@ -635,38 +766,37 @@ public class Banquero2View extends FrameView implements ActionListener {
             }
         };*/
         
-        this.cargar.addActionListener(this);
+        //this.cargar.addActionListener(this);
         this.guardar.addActionListener(this);
         this.simular.addActionListener(this);
     }
 
 //     private void actionPerformed( Event evt ) {
     public void actionPerformed(ActionEvent evt) {
-
          if( evt.getSource().equals( this.cargar ) ){
-            System.out.println( "Se ha pulsado el boton de cargar" );
+            //System.out.println( "Se ha pulsado el boton de cargar" );
             String archivo = null;
             try {
                 archivo = this.seleccionarArchivo();
-                System.out.println("Leido2 " + archivo);
+                //System.out.println("Leido2 " + archivo);
                 this.desserializar(archivo);
             } catch (IOException io) {
                 System.out.println(io.getMessage());
             }
          }
          if(evt.getSource().equals( this.guardar ) ){
-            System.out.println( "Se ha pulsado el boton de guardar" );
+            //System.out.println( "Se ha pulsado el boton de guardar" );
             String archivo = null;
             try {
                 archivo = this.seleccionarArchivo();
-                System.out.println("Leido2 " + archivo);
+                //System.out.println("Leido2 " + archivo);
                 this.serializar(archivo);
             } catch (IOException io) {
                 System.out.println(io.getMessage());
             }            
          }
          if(evt.getSource().equals( this.simular ) ){
-            System.out.println( "Se ha pulsado el boton de simular" );
+            //System.out.println( "Se ha pulsado el boton de simular" );
             this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
             this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
             this.botoneraLlenado.setVisible(!this.botoneraLlenado.isShowing());
@@ -678,14 +808,14 @@ public class Banquero2View extends FrameView implements ActionListener {
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.step) ){
-            System.out.println( "Se ha pulsado el boton de step" );
+            //System.out.println( "Se ha pulsado el boton de step" );
             this.seguimientoSimulacion.step.setEnabled(false);
             this.doStep();
             this.seguimientoSimulacion.step.setEnabled(true);
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.play) ){
-            System.out.println( "Se ha pulsado el boton de play" );
+            //System.out.println( "Se ha pulsado el boton de play" );
             
             Integer delay = 500;
             try {
@@ -710,7 +840,7 @@ public class Banquero2View extends FrameView implements ActionListener {
          }
 
          if(evt.getSource().equals( this.seguimientoSimulacion.stop) ){
-            System.out.println( "Se ha pulsado el boton de stop" );
+            //System.out.println( "Se ha pulsado el boton de stop" );
             this.panelLlenado.setVisible(!this.panelLlenado.isShowing());
             this.panelSimulacion.setVisible(!this.panelSimulacion.isShowing());
             this.botoneraLlenado.setVisible(!this.botoneraLlenado.isShowing());
@@ -737,7 +867,6 @@ public class Banquero2View extends FrameView implements ActionListener {
         this.refrescar();//// DEShabilitar el botón
     }
 
-     
     private String seleccionarArchivo() throws IOException {
         JFrame frame2 = new JFrame();        
         JFileChooser fileChooser = new JFileChooser();
@@ -772,26 +901,26 @@ public class Banquero2View extends FrameView implements ActionListener {
         FileOutputStream f = new FileOutputStream(archivo); 
         ObjectOutputStream s = new ObjectOutputStream(f); 
         //String company = "My Good Company"; 
-        //s.writeObject(company); 
-        //s.writeObject(this.text_tiene11.getText());
+        s.writeObject(this.cantProcesos);
+        s.writeObject(this.cantRecursos);
         //s.writeObject(this.);
-        for (Integer i = 1; i <= 8; i++) {
-            for (Integer j = 1; j <= 8; j++) {
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
+            for (Integer j = 1; j <= this.cantRecursos; j++) {
                 s.writeObject(this.matrizAsignacion[i][j].getText());
             }
         }
         
-        for (Integer i = 1; i <= 8; i++) {
-            for (Integer j = 1; j <= 8; j++) {
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
+            for (Integer j = 1; j <= this.cantRecursos; j++) {
                 s.writeObject(this.matrizMaximos[i][j].getText());
             }
         }
-        for (Integer j = 1; j <= 8; j++) {
+        for (Integer j = 1; j <= this.cantRecursos; j++) {
             s.writeObject(this.vectorDisponible[j].getText());                
         }
         
         s.writeObject(this.procPedido.getText());
-        for (Integer j = 1; j <= 8; j++) {
+        for (Integer j = 1; j <= this.cantRecursos; j++) {
             s.writeObject(this.vectorPedido[j].getText());                
         }
         
@@ -809,27 +938,34 @@ public class Banquero2View extends FrameView implements ActionListener {
         ObjectInputStream s = new ObjectInputStream(f); 
         //String company = ""; 
 
+
+        this.cantProcesos = new Integer((Integer) s.readObject());
+        this.cantRecursos = new Integer((Integer) s.readObject());
+
+
+        this.cargarSegundoPanel();
         //company = (String) s.readObject();
         //this.text_tiene11.setText((String) s.readObject());
         //this = s.readObject();
         //System.out.println(company + " "); 
-        for (Integer i = 1; i <= 8; i++) {
-            for (Integer j = 1; j <= 8; j++) {
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
+            for (Integer j = 1; j <= this.cantRecursos; j++) {
                 this.matrizAsignacion[i][j].setText((String) s.readObject());
             }
         }
-        for (Integer i = 1; i <= 8; i++) {
-            for (Integer j = 1; j <= 8; j++) {
+
+        for (Integer i = 1; i <= this.cantProcesos; i++) {
+            for (Integer j = 1; j <= this.cantRecursos; j++) {
                 this.matrizMaximos[i][j].setText((String) s.readObject());
             }
         }
         
-        for (Integer j = 1; j <= 8; j++) {
+        for (Integer j = 1; j <= this.cantRecursos; j++) {
             this.vectorDisponible[j].setText((String) s.readObject());                
         }
         
         this.procPedido.setText((String) s.readObject());
-        for (Integer j = 1; j <= 8; j++) {
+        for (Integer j = 1; j <= this.cantRecursos; j++) {
             this.vectorPedido[j].setText((String) s.readObject());                
         }
         
@@ -843,35 +979,69 @@ public class Banquero2View extends FrameView implements ActionListener {
     }
 
     private void pintarLineaMatriz(JTextField[][] m, Integer fila, Color col){
-        for(Integer i=1; i<=8; i++){
-            for(Integer j=1; j<=8; j++){
-                m[i][j].setForeground(i.equals(fila) ? col : Color.black);
+        Color aPintar;
+        for(Integer i=1; i<=this.cantProcesos; i++){
+            if(this.bankSolver.getFinish().dameValor(i).equals(1))
+                aPintar = this.listos;
+            else
+                aPintar = Color.BLACK;
+
+            if(i.equals(fila))
+                aPintar = col;
+
+            for(Integer j=1; j<=this.cantRecursos; j++){
+                m[i][j].setForeground(aPintar);
                 m[i][j].setFont(i.equals(fila) ? this.fontBold : this.fontNormal);
             }
         }
     }
 
     private void pintarCeldaVector(JTextField[] v, Integer elem, Color col){
-        for(Integer j=1; j<=8; j++){
-            v[j].setForeground(j.equals(elem) ? col : Color.black);
+        Color aPintar = this.listos;
+        for(Integer j=1; j< v.length; j++){
+            if(v[j].getText().equals("T"))
+                aPintar = this.listos;
+            else
+                aPintar = Color.BLACK;
+            v[j].setForeground(j.equals(elem) ? col : aPintar);
             v[j].setFont(j.equals(elem) ? this.fontBold : this.fontNormal);
-
-        }
-        
+        }        
     }
 
     private void pintarMatriz(JTextField[][] m, Color col){
-        for(Integer i=1; i<=8; i++){
-            for(Integer j=1; j<=8; j++){
-                m[i][j].setForeground(col);
-                m[i][j].setFont(col.equals(Color.RED) ? this.fontBold : this.fontNormal);
+        Color aPintar;
+        for(Integer i=1; i<=this.cantProcesos; i++){
+            if(this.bankSolver.getFinish().dameValor(i).equals(1))
+                aPintar = this.listos;
+            else
+                aPintar = col;
 
+            for(Integer j=1; j<=this.cantRecursos; j++){
+                m[i][j].setForeground(aPintar);
+                m[i][j].setFont(col.equals(Color.RED) ? this.fontBold : this.fontNormal);
             }
         }
+
+//        for(Integer i=1; i<=this.cantProcesos; i++){
+//            for(Integer j=1; j<=this.cantRecursos; j++){
+//                m[i][j].setForeground(col);
+//                m[i][j].setFont(col.equals(Color.RED) ? this.fontBold : this.fontNormal);
+//
+//            }
+//        }
     }
+
     private void pintarVector(JTextField[] v, Color col){
-        for(Integer j=1; j<=8; j++){
-            v[j].setForeground(col);
+        Color aPintar = this.listos;
+        for(Integer j=1; j< v.length; j++){
+            if(v[j].getText().equals("T") && !col.equals(Color.RED))
+                aPintar = this.listos;
+            else
+                aPintar = col;
+
+            v[j].setForeground(aPintar);
+        //for(Integer j=1; j< v.length; j++){
+            //v[j].setForeground(col);
             v[j].setFont(col.equals(Color.RED) ? this.fontBold : this.fontNormal);
         }
     }
@@ -881,18 +1051,23 @@ public class Banquero2View extends FrameView implements ActionListener {
             v[j].setForeground(j.equals(elem) ? col : Color.black);
             v[j].setFont(j.equals(elem) ? this.fontBold : this.fontNormal);
         }
+
+        if(elem.equals(11)){
+            v[12].setForeground(col);
+            v[12].setFont(this.fontBold);
+        }
     }
 
     private void copiarDatosParaIniciarSimulacion(){
-        Matriz asignacionT = new Matriz();
-        Matriz necesidadT = new Matriz();
-        Vector requestT = new Vector();
-        Vector workT = new Vector();
+        Matriz asignacionT = new Matriz(this.cantProcesos, this.cantRecursos);
+        Matriz necesidadT = new Matriz(this.cantProcesos, this.cantRecursos);
+        Vector requestT = new Vector(this.cantRecursos);
+        Vector workT = new Vector(this.cantRecursos);
         Integer procesoT = 0;
 
         Integer aux = 0;
-        for(Integer i=1; i<=8; i++){
-            for(Integer j=1; j<=8; j++){
+        for(Integer i=1; i<=this.cantProcesos; i++){
+            for(Integer j=1; j<=this.cantRecursos; j++){
                 aux = new Integer (this.matrizAsignacion[i][j].getText());
                 asignacionT.asignar(i,j,aux);
                 this.matrizAsignacionSimulacion[i][j].setText(aux.toString());
@@ -905,7 +1080,7 @@ public class Banquero2View extends FrameView implements ActionListener {
             }
         }
 
-        for(Integer j=1; j<=8; j++){
+        for(Integer j=1; j<=this.cantRecursos; j++){
             aux = new Integer(this.vectorDisponible[j].getText());
             workT.asignar(j, aux);
             this.vectorWorkSimulacion[j].setText(aux.toString());
@@ -926,11 +1101,10 @@ public class Banquero2View extends FrameView implements ActionListener {
         this.refrescar();
     }
 
-
     private void refrescar(){
         Integer aux = 0;
-        for(Integer i=1; i<=8; i++){
-            for(Integer j=1; j<=8; j++){
+        for(Integer i=1; i<=this.cantProcesos; i++){
+            for(Integer j=1; j<=this.cantRecursos; j++){
                 aux = this.bankSolver.getAsignacion().dameValor(i, j);
                 this.matrizAsignacionSimulacion[i][j].setText(aux.toString());
 
@@ -939,19 +1113,22 @@ public class Banquero2View extends FrameView implements ActionListener {
             }
         }
 
-        for(Integer j=1; j<=8; j++){
+        for(Integer j=1; j<=this.cantRecursos; j++){
             aux = this.bankSolver.getDisponibles().dameValor(j);
             this.vectorWorkSimulacion[j].setText(aux.toString());
-
-            aux = this.bankSolver.getFinish().dameValor(j);
+        }
+        
+        for(Integer i=1; i<=this.cantProcesos; i++){
+            aux = this.bankSolver.getFinish().dameValor(i);
             if(aux.equals(0))
-                this.vectorFinishSimulacion[j].setText("F");
+                this.vectorFinishSimulacion[i].setText("F");
             else
-                this.vectorFinishSimulacion[j].setText("T");
+                this.vectorFinishSimulacion[i].setText("T");
         }
         this.pintarLabelVector(this.seguimientoSimulacion.arrLabels, this.bankSolver.getPaso(), Color.RED);
         this.seguimientoSimulacion.iValor.setText(this.bankSolver.getI().toString());
         this.seguimientoSimulacion.status.setText(this.bankSolver.getStatus());
+        this.seguimientoSimulacion.status1.setText(this.bankSolver.getStatus1());
         //System.out.println("Estoy en el paso: " + this.bankSolver.getPaso() + "cuyo label dice");
         this.rePintar(this.bankSolver.getModificaciones());
     }
@@ -1013,15 +1190,6 @@ public class Banquero2View extends FrameView implements ActionListener {
 
         }
     }
-
-
-
-
-
-
-
-
-
 
 }
 
