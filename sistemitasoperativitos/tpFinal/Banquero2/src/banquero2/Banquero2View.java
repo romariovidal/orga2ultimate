@@ -27,7 +27,7 @@ import javax.swing.*;
  */
 public class Banquero2View extends FrameView implements ActionListener {
     private JPanel panelSegundo;
-    private Color listos = new Color(50, 255, 50);
+    private Color listos = new Color(0, 155, 0);
 
     public Banquero2View(SingleFrameApplication app) {
         super(app);
