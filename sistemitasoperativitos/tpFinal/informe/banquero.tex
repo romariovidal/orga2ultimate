@@ -35,5 +35,31 @@ procesos.
 \end{itemize}
 En este trabajo realizamos un simulador para el Algoritmo del Banquero. La idea
 principal de este simulador es mostrar paso a paso la ejecuci'on del algoritmo
-para una instancia que el usuario provea, asi el usuario podra saber si se
+para una instancia que el usuario provea, asi el usuario podr'a saber si se
 trata de un sistema que se encuentra en estado seguro o inseguro.
+
+Mostraremos a continuacion el ejercicio 7.c de la guia de ejercicios de la materia. Este ejemplo cuenta con cinco procesos y cuatro recursos.
+\begin{figure}
+\centering
+ \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero1.png}
+ \caption{Esta es la primer pantalla del simulador, debemos escojer la cantidad de procesos y recursos o levantar una instancia guardada previamente desde el disco.}
+ % TokengRingScreen1.png: 1032x742 pixel, 72dpi, 36.41x26.18 cm, bb=
+\end{figure}
+\begin{figure}
+\centering
+ \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero2.png}
+ \caption{Aqui ya vemos la siguiente pantalla, en la que debemos ingresar los valores de entrada de la simulaci'on. \emph{Allocation} es la matriz que refleja los recursos que tiene alocado cada proceso, \emph{Max} es el m'aximo de recursos que un proceso puede usar, \emph{Available} es la cantidad de recursos de cada tipo que no estan asigandos, \emph{Request} muestra cu'antos recursos de casa tipo pidi'o el proceso \emph{P}. Despu'es de ingresar los valores podemos optar por guardar los valores ingresados para ser usados luego, para esto utilizamos el boton \emph{Guardar}.}
+ % TokengRingScreen1.png: 1032x742 pixel, 72dpi, 36.41x26.18 cm, bb=
+\end{figure}
+\begin{figure}
+\centering
+ \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero3.png}
+ \caption{Esta es la 'ultima pantalla del simulador, en ella vemos los valores de las distintas matrices que participan en el algoritmo. El vector \emph{Finish} nos indicar'a cuales de los procesos pueden terminar, si todo el vector \emph{Finish} queda en \emph{True}, querr'a decir que el sistema esta en un estado seguro. El boton \emph{Step} avanza el algoritmo un paso, podemos presionarlo repetidas veces hasta finalizar la simulaci'on, tambi'en podemos elegir un intervalo y presionar \emph{Play}. En rojo se mostrar'a el paso del algoritmo que se esta por ejecutar y los valores que se estan utilizando en ese paso.} 
+ % TokengRingScreen1.png: 1032x742 pixel, 72dpi, 36.41x26.18 cm, bb=
+\end{figure}
+\begin{figure}
+\centering
+ \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero4.png}
+ \caption{Aqui ya ha terminado la simulaci'on, podemos ver el vector de \emph{Finish} completamente seteado en \emph{True}, eso nos indica que existe una secuencia segura en este sistema.} 
+ % TokengRingScreen1.png: 1032x742 pixel, 72dpi, 36.41x26.18 cm, bb=
+\end{figure}
