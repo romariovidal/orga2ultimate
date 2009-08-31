@@ -315,12 +315,12 @@ public class BanqueroAlgorithm {
 
     void pasoOnce(){
         Vector vector = new Vector(this.cantidadProcesos,1);
-        if(finish.mayorOIgual(vector)){
+        if(vector.mayorOIgual(finish)){
             System.out.println("El sistema esta en estado seguro");
             this.status = "Terminado. Se puede otorgar el pedido ya que existe";
             this.status1 = "una secuencia segura después de otorgarlo.";
         } else {
-            System.out.println("El sistema esta en estado seguro");
+            System.out.println("El sistema no esta en estado seguro");
             this.status = "Terminado. No se puede otorgar ya que queda en estado inseguro.";
             this.status1 = "";
         }
