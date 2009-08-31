@@ -27,35 +27,49 @@ supone una serie de restricciones:
 \begin{itemize}
  \item Se debe conocer la m'axima demanda de recursos por anticipado.
  \item Los procesos deben ser independientes, es decir que puedan ser
-ejecutados en cualquier orden. Por lo tanto su ejecución no debe estar forzada
+ejecutados en cualquier orden. Por lo tanto su ejecuci'on no debe estar forzada
 por condiciones de sincronizaci'on.
- \item Debe haber un número fijo de recursos a utilizar y un número fijo de
+ \item Debe haber un n'umero fijo de recursos a utilizar y un n'umero fijo de
 procesos.
  \item Los procesos no pueden finalizar mientras retengan recursos.
 \end{itemize}
 En este trabajo realizamos un simulador para el Algoritmo del Banquero. La idea
 principal de este simulador es mostrar paso a paso la ejecuci'on del algoritmo
-para una instancia que el usuario provea, asi el usuario podr'a saber si se
-trata de un sistema que se encuentra en estado seguro o inseguro.
+para una instancia que el usuario provea, asi el usuario podr'a saber si al 
+llegar un pedido de un proceso, satisfacer este pedido mantiene al sistema en
+un estado seguro. Recordemos que el algoritmo asume que el sistema inicialmente
+se encuentra en un estado seguro.
 
-Mostraremos a continuaci'on el ejercicio 7.c de la guia de ejercicios de la materia. Este ejemplo cuenta con cinco procesos y cuatro recursos.
-\begin{figure}
-\centering
- \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero1.png}
+\newpage
+\subsection{Ejemplo de funcionamiento}
+Mostraremos a continuaci'on el ejercicio 7.c de la gu'ia de ejercicios de la materia. 
+Este ejemplo cuenta con cinco procesos y cuatro recursos.
+
+\begin{figure}[h!]
+\begin{center}
+ \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero1.png}
  \caption{Esta es la primer pantalla del simulador, debemos escoger la cantidad de procesos y recursos o levantar una instancia guardada previamente desde el disco.}
+\end{center}
 \end{figure}
-\begin{figure}
-\centering
- \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero2.png}
+
+\begin{figure}[h!]
+\begin{center}
+ \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero2.png}
  \caption{Aqu'i ya vemos la siguiente pantalla, en la que debemos ingresar los valores de entrada de la simulaci'on. \emph{Allocation} es la matriz que refleja los recursos que tiene alocado cada proceso, \emph{Max} es el m'aximo de recursos que un proceso puede usar, \emph{Available} es la cantidad de recursos de cada tipo que no est'an asigandos, \emph{Request} muestra cu'antos recursos de casa tipo pidi'o el proceso \emph{P}. Despu'es de ingresar los valores podemos optar por guardar los valores ingresados para ser usados luego, para esto utilizamos el bot'on \emph{Guardar}.}
+\end{center}
 \end{figure}
-\begin{figure}
+\newpage
+\begin{figure}[h!]
 \centering
- \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero3.png}
+ \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero3.png}
  \caption{Esta es la 'ultima pantalla del simulador, en ella vemos los valores de las distintas matrices que participan en el algoritmo. El vector \emph{Finish} nos indicar'a cuales de los procesos pueden terminar, si todo el vector \emph{Finish} queda en \emph{True}, querr'a decir que el sistema esta en un estado seguro. El bot'on \emph{Step} avanza el algoritmo un paso, podemos presionarlo repetidas veces hasta finalizar la simulaci'on, tambi'en podemos elegir un intervalo y presionar \emph{Play}. En rojo se mostrar'a el paso del algoritmo que se est'a por ejecutar y los valores que se est'an utilizando en ese paso.} 
 \end{figure}
-\begin{figure}
+
+\begin{figure}[h!]
 \centering
- \includegraphics[scale=0.4,keepaspectratio=true]{./imagenes/banquero/banquero4.png}
+ \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero4.png}
  \caption{Aqui ya ha terminado la simulaci'on, podemos ver el vector de \emph{Finish} completamente seteado en \emph{True}, eso nos indica que existe una secuencia segura en este sistema.} 
 \end{figure}
+
+\newpage
+

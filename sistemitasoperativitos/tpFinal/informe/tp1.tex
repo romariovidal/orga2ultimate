@@ -16,10 +16,10 @@
 \oddsidemargin 0in
 \textwidth 6.2in
 \topmargin 0in
-\textheight 18cm
+\textheight 17cm
 \addtolength{\topmargin}{-.5in}
 %textheight 10in
-\textheight 24cm
+\textheight 23cm
 \parskip=1ex
 \pagestyle{fancy}
 \newcommand{\real}{\hbox{\bf R}}
@@ -29,6 +29,16 @@
   \subsubsection{#1}
   \verbatimtabinput[4]{#2}
 }
+
+\newcommand{\incluirimagen}[2] {
+    \begin{figure}[H]
+        \begin{center}
+        \includegraphics[width=0.9\textwidth, keepaspectratio]{#1}
+        \caption{#2}
+        \end{center}
+    \end{figure}
+}
+
 
 %\newcount\entrada
 %\newcount\base
@@ -65,9 +75,11 @@
 \addtocounter{section}{2}
 
 \input{banquero.tex}
+
 \newpage
 
 \input{tokenRing.tex}
+
 \newpage
 
 \input{semaforos.tex}
