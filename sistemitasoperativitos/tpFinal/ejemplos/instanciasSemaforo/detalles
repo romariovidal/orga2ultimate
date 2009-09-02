@@ -1,0 +1,9 @@
+1a 	ABC 	ABC
+1b 	ABAC 	ABAC
+1c 	(A|B)C 	(A|B)C
+2 	A(B|C) 	A(B|C)
+9 	BACD	BACD
+11  A(B|C)(B|C)	A(B|C)(B|C)
+12	ABBAC	ABBAC
+13	no funciona
+13bis	ABBCBB	ABBCBB
