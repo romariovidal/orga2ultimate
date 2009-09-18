@@ -15,14 +15,14 @@ En t'erminos m'as formales, un sistema se encuentra en un estado seguro si
 existe una secuencia segura. Una secuencia segura es una sucesi'on de procesos,
 $< P_1,\ldots, P_n >$ , donde para un proceso $P_i$, el pedido de recursos
 puede ser satisfecho con los recursos disponibles sumados los recursos que
-están siendo utilizados por $P_j$, donde $j < i$. Si no hay suficientes
+est'an siendo utilizados por $P_j$, donde $j < i$. Si no hay suficientes
 recursos para el proceso $P_i$, debe esperar hasta que alg'un proceso $P_j$
 termine su ejecuci'on y libere sus recursos. Reci'en entonces podr'a $P_i$
 tomar los recursos necesarios, utilizarlos y terminar su ejecuci'on. Al suceder
 esto, el proceso $P_{i+1}$ puede tomar los recursos que necesite, y as'i
 sucesivamente. Si una secuencia de este tipo no existe, el sistema se dice que
-está en un estado inseguro, aunque esto no implica que esté bloqueado.
-Así, el uso de este tipo de algoritmo permite impedir el \emph{deadlock}, pero
+est'a en un estado inseguro, aunque esto no implica que est'e bloqueado.
+As'i, el uso de este tipo de algoritmo permite impedir el \emph{deadlock}, pero
 supone una serie de restricciones:
 \begin{itemize}
  \item Se debe conocer la m'axima demanda de recursos por anticipado.
@@ -35,8 +35,8 @@ procesos.
 \end{itemize}
 En este trabajo realizamos un simulador para el Algoritmo del Banquero. La idea
 principal de este simulador es mostrar paso a paso la ejecuci'on del algoritmo
-para una instancia que el usuario provea, asi el usuario podr'a saber si al 
-llegar un pedido de un proceso, satisfacer este pedido mantiene al sistema en
+para una instancia que el usuario provea. Asi el usuario podr'a saber si al 
+llegar el pedido de un proceso, satisfacer este pedido mantiene al sistema en
 un estado seguro. Recordemos que el algoritmo asume que el sistema inicialmente
 se encuentra en un estado seguro.
 
@@ -48,27 +48,27 @@ Este ejemplo cuenta con cinco procesos y cuatro recursos.
 \begin{figure}[h!]
 \begin{center}
  \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero1.png}
- \caption{Esta es la primer pantalla del simulador, debemos escoger la cantidad de procesos y recursos o levantar una instancia guardada previamente desde el disco.}
+ \caption{Esta es la primer pantalla del simulador, debemos escoger la cantidad de procesos y recursos o cargar una instancia guardada previamente desde el disco.}
 \end{center}
 \end{figure}
 
 \begin{figure}[h!]
 \begin{center}
  \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero2.png}
- \caption{Aqu'i ya vemos la siguiente pantalla, en la que debemos ingresar los valores de entrada de la simulaci'on. \emph{Allocation} es la matriz que refleja los recursos que tiene alocado cada proceso, \emph{Max} es el m'aximo de recursos que un proceso puede usar, \emph{Available} es la cantidad de recursos de cada tipo que no est'an asigandos, \emph{Request} muestra cu'antos recursos de casa tipo pidi'o el proceso \emph{P}. Despu'es de ingresar los valores podemos optar por guardar los valores ingresados para ser usados luego, para esto utilizamos el bot'on \emph{Guardar}.}
+ \caption{Aqu'i ya vemos la siguiente pantalla, en la que debemos ingresar los valores de entrada de la simulaci'on. \emph{Allocation} es la matriz que refleja los recursos que tiene asignado cada proceso, \emph{Max} es el m'aximo de recursos que un proceso declara que va a usar, \emph{Available} es la cantidad de recursos de cada tipo que est'an disponibles, \emph{Request} muestra cu'antos recursos de casa tipo pidi'o el proceso \emph{P}. Despu'es de ingresar los valores podemos optar por guardar los valores ingresados para ser usados luego, para esto utilizamos el bot'on \emph{Guardar} o iniciar una simulaci'on}
 \end{center}
 \end{figure}
 \newpage
 \begin{figure}[h!]
 \centering
  \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero3.png}
- \caption{Esta es la 'ultima pantalla del simulador, en ella vemos los valores de las distintas matrices que participan en el algoritmo. El vector \emph{Finish} nos indicar'a cuales de los procesos pueden terminar, si todo el vector \emph{Finish} queda en \emph{True}, querr'a decir que el sistema esta en un estado seguro. El bot'on \emph{Step} avanza el algoritmo un paso, podemos presionarlo repetidas veces hasta finalizar la simulaci'on, tambi'en podemos elegir un intervalo y presionar \emph{Play}. En rojo se mostrar'a el paso del algoritmo que se est'a por ejecutar y los valores que se est'an utilizando en ese paso.} 
+ \caption{Esta es la 'ultima pantalla del simulador, en ella vemos los valores de las distintas matrices que participan en el algoritmo. El vector \emph{Finish} nos indicar'a cuales de los procesos pueden terminar en la simulaci'on. Si todo el vector \emph{Finish} queda en \emph{True}, querr'a decir que el sistema est'a en un estado seguro. El bot'on \emph{Step} avanza el algoritmo un paso, podemos presionarlo repetidas veces hasta finalizar la simulaci'on, tambi'en podemos elegir el intervalo de tiempo entre paso y paso y presionar \emph{Play}. En rojo se mostrar'a el paso del algoritmo que se est'a por ejecutar y los valores que se est'an utilizando en ese paso.} 
 \end{figure}
 
 \begin{figure}[h!]
 \centering
  \includegraphics[scale=0.3,keepaspectratio=true]{./imagenes/banquero/banquero4.png}
- \caption{Aqui ya ha terminado la simulaci'on, podemos ver el vector de \emph{Finish} completamente seteado en \emph{True}, eso nos indica que existe una secuencia segura en este sistema.} 
+ \caption{Aqu'i ya ha terminado la simulaci'on, podemos ver el vector de \emph{Finish} completamente \emph{seteado} en \emph{True}, eso nos indica que existe una secuencia segura en este sistema.} 
 \end{figure}
 
 \newpage

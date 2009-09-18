@@ -4,7 +4,7 @@ cl'asico para restringir o permitir el acceso a recursos compartidos (por
 ejemplo, un recurso de almacenamiento del sistema o variables del c'odigo
 fuente) en un entorno de multiprogramac'ion. Fueron inventados por Edsger
 Dijkstra y se usaron por primera vez en el sistema operativo THEOS.
-Con este simulador permitimos armar los sem'aforos de Dijkstra y simular su
+Con este simulador permitimos utilizar los sem'aforos de Dijkstra y simular su
 comportamiento al crear procesos que requieren el acceso a la zona cr'itica.
 
 En la simulaci'on el tiempo est'a dividido en turnos y a cada turno se ejecuta
@@ -20,27 +20,27 @@ Veamos un ejemplo para clarificar su comportamiento y forma de uso.
 \begin{figure}[h!]
 \centering
  \includegraphics[scale=0.33,keepaspectratio=true]{./imagenes/semaforo/semaforos1.png}
- \caption{En la primer pantalla del simulador podemos elegir la cantidad de tipos de procesos y la cantidad de sem'aforos a utilizar, tambi'en podemos optar por cargar los datos desde un archivo.}
+ \caption{En la primer pantalla del simulador podemos elegir la cantidad de tipos de procesos y la cantidad de sem'aforos a utilizar, tambi'en podemos optar por cargar una instancia desde un archivo.}
 \end{figure}
 \newpage
 
 \begin{figure}[h!]
 \centering
  \includegraphics[scale=0.33,keepaspectratio=true]{./imagenes/semaforo/semaforos2.png}
- \caption{Ya en la segunda pantalla tenemos todas las herramientas para completar la configuraci'on de nuestro sem'aforo. Con los combos y los botones \emph{Agregar Arriba}, \emph{Agregar Abajo} y completando los valores de las variables podemos armar todos los sem'aforos que queramos modelar. En este ejemplo hemos completado con algunos operadores \emph{P} y \emph{V}, tambi'en seteamos los valores de \emph{X0} y \emph{X1}. Este ejemplo admite \emph{A(B}$|$\emph{C)}.}
+ \caption{Ya en la segunda pantalla tenemos todas las herramientas para completar la configuraci'on de nuestro sistema. Con los combos y los botones \emph{Agregar Arriba}, \emph{Agregar Abajo} y completando los valores de las variables podemos armar todos los sem'aforos que queramos modelar. En este ejemplo hemos completado con algunos operadores \emph{P} y \emph{V}, tambi'en \emph{seteamos} los valores de \emph{X0} y \emph{X1}. Este ejemplo admite \emph{A(B}$|$\emph{C)}.}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
  \includegraphics[scale=0.33,keepaspectratio=true]{./imagenes/semaforo/semaforos3.png}
  \caption{En la tercer pantalla podemos agregar procesos de cualquier tipo,
-setear los intervalos de tiempo correspondientes a la zona cr'itica y la
-velocidad del algoritmo en ejecutarse. El bot'on \emph{Liberar zona cr'itica}
+\emph{setear} los intervalos de tiempo correspondientes a la zona cr'itica y la
+velocidad de la simulaci'on. El bot'on \emph{Liberar zona cr'itica}
 saca al proceso que est'e en la zona cr'itica en ese momento. Podemos adem'as
 monitorear los valores de las variables de
 los sem'aforos, en el campo \emph{Secuencia resultado} podemos ver los tipos de
 procesos que han utililzado la zona cr'itica y en el campo \emph{Logs} podemos
-ver todo lo que ya ocurri'o en cada ejecuci'on.}
+ver todo lo que ya ocurri'o durante la ejecuci'on.}
 \end{figure}
 \newpage
 
