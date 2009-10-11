@@ -1,0 +1,29 @@
+Copyright (c) 2000 Larry Peterson
+
+All lecture notes are copyrighted by Larry Peterson. All rights
+reserved.  Permission to reproduce this document for not-for-profit
+educational purposes is hereby granted. This document may not be
+reproduced for commercial purposes without the express written consent
+of the author.
+
+Files			Topic			Textbook
+=====			=====			========
+
+intro.ppt		Introduction		PD 1.1 - 1.2, 2.1
+implementation.ppt	Implementation Issues	PD 1.3
+p2p.ppt			Point-to-Point Links	PD 2.2 - 2.5
+shared.ppt		Shared Media Networks	PD 2.6 - 2.8
+switching.ppt		Switched Networks	PD 3.1 - 3.3
+ip.ppt			IP and the Internet	PD 4.1
+routing.ppt		Scalable Routing	PD 4.2 - 4.3
+tcp.ppt			TCP and UDP		PD 5.1 - 5.2
+congestion.ppt		Congestion Control	PD 6.1 - 6.4
+qos.ppt			Quality of Service	PD 6.5
+multimedia.ppt		Multimedia		PD 7.2, 9.3
+router.ppt		Router Construction	PD 3.1.4, 3.4
+rpc.ppt			Remote Procedure Call	PD 5.3, 7.1
+naming.ppt		Naming			PD 9.1
+security.ppt		Security		PD 8
+
+
+
