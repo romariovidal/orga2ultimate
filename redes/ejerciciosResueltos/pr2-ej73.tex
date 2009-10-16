@@ -1,0 +1,33 @@
+La idea es que entre dos hosts se crea una conexión para cada protocolo de la capa superior.  Cada host receptor guarda una tabla de Id cx & host origen & Id protocolo.
+
+Frame de datos:
+\begin{tabular}
+	| & DST & ORI & TIPO FRAME & ID CX & LEN & SEQN & DATOS & CRC & |
+
+Frames de control:
+
+Pedir Conexión (Emisor)
+\begin{tabular}
+	| & DST & ORI & TIPO FRAME & ID CX & ID PROT & CRC & |
+
+Tomá Conexión (Receptor)
+\begin{tabular}
+	| & DST & ORI & TIPO FRAME & ID CX & CRC & |
+
+Cerrar Conexión (Emisor)
+\begin{tabular}
+	| & DST & ORI & TIPO FRAME & ID CX & CRC & |
+
+ACK, NAK (Receptor)
+\begin{tabular}
+	| & DST & ORI & TIPO FRAME & ID CX & SEQN & CRC & |
+
+Overload (Receptor)
+\begin{tabular}
+	| & DST & ORI & TIPO FRAME & ID CX & CRC & |
+
+
+El Overload podría no tener el id de conexión considerando que ese id viaja para identificar al protocolo y un overload es para todos los protocolos.
+
+¿Puedo no tener tamaño mínimo de frame? ¿Cómo debería fundamentar esa decisión si hay que fundamentarla?
+

@@ -1,0 +1,41 @@
+Un ISp tiene la siguiente dirección> 
+157.92.26.0/23
+
+4 clientes:
+	a- 240 IPs
+	b- 96 IPs
+	c- 16 IPs
+	d- 6 IPs
+
+Cada cliente tiene las IPs que pidió más la dirección del enlace que se conecta con sus máquinas, más la dirección de la red, más la dirección de broadcast.
+
+Red a-
+192.168.26.0 Dirección de Red
+255.255.255.0 es decir /24 Máscara
+192.168.26.255 Broadcast
+192.168.26.254 IP del enlace
+Rango de IPs: 192.168.26.1 a 192.168.26.253 Son 253 ips, desperdicio: 13
+
+Red b-
+x.x.x.1000 0000
+192.168.27.0 Dirección de Red
+255.255.255.128 es decir /25 Máscara
+192.168.27.127 Broadcast
+192.168.27.126 IP del enlace
+Rango de IPs: 192.168.27.1 a 192.168.27.125 Son 125 ips, desperdicio: 29
+
+Red c-
+x.x.1100 0000
+192.168.27.192 Dirección de Red
+255.255.255.224 es decir /27 Máscara
+192.168.27.223 Broadcast
+192.168.27.222 IP del enlace
+Rango de IPs: 192.168.27.193 a 192.168.27.221 Son 29 ips, desperdicio:13
+
+Red d-
+x.x.x.1110 0000
+192.168.27.224 Dirección de Red
+255.255.255.240 es decir /28 Máscara
+192.168.27.239 Broadcast
+192.168.27.238 IP del enlace
+Rango de IPs: 192.168.27.225 a 192.168.27.237 Son 13 ips, desperdicio:7
