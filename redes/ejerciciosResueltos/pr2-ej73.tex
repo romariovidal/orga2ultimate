@@ -1,33 +1,78 @@
-La idea es que entre dos hosts se crea una conexión para cada protocolo de la capa superior.  Cada host receptor guarda una tabla de Id cx & host origen & Id protocolo.
+\documentclass[a4paper,10pt]{article}
 
-Frame de datos:
-\begin{tabular}
-	| & DST & ORI & TIPO FRAME & ID CX & LEN & SEQN & DATOS & CRC & |
+\usepackage[spanish, activeacute]{babel}
+\usepackage{a4wide}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+%\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{latexsym}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
 
-Frames de control:
 
-Pedir Conexión (Emisor)
-\begin{tabular}
-	| & DST & ORI & TIPO FRAME & ID CX & ID PROT & CRC & |
 
-Tomá Conexión (Receptor)
-\begin{tabular}
-	| & DST & ORI & TIPO FRAME & ID CX & CRC & |
+\addtolength\topmargin{-1cm}
+\setlength\voffset{0cm}
+\setlength\headheight{0cm}
+\setlength\headsep{0cm}
+\addtolength\textheight{4cm}
 
-Cerrar Conexión (Emisor)
-\begin{tabular}
-	| & DST & ORI & TIPO FRAME & ID CX & CRC & |
+\begin{document}
 
-ACK, NAK (Receptor)
-\begin{tabular}
-	| & DST & ORI & TIPO FRAME & ID CX & SEQN & CRC & |
+\section*{Ejercicio 73}
+   Una empresa necesita un protocolo de nivel de enlace orientado a conexión, full-dúplex y confiable que 
+   permita ser implementado sobre un canal con una tasa de ruido del 0,01\% para brindar servicio a varios 
+   protocolos de nivel de red. Se pide describir el formato de las tramas de datos y control detallando 
+   cada campo y las características del funcionamiento del protocolo para que cumpla con lo especificado.
 
-Overload (Receptor)
-\begin{tabular}
-	| & DST & ORI & TIPO FRAME & ID CX & CRC & |
+\section*{Nuestra idea}
 
+La idea es que entre dos hosts se crea una conexión para cada protocolo de la capa superior.  Cada host receptor guarda una tabla de 
+\begin{tabular}{|c|c|c|}\hline
+Id cx &host origen &Id protocolo\\\hline
+\end{tabular}.
+
+\subsection*{Frame de datos}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+	DST & ORI & TIPO FRAME & ID CX & LEN & SEQN & DATOS & CRC \\ \hline
+\end{tabular}
+
+\subsection*{Frames de control}
+
+\begin{description}
+\item[Pedir Conexión (Emisor)]\ \\
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+	DST & ORI & TIPO FRAME & ID CX & ID PROT & CRC\\\hline
+\end{tabular}
+
+\item[Tomá Conexión (Receptor)]\ \\
+\begin{tabular}{|c|c|c|c|c|}\hline
+	DST & ORI & TIPO FRAME & ID CX & CRC\\\hline
+\end{tabular}
+
+\item[Cerrar Conexión (Emisor)]\ \\
+\begin{tabular}{|c|c|c|c|c|}\hline
+	 DST & ORI & TIPO FRAME & ID CX & CRC \\\hline
+\end{tabular}
+
+\item[ACK, NAK (Receptor)]\ \\
+\begin{tabular}{|c|c|c|c|c|c|}\hline
+	DST & ORI & TIPO FRAME & ID CX & SEQN & CRC\\\hline
+\end{tabular}
+
+\item[Overload (Receptor)]\ \\
+\begin{tabular}{|c|c|c|c|c|}\hline
+	DST & ORI & TIPO FRAME & ID CX & CRC\\\hline
+\end{tabular}
+
+\end{description}
 
 El Overload podría no tener el id de conexión considerando que ese id viaja para identificar al protocolo y un overload es para todos los protocolos.
 
 ¿Puedo no tener tamaño mínimo de frame? ¿Cómo debería fundamentar esa decisión si hay que fundamentarla?
 
+\end{document}
