@@ -37,6 +37,14 @@ Id cx &host origen &Id protocolo\\\hline
 
 El único frame de longitud variable es el de datos y por eso es el único que lleva el campo longitud.
 
+Se usa un CRC para la detección de errores en todos los frames.  Como tenemos
+una estimación estadística de los errores que pueden aparecer (0.01\%), se
+podría fijar el tamaño máximo del frame y usar un chequeo de error que asegure
+corregir esa cantidad de errores en ese frame para reducir la tasa de error.
+Más allá de eso no tenemos datos sobre la capa física ni ningún otro dato en el
+que basarnos para decidir un tamaño máximo de frame, por lo que no lo fijamos
+explicitamente.
+
 \subsection*{Frame de datos}
 
 \begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
