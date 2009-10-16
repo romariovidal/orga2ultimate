@@ -35,6 +35,8 @@ La idea es que entre dos hosts se crea una conexión para cada protocolo de la c
 Id cx &host origen &Id protocolo\\\hline
 \end{tabular}.
 
+El único frame de longitud variable es el de datos y por eso es el único que lleva el campo longitud.
+
 \subsection*{Frame de datos}
 
 \begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
@@ -73,6 +75,11 @@ Id cx &host origen &Id protocolo\\\hline
 
 El Overload podría no tener el id de conexión considerando que ese id viaja para identificar al protocolo y un overload es para todos los protocolos.
 
-¿Puedo no tener tamaño mínimo de frame? ¿Cómo debería fundamentar esa decisión si hay que fundamentarla?
+\subsection*{Dudas}
+\begin{itemize}
+	\item ¿Puedo no tener tamaño mínimo de frame? 
+	\item ¿Cómo debería fundamentar esa decisión si hay que fundamentarla?
+	\item ¿Deberíamos escribir la tabla de ``tipo de frame / largo de frame''? 
+\end{itemize}
 
 \end{document}
