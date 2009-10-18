@@ -1,0 +1,122 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[spanish, activeacute]{babel}
+\usepackage{a4wide}
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+%\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{latexsym}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+
+
+
+\addtolength\topmargin{-1cm}
+\setlength\voffset{0cm}
+\setlength\headheight{0cm}
+\setlength\headsep{0cm}
+\addtolength\textheight{4cm}
+
+\begin{document}
+
+\section*{Dudas generales}
+\begin{itemize}
+	\item En el ejercicio 17 hay un broadcast a la direcci'on 255.255.255.255.  Nosotros habíamos entendido que las direcciones de broadcast están definidas basándose en la dirección de red, o sea en este caso 200.32.127.255.  ¿Estamos confundidos nosotros, o es una ``licencia poética'' de la práctica?
+\end{itemize}
+
+\section*{Ejercicio 2 (subnetting)}
+Este va completo entero para validarlo.
+
+Un ISP tiene la siguiente dirección: 
+157.92.26.0/23
+
+4 clientes:
+
+\begin{itemize}
+	\item a 240 hosts
+	\item b 96 hosts
+	\item c 16 hosts
+	\item d 6 hosts
+\end{itemize}
+
+Cada cliente tiene las IPs que pidió más la dirección del enlace que se conecta con sus máquinas, más la dirección de la red, más la dirección de broadcast.
+
+
+Red a:
+\begin{itemize}
+	\item Dirección de Red: 192.168.26.0 
+	\item Máscara: 255.255.255.0 es decir /24 
+	\item Broadcast: 192.168.26.255 
+	\item IP del enlace: 192.168.26.254
+	\item Rango de IPs: 192.168.26.1 a 192.168.26.253 Son 253 ips, desperdicio: 13
+\end{itemize}
+
+
+Red b:
+\begin{itemize}
+	\item Bits: x.x.x.1000 0000
+	\item Dirección de red: 192.168.27.0 
+	\item Máscara: 255.255.255.128 es decir /25
+	\item Broadcast: 192.168.27.127
+	\item IP del enlace: 192.168.27.126
+	\item Rango de IPs: 192.168.27.1 a 192.168.27.125 Son 125 ips, desperdicio: 29
+\end{itemize}
+
+
+Red c:
+\begin{itemize}
+	\item Bits: x.x.1100 0000
+	\item Dirección de Red: 192.168.27.192
+	\item Máscara: 255.255.255.224 es decir /27
+	\item Broadcast: 192.168.27.223
+	\item IP del enlace: 192.168.27.222
+	\item Rango de IPs: 192.168.27.193 a 192.168.27.221 Son 29 ips, desperdicio:13
+\end{itemize}
+
+
+Red d:
+\begin{itemize}
+	\item Bits: x.x.x.1110 0000
+	\item Dirección de red: 192.168.27.224
+	\item Máscara: 255.255.255.240 es decir /28
+	\item Broadcast: 192.168.27.239
+	\item IP del enlace: 192.168.27.238
+	\item Rango de IPs: 192.168.27.225 a 192.168.27.237 Son 13 ips, desperdicio:7
+\end{itemize}
+
+\section*{Ejercicio 20}
+¿Alcanza con hacer un túnel (X.25 encapsulado en IP) o para poder simular el circuito virtual asegurar que los paquetes lleguen, etc. hay que agregar algo más que encapsule IP (o entre IP y X.25)?
+
+\section*{Ejercicio 24}
+¿Qué representan los rayos amarillos??/? ¿Podría haber una subnet que abarque más de una VLAN?
+
+\section*{Ejercicio 26}
+¿``DHCP DISCOVER Fragmentado''? ¿Qué es eso? (no lo encontramos en el libro, ni se dió en clase ni lo encontramos)
+
+\section*{Ejercicio 27}
+El último punto nos genera dos dudas: una es cómo sabe IP el MTU del L2 subyacente y la más importante es qué pasa si el protocolo superior le pide a IP envíar un dato mayor al máximo largo de paquete IP. ¿IP envía varios paquetes independientes o envía un paquete fragmentado?
+
+\section*{Ejercicio 28}
+No se nos ocurre nada que a todos nos satisfaga, o al menos que nos convenza a todos.  Puede pasar que haya dos servidores de DHCP que estén otorgando las mismas IPs, puede que haya dos máquinas a las que se les estén configurando las IPs a mano o alguna otra que no se nos ocurre.
+
+\section*{Ejercicio 29}
+Dado que la red es 131.108.1.128/25 en principio creemos que la dirección de broadcast es la IV: 131.198.1.255.  Sin embargo, esta dirección IP es una dirección pública (podría pertenecer por ejemplo a un host de la red 131.108.0.0/16) por lo cual no estamos seguros de que sea una dirección broadcast válida.
+
+\section*{Ejercicio 33}
+No estamos seguros, o al menos no de una fuente ``oficial``, del funcionamiento y uso de los tres últimos campos de la tabla.
+
+\section*{Ejercicio 53}
+¿Cómo podríamos saber la dir IP de la máquina donde se corre el comando?  Podríamos estimar a qué subred pertenece, pero no la dirección IP exacta.
+Por otro lado: ¿qué tipo de interfaz es fxp0? ¿Qué indica el ``permanent'' que aparece en una entrada?
+
+\section*{Ejercicio 59}
+La longitud del segundo fragmento de la tabla (100 Bytes) no es múltiplo de 8.  ¿Esto es inválido y el ejercicio apunta a que notemos eso, o es un detalle a ignorar a los efectos del ejercicio?
+
+\section*{Ejercicio 68}
+No se entiende bien la pregunta en lo que respecta a ``dos posibles escenarios en que al menos un fragmento llegue a destino''.  Sólo se nos ocurre ``que lleguen los dos'' y ``que llegue uno s'olo''.  ¿Esta es la idea?
+
+\end{document}
+
