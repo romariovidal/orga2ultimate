@@ -74,7 +74,7 @@ implica:
 	\item \cmd{IW <= 2 * SMSS}
 	\item Si es al comienzo de la conexión: \cmd{CWND = IW}, si proviene de un
 		\cmd{RTO} entonces \cmd{CWND = LW}, que \cmd{LW = 1}.
-	\item Por cada \ack recibido \cmd{CWND = 2 * CWND}
+	\item Por cada \ack recibido \cmd{CWND += SMMS}
 	\item Pasa a \emph{Congestion Avoidance} cuando \cmd{CWND > SSTRESH}		
 \end{itemize}
 Inicialmente el \cmd{SSTRESH} debe tener un valor muy grande para explorar la
